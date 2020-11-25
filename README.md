@@ -8,6 +8,8 @@ https://www.tailwindcss.com
 바닐라 스크립트
 
 https://www.w3schools.com/js/js_es6.asp
+https://itstory.tk/entry/JavaScript-ES6-문법-정리
+
 
 
 
