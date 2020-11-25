@@ -1,3 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h1 {
+      @apply text-4xl;
+    }
+    h2 {
+      @apply text-2xl;
+    }
+    h3 {
+      @apply text-xl;
+    }
+    h4 {
+      @apply text-base;
+    }
+    h5 {
+      @apply text-sm;
+    }
+    h6 {
+      @apply text-xs;
+    }
+
+    .img-fluid {
+      @apply max-w-full mx-auto;
+    }
+
+    /* @font-face {
+        font-family: 'Nanum Gothic';
+        font-style: normal;
+        font-weight: normal;
+        src: url(/assets/v1/fonts/NanumGothic-Regular.eot);
+        src: url(/assets/v1/fonts/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+            url(/assets/v1/fonts/NanumGothic-Regular.woff2) format('woff2'),
+            url(/assets/v1/fonts/NanumGothic-Regular.woff) format('woff'),
+    }
+    @font-face {
+        font-family: 'Nanum Gothic';
+        font-style: normal;
+        font-weight: bold;
+        src: url(/assets/v1/fonts/NanumGothic-Bold.eot);
+        src: url(/assets/v1/fonts/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+            url(/assets/v1/fonts/NanumGothic-Bold.woff2) format('woff2'),
+            url(/assets/v1/fonts/NanumGothic-Bold.woff) format('woff'),
+    } */
+    @font-face {
+        font-family: 'NanumBarunGothic';
+        font-style: normal;
+        font-weight: normal;
+        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot);
+        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.woff) format('woff'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.ttf) format('truetype');
+       }
+    @font-face {
+        font-family: 'NanumBarunGothic';
+        font-weight: 400;
+        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot);
+        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.woff) format('woff'),
+             url(/assets/v1/fonts/NanumBarunGothicSubset.ttf) format('truetype');
+       }
+    @font-face {
+    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-style: normal;
+    font-weight: bold;
+    src: url(/assets/v1/fonts/NanumBarunGothicBoldSubset.eot);
+    src: url(/assets/v1/fonts/NanumBarunGothicBoldSubset.eot?#iefix) format('embedded-opentype'),
+            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.woff2) format('woff2'),
+            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.woff) format('woff'),
+            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.ttf) format('truetype');
+    }
+    @font-face {
+    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-weight: 300;
+    src: url(/assets/v1/fonts/NanumBarunGothicLightSubset.eot);
+    src: url(/assets/v1/fonts/NanumBarunGothicLightSubset.eot?#iefix) format('embedded-opentype'),
+            url(/assets/v1/fonts/NanumBarunGothicLightSubset.woff2) format('woff2'),
+            url(/assets/v1/fonts/NanumBarunGothicLightSubset.woff) format('woff'),
+            url(/assets/v1/fonts/NanumBarunGothicLightSubset.ttf) format('truetype');
+    }
+    @font-face {
+    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-weight: 200;
+    src: url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.eot);
+    src: url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.eot?#iefix) format('embedded-opentype'),
+            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.woff2) format('woff2'),
+            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.woff) format('woff'),
+            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
+    }
+}
