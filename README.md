@@ -6,8 +6,8 @@ https://www.tailwindcss.com
 
 2. js framework
 바닐라 스크립트
-http://vanilla-js.com/
 
+https://www.w3schools.com/js/js_es6.asp
 
 
 
