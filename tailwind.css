@@ -26,66 +26,66 @@
         font-family: 'Nanum Gothic';
         font-style: normal;
         font-weight: normal;
-        src: url(/assets/v1/fonts/NanumGothic-Regular.eot);
-        src: url(/assets/v1/fonts/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
-            url(/assets/v1/fonts/NanumGothic-Regular.woff2) format('woff2'),
-            url(/assets/v1/fonts/NanumGothic-Regular.woff) format('woff'),
+        src: url(./fonts/NanumGothic-Regular.eot);
+        src: url(./fonts/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+            url(./fonts/NanumGothic-Regular.woff2) format('woff2'),
+            url(./fonts/NanumGothic-Regular.woff) format('woff'),
     }
     @font-face {
         font-family: 'Nanum Gothic';
         font-style: normal;
         font-weight: bold;
-        src: url(/assets/v1/fonts/NanumGothic-Bold.eot);
-        src: url(/assets/v1/fonts/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
-            url(/assets/v1/fonts/NanumGothic-Bold.woff2) format('woff2'),
-            url(/assets/v1/fonts/NanumGothic-Bold.woff) format('woff'),
+        src: url(./fonts/NanumGothic-Bold.eot);
+        src: url(./fonts/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+            url(./fonts/NanumGothic-Bold.woff2) format('woff2'),
+            url(./fonts/NanumGothic-Bold.woff) format('woff'),
     } */
     @font-face {
         font-family: 'NanumBarunGothic';
         font-style: normal;
         font-weight: normal;
-        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot);
-        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.woff2) format('woff2'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.woff) format('woff'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.ttf) format('truetype');
+        src: url(./fonts/NanumBarunGothicSubset.eot);
+        src: url(./fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
+             url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+             url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
+             url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
        }
     @font-face {
         font-family: 'NanumBarunGothic';
         font-weight: 400;
-        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot);
-        src: url(/assets/v1/fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.woff2) format('woff2'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.woff) format('woff'),
-             url(/assets/v1/fonts/NanumBarunGothicSubset.ttf) format('truetype');
+        src: url(./fonts/NanumBarunGothicSubset.eot);
+        src: url(./fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
+             url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+             url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
+             url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
        }
     @font-face {
-    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-family: './fonts/NanumBarunGothic';
     font-style: normal;
     font-weight: bold;
-    src: url(/assets/v1/fonts/NanumBarunGothicBoldSubset.eot);
-    src: url(/assets/v1/fonts/NanumBarunGothicBoldSubset.eot?#iefix) format('embedded-opentype'),
-            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.woff2) format('woff2'),
-            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.woff) format('woff'),
-            url(/assets/v1/fonts/NanumBarunGothicBoldSubset.ttf) format('truetype');
+    src: url(./fonts/NanumBarunGothicBoldSubset.eot);
+    src: url(./fonts/NanumBarunGothicBoldSubset.eot?#iefix) format('embedded-opentype'),
+            url(./fonts/NanumBarunGothicBoldSubset.woff2) format('woff2'),
+            url(./fonts/NanumBarunGothicBoldSubset.woff) format('woff'),
+            url(./fonts/NanumBarunGothicBoldSubset.ttf) format('truetype');
     }
     @font-face {
-    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-family: './fonts/NanumBarunGothic';
     font-weight: 300;
-    src: url(/assets/v1/fonts/NanumBarunGothicLightSubset.eot);
-    src: url(/assets/v1/fonts/NanumBarunGothicLightSubset.eot?#iefix) format('embedded-opentype'),
-            url(/assets/v1/fonts/NanumBarunGothicLightSubset.woff2) format('woff2'),
-            url(/assets/v1/fonts/NanumBarunGothicLightSubset.woff) format('woff'),
-            url(/assets/v1/fonts/NanumBarunGothicLightSubset.ttf) format('truetype');
+    src: url(./fonts/NanumBarunGothicLightSubset.eot);
+    src: url(./fonts/NanumBarunGothicLightSubset.eot?#iefix) format('embedded-opentype'),
+            url(./fonts/NanumBarunGothicLightSubset.woff2) format('woff2'),
+            url(./fonts/NanumBarunGothicLightSubset.woff) format('woff'),
+            url(./fonts/NanumBarunGothicLightSubset.ttf) format('truetype');
     }
     @font-face {
-    font-family: '/assets/v1/fonts/NanumBarunGothic';
+    font-family: './fonts/NanumBarunGothic';
     font-weight: 200;
-    src: url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.eot);
-    src: url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.eot?#iefix) format('embedded-opentype'),
-            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.woff2) format('woff2'),
-            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.woff) format('woff'),
-            url(/assets/v1/fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
+    src: url(./fonts/NanumBarunGothicUltraLightSubset.eot);
+    src: url(./fonts/NanumBarunGothicUltraLightSubset.eot?#iefix) format('embedded-opentype'),
+            url(./fonts/NanumBarunGothicUltraLightSubset.woff2) format('woff2'),
+            url(./fonts/NanumBarunGothicUltraLightSubset.woff) format('woff'),
+            url(./fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
     }
 }
 
@@ -114,16 +114,16 @@
         @apply flex;
     }
     .fvue--layout--icon {
-        @apply flex-auto;
+        @apply flex-initial;
     }
     .fvue--layout--title {
-        @apply flex-auto;
+        @apply flex-initial;
     }
     .fvue--layout--spacer {
         @apply flex-auto text-center;
     }
     .fvue--layout--navigation {
-        @apply flex-auto text-right;
+        @apply flex-initial text-right;
     }
     .fvue--layout--main {
         @apply flex-grow overflow-y-auto;
