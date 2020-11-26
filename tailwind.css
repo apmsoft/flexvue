@@ -94,7 +94,7 @@
         @apply max-w-full mx-auto;
     }
 
-    .panel {
+    .fvue--layout {
         will-change: transform;
         transition: -webkit-transform .3s cubic-bezier(.215, .61, .355, 1);
         transition: -moz-transform .3s cubic-bezier(.215, .61, .355, 1);
@@ -103,6 +103,33 @@
         width: 100vw;
         height: 100vh;
         position: absolute;
+    }
+    .fvue--layout--container {
+        @apply flex flex-col h-full;
+    }
+    .fvue--layout--header {
+        @apply flex-grow-0;
+    }
+    .fvue--layout--header--row {
+        @apply flex;
+    }
+    .fvue--layout--icon {
+        @apply flex-auto;
+    }
+    .fvue--layout--title {
+        @apply flex-auto;
+    }
+    .fvue--layout--spacer {
+        @apply flex-auto text-center;
+    }
+    .fvue--layout--navigation {
+        @apply flex-auto text-right;
+    }
+    .fvue--layout--main {
+        @apply flex-grow overflow-y-auto;
+    }
+    .fvue--layout--footer {
+        @apply flex-grow-0;
     }
 
     .drawer_transitioned {

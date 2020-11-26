@@ -704,12 +704,53 @@ h6 {
   max-width: 100%;
 }
 
-.panel {
+.fvue--layout {
   will-change: transform;
   transition: transform .3s cubic-bezier(.215, .61, .355, 1);
   width: 100vw;
   height: 100vh;
   position: absolute;
+}
+
+.fvue--layout--container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fvue--layout--header {
+  flex-grow: 0;
+}
+
+.fvue--layout--header--row {
+  display: flex;
+}
+
+.fvue--layout--icon {
+  flex: 1 1 auto;
+}
+
+.fvue--layout--title {
+  flex: 1 1 auto;
+}
+
+.fvue--layout--spacer {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.fvue--layout--navigation {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+.fvue--layout--main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.fvue--layout--footer {
+  flex-grow: 0;
 }
 
 .drawer_transitioned {
