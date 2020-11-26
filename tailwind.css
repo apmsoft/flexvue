@@ -105,6 +105,65 @@
         position: absolute;
     }
 
+    .drawer_transitioned {
+        -ms-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        -moz-transform: translateX(100%);
+        transform: translateX(100%);
+        animation: colorchange 10ms;
+        -webkit-animation: colorchange 10ms;
+        -webkit-animation-delay: .3s;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation: colorchange 10ms;
+        -moz-animation-delay: .3s;
+        -moz-animation-fill-mode: forwards;
+        -ms-animation: colorchange 10ms;
+        -ms-animation-delay: .3s;
+        -ms-animation-fill-mode: forwards
+    }
+
+    .transitioned {
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%)
+    }
+    
+    .rightside_transitioned {
+        -webkit-transform: translateX(-105%);
+        -moz-transform: translateX(-105%);
+        -ms-transform: translateX(-105%);
+        transform: translateX(-105%)
+    }
+    
+    .bottom_transitioned {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%)
+    }
+    
+    @keyframes colorchange {
+        from, to {
+            background: rgba(0, 0, 0, .7)
+        }
+    }
+    @-webkit-keyframes colorchange {
+        from, to {
+            background: rgba(0, 0, 0, .7)
+        }
+    }
+    @-moz-keyframes colorchange {
+        from, to {
+            background: rgba(0, 0, 0, .7)
+        }
+    }
+    @-ms-keyframes colorchange {
+        from, to {
+            background: rgba(0, 0, 0, .7)
+        }
+    }
+
     .btn {
         @apply px-4 py-2 rounded font-semibold;
     }

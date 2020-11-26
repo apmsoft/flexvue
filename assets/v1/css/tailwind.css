@@ -712,6 +712,44 @@ h6 {
   position: absolute;
 }
 
+.drawer_transitioned {
+  transform: translateX(100%);
+  animation: colorchange 10ms;
+  -webkit-animation: colorchange 10ms;
+  -webkit-animation-delay: .3s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation: colorchange 10ms;
+  -moz-animation-delay: .3s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation: colorchange 10ms;
+  -ms-animation-delay: .3s;
+  -ms-animation-fill-mode: forwards
+}
+
+.transitioned {
+  transform: translateX(-100%)
+}
+
+.rightside_transitioned {
+  transform: translateX(-105%)
+}
+
+.bottom_transitioned {
+  transform: translateY(-100%)
+}
+
+@keyframes colorchange {
+  from, to {
+    background: rgba(0, 0, 0, .7)
+  }
+}
+
+@-webkit-keyframes colorchange {
+  from, to {
+    background: rgba(0, 0, 0, .7)
+  }
+}
+
 .btn {
   border-radius: 0.25rem;
   font-weight: 600;
