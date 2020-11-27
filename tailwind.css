@@ -195,3 +195,33 @@
         @apply px-4 py-2 rounded font-semibold;
     }
 }
+
+@responsive {
+    .overflow-unset {
+      overflow: unset !important;
+    }
+  
+    @media (min-width: 640px) {
+      .sm\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media  (min-width: 768px) {
+      .md\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .xl\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+  }
