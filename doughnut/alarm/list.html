@@ -1,0 +1,142 @@
+<script type="text/template" id="tpl_alarm_list">
+    <div class="mt-2 px-3 pt-2">
+        <h3 class="alarm-title mb-3">
+            <span class="float-right">
+                <button id="btn-refresh-alarm" class="btn btn-link btn-sm" style="color:#B4B3B4;">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </span>
+            <b>Message</b>
+        </h3>
+    <%
+    if(!_.isUndefined(msg) && _.size(msg)>0){
+    %>
+        <%
+        _.each(msg, function(list){
+    
+            // 프로필이미지
+            var print_image = 'images/nopimg_m.png';
+            if(!_.isNull (list.friend.directory)){
+                print_image = app.host_url+list.friend.directory+'/s/'+list.friend.sfilename;
+            }
+        %>
+            <%
+            if(list.param_json.mode == 'family_response') { 
+            %>
+                <div class="card mb-2 rounded-1-2 shadow">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="mr-2">
+                                <button type="button" class="btn btn-link align-self-center p-0 border rounded-circle mr-3 alarm-profile" style="background-image: url(<%-print_image%>);">
+                                </button>
+                            </div>
+                            <div class="media-body">
+                                <%
+                                // 수락 및 거절 상태일때
+                                if (list.friend_state == '00' || list.friend_state == '02'){
+                                %>
+                                <span class="float-right">
+                                    <button type="button" class="btn btn-link pt-0 alarm-remove" data-id="<%-list.id%>">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </span>
+                                <% } %>
+                                <h4 class="mb-0 alarm-name">
+                                    <%-list.friend.name%>
+                                    <%=(list.isread > alarm_readdate) ? '<button type="button" class="btn btn-danger alarm-new">N</button>' :''%>
+                                </h4>
+                                <p class="mb-1 alarm-signdate"><small><%-list.signdate%></small></p>
+                            </div>
+                        </div>
+                        <p class="card-text mt-2 alarm-msg">
+                            <%-list.msg%>
+                        </p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <%
+                        if (list.friend_state == '01'){
+                        %>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-lg py-2 btn-block btn-secondary alarm-btn-secondary alarm-row" data-mode="<%-list.param_json.mode%>" data-id="<%-list.id%>" data-state="02">거절하기</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-lg py-2 btn-block btn-primary alarm-btn-primary alarm-row" data-mode="<%-list.param_json.mode%>" data-id="<%-list.id%>" data-state="00">수락하기</button>
+                            </div>
+                        </div>
+                        <% } else { %>
+                            <p class="text-info text-center mb-0"><%-list.friend_state_msg%></p>
+                        <% } %>
+                    </div>
+                </div>
+            <%
+            } else if(list.param_json.mode == 'danger_response' || list.param_json.mode == 'request_whereis') {
+            %>
+                <div class="card mb-2 rounded-1-2 shadow">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="mr-2">
+                                <button type="button" class="btn btn-link align-self-center p-0 border rounded-circle mr-3 alarm-profile" style="background-image: url(<%-print_image%>);">
+                                </button>
+                            </div>
+                            <div class="media-body">
+                                <span class="float-right">
+                                    <button type="button" class="btn btn-link pt-0 alarm-remove" data-id="<%-list.id%>">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </span>
+                                <h4 class="mb-0 alarm-name">
+                                    <%-list.friend.name%>
+                                    <%=(list.isread > alarm_readdate) ? '<button type="button" class="btn btn-danger alarm-new">N</button>' :''%>
+                                </h4>
+                                <p class="mb-1 alarm-signdate"><small><%-list.signdate%></small></p>
+                            </div>
+                        </div>
+                        <p class="card-text mt-2 alarm-msg text-danger">
+                            <%-list.msg%>
+                        </p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <button class="btn btn-lg btn-block py-2 btn-danger py-3 alarm-row" data-mode="<%-list.param_json.mode%>" data-tel="<%-list.param_json.cellphone%>">긴급전화 요청 전화걸기</button>
+                    </div>
+                </div>
+            <% }else { %>
+                <div class="card rounded-1-2 mb-2 shadow">
+                    <div class="card-body">
+                        <div class="media alarm-row">
+                            <div class="mr-2">
+                                <button type="button" class="btn btn-link align-self-center p-0 border rounded-circle mr-3 alarm-profile" style="background-image: url(<%-print_image%>);">
+                                </button>
+                            </div>
+                            <div class="media-body">
+                                <span class="float-right">
+                                    <button type="button" class="btn btn-link pt-0 alarm-remove" data-id="<%-list.id%>">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </button>
+                                </span>
+                                <h4 class="mb-0 alarm-name">
+                                    <%-list.friend.name%>
+                                    <%=(list.isread > alarm_readdate) ? '<button type="button" class="btn btn-danger alarm-new">N</button>' :''%>
+                                </h4>
+                                <p class="mb-1 alarm-signdate"><small><%-list.signdate%></small></p>
+                            </div>
+                        </div>
+                        <p class="card-text mt-2 alarm-msg">
+                            <%-list.msg%>
+                        </p>
+                    </div>
+                </div>
+            <% } %>
+        <%});%>
+    <%}else{%>
+        <div class="card rounded-1-2 shadow">
+            <div class="card-body text-center">
+                <i class="ion ion-android-contacts" style="font-size: 50px; display: block; margin-bottom: 10px;"></i>
+                <h5 style="font-weight:bold;">새메세지(0)</h5>
+                <p style="color:#999;">도착한 새메세지가 없습니다.</p>
+            </div>
+        </div>
+    <%}%>
+    
+    </div>
+    </script>

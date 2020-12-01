@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!--title -->
+    <title>Anybaro</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="css/mdcolor.css" />
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/libs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/nouislider.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/swiper.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/chartjs.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/plyr.css">
+    <link rel="stylesheet" href="css/mystyle.min.css?v=2">
+    <script data-main="../plugins/fancy-up.min" src="../plugins/libs/js/require.min.js"></script>
+<body>
+    <!--container-->
+    <div id="container">
+        <!--right -->
+        <div id="right">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="right_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
+                        <span id="right_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="right_menu" class="mdl-navigation">
+                            <!-- <button type="button" id="btn_like" class="btn btn-link" style="color: #fff; font-size: 1.4rem;">
+                                <i class="fa fa-heart-o"></i>
+                                <span class="label label-danger like-count" style="display:none;font-size:9pt;" id="like_count">0</span>
+                            </button> -->
+                        </nav>
+                    </div>
+                </header>
+                <main class="mdl-layout__content">
+                    <div class="page-content right_docs_contents" id="right_docs_contents" style="position: relative;">
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//right -->
+        <!--rightside -->
+        <div id="rightside">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="rightside_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
+                        <span id="rightside_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="rightside_menu" class="mdl-navigation">
+                        </nav>
+                    </div>
+                </header>
+
+                <main class="mdl-layout__content">
+                    <div class="page-content rightside_docs_contents" id="rightside_docs_contents" style="position: relative;">
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//rightside -->
+        <!--rightthird -->
+        <div id="rightthird">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="rightthird_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
+                        <span id="rightthird_title" class="mdl-layout__title" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="rightthird_menu" class="mdl-navigation">
+                        </nav>
+                    </div>
+                </header>
+                
+                <main class="mdl-layout__content rightthird">
+                    <div class="page-content rightthird_docs_contents" id="rightthird_docs_contents" style="position: relative;">
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//rightthird -->
+        <!--left-->
+        <div id="left">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+
+                    <div class="mdl-layout__header-row" style="padding-left: 10px;">
+
+                        <!-- Title -->
+                        <span id="left_title" class="mdl-layout__title d-block text-left" style="width: 70%;font-size: 1.4rem;">
+                            <img src="images/ko/logo_text.png" height="43" />
+                        </span>
+                        <div class="mdl-layout-spacer"></div>
+                        <span>
+                            <button type="button" id="btn_alarm" class="btn btn-link p-0 position-relative mr-3" style="color:#7F8080;">
+                                <span id="alarm_count" class="position-absolute" style="right:-10px;top:-10px;display:none;"><img src="images/drawermenu/img_03.png" height="20" /></span>
+                                <i class="far fa-bell text-szie-17"></i>
+                            </button>
+
+                            <button type="button" id="btn_setting" class="btn btn-link p-0 position-relative mr-3" style="color:#7F8080;">
+                                <i class="fas fa-cog text-szie-17"></i>
+                            </button>
+                            
+                            <button type="button" id="btn_select_user" class="btn btn-link" style="background-image: url(images/nopimg_f.png); background-size:cover;background-position:center;border:2px solid #dee2e6; width:27px; height:27px;margin-bottom: 3px;border-radius: 0.5rem !important;"></button>
+                        </span>
+                    </div>
+                </header>
+
+                <main class="mdl-layout__content">
+                    <div id="left_docs_contents" class="page-content left_docs_contents pl-0 pt-0 pr-0">
+                        
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//left-->
+        <!--bottom-->
+        <div id="bottom">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header bg-transparent">              
+                <main class="mdl-layout__content bottom">
+                    <div class="page-content bottom_docs_contents" id="bottom_docs_contents">
+                
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//bottom-->
+        <!--bottomside-->
+        <div id="bottomside">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header bg-transparent">
+                <header class="mdl-layout__header mdl-layout__header--transparent">
+                    <div class="mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="btn_bottomside_close"><i class="fas fa-times" style="font-size: 18pt;"></i></div>
+                        <!-- Title -->
+                        <span id="bottomside_title" class="mdl-layout-title" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="bottomside_menu" class="mdl-navigation">
+                        </nav>
+                    </div>
+                </header>
+                
+                <main class="mdl-layout__content bottomside">
+                    <div class="page-content bottomside_docs_contents" id="bottomside_docs_contents">
+                
+                    </div>
+                </main>                
+            </div>
+        </div>
+        <!--//bottomside-->
+        <!--drawer_menu -->
+        <div id="drawer_menu">
+
+        </div>
+        <!--//drawer_menu -->
+    </div>
+    <!--//container-->
+
+</body>
+<!--modal-->
+<div id="myModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="myModal_btn_close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModal_title"></h4>
+            </div>
+            <div class="modal-body" id="myModal_docs_contents" style="max-height: 70vh;overflow-y: auto;">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+<!--//modal-->
+<!--template -->
+
+
+<!--//template -->
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="js/index.js?v=1"></script>
+<script src="alarm/alarm_count.min.js"></script>
+<script>
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+</script>
+</html>

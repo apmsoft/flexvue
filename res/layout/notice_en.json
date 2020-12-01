@@ -1,0 +1,18 @@
+{
+    "notice": {
+        "list" : {
+            "panel": "rightside",
+            "title": "Notice",
+            "frame": null,
+            "template": "../coconut/notice/list_en#tpl_notice_list",
+            "value": "document/queue"
+        },
+        "view" : {
+            "panel": "bottom",
+            "title": "Notice View Details",
+            "frame": null,
+            "template": "../coconut/notice/view#tpl_notice_view",
+            "value": "document/queue"
+        }
+    }
+}

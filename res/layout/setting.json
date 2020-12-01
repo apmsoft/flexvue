@@ -1,0 +1,32 @@
+{
+    "setting": {
+        "doset": {
+            "panel": "right",
+            "title": "설정",
+            "frame": null,
+            "template": "../coconut/setting/setting#tpl_setting",
+            "value": "setting/setting"
+        },
+        "rule1" : {
+            "panel": "rightside",
+            "title": "개인정보 수집 및 이용안내",
+            "frame": "../coconut/rule1#rightside_docs_contents",
+            "template": null,
+            "value": null
+        },
+        "rule2" : {
+            "panel": "rightside",
+            "title": "서비스 이용약관",
+            "frame": "../coconut/rule2#rightside_docs_contents",
+            "template": null,
+            "value": null
+        },
+        "rule3" : {
+            "panel": "rightside",
+            "title": "이벤트 및 마켓팅 활용 약관",
+            "frame": "../coconut/rule3#rightside_docs_contents",
+            "template": null,
+            "value": null
+        }
+    }
+}

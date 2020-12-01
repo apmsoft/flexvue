@@ -1,0 +1,139 @@
+<script type="text/template" id="tpl_join">
+    <form id="theJoinForm">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h3 class="text-center pt-3 font-weight-bold lh">
+                            반갑습니다!<br>
+                            회원님의 휴대폰 번호를<br>
+                            인증해 주세요
+                        </h3>
+            
+                        <div class="form-group" style="margin-top:6rem;">
+                            <input type="tel" class="form-control form-control-line text-center" id="cellphone" name="cellphone" aria-describedby="cellphoneHelp" placeholder=" ex) 010-1234-5678">
+                            <small id="cellphoneHelp" class="form-text text-muted"></small>
+                            <input type="hidden" id="ssid_authno" name="ssid_authno" value="" />
+                        </div>
+        
+                        <br />
+                        <div class="mt-5">
+                            <button id="btn-sms-authreq" type="button" class="btn btn-success btn-block btn-lg py-3 rouned-bg" disabled>인증하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h3 class="text-center pt-3 font-weight-bold lh">
+                            인증번호를<br>
+                            입력하세요
+                        </h3>
+            
+                        <div class="form-group" style="margin-top:6rem;">
+                            <input type="number" class="form-control form-control-line text-center" id="sms_authno" name="sms_authno" aria-describedby="sms_authnoHelp" placeholder=" ex) 101010">
+                            <small id="sms_authnoHelp" class="form-text text-muted"></small>
+                        </div>
+        
+                        <br />
+                        <div class="mt-5">
+                            <button id="btn-sms-authno-next" type="button" class="btn btn-success btn-block btn-lg py-3 rouned-bg" disabled>다음</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h3 class="text-center pt-3 font-weight-bold lh">
+                            이름을<br>
+                            입력하세요
+                        </h3>
+            
+                        <div class="form-group" style="margin-top:6rem;">
+                            <input type="text" class="form-control form-control-line text-center" id="name" name="name" aria-describedby="nameHelp" placeholder=" ex) 홍길동">
+                            <small id="nameHelp" class="form-text text-muted"></small>
+                        </div>
+        
+                        <br />
+                        <div class="mt-5">
+                            <button id="btn-name-next" type="button" class="btn btn-success btn-block btn-lg py-3 rouned-bg" disabled>다음</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card border-0">
+                    <div class="card-body">
+                        <h3 class="text-center pt-3 font-weight-bold lh">
+                            모든 약관에 동의 해 주세요
+                        </h3>
+
+                        <p class="card-text mt-5 mb-5" style="color:#9EA1A5;">
+                            애니바로 서비스 이용을 위해서 반드시 아래 약관을 확인하시고 동의하여 주시기 바랍니다.
+                        </p>
+            
+                        <h4 class="text-left">
+                            <button type="button" id="chkall" class="btn btn-lg btn-light px-2 bg-transparent border-0 "><i class="fas fa-check-circle fa-lg"></i></button> 
+                            전체동의 
+                        </h4>
+                        <ul class="list-group list-group-flush text-left mt-3">
+                            <li class="list-group-item pl-0" style="font-size: 1.1rem;">
+                                <div class="d-flex bd-highlight">
+                                    <div class="bd-highlight">
+                                        <button type="button" class="btn btn-lg btn-light px-2 bg-transparent border-0 chkid" data-id="rule1"><i class="fas fa-check-circle fa-lg"></i></button>
+                                    </div>
+                                    <div class="flex-grow-1 bd-highlight pt-2 pl-2 show-rules" data-id="rule1">
+                                        서비스 이용약관 동의
+                                        <span class="float-right"><i class="fas fa-chevron-right fa-lg" style="color:#CBCCCD;"></i></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="rule1" name="rule1" value="n" />
+                            </li>
+
+                            <li class="list-group-item pl-0" style="font-size: 1.1rem;">
+                                <div class="d-flex bd-highlight">
+                                    <div class="bd-highlight">
+                                        <button type="button" class="btn btn-lg btn-light px-2 bg-transparent border-0 chkid" data-id="rule2"><i class="fas fa-check-circle fa-lg"></i></button>
+                                    </div>
+                                    <div class="flex-grow-1 bd-highlight pt-2 pl-2 show-rules" data-id="rule2">
+                                        개인정보 수집 및 이용 동의
+                                        <span class="float-right"><i class="fas fa-chevron-right fa-lg" style="color:#CBCCCD;"></i></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="rule2" name="rule2" value="n" />
+                            </li>
+
+                            <li class="list-group-item pl-0" style="font-size: 1.1rem;">
+                                <div class="d-flex bd-highlight">
+                                    <div class="bd-highlight">
+                                        <button type="button" class="btn btn-lg btn-light px-2 bg-transparent border-0 chkid" data-id="rule3"><i class="fas fa-check-circle fa-lg"></i></button>
+                                    </div>
+                                    <div class="flex-grow-1 bd-highlight pt-2 pl-2 show-rules" data-id="rule3">
+                                        마케팅 수신에 대한 동의
+                                        <span class="float-right"><i class="fas fa-chevron-right fa-lg" style="color:#CBCCCD;"></i></span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="rule3" name="rule3" value="n" />
+                            </li>
+                        </ul>
+        
+                        <br />
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-success btn-block btn-lg py-3 rouned-bg" disabled>회원가입완료</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+    </div>
+</form>
+</script>

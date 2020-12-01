@@ -1,0 +1,18 @@
+{
+    "notice": {
+        "list" : {
+            "panel": "rightside",
+            "title": "공지사항",
+            "frame": null,
+            "template": "../coconut/notice/list#tpl_notice_list",
+            "value": "document/queue"
+        },
+        "view" : {
+            "panel": "bottom",
+            "title": "공지사항 상세보기",
+            "frame": null,
+            "template": "../coconut/notice/view#tpl_notice_view",
+            "value": "document/queue"
+        }
+    }
+}

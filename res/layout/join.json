@@ -1,0 +1,30 @@
+{
+    "rule1" : {
+        "panel": "right",
+        "title": "개인정보 수집 및 이용안내",
+        "frame": "../coconut/rule1#right_docs_contents",
+        "template": null,
+        "value": null
+    },
+    "rule2" : {
+        "panel": "right",
+        "title": "서비스 이용약관",
+        "frame": "../coconut/rule2#right_docs_contents",
+        "template": null,
+        "value": null
+    },
+    "rule3" : {
+        "panel": "right",
+        "title": "이벤트 및 마켓팅 활용 약관",
+        "frame": "../coconut/rule3#right_docs_contents",
+        "template": null,
+        "value": null
+    },
+    "join" : {
+        "panel": "left",
+        "title": "회원가입",
+        "frame": null,
+        "template": "../coconut/join/join#tpl_join",
+        "value": null
+    }
+}

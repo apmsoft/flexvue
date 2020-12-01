@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!--title -->
+    <title>회원가입</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="css/mdcolor.css" />
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/libs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/libs/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../plugins/libs/css/swiper.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="css/mystyle.min.css?v=1">
+    <style>
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      padding: 3rem 1rem 1rem 1rem;
+    }
+
+    .swiper-container-horizontal>.swiper-pagination-progressbar, .swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+        height: 10px;
+        border-radius: 1.5rem;
+        background : #F1F2F3;
+    }
+
+    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+        background: #9AC456;
+        border-radius: 1.5rem;
+    }
+
+    .btn-success {
+        color: #000;
+        background-color: #9AC456;
+        border-color: #9AC456;
+    }
+
+    .input-line-style{
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .lh {
+        line-height: 1.4;
+    }
+
+    .btn {
+        border-radius : 1.9rem !important;
+    }
+
+    .btn-success.disabled, .btn-success:disabled {
+        color: #fff;
+        background-color: #DDDEDF;
+        border-color: #DDDEDF;
+    }
+
+    .form-control-line {
+        font-size: 2.0rem !important;
+    }
+    </style>
+
+    <script data-main="../plugins/fancy-up.min" src="../plugins/libs/js/require.min.js"></script>
+
+<body>
+    <!--container-->
+    <div id="container">
+        <!--right -->
+        <div id="right">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="right_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
+                        <span id="right_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="right_menu" class="mdl-navigation">
+                            <!-- <button type="button" id="btn_like" class="btn btn-link" style="color: #fff; font-size: 1.4rem;">
+                                <i class="fa fa-heart-o"></i>
+                                <span class="label label-danger like-count" style="display:none;font-size:9pt;" id="like_count">0</span>
+                            </button> -->
+                        </nav>
+                    </div>
+                </header>
+                <main class="mdl-layout__content">
+                    <div class="page-content right_docs_contents" id="right_docs_contents">
+                        
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//right -->
+        <!--rightside -->
+        <div id="rightside">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="rightside_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
+                        <span id="rightside_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="rightside_menu" class="mdl-navigation">
+                        </nav>
+                    </div>
+                </header>
+
+                <main class="mdl-layout__content">
+                    <div class="page-content rightside_docs_contents" id="rightside_docs_contents">
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//rightside -->
+        <!--left-->
+        <div id="left">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <main class="mdl-layout__content">
+                    <div id="left_docs_contents" class="page-content left_docs_contents py-5 px-4" style="height:100vh;">
+                        
+                    </div>
+                </main>
+                <!-- <footer class="mdl-mega-footer border-0 p-5">
+                    
+                </footer> -->
+            </div>
+        </div>
+        <!--//left-->
+        <!--bottom-->
+        <div id="bottom">
+            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                    <div class="container mdl-layout__header-row">
+                        <div class="mdl-layout-icon" id="btn_bottom_close"><i class="far fa-times-circle fa-lg"></i></div>
+                        <!-- Title -->
+                        <span id="bottom_title" class="mdl-layout-title" style="padding-left: 7px;">아래(bottom) 타이틀</span>
+                        <div class="mdl-layout-spacer"></div>
+                        <nav id="bottom_menu" class="mdl-navigation">
+                        </nav>
+                    </div>
+                </header>
+
+                <main class="mdl-layout__content bottom">
+                    <div class="container page-content bottom_docs_contents" id="bottom_docs_contents">
+                        
+                    </div>
+                </main>
+            </div>
+        </div>
+        <!--//bottom-->
+        <!--drawer_menu -->
+        <!--//drawer_menu -->
+    </div>
+    <!--//container-->
+
+</body>
+<!--modal-->
+<!--//modal-->
+<!--template -->
+
+
+<!--//template -->
+<script type="text/javascript" src="../cordova.js"></script>
+<script src="js/join.min.js?v=1"></script>
+</html>
