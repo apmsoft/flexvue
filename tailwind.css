@@ -198,6 +198,7 @@
     .btn-primary {
         @apply bg-blue-800 text-white hover:bg-blue-400
     }
+<<<<<<< HEAD
 
     .btn-secondary {
         @apply bg-gray-300 text-gray-700 hover:bg-gray-400
@@ -206,3 +207,36 @@
 
 @layer utilities {
 }
+=======
+}
+
+@responsive {
+    .overflow-unset {
+      overflow: unset !important;
+    }
+  
+    @media (min-width: 640px) {
+      .sm\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media  (min-width: 768px) {
+      .md\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .xl\:overflow-unset {
+        overflow: unset !important;
+      }
+    }
+  }
+>>>>>>> cc9d7d16a782d4656175f1b0a87dcb4f184e2074
