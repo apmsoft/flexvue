@@ -108,7 +108,7 @@
         @apply flex flex-col h-full;
     }
     .fvue--layout--header {
-        @apply flex-grow-0;
+        @apply flex-grow-0 p-2 shadow-sm;
     }
     .fvue--layout--header--row {
         @apply flex;
@@ -192,6 +192,17 @@
     }
 
     .btn {
-        @apply px-4 py-2 rounded font-semibold;
+        @apply px-4 py-2 text-center border align-middle rounded font-semibold
     }
+
+    .btn-primary {
+        @apply bg-blue-800 text-white hover:bg-blue-400
+    }
+
+    .btn-secondary {
+        @apply bg-gray-300 text-gray-700 hover:bg-gray-400
+    }
+}
+
+@layer utilities {
 }

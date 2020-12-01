@@ -49,20 +49,20 @@ function onReady($, _, Backbone) {
         onCreate: function() {
             var self = this;
 
-            require(['swiper','chartjs'], function(Swiper, Chart)
-            {
-                MySwiper = Swiper;
-                MyChart = Chart;
-            });
+            // require(['swiper','chartjs'], function(Swiper, Chart)
+            // {
+            //     MySwiper = Swiper;
+            //     MyChart = Chart;
+            // });
 
-            // 정보 가져오기
-            if ( (typeof window.android !=='undefined') || (window.webkit && window.webkit.messageHandlers.getSharedPreferences) ) {
-                if (isMobile.Android()) {
-                    window.android.getSharedPreferences('callbackGetSharedPreferences');
-                }else if (isMobile.iOS()) {
-                    webkit.messageHandlers.getSharedPreferences.postMessage("callbackGetSharedPreferences");
-                }
-            }
+            // // 정보 가져오기
+            // if ( (typeof window.android !=='undefined') || (window.webkit && window.webkit.messageHandlers.getSharedPreferences) ) {
+            //     if (isMobile.Android()) {
+            //         window.android.getSharedPreferences('callbackGetSharedPreferences');
+            //     }else if (isMobile.iOS()) {
+            //         webkit.messageHandlers.getSharedPreferences.postMessage("callbackGetSharedPreferences");
+            //     }
+            // }
 
             // 디바이스 정보
             // if ( (window.webkit && window.webkit.messageHandlers.getDevice) ) {
@@ -70,6 +70,9 @@ function onReady($, _, Backbone) {
             //         webkit.messageHandlers.getDevice.postMessage('callbackDevice');
             //     }
             // }
+
+            // 내 정보 가져오기
+            Activity.onCreateView();
         },
         onCreateView: function() {
             var self = this;
@@ -92,13 +95,14 @@ function onReady($, _, Backbone) {
             });
 
             // set language
-            app.language = (device_info.lang != 'ko' ) ? device_info.lang : '';
+            app.language = 'ko'; //(device_info.lang != 'ko' ) ? device_info.lang : '';
 
             // load layout
             Runnable(function(){
                 // 시스템 메세지
                 app.parserResource ('/values/sysmsg', function(sysmsg)
                 {
+                    alert(1);
                     _.extend(app.lang, sysmsg);
                 });
 
@@ -110,7 +114,7 @@ function onReady($, _, Backbone) {
                     // panel
                     var panel_setting = app.docs.index.frame; // SETTING VALUE
                     var panel = Panel.onStart(panel_setting);
-
+alert(JSON.stringify(panel));
                     // core
                     DocAsyncTask.doGetContents(panel_setting, {},{
                         success: function(tpl, resp) {
@@ -145,53 +149,51 @@ function onReady($, _, Backbone) {
             });
 
             // 사용자 선택
-            $('#btn_select_user').on('click', function(){
-                app.go_url('family.html');
+            $('#btn-right').on('click', function(){
+                
             });
 
-            $('#btn_setting').on('click', function(){
-                require([app.assets+'/setting/setting.min.js'], function(SettingActivity) {
-                    SettingActivity.init();
-                });
+            $('#btn-bottom').on('click', function(){
+                
             });
 
             // 알람
             $('#btn_alarm').on('click', function()
             {
-                require([app.assets+'/alarm/alarm.min.js'], function( AlarmActivity) 
-                {
-                    AlarmActivity.init(function(){
-                        AlarmActivity.doListDialog({page : 1},function(resp){
-                            $('.alarm-dialog-row').on('click',function(e){
-                                e.preventDefault();
+                // require([app.assets+'/alarm/alarm.min.js'], function( AlarmActivity) 
+                // {
+                //     AlarmActivity.init(function(){
+                //         AlarmActivity.doListDialog({page : 1},function(resp){
+                //             $('.alarm-dialog-row').on('click',function(e){
+                //                 e.preventDefault();
 
-                                var this_param = $(this).data('param');
-                                history.go(-1);
+                //                 var this_param = $(this).data('param');
+                //                 history.go(-1);
     
-                                Handler.post(function(){
-                                    if(this_param == 'fu3_bbs_notice'){
-                                        require([app.assets+'/notice/notice.min.js'], function(NoticeActivity) {
-                                            NoticeActivity.init();
-                                        });
-                                    }
-                                },100);
-                            });
+                //                 Handler.post(function(){
+                //                     if(this_param == 'fu3_bbs_notice'){
+                //                         require([app.assets+'/notice/notice.min.js'], function(NoticeActivity) {
+                //                             NoticeActivity.init();
+                //                         });
+                //                     }
+                //                 },100);
+                //             });
     
-                            AlarmActivity.doUpdateRead();
-                        });
-                    });
-                });
+                //             AlarmActivity.doUpdateRead();
+                //         });
+                //     });
+                // });
             });
 
             // popup
-            Handler.post(function(){
-                require([app.assets+'/popup/popup.min.js'], function(PopupActivity) {
-                    PopupActivity.initialize();
-                });
-            },700);
+            // Handler.post(function(){
+            //     require([app.assets+'/popup/popup.min.js'], function(PopupActivity) {
+            //         PopupActivity.initialize();
+            //     });
+            // },700);
 
             // scroll
-            Activity.onScrollStateChanged('#left .mdl-layout__content', function(view, position) {
+            Activity.onScrollStateChanged('#left .fvue--layout--main', function(view, position) {
                 // Activity.runScanSpyCapture('#left', '.spy', position, function(obj, spyid){
                 //     var cur = obj;
                 //     Handler.post(function(){
@@ -200,176 +202,14 @@ function onReady($, _, Backbone) {
                 // });
                 app.log(position);
                 
-                if (position < 5) {
-                }else if (position > 90) {
-                    if(!is_loading_product){
-                        // app.log('call do product --> '+position);
-                        is_loading_product = true;
-                        self.doProduct();
-                    }
-                }
-            });
-        },
-        doMyTradingInfo : function(){
-            var self = this;
-
-            // panel
-            var panel_setting = app.docs.index.trading; // SETTING VALUE
-            var panel = Panel.onStart(panel_setting);
-
-            // send params
-            var send_params = userinfo;
-            _.extend(send_params, {
-                cache : false
-            });
-
-            // core
-            DocAsyncTask.doGetContents(panel_setting, send_params,{
-                success: function(tpl, resp) {
-                    $('#history_trading').html(tpl).promise().done(function()
-                    {
-                        // 일일평균
-                        if(resp.day_average > 0){
-                            $('#day_average_lay').removeClass('d-none');
-                            $('#day_average').text(resp.day_average_str);
-                        }
-
-                        // 운동기록
-                        $('#btn-go-tradinghistory').unbind('click');
-                        $('#btn-go-tradinghistory').on('click', function(){
-                            require([app.assets+'/graph/graph.min.js'], function(GraphActivity) {
-                                GraphActivity.init(function(){
-                                    GraphActivity.doRun();
-                                });
-                            });
-                        });
-
-                        // 주간 운동 통계 기록
-                        var chart1 = null;
-                        var ctx1 = document.getElementById('chart1').getContext('2d');
-                        var gradient = ctx1.createLinearGradient(0,0,0,400);
-                        gradient.addColorStop(0, '#C0D75E');
-                        gradient.addColorStop(0.5, '#ADCD59');
-                        gradient.addColorStop(1, '#97C355');
-
-                        var chart_data = [
-                            {
-                                data: resp.week_logs,
-                                backgroundColor: gradient
-                            }
-                        ];
-
-                        var chart_options = {
-                            legend: {
-                                display: false
-                            },
-                            title: {
-                                display: false,
-                                text: ""
-                            },
-                            scales: {
-                                xAxes: [{
-                                    gridLines: {
-                                        display:false
-                                    },
-                                    barThickness:35
-                                }],
-                                yAxes: [{
-                                    gridLines: {
-                                        drawBorder: false,
-                                        display:true
-                                    },
-                                    ticks: {
-                                        beginAtZero: true
-                                    },
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: app.lang['trading_graph_ylabel']
-                                    }
-                                }]
-                            }
-                        };
-                        
-                        // app.log (chart_options);
-                        Handler.post(function(){
-                            chart1 = new MyChart(ctx1, {
-                                type: 'bar',
-                                data: {
-                                    labels: app.lang['week_title'],
-                                    datasets: chart_data
-                                },
-                                options: chart_options
-                            });
-                        },130);
-
-                        // 운동최근 기록
-                        var swiper_top5 = new MySwiper('.swiper-tradingtop5-container', {
-                            spaceBetween: 30,
-                            autoplay: {
-                                delay: 3500,
-                                disableOnInteraction: false
-                            },
-                            loop:false,
-                            pagination: {
-                                el: '.tradingtop5-swiper-pagination',
-                                clickable: true,
-                            }
-                        });
-
-                        $('.hs-trading-raw').on('click', function()
-                        {
-                            var this_id = $(this).data('id');
-                            var this_chk_pain = $(this).data('pain');
-
-                                // 운동뷰 진입위치[0:최근운동이력, 1:운동하기]
-                                playerHistoryEnter = 0;
-
-                                // reset
-                                playerIntervalInfo = {
-                                    id : this_id,
-                                    cpercent : 0, // 진행률(%)
-                                    ctime : 0,  // 총소요시간(초)
-                                    panic_before : -1, // 운동전 통증
-                                    panic_after : -1 // 운동후 통증
-                                };
-                                
-                                // 통증 운동전 통증 체크
-                                if(this_chk_pain == 'y')
-                                {
-                                    require([app.assets+'/trading/trading.min.js'], function(TradingActivity) {
-                                        TradingActivity.init(function(){
-                                            TradingActivity.doChkPain('panic_before',function(){
-                                                TradingActivity.doView({
-                                                    id : this_id
-                                                });
-                                            });
-                                        });
-                                    });
-                                    
-                                }else {
-                                    require([app.assets+'/trading/trading.min.js'], function(TradingActivity) {
-                                        TradingActivity.init(function(){
-                                            TradingActivity.doView({
-                                                id : this_id
-                                            });
-                                        });
-                                    });
-                                }
-                        });
-                    });
-                },
-
-                fail : function(resp){
-                    ProgressBar.close_progress();
-                    alert(resp.msg);
-                }
-            });
-        },
-        doProduct : function(){            
-            require([app.assets+'/product/product.min.js'], function(ProductActivity) {
-                ProductActivity.init(function(){
-                    ProductActivity.doList();
-                });
+                // if (position < 5) {
+                // }else if (position > 90) {
+                //     if(!is_loading_product){
+                //         // app.log('call do product --> '+position);
+                //         is_loading_product = true;
+                //         self.doProduct();
+                //     }
+                // }
             });
         }
     });
@@ -380,42 +220,6 @@ function onReady($, _, Backbone) {
     // back key
     Activity.onBackPressed(function(k){
         app.log('이전' +k+'/ 현재 : '+UrlUtil.current_id);
-
-        // youtube player end
-        if(!_.isNull(playerIntervalObj))
-        {
-            // 화면잠금
-            if ( (typeof window.android !=='undefined')){
-                screen.orientation.lock('portrait');
-
-                // 스크린 켜짐 상태 해제
-                window.android.screenOnOff("off");
-                app.log('스크린 켜짐 상태 해제');
-            }
-
-            // clear 플레이 정보
-            app.log(playerIntervalInfo);
-            playerIntervalObj = null;
-            clearInterval(playerIntervalObj);
-
-            // 통증이 있을 경우
-            if(playerIntervalInfo.panic_before > -1)
-            {
-                require([app.assets+'/trading/trading.min.js'], function(TradingActivity) {
-                    TradingActivity.doChkPain('panic_after', function(){
-                        history.go(-1);
-                        Handler.post(function(){
-                            TradingActivity.doTradingDataSubmit();
-                        },360);
-                    });
-                });
-            }else{
-                require([app.assets+'/trading/trading.min.js'], function(TradingActivity) {
-                    TradingActivity.doTradingDataSubmit();
-                });
-            }
-        }
-
     });
 
     // swipe

@@ -1,6 +1,6 @@
 var app = {
-    version: '애플파이 1.7',
-    int_version : 7,
+    version: '애플파이 3.5',
+    int_version : 8,
     license_key : 'change_cache_id',
     name : '',
     debug: true,
@@ -20,7 +20,7 @@ var app = {
     docs: {
     },
     template: [],
-    assets : '../coconut',
+    assets : '../doughnut',
     src : 'http://thebalance.fancyupsoft.com/src',
     res : '../res',
     layout: {},
