@@ -41,18 +41,13 @@ var DrawerNavigation = {
 
     // 메뉴오픈
     drawer_menu_opened: function() {
+        // make url
+        UrlUtil.pushUrlParams({
+            mode : 'drawer_menu'
+        });
+        UrlUtil.pushState('drawer_menu', '', app.service_root_dir+'?'+$.param(UrlUtil._url_params));
+
         $("#drawer_menu").toggleClass('drawer_transitioned');
-        // animation
-        Handler.post(function(){
-            var ddelay_time = 0;
-            $('#drawermenu_quicm button').each(function(){
-                var _this = $(this);
-                setTimeout( function(){ 
-                    $(_this).animateCss('slideInLeft'); 
-                }, ddelay_time);
-                ddelay_time += 300;
-            });
-        },10);
     },
 
     // 메뉴닫기

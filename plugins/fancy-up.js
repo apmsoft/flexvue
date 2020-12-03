@@ -351,6 +351,12 @@ var Panel = {
                     $("#right").toggleClass('transitioned');
                 }
             break;
+            case 'drawer_menu':
+                if ($('#drawer_menu').hasClass("drawer_transitioned")) {
+                    $("#drawer_menu").toggleClass('drawer_transitioned');
+                }
+            break;
+            
         }
     }
 };

@@ -266,6 +266,17 @@ var Activity = {
                     if (!_.isUndefined(callback)) {
                         callback(pre_state);
                     }
+                }else if ($('#drawer_menu').hasClass("drawer_transitioned")) {
+                    $("#drawer_menu").toggleClass('drawer_transitioned');
+
+                    // url auto set
+                    UrlUtil.initialize(UrlUtil.getURL2JSON());
+                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
+
+                    // callback
+                    if (!_.isUndefined(callback)) {
+                        callback(pre_state);
+                    }
                 } else { 
                   
                     // url auto set

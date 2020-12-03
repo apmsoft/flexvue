@@ -546,6 +546,25 @@ video {
   height: auto;
 }
 
+html,body {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html, body {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+head {
+  display: none;
+}
+
 h1 {
   font-size: 2.25rem;
   line-height: 2.5rem;

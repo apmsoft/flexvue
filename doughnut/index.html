@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="h-full">
+<html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
   <script data-main="../plugins/fancy-up.min" src="../plugins/libs/js/require.min.js"></script>
 
 </head>
-<body class="h-full overflow-hidden">
+<body>
 
     <!--left-->
     <div id="left" class="fvue--layout z-0 bg-white">
@@ -51,8 +51,30 @@
     </div>
 
     <!--drawer_menu-->
-    <div id="drawer_menu" class="fvue--layout z-1 -left-full top-0  bg-white">
-        drawer_menu
+    <div id="drawer_menu" class="fvue--layout z-1 -left-full top-0 bg-white">
+        <div class="fvue--layout--container w-72 md:w-96">
+            <div class="fvue--layout--header bg-red-700">
+                <div class="fvue--layout--header--row">
+                    <div id="drawer_menu_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="drawer_menu_title" class="fvue--layout--title">
+                      왼쪽 메뉴
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                </div>
+            </div>
+            <div class="fvue--layout--main bg-red-400">
+                <div class="xl:container xl:mx-auto border" id="drawer_menu_docs_contents">
+                    <div class="grid grid-cols-1 divide-y">
+                        <div data-menuid="1" class="drawer_menu_item">1</div>
+                        <div data-menuid="2" class="drawer_menu_item">2</div>
+                        <div data-menuid="3" class="drawer_menu_item">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!--right-->
