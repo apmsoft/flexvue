@@ -709,29 +709,29 @@ h6 {
   left: 0px
 }
 
-#right {
-  left: 100%;
-  top: 0px
+#right, #rightside,  #rightthird{
+  left: 100%
 }
 
-#rightside {
-  left: 100%;
-  top: 0px
+#right, #rightside, #rightthird {
+  top: 0px;
 }
 
-#rightthird{
-  left: 100%;
-  top: 0px
-}
-
-#bottom {
+#bottom, #bottomside {
   top: 100%;
   left: 0px
 }
 
-#bottomside {
-  top: 100%;
-  left: 0px
+/** button back button */
+
+#right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button{
+  cursor: pointer
+}
+
+/** title */
+
+#right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title{
+  cursor: pointer
 }
 
 .fvue--layout {
@@ -801,15 +801,28 @@ h6 {
 }
 
 .transitioned {
-  transform: translateX(-100%)
+  transform: translateX(-100%)    ;
+  -o-transform: translateX(-100%);
 }
 
 .rightside_transitioned {
-  transform: translateX(-105%)
+  transform: translateX(-100%)    ;
+  -o-transform: translateX(-100%);
+}
+
+.rightthird_transitioned {
+  transform: translateX(-100%)    ;
+  -o-transform: translateX(-100%);
 }
 
 .bottom_transitioned {
-  transform: translateY(-100%)
+  transform: translateY(-100%)    ;
+  -o-transform: translateY(-100%);
+}
+
+.bottomside_transitioned {
+  transform: translateY(-100%)    ;
+  -o-transform: translateY(-100%);
 }
 
 @keyframes colorchange {

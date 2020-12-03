@@ -9,7 +9,7 @@
   <script data-main="../plugins/fancy-up.min" src="../plugins/libs/js/require.min.js"></script>
 
 </head>
-<body class="h-full">
+<body class="h-full overflow-hidden">
 
     <!--left-->
     <div id="left" class="fvue--layout z-0 bg-white">
@@ -32,21 +32,17 @@
                   </div>
             </div>
             <div class="fvue--layout--main">
-                    <div class="xl:container xl:mx-auto border">
-                        <div class="grid grid-cols-3 grid-rows-2 gap-4">
-                            <div class="grid-col-1 grid-rows-1 md:grid-rows-2 ">
-                                <button id="btn-right" class="btn btn-secondary hover:outline-none">right</button>
-                            </div>
-                            <div class="grid-col-1 grid-rows-1 md:grid-rows-1">
-                                <button id="btn-bottom" class="btn btn-primary hover:outline-none">bottom</button>
-                            </div>
-                            <div class="grid-col-1 grid-rows-1 md:grid-rows-1">3</div>
+                <div class="xl:container xl:mx-auto border" id="left_docs_contents" >
+                    <div class="grid grid-cols-3 grid-rows-2 gap-4">
+                        <div class="grid-col-1 grid-rows-1 md:grid-rows-2 ">
+                            <button id="btn-right" class="btn btn-secondary hover:outline-none">right</button>
                         </div>
+                        <div class="grid-col-1 grid-rows-1 md:grid-rows-1">
+                            <button id="btn-bottom" class="btn btn-primary hover:outline-none">bottom</button>
+                        </div>
+                        <div class="grid-col-1 grid-rows-1 md:grid-rows-1">3</div>
                     </div>
-
-                    <div class="xl:container xl:mx-auto border" id="left_docs_contents">
-                        
-                    </div>
+                </div>
             </div>
             <div class="fvue--layout--footer bg-red-100">
                 footer
@@ -64,10 +60,10 @@
         <div class="fvue--layout--container">
             <div class="fvue--layout--header bg-red-700">
                 <div class="fvue--layout--header--row">
-                    <div class="fvue--layout--icon">
+                    <div id="right_back_button" class="fvue--layout--icon">
                         <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="fvue--layout--title">
+                    <div id="right_title" class="fvue--layout--title">
                       오른쪽
                     </div>
                     <div class="fvue--layout--spacer"></div>
@@ -76,7 +72,7 @@
             </div>
             <div class="fvue--layout--main bg-red-400">
                 <div class="xl:container xl:mx-auto border" id="right_docs_contents">
-                        
+                    
                 </div>
             </div>
         </div>
@@ -87,10 +83,10 @@
         <div class="fvue--layout--container">
             <div class="fvue--layout--header bg-red-700">
                 <div class="fvue--layout--header--row">
-                    <div class="fvue--layout--icon">
+                    <div id="rightside_back_button" class="fvue--layout--icon">
                         <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="fvue--layout--title">
+                    <div id="rightside_title" class="fvue--layout--title">
                         rightside
                     </div>
                     <div class="fvue--layout--spacer"></div>
@@ -99,7 +95,7 @@
             </div>
             <div class="fvue--layout--main bg-red-400">
                 <div class="xl:container xl:mx-auto border" id="rightside_docs_contents">
-                        
+
                 </div>
             </div>
         </div>
@@ -110,10 +106,10 @@
         <div class="fvue--layout--container">
             <div class="fvue--layout--header bg-red-700">
                 <div class="fvue--layout--header--row">
-                    <div class="fvue--layout--icon">
+                    <div id="rightthird_back_button" class="fvue--layout--icon">
                         <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="fvue--layout--title">
+                    <div id="rightthird_title" class="fvue--layout--title">
                         rightthird
                     </div>
                     <div class="fvue--layout--spacer"></div>
@@ -133,10 +129,10 @@
         <div class="fvue--layout--container">
             <div class="fvue--layout--header bg-red-700">
                 <div class="fvue--layout--header--row">
-                    <div class="fvue--layout--icon">
+                    <div id="bottom_back_button" class="fvue--layout--icon">
                         <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="fvue--layout--title">
+                    <div id="bottom_title" class="fvue--layout--title">
                         bottom
                     </div>
                     <div class="fvue--layout--spacer"></div>
@@ -145,7 +141,7 @@
             </div>
             <div class="fvue--layout--main bg-red-400">
                 <div class="xl:container xl:mx-auto border" id="bottom_docs_contents">
-                        
+ 
                 </div>
             </div>
         </div>
@@ -156,10 +152,10 @@
         <div class="fvue--layout--container">
             <div class="fvue--layout--header bg-red-700">
                 <div class="fvue--layout--header--row">
-                    <div class="fvue--layout--icon">
+                    <div id="bottomside_back_button" class="fvue--layout--icon">
                         <i class="fas fa-arrow-left"></i>
                     </div>
-                    <div class="fvue--layout--title">
+                    <div id="bottomside_title" class="fvue--layout--title">
                         bottomside
                     </div>
                     <div class="fvue--layout--spacer"></div>

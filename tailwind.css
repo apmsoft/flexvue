@@ -98,29 +98,24 @@
         @apply left-0 top-0
     }
     
-    #right {
+    #right, #rightside,  #rightthird{
         left: 100%;
         @apply top-0
     }
     
-    #rightside {
-        left: 100%;
-        @apply top-0
-    }
-    
-    #rightthird{
-        left: 100%;
-        @apply top-0
-    }
-    
-    #bottom {
+    #bottom, #bottomside {
         top: 100%;
         @apply left-0
     }
-    
-    #bottomside {
-        top: 100%;
-        @apply left-0
+
+    /** button back button */
+    #right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button{
+        @apply cursor-pointer
+    }
+
+    /** title */
+    #right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title{
+        @apply cursor-pointer
     }
 
     .fvue--layout {
@@ -182,21 +177,40 @@
         -webkit-transform: translateX(-100%);
         -moz-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
-        transform: translateX(-100%)
+        transform: translateX(-100%)    ;
+        -o-transform: translateX(-100%);
     }
     
     .rightside_transitioned {
-        -webkit-transform: translateX(-105%);
-        -moz-transform: translateX(-105%);
-        -ms-transform: translateX(-105%);
-        transform: translateX(-105%)
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%)    ;
+        -o-transform: translateX(-100%);
+    }
+
+    .rightthird_transitioned {
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%)    ;
+        -o-transform: translateX(-100%);
     }
     
     .bottom_transitioned {
         -webkit-transform: translateY(-100%);
         -moz-transform: translateY(-100%);
         -ms-transform: translateY(-100%);
-        transform: translateY(-100%)
+        transform: translateY(-100%)    ;
+        -o-transform: translateY(-100%);
+    }
+
+    .bottomside_transitioned {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%)    ;
+        -o-transform: translateY(-100%);
     }
     
     @keyframes colorchange {
