@@ -4,27 +4,27 @@
             "panel": "right",
             "title": "Settings",
             "frame": null,
-            "template": "../coconut/setting/setting_en#tpl_setting",
-            "value": "setting/setting"
+            "template": "../doughnut/setting/setting_en#tpl_setting",
+            "value": null
         },
         "rule1" : {
             "panel": "rightside",
             "title": "Collection and use of personal information",
-            "frame": "../coconut/rule1#rightside_docs_contents",
+            "frame": "../doughnut/rule1#rightside_docs_contents",
             "template": null,
             "value": null
         },
         "rule2" : {
             "panel": "rightside",
             "title": "Terms of Service",
-            "frame": "../coconut/rule2#rightside_docs_contents",
+            "frame": "../doughnut/rule2#rightside_docs_contents",
             "template": null,
             "value": null
         },
         "rule3" : {
             "panel": "rightside",
             "title": "Events and Marketing Terms and Conditions",
-            "frame": "../coconut/rule3#rightside_docs_contents",
+            "frame": "../doughnut/rule3#rightside_docs_contents",
             "template": null,
             "value": null
         }

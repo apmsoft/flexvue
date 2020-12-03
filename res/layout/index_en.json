@@ -4,14 +4,14 @@
             "panel": null,
             "title": null,
             "frame": null,
-            "template": "../coconut/index/index_en#tpl_index_frame",
+            "template": "../doughnut/index/index_en#tpl_index_frame",
             "value": null
         },
         "trading" : {
             "panel": null,
             "title": null,
             "frame": null,
-            "template": "../coconut/index/trading#tpl_index_trading",
+            "template": "../doughnut/index/trading#tpl_index_trading",
             "value": "tradinglog/index_week"
         }
     }

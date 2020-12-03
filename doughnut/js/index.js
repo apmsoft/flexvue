@@ -95,14 +95,13 @@ function onReady($, _, Backbone) {
             });
 
             // set language
-            app.language = 'ko'; //(device_info.lang != 'ko' ) ? device_info.lang : '';
+            app.language = ''; //(device_info.lang != 'ko' ) ? device_info.lang : '';
 
             // load layout
             Runnable(function(){
                 // 시스템 메세지
                 app.parserResource ('/values/sysmsg', function(sysmsg)
                 {
-                    alert(1);
                     _.extend(app.lang, sysmsg);
                 });
 
@@ -114,29 +113,12 @@ function onReady($, _, Backbone) {
                     // panel
                     var panel_setting = app.docs.index.frame; // SETTING VALUE
                     var panel = Panel.onStart(panel_setting);
-alert(JSON.stringify(panel));
+
                     // core
                     DocAsyncTask.doGetContents(panel_setting, {},{
                         success: function(tpl, resp) {
-                            $('#left_docs_contents').html(tpl).promise().done(function()
-                            {
-                                // 운동하기
-                                $('#btn-start-trading').on('click', function(){
-                                    ProgressBar.show_progress();
-                                    
-                                    // 운동뷰 진입위치[0:최근운동이력, 1:운동하기]
-                                    playerHistoryEnter = 1;
+                            $('#left_docs_contents').html(tpl).promise().done(function(){
 
-                                    // 운동시작
-                                    require([app.assets+'/trading/trading.min.js'], function(TradingActivity) {
-                                        TradingActivity.init(function(){
-                                            TradingActivity.doStart();
-                                        });
-                                    });
-                                });
-
-                                // run
-                                self.doMyTradingInfo();
                             });
                         },
 
@@ -150,7 +132,9 @@ alert(JSON.stringify(panel));
 
             // 사용자 선택
             $('#btn-right').on('click', function(){
-                
+                require([app.assets+'/setting/setting.js'], function(SettingActivity) {
+                    SettingActivity.init();
+                });
             });
 
             $('#btn-bottom').on('click', function(){

@@ -94,6 +94,35 @@
         @apply max-w-full mx-auto;
     }
 
+    #left {
+        @apply left-0 top-0
+    }
+    
+    #right {
+        left: 100%;
+        @apply top-0
+    }
+    
+    #rightside {
+        left: 100%;
+        @apply top-0
+    }
+    
+    #rightthird{
+        left: 100%;
+        @apply top-0
+    }
+    
+    #bottom {
+        top: 100%;
+        @apply left-0
+    }
+    
+    #bottomside {
+        top: 100%;
+        @apply left-0
+    }
+
     .fvue--layout {
         will-change: transform;
         transition: -webkit-transform .3s cubic-bezier(.215, .61, .355, 1);
@@ -198,17 +227,13 @@
     .btn-primary {
         @apply bg-blue-800 text-white hover:bg-blue-400
     }
-<<<<<<< HEAD
+
 
     .btn-secondary {
         @apply bg-gray-300 text-gray-700 hover:bg-gray-400
     }
 }
 
-@layer utilities {
-}
-=======
-}
 
 @responsive {
     .overflow-unset {
@@ -238,5 +263,4 @@
         overflow: unset !important;
       }
     }
-  }
->>>>>>> cc9d7d16a782d4656175f1b0a87dcb4f184e2074
+}
