@@ -137,7 +137,7 @@ function onReady($, _, Backbone) {
                 {
                     // bottom side
                     $('#btn-bottomside').on('click', function(){
-                        self.doRun('bottomthird', function()
+                        self.doRun('bottomside', function()
                         {
                             // right third
                             $('#btn-bottomthird').on('click', function(){
