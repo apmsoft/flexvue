@@ -30,8 +30,8 @@ module.exports = {
   },
   variants: {
     extend: {
-
-    },
+      backgroundColor: ['checked']
+    }
   },
   plugins: [],
 }
