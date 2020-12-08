@@ -114,7 +114,7 @@ function onReady($, _, Backbone) {
             app.language = ''; //(device_info.lang != 'ko' ) ? device_info.lang : '';
 
             //  이벤트
-            $('#btn-right').on('click', function()
+            $('#btn-r').on('click', function()
             {
                 self.doRun('right', function()
                 {
@@ -132,7 +132,7 @@ function onReady($, _, Backbone) {
                 });
             });
 
-            $('#btn-bottom').on('click', function(){
+            $('#btn-b').on('click', function(){
                 self.doRun('bottom', function()
                 {
                     // bottom side
@@ -146,6 +146,10 @@ function onReady($, _, Backbone) {
                         });
                     });
                 });
+            });
+
+            $('#btn-modal').on('click', function(){
+                self.doRun('bottomthird', null);
             });
 
             // scroll
