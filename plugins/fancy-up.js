@@ -55,11 +55,11 @@ var app = {
             target:'#bottomside',
             toggle:'bottomside_transitioned'
         },
-        modal: {
-            id:'#myModal',
-            target:'#myModal',
-            toggle:null
-        }
+        bottomthird: {
+            id:'#bottomthird',
+            target:'#bottomthird',
+            toggle:'bottomthird_transitioned'
+        },
     },
 
     // time
@@ -317,9 +317,10 @@ var Panel = {
         panel_id = (panel_id) ? panel_id.replace('#','') : '';
 
         switch(panel_id){
-            case 'modal':
-                if ($('#myModal').hasClass('show')) {
-                    $('#myModal').modal('hide');
+            case 'bottomthird':
+                if ($('#bottomthird').hasClass("bottomthird_transitioned")) {
+                    $('#bottomthird_docs_contents').html('');
+                    $("#bottomthird").toggleClass('bottomthird_transitioned');
                 }
             break;
             case 'bottomside':

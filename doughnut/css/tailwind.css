@@ -728,28 +728,25 @@ h6 {
   left: 0px
 }
 
-#right, #rightside,  #rightthird{
-  left: 100%
+#right, #rightside, #rightthird{
+  left: 100%;
+  top: 0px
 }
 
-#right, #rightside, #rightthird {
-  top: 0px;
-}
-
-#bottom, #bottomside {
+#bottom, #bottomside, #bottomthird {
   top: 100%;
   left: 0px
 }
 
 /** button back button */
 
-#right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button{
+#right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button, #bottomthird_back_button{
   cursor: pointer
 }
 
 /** title */
 
-#right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title{
+#right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title, #bottomthird_title{
   cursor: pointer
 }
 
@@ -844,6 +841,11 @@ h6 {
   -o-transform: translateY(-100%);
 }
 
+.bottomthird_transitioned {
+  transform: translateY(-100%)    ;
+  -o-transform: translateY(-100%);
+}
+
 @keyframes colorchange {
   from, to {
     background: rgba(0, 0, 0, .7)
@@ -885,15 +887,30 @@ h6 {
 
 .btn-secondary {
   --tw-bg-opacity: 1;
-  background-color: rgba(209, 213, 219, var(--tw-bg-opacity))
+  background-color: rgba(55, 65, 81, var(--tw-bg-opacity))
 }
 
 .btn-secondary:hover {
   --tw-bg-opacity: 1;
-  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
 }
 
 .btn-secondary {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-default {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity))
+}
+
+.btn-default:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+}
+
+.btn-default {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
@@ -14203,6 +14220,18 @@ h6 {
   max-height: 100vh;
 }
 
+.max-h-max-h-screen-sm {
+  max-height: 640px;
+}
+
+.max-h-max-h-screen-md {
+  max-height: 768px;
+}
+
+.max-h-max-h-screen-lg {
+  max-height: 1024px;
+}
+
 .max-w-0 {
   max-width: 0rem;
 }
@@ -27459,6 +27488,10 @@ h6 {
   z-index: 7;
 }
 
+.z-8 {
+  z-index: 8;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -27515,6 +27548,10 @@ h6 {
   z-index: 7;
 }
 
+.focus-within\:z-8:focus-within {
+  z-index: 8;
+}
+
 .focus-within\:z-10:focus-within {
   z-index: 10;
 }
@@ -27569,6 +27606,10 @@ h6 {
 
 .focus\:z-7:focus {
   z-index: 7;
+}
+
+.focus\:z-8:focus {
+  z-index: 8;
 }
 
 .focus\:z-10:focus {
@@ -44961,6 +45002,18 @@ h6 {
     max-height: 100vh;
   }
 
+  .sm\:max-h-max-h-screen-sm {
+    max-height: 640px;
+  }
+
+  .sm\:max-h-max-h-screen-md {
+    max-height: 768px;
+  }
+
+  .sm\:max-h-max-h-screen-lg {
+    max-height: 1024px;
+  }
+
   .sm\:max-w-0 {
     max-width: 0rem;
   }
@@ -58204,6 +58257,10 @@ h6 {
     z-index: 7;
   }
 
+  .sm\:z-8 {
+    z-index: 8;
+  }
+
   .sm\:z-10 {
     z-index: 10;
   }
@@ -58260,6 +58317,10 @@ h6 {
     z-index: 7;
   }
 
+  .sm\:focus-within\:z-8:focus-within {
+    z-index: 8;
+  }
+
   .sm\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -58314,6 +58375,10 @@ h6 {
 
   .sm\:focus\:z-7:focus {
     z-index: 7;
+  }
+
+  .sm\:focus\:z-8:focus {
+    z-index: 8;
   }
 
   .sm\:focus\:z-10:focus {
@@ -75641,6 +75706,18 @@ h6 {
     max-height: 100vh;
   }
 
+  .md\:max-h-max-h-screen-sm {
+    max-height: 640px;
+  }
+
+  .md\:max-h-max-h-screen-md {
+    max-height: 768px;
+  }
+
+  .md\:max-h-max-h-screen-lg {
+    max-height: 1024px;
+  }
+
   .md\:max-w-0 {
     max-width: 0rem;
   }
@@ -88884,6 +88961,10 @@ h6 {
     z-index: 7;
   }
 
+  .md\:z-8 {
+    z-index: 8;
+  }
+
   .md\:z-10 {
     z-index: 10;
   }
@@ -88940,6 +89021,10 @@ h6 {
     z-index: 7;
   }
 
+  .md\:focus-within\:z-8:focus-within {
+    z-index: 8;
+  }
+
   .md\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -88994,6 +89079,10 @@ h6 {
 
   .md\:focus\:z-7:focus {
     z-index: 7;
+  }
+
+  .md\:focus\:z-8:focus {
+    z-index: 8;
   }
 
   .md\:focus\:z-10:focus {
@@ -106321,6 +106410,18 @@ h6 {
     max-height: 100vh;
   }
 
+  .lg\:max-h-max-h-screen-sm {
+    max-height: 640px;
+  }
+
+  .lg\:max-h-max-h-screen-md {
+    max-height: 768px;
+  }
+
+  .lg\:max-h-max-h-screen-lg {
+    max-height: 1024px;
+  }
+
   .lg\:max-w-0 {
     max-width: 0rem;
   }
@@ -119564,6 +119665,10 @@ h6 {
     z-index: 7;
   }
 
+  .lg\:z-8 {
+    z-index: 8;
+  }
+
   .lg\:z-10 {
     z-index: 10;
   }
@@ -119620,6 +119725,10 @@ h6 {
     z-index: 7;
   }
 
+  .lg\:focus-within\:z-8:focus-within {
+    z-index: 8;
+  }
+
   .lg\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -119674,6 +119783,10 @@ h6 {
 
   .lg\:focus\:z-7:focus {
     z-index: 7;
+  }
+
+  .lg\:focus\:z-8:focus {
+    z-index: 8;
   }
 
   .lg\:focus\:z-10:focus {
@@ -137001,6 +137114,18 @@ h6 {
     max-height: 100vh;
   }
 
+  .xl\:max-h-max-h-screen-sm {
+    max-height: 640px;
+  }
+
+  .xl\:max-h-max-h-screen-md {
+    max-height: 768px;
+  }
+
+  .xl\:max-h-max-h-screen-lg {
+    max-height: 1024px;
+  }
+
   .xl\:max-w-0 {
     max-width: 0rem;
   }
@@ -150244,6 +150369,10 @@ h6 {
     z-index: 7;
   }
 
+  .xl\:z-8 {
+    z-index: 8;
+  }
+
   .xl\:z-10 {
     z-index: 10;
   }
@@ -150300,6 +150429,10 @@ h6 {
     z-index: 7;
   }
 
+  .xl\:focus-within\:z-8:focus-within {
+    z-index: 8;
+  }
+
   .xl\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -150354,6 +150487,10 @@ h6 {
 
   .xl\:focus\:z-7:focus {
     z-index: 7;
+  }
+
+  .xl\:focus\:z-8:focus {
+    z-index: 8;
   }
 
   .xl\:focus\:z-10:focus {
@@ -167681,6 +167818,18 @@ h6 {
     max-height: 100vh;
   }
 
+  .\32xl\:max-h-max-h-screen-sm {
+    max-height: 640px;
+  }
+
+  .\32xl\:max-h-max-h-screen-md {
+    max-height: 768px;
+  }
+
+  .\32xl\:max-h-max-h-screen-lg {
+    max-height: 1024px;
+  }
+
   .\32xl\:max-w-0 {
     max-width: 0rem;
   }
@@ -180924,6 +181073,10 @@ h6 {
     z-index: 7;
   }
 
+  .\32xl\:z-8 {
+    z-index: 8;
+  }
+
   .\32xl\:z-10 {
     z-index: 10;
   }
@@ -180980,6 +181133,10 @@ h6 {
     z-index: 7;
   }
 
+  .\32xl\:focus-within\:z-8:focus-within {
+    z-index: 8;
+  }
+
   .\32xl\:focus-within\:z-10:focus-within {
     z-index: 10;
   }
@@ -181034,6 +181191,10 @@ h6 {
 
   .\32xl\:focus\:z-7:focus {
     z-index: 7;
+  }
+
+  .\32xl\:focus\:z-8:focus {
+    z-index: 8;
   }
 
   .\32xl\:focus\:z-10:focus {

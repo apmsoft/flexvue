@@ -44,6 +44,13 @@ function onReady($, _, Backbone) {
             "frame": null,
             "template": app.assets+"/index/bottomside#tpl_bottomside",
             "value": null
+        },
+        "bottomthird" : {
+            "panel": "bottomthird",
+            "title": null,
+            "frame": null,
+            "template": app.assets+"/index/bottomthird#tpl_bottomthird",
+            "value": null
         }
     });
 
@@ -73,9 +80,6 @@ function onReady($, _, Backbone) {
             var self = this;
 
             // event
-            $('#myModal_back_button').on('click', function() {
-                history.go(-1);
-            });
             $('#drawer_menu_back_button, #drawer_menu_title, #drawer_menu').on('click', function() {
                 history.go(-1);
             });
@@ -83,6 +87,9 @@ function onReady($, _, Backbone) {
                 history.go(-1);
             });
             $('#bottomside_back_button, #bottomside_title').on('click', function() {
+                history.go(-1);
+            });
+            $('#bottomthird_back_button, #bottomthird_title').on('click', function() {
                 history.go(-1);
             });
             $('#right_back_button, #right_title').on('click', function() {
@@ -95,6 +102,7 @@ function onReady($, _, Backbone) {
                 history.go(-1);
             });
 
+            // 드로우 메뉴 아이템 클릭
             $('#drawer_menu .drawer_menu_item').on('click', function(e){
                 e.stopPropagation();
                 var menuid = $(this).data('menuid');
@@ -125,10 +133,17 @@ function onReady($, _, Backbone) {
             });
 
             $('#btn-bottom').on('click', function(){
-                self.doRun('bottom', function(){
+                self.doRun('bottom', function()
+                {
                     // bottom side
                     $('#btn-bottomside').on('click', function(){
-                        self.doRun('bottomside', null);
+                        self.doRun('bottomthird', function()
+                        {
+                            // right third
+                            $('#btn-bottomthird').on('click', function(){
+                                self.doRun('bottomthird', null);
+                            });
+                        });
                     });
                 });
             });
