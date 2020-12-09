@@ -278,11 +278,19 @@
       .sm\:overflow-unset {
         overflow: unset !important;
       }
+  
+      .sm\:hidden {
+        display : none !important;
+      }
     }
     
     @media  (min-width: 768px) {
       .md\:overflow-unset {
         overflow: unset !important;
+      }
+  
+      .md\:hidden {
+        display : none !important;
       }
     }
     
@@ -290,11 +298,19 @@
       .lg\:overflow-unset {
         overflow: unset !important;
       }
+  
+      .lg\:hidden {
+        display : none !important;
+      }
     }
     
     @media (min-width: 1280px) {
       .xl\:overflow-unset {
         overflow: unset !important;
       }
+  
+      .xl\:hidden {
+        display : none !important;
+      }
     }
-}
+  }
