@@ -11,6 +11,7 @@ module.exports = {
         '5': 5,
         '6': 6,
         '7': 7,
+        '8': 8
       },
       minHeight : {
         '1/2' : '50%',
@@ -19,6 +20,11 @@ module.exports = {
         '1/2vh' : '50vh',
         '1/3vh' : '33vh',
         '2/3vh' : '66vh'
+      },
+      maxHeight : {
+        'max-h-screen-sm' : '640px',
+        'max-h-screen-md' : '768px',
+        'max-h-screen-lg' : '1024px'
       }
     },
   },

@@ -110,23 +110,23 @@
         @apply left-0 top-0
     }
     
-    #right, #rightside,  #rightthird{
+    #right, #rightside, #rightthird{
         left: 100%;
         @apply top-0
     }
     
-    #bottom, #bottomside {
+    #bottom, #bottomside, #bottomthird {
         top: 100%;
         @apply left-0
     }
 
     /** button back button */
-    #right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button{
+    #right_back_button, #rightside_back_button, #rightthird_back_button, #bottom_back_button, #bottomside_back_button, #bottomthird_back_button{
         @apply cursor-pointer
     }
 
     /** title */
-    #right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title{
+    #right_title, #rightside_title, #rightthird_title, #bottom_title, #bottomside_title, #bottomthird_title{
         @apply cursor-pointer
     }
 
@@ -224,6 +224,14 @@
         transform: translateY(-100%)    ;
         -o-transform: translateY(-100%);
     }
+
+    .bottomthird_transitioned {
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%)    ;
+        -o-transform: translateY(-100%);
+    }
     
     @keyframes colorchange {
         from, to {
@@ -254,8 +262,11 @@
         @apply bg-blue-800 text-white hover:bg-blue-400
     }
 
-
     .btn-secondary {
+        @apply bg-gray-700 text-white hover:bg-gray-800
+    }
+
+    .btn-default {
         @apply bg-gray-300 text-gray-700 hover:bg-gray-400
     }
 

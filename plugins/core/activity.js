@@ -192,39 +192,34 @@ var Activity = {
                     pre_state = UrlUtil._url_params.do;
                 }
 
-                if ($('#myModal').hasClass('show')) {
-                    $('#myModal').modal('hide');
-                    $('#myModal_docs_contents').html('');
+                if ($('#bottomthird').hasClass("bottomthird_transitioned")) {
+                    $('#bottomthird_docs_contents').html('');
+                    $("#bottomthird").toggleClass('bottomthird_transitioned');
 
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
                         callback(pre_state);
                     }
                 } else if ($('#bottomside').hasClass("bottomside_transitioned")) {
-                    // window.history.pushState(Controller.forword_history, "", app.service_root_dir + "/?" + $.param(Controller.forword_history));
                     $('#bottomside_docs_contents').html('');
                     $("#bottomside").toggleClass('bottomside_transitioned');
 
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
                         callback(pre_state);
                     }
                 } else if ($('#bottom').hasClass("bottom_transitioned")) {
-                    // window.history.pushState(Controller.forword_history, "", app.service_root_dir + "/?" + $.param(Controller.forword_history));
                     $('#bottom_docs_contents').html('');
                     $("#bottom").toggleClass('bottom_transitioned');
 
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
@@ -236,7 +231,6 @@ var Activity = {
        
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
@@ -248,7 +242,6 @@ var Activity = {
        
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
@@ -260,7 +253,6 @@ var Activity = {
 
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
@@ -271,7 +263,6 @@ var Activity = {
 
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
@@ -281,7 +272,6 @@ var Activity = {
                   
                     // url auto set
                     UrlUtil.initialize(UrlUtil.getURL2JSON());
-                    //alert('modal '+JSON.stringify(UrlUtil._url_params));
 
                     // callback
                     if (!_.isUndefined(callback)) {
