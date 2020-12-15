@@ -156,6 +156,31 @@ function onReady($, _, Backbone) {
             Activity.onScrollStateChanged('#left .fvue--layout--main', function(view, position) {
                 app.log(position);
             });
+
+            // 위즈윅 에디터 테스트
+            // require(["ckeditor"], function(ckeditor) {
+            //     $('#description2').ckeditor({
+            //         customConfig : '/plugins/ckeditor/config.js',
+            //         skin:'moono-lisa'
+            //     });
+            // });
+   
+            requirejs( [ '/plugins/ckeditor5/ckeditor.js', '/plugins/ckeditor5/translations/ko.js' ], function(ClassicEditor){
+                Handler.post(()=>{
+                    ClassicEditor.create( document.querySelector( '#description' ),{
+                        // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+                    })
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.editing.view.focus();
+
+                        $('.ck-editor').addClass('noSwipe');
+                    })
+                    .catch( error => {
+                        console.error( error );
+                    } );
+                },300);
+            });
         },
 
         // 프로그램 실행
