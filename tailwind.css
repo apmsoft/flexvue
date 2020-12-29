@@ -289,6 +289,22 @@
         height: 120px;
         @apply fixed mx-auto        
     }
+
+    .card {
+        @apply border rounded-lg w-full max-w-2xl py-4 px-5 bg-white
+    }
+
+    .form-row {
+        @apply flex flex-col md:flex-row
+    }
+
+    .form-label{
+        @apply w-auto md:w-24
+    }
+
+    .form-input {
+        @apply w-full border px-3 py-2 bg-gray-50 rounded-lg focus:bg-white
+    }
 }
 
 
