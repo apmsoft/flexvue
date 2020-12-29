@@ -303,7 +303,7 @@
     }
 
     .form-label{
-        @apply w-auto md:w-24
+        @apply w-auto md:w-24 text-gray-500
     }
 
     .form-input {
