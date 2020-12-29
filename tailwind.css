@@ -294,6 +294,10 @@
         @apply border rounded-lg w-full max-w-2xl py-4 px-5 bg-white
     }
 
+    .form-container {
+        @apply flex flex-col space-y-4 
+    }
+
     .form-row {
         @apply flex flex-col md:flex-row
     }
