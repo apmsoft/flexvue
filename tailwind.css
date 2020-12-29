@@ -255,7 +255,7 @@
     }
 
     .btn {
-        @apply px-4 py-2 text-center border align-middle rounded font-semibold
+        @apply px-4 py-3 text-center border align-middle rounded-lg font-semibold
     }
 
     .btn-primary {
@@ -268,14 +268,6 @@
 
     .btn-default {
         @apply bg-gray-300 text-gray-700 hover:bg-gray-400
-    }
-
-    .radio { /* checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
-        @apply appearance-none h-5 w-5 rounded-full focus:outline-none ring-offset-2 ring-2 ring-gray-300 
-    }
-
-    .checkbox { /*checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
-        @apply appearance-none h-5 w-5 rounded-md focus:outline-none ring-offset-2 ring-2 ring-gray-300 
     }
 
     .mt-1\/2vh {
@@ -308,6 +300,14 @@
 
     .form-input {
         @apply w-full border px-3 py-2 bg-gray-50 rounded-lg focus:bg-white
+    }
+
+    .form-radio { /* checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
+        @apply appearance-none h-5 w-5 rounded-full focus:outline-none ring-offset-2 ring-2 ring-gray-300 
+    }
+
+    .form-checkbox { /*checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
+        @apply appearance-none h-5 w-5 rounded-md focus:outline-none ring-offset-2 ring-2 ring-gray-300 
     }
 }
 
