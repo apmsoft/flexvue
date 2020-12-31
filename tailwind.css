@@ -77,24 +77,24 @@
     font-weight: bold;
     src: url(./fonts/NanumBarunGothicBoldSubset.eot);
     src: url(./fonts/NanumBarunGothicBoldSubset.eot?#iefix) format('embedded-opentype'),
-            url(./fonts/NanumBarunGothicBoldSubset.woff2) format('woff2'),
-            url(./fonts/NanumBarunGothicBoldSubset.woff) format('woff'),
-            url(./fonts/NanumBarunGothicBoldSubset.ttf) format('truetype');
+        url(./fonts/NanumBarunGothicBoldSubset.woff2) format('woff2'),
+        url(./fonts/NanumBarunGothicBoldSubset.woff) format('woff'),
+        url(./fonts/NanumBarunGothicBoldSubset.ttf) format('truetype');
     }
     @font-face {
-    font-family: './fonts/NanumBarunGothic';
-    font-weight: 300;
-    src: url(./fonts/NanumBarunGothicLightSubset.eot);
-    src: url(./fonts/NanumBarunGothicLightSubset.eot?#iefix) format('embedded-opentype'),
+        font-family: './fonts/NanumBarunGothic';
+        font-weight: 300;
+        src: url(./fonts/NanumBarunGothicLightSubset.eot);
+        src: url(./fonts/NanumBarunGothicLightSubset.eot?#iefix) format('embedded-opentype'),
             url(./fonts/NanumBarunGothicLightSubset.woff2) format('woff2'),
             url(./fonts/NanumBarunGothicLightSubset.woff) format('woff'),
             url(./fonts/NanumBarunGothicLightSubset.ttf) format('truetype');
     }
     @font-face {
-    font-family: './fonts/NanumBarunGothic';
-    font-weight: 200;
-    src: url(./fonts/NanumBarunGothicUltraLightSubset.eot);
-    src: url(./fonts/NanumBarunGothicUltraLightSubset.eot?#iefix) format('embedded-opentype'),
+        font-family: './fonts/NanumBarunGothic';
+        font-weight: 200;
+        src: url(./fonts/NanumBarunGothicUltraLightSubset.eot);
+        src: url(./fonts/NanumBarunGothicUltraLightSubset.eot?#iefix) format('embedded-opentype'),
             url(./fonts/NanumBarunGothicUltraLightSubset.woff2) format('woff2'),
             url(./fonts/NanumBarunGothicUltraLightSubset.woff) format('woff'),
             url(./fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
@@ -279,7 +279,7 @@
         top: 45%;
         left: calc(50% - 60px);
         height: 120px;
-        @apply fixed mx-auto        
+        @apply fixed mx-auto
     }
 
     .card {
