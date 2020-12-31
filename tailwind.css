@@ -259,7 +259,7 @@
     }
 
     .btn-primary {
-        @apply bg-blue-800 text-white hover:bg-blue-400
+        @apply bg-blue-500 text-white hover:bg-blue-700
     }
 
     .btn-secondary {
@@ -299,7 +299,7 @@
     }
 
     .form-input {
-        @apply w-full border px-3 py-2 bg-gray-50 rounded-lg focus:bg-white
+        @apply w-full border px-3 py-2 bg-gray-50 rounded-lg hover:border-gray-500 focus:bg-white focus:border-blue-500 focus:outline-none
     }
 
     .form-radio { /* checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
