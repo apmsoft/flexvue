@@ -1,190 +1,309 @@
 <!doctype html>
-<html lang="ko">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="/v1/css/tailwind.css" rel="stylesheet">
+  <link href="/v1/css/fontawesome-all.min.css" rel="stylesheet">
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
+  <script data-main="/plugins/fancy-up.min" src="/plugins/libs/js/require.min.js"></script>
 
-    <!--title -->
-    <title>회원가입</title>
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="css/mdcolor.css" />
-    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
-    <link rel="stylesheet" href="../plugins/libs/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/libs/css/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="../plugins/libs/css/swiper.min.css">
-    <link rel="stylesheet" href="css/app.min.css">
-    <link rel="stylesheet" href="css/mystyle.min.css?v=1">
-    <style>
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      padding: 3rem 1rem 1rem 1rem;
-    }
-
-    .swiper-container-horizontal>.swiper-pagination-progressbar, .swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
-        height: 10px;
-        border-radius: 1.5rem;
-        background : #F1F2F3;
-    }
-
-    .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-        background: #9AC456;
-        border-radius: 1.5rem;
-    }
-
-    .btn-success {
-        color: #000;
-        background-color: #9AC456;
-        border-color: #9AC456;
-    }
-
-    .input-line-style{
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .lh {
-        line-height: 1.4;
-    }
-
-    .btn {
-        border-radius : 1.9rem !important;
-    }
-
-    .btn-success.disabled, .btn-success:disabled {
-        color: #fff;
-        background-color: #DDDEDF;
-        border-color: #DDDEDF;
-    }
-
-    .form-control-line {
-        font-size: 2.0rem !important;
-    }
-    </style>
-
-    <script data-main="../plugins/fancy-up.min" src="../plugins/libs/js/require.min.js"></script>
-
+</head>
 <body>
-    <!--container-->
-    <div id="container">
-        <!--right -->
-        <div id="right">
-            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
-                <header class="mdl-layout__header">
-                    <div class="container mdl-layout__header-row">
-                        <div class="mdl-layout-icon" id="right_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
-                        <span id="right_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
-                        <div class="mdl-layout-spacer"></div>
-                        <nav id="right_menu" class="mdl-navigation">
-                            <!-- <button type="button" id="btn_like" class="btn btn-link" style="color: #fff; font-size: 1.4rem;">
-                                <i class="fa fa-heart-o"></i>
-                                <span class="label label-danger like-count" style="display:none;font-size:9pt;" id="like_count">0</span>
-                            </button> -->
-                        </nav>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-green-400 to-blue-500 ">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header shadow-none">
+                <div class="fvue--layout--header--row">
+                    <div class="fvue--layout--icon w-7 text-white cursor-pointer" id="left_back_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
                     </div>
-                </header>
-                <main class="mdl-layout__content">
-                    <div class="page-content right_docs_contents" id="right_docs_contents">
-                        
+                    <div class="fvue--layout--title text-white text-xl pl-5 cursor-pointer" id="left_title">
+                        MGCMS
                     </div>
-                </main>
-            </div>
-        </div>
-        <!--//right -->
-        <!--rightside -->
-        <div id="rightside">
-            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
-                <header class="mdl-layout__header">
-                    <div class="container mdl-layout__header-row">
-                        <div class="mdl-layout-icon" id="rightside_back_button"><i class="fas fa-arrow-left fa-lg"></i></div>
-                        <span id="rightside_title" class="mdl-layout__title d-block text-center w-90" style="padding-left: 7px;"></span>
-                        <div class="mdl-layout-spacer"></div>
-                        <nav id="rightside_menu" class="mdl-navigation">
-                        </nav>
-                    </div>
-                </header>
+                    <div class="fvue--layout--spacer">
 
-                <main class="mdl-layout__content">
-                    <div class="page-content rightside_docs_contents" id="rightside_docs_contents">
                     </div>
-                </main>
-            </div>
-        </div>
-        <!--//rightside -->
-        <!--left-->
-        <div id="left">
-            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
-                <main class="mdl-layout__content">
-                    <div id="left_docs_contents" class="page-content left_docs_contents py-5 px-4" style="height:100vh;">
-                        
-                    </div>
-                </main>
-                <!-- <footer class="mdl-mega-footer border-0 p-5">
-                    
-                </footer> -->
-            </div>
-        </div>
-        <!--//left-->
-        <!--bottom-->
-        <div id="bottom">
-            <div class="mdl-layout mdl-layout--no-drawer-button mdl-layout--fixed-header">
-                <header class="mdl-layout__header">
-                    <div class="container mdl-layout__header-row">
-                        <div class="mdl-layout-icon" id="btn_bottom_close"><i class="far fa-times-circle fa-lg"></i></div>
-                        <!-- Title -->
-                        <span id="bottom_title" class="mdl-layout-title" style="padding-left: 7px;">아래(bottom) 타이틀</span>
-                        <div class="mdl-layout-spacer"></div>
-                        <nav id="bottom_menu" class="mdl-navigation">
-                        </nav>
-                    </div>
-                </header>
+                    <div class="fvue--layout--navigation">
 
-                <main class="mdl-layout__content bottom">
-                    <div class="container page-content bottom_docs_contents" id="bottom_docs_contents">
-                        
                     </div>
-                </main>
+                  </div>
             </div>
+            <div class="fvue--layout--main ">
+                <div class="container mx-auto h-full" id="left_docs_contents" >
+                    <div class="xl:container xl:mx-auto h-full">
+
+                        <div class="flex flex-wrap justify-center content-center h-full">
+                            
+                            <div class="card border-0 py-16 px-7 rounded-none shadow-2xl">
+                                <h2 class="mb-3">회원가입(Member)</h2>
+                                <form id="theLoginForm" class="form-container"></form>
+                                    <div class="card py-5">
+                                        <div class="form-row mb-2">
+                                            <div class="form-label">
+                                                아이디
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="email" id="userid" name="userid" class="form-input" placeholder="이메일주소를 입력하세요">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-row mb-2">
+                                            <div class="form-label">
+                                                비밀번호
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="password" id="passwd" name="passwd" class="form-input" placeholder="비밀번호는 숫자또는영어 최소한자이상의 특수문자를 입력하세요">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row mb-2">
+                                            <div class="form-label">
+                                                비밀번호 확인
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="password" id="re_passwd" name="re_passwd" class="form-input" placeholder="비밀번호는 숫자또는영어 최소한자이상의 특수문자를 입력하세요">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card py-5 mt-5">
+
+                                        <div class="form-row mb-2">
+                                            <div class="form-label">
+                                                이름
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="text" id="name" name="name" class="form-input" placeholder="이름을 입력하세요">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-label">
+                                                휴대폰번호
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="tel" id="cellphone" name="cellphone" class="form-input" placeholder="ex) 010-1111-2222">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card py-5 mt-5">
+                                        <h4 class="pt-3 bold text-lg">
+                                            모든 약관에 동의 해 주세요
+                                        </h4>
+                
+                                        <p class="text-gray-400 text-sm mb-5">
+                                            서비스 이용을 위해서 반드시 아래 약관을 확인하시고 동의하여 주시기 바랍니다.
+                                        </p>
+                            
+                                        <h4 class="pl-3">
+                                            <input type="checkbox" id="chkall" class="form-checkbox checked:bg-blue-600 checked:border-transparent checked:ring-red-600 mr-3"> 
+                                            전체동의 
+                                        </h4>
+                                        
+                                        <div class="flex text-sm">
+                                            <div class="flex-1 pl-3 pt-3 text-gray-600">
+                                                <input type="checkbox" id="rule1" name="rule1" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 서비스 이용약관 동의
+                                            </div>
+                                            <div class="flex-initial ">
+                                                <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
+                                            </div>
+                                        </div>
+            
+                                        <div class="flex text-sm">
+                                            <div class="flex-1 pl-3 pt-3 text-gray-600">
+                                                <input type="checkbox" id="rule2" name="rule2" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 개인정보 수집 및 이용 동의
+                                            </div>
+                                            <div class="flex-initial">
+                                                <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
+                                            </div>
+                                        </div>
+            
+                                        <div class="flex text-sm">
+                                            <div class="flex-1 pl-3 pt-3 text-gray-600">
+                                                <input type="checkbox" id="rule3" name="rule3" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 위치정보이용약관 동의
+                                            </div>
+                                            <div class="flex-initial">
+                                                <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
+                                            </div>
+                                        </div>
+  
+                                    </div>
+
+                                    <div class="block mt-5">
+                                        <button type="submit" class="btn btn-primary w-full">회원가입</button>
+                                    </div>
+                                </form>
+                          
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="fvue--layout--footer bg-red-100">
+                footer
+            </div> -->
         </div>
-        <!--//bottom-->
-        <!--drawer_menu -->
-        <!--//drawer_menu -->
     </div>
-    <!--//container-->
 
+    <!--drawer_menu-->
+    <div id="drawer_menu" class="fvue--layout z-1 -left-full top-0 bg-white">
+        <div class="fvue--layout--container w-72 md:w-96">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="drawer_menu_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="drawer_menu_title" class="fvue--layout--title">
+                      
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                </div>
+            </div>
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto border" id="drawer_menu_docs_contents">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-gray-900 bg-opacity-70">
+        <div class="fvue--layout--container">
+            <div class="fvue--layout--header ">
+                <div class="fvue--layout--header--row">
+                    <div id="right_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="right_title" class="fvue--layout--title">
+
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main" id="right_docs_contents">
+            </div>
+        </div>
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-gray-900 bg-opacity-70">
+        <div class="fvue--layout--container">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="rightside_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="rightside_title" class="fvue--layout--title">
+    
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main" id="rightside_docs_contents">
+            </div>
+        </div>
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-gray-900 bg-opacity-70">
+        <div class="fvue--layout--container">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="rightthird_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="rightthird_title" class="fvue--layout--title">
+
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main" id="rightthird_docs_contents">
+            </div>
+        </div>
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
+        <div class="fvue--layout--container">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="bottom_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="bottom_title" class="fvue--layout--title">
+
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main" id="bottom_docs_contents">
+
+            </div>
+        </div>
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
+        <div class="fvue--layout--container">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="bottomside_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="bottomside_title" class="fvue--layout--title">
+
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main" id="bottomside_docs_contents">
+
+            </div>
+        </div>
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
+        <div class="fvue--layout--container rounded-lg bg-white w-full max-w-screen-sm mx-auto h-3/6 max-h-screen-md">
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row">
+                    <div id="bottomthird_back_button" class="fvue--layout--icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div id="bottomthird_title" class="fvue--layout--title">
+
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto border" id="bottomside_docs_contents">
+                        
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<!--modal-->
-<!--//modal-->
-<!--template -->
 
+<!-- <script type="text/javascript" src="../cordova.js"></script> -->
 
-<!--//template -->
-<script type="text/javascript" src="../cordova.js"></script>
-<script src="js/join.min.js?v=1"></script>
+<script src="/v1/js/join.js?v=1"></script>
+<!-- <script src="alarm/alarm_count.min.js"></script> -->
 </html>
