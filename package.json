@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1"
+  }
+}
