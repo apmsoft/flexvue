@@ -67,10 +67,19 @@ function onReady($, _, Backbone) {
             // 전체 약관
             $('#chkall').on('click', function()
             {
+                var _chk_flag = false;
+                if($(this).is(":checked")){
+                    _chk_flag = true;
+                }
+                
                 $('.chkrule').each(function() {
                     var cur = $(this);
-                    if( $(cur).prop("checked", true) ){
+                    if( _chk_flag ){
+                        $(cur).prop("checked", true);
                         $(cur).val('y');
+                    }else{
+                        $(cur).prop("checked", false);
+                        $(cur).val('n');
                     }
                 });
             });
@@ -98,6 +107,15 @@ function onReady($, _, Backbone) {
                 }else{
                     $("#chkall").prop("checked", false);
                 }
+            });
+
+            // 약관보기
+            $('.show-rules').on('click', function(e){
+                var this_id = $(this).data('id');
+                require([app.assets+'/js/rule.js'], function(RuleActivity) {
+                    // var rkey = this_id.replace('cp-','');
+                    RuleActivity.doRule(this_id);
+                });
             });
 
             // 전송
