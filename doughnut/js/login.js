@@ -1,10 +1,10 @@
-var http_referer = 'index.html';
+var http_referer = 'index.php';
 
 // 콜백함수
 function onReady($, _, Backbone) {
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
-    UrlUtil.pushState('login','',app.service_root_dir);
+    // UrlUtil.pushState('login','',app.service_root_dir);
 
     // progress init
     ProgressBar.initialize('');
@@ -15,16 +15,39 @@ function onReady($, _, Backbone) {
 
     _.extend(Activity, {
         onCreate: function() {
-            var self = this; 
+            var self = this;
+
+            // back key
+            self.onBackPressed(function(k){
+                app.log('이전' +k+'/ 현재 : '+UrlUtil.current_id);
+            });
+
+            // swipe
+            // self.setTouchSwipe({target: '#left','gesture': 'right',threshold: 130}, function() {
+            //     DrawerNavigation.drawer_menu_opened();
+            // });
+            
+            self.setTouchSwipe({target: '#rightthird, #rightside, #right, #bottomside, #bottom','gesture': 'right',threshold: 100}, function() {
+                history.go(-1);
+            });
+
+            // 뷰 실행
+            self.onCreateView();
         },
         onCreateView: function() {
             var self = this;
 
             // event
-            $('#myModal_btn_close').on('click', function() {
+            $('#drawer_menu_back_button, #drawer_menu_title, #drawer_menu').on('click', function() {
                 history.go(-1);
             });
-            $('#btn_bottom_close, #bottom_title').on('click', function() {
+            $('#bottom_back_button, #bottom_title').on('click', function() {
+                history.go(-1);
+            });
+            $('#bottomside_back_button, #bottomside_title').on('click', function() {
+                history.go(-1);
+            });
+            $('#bottomthird_back_button, #bottomthird_title').on('click', function() {
                 history.go(-1);
             });
             $('#right_back_button, #right_title').on('click', function() {
@@ -33,73 +56,67 @@ function onReady($, _, Backbone) {
             $('#rightside_back_button, #rightside_title').on('click', function() {
                 history.go(-1);
             });
-
-            $('#btn-join').on('click', function(){
-                window.location.href = "join.html";
-            });
-
-            $('#btn-findpwd').on('click', function(){
-                window.location.href = "find_passwd.html";
+            $('#rightthird_back_button, #rightthird_title').on('click', function() {
+                history.go(-1);
             });
 
             if(!_.isUndefined( localStorage.getItem(app.name) )){
                 $('#userid').val(localStorage.getItem(app.name));
             }
 
+            // focus
             $('#userid').focus();
 
             DocAsyncTask.doSubmit('#theLoginForm', function(form_params){
                 var send_params = {
-                    doc_id : 'auth/login'
                 };
                 _.extend(send_params, form_params);
         
                 ProgressBar.show_progress();
-                DocAsyncTask.doPostMessage(app.src+"/auth/login.regi", send_params, 
-                    {
-                        success : function(resp){
-                            var set_data = {
-                                userid : resp.msg.userid,
-                                passwd : resp.msg.passwd,
-                                fcm_token : $('#fcm_token').val(),
-                                usertoken : resp.msg.usertoken,
-                                name : resp.msg.name,
-                                level : resp.msg.level
-                            };
-                            var json_string_data = JSON.stringify(set_data);
-                            
-                            if ( (typeof window.android !=='undefined') || (window.webkit && window.webkit.messageHandlers.setSharedPreferences) ) {
-                                if (isMobile.Android()) {
-                                    window.android.setSharedPreferences(json_string_data, 'callbackSetSharedPreferences');
-                                }else {
-                                    var ios_set_data = {
-                                        callback : 'callbackSetSharedPreferences'
-                                    };
-                                    _.extend(ios_set_data, set_data);
-                                    webkit.messageHandlers.setSharedPreferences.postMessage(JSON.stringify(ios_set_data));
-                                }
-                            }
-                        },
-                        fail : function(resp){
-                            ProgressBar.close_progress();
-
-                            if(resp.msg_code !='w_stay_logged_in'){
-                                if ( (typeof window.android !=='undefined') ) {
-                                    if (isMobile.Android()) {
-                                        // 메세지내용, 위치[ bottom | center } top ], 시간[ short | long ]
-                                        window.android.showToast(resp.msg,'short', 'center');
-                                    }
-                                }else{
-                                    alert(resp.msg);
-                                }
-                                
-                                $('#theLoginForm #'+resp.fieldname).focus();
-                            }else{
-                                callbackSetSharedPreferences('');
+                DocAsyncTask.doPostMessage(app.src+"/auth/login", send_params, 
+                {
+                    success : function(resp){
+                        var set_data = {
+                            userid : resp.msg.userid,
+                            passwd : resp.msg.passwd,
+                            fcm_token : $('#fcm_token').val(),
+                            // usertoken : resp.msg.usertoken,
+                            name : resp.msg.name,
+                            level : resp.msg.level
+                        };
+                        var json_string_data = JSON.stringify(set_data);
+                        
+                        if ( (typeof window.android !=='undefined') || (window.webkit && window.webkit.messageHandlers.setSharedPreferences) ) {
+                            if (isMobile.Android()) {
+                                window.android.setSharedPreferences(json_string_data, 'callbackSetSharedPreferences');
+                            }else {
+                                var ios_set_data = {
+                                    callback : 'callbackSetSharedPreferences'
+                                };
+                                _.extend(ios_set_data, set_data);
+                                webkit.messageHandlers.setSharedPreferences.postMessage(JSON.stringify(ios_set_data));
                             }
                         }
+                    },
+                    fail : function(resp){
+                        ProgressBar.close_progress();
+
+                        if(resp.msg_code !='w_stay_logged_in'){
+                            if ( (typeof window.android !=='undefined') ) {
+                                if (isMobile.Android()) {
+                                    // 메세지내용, 위치[ bottom | center } top ], 시간[ short | long ]
+                                    window.android.showToast(resp.msg,'short', 'center');
+                                }
+                            }else{
+                                alert(resp.msg);
+                            }
+                            
+                            $('#theLoginForm #'+resp.fieldname).focus();
+                        }else{
+                            callbackSetSharedPreferences('');
+                        }
                     }
-                );
+                });
             });
 
             // 로그인버튼 활성화 체크
@@ -116,9 +133,9 @@ function onReady($, _, Backbone) {
                 }
 
                 if(enable_submit_cnt >= 2){
-                    $('#theLoginForm button[type="submit"]').removeAttr('disabled');
+                    $('#theLoginForm button[type="submit"]').removeAttr('disabled').removeClass('opacity-25');
                 }else{
-                    $('#theLoginForm button[type="submit"]').attr('disabled','disabled');
+                    $('#theLoginForm button[type="submit"]').attr('disabled','disabled').addClass('opacity-25');
                 }
             });
 
@@ -135,15 +152,6 @@ function onReady($, _, Backbone) {
 
     // layout
     Activity.onCreate();
-    Activity.onCreateView();
-
-    // back key
-    Activity.onBackPressed();
-
-    // swipe
-    Activity.setTouchSwipe({target: '#rightside, #right, #bottom','gesture': 'right',threshold: 100}, function() {
-        history.go(-1);
-    });
 
     // close progress
     Handler.post(function(){
@@ -157,7 +165,7 @@ function callbackSetSharedPreferences(jsonStr){
     if ( (typeof window.android !=='undefined') ) {
         if (isMobile.Android()) {
             // 메세지내용, 위치[ bottom | center } top ], 시간[ short | long ]
-            window.android.showToast('울산 수소차셰어링에 오신것을 환영합니다!','short', 'center');
+            window.android.showToast('환영합니다!','short', 'center');
         }
     }
     app.go_url(http_referer);
