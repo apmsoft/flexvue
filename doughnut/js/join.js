@@ -4,7 +4,6 @@ var http_referer = 'index.html';
 function onReady($, _, Backbone) {
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
-    UrlUtil.pushState('login','',app.service_root_dir);
 
     // progress init
     ProgressBar.initialize('');
@@ -18,9 +17,7 @@ function onReady($, _, Backbone) {
             var self = this;
 
             // back key
-            self.onBackPressed(function(k){
-                app.log('이전' +k+'/ 현재 : '+UrlUtil.current_id);
-            });
+            self.onBackPressed();
 
             // swipe
             // self.setTouchSwipe({target: '#left','gesture': 'right',threshold: 130}, function() {
@@ -85,6 +82,7 @@ function onReady($, _, Backbone) {
             });
 
             // 개별체크
+            var chkrule_total = $('.chkrule').length;
             $('.chkrule').on('click', function(e)
             {
                 var cur = $(this);
@@ -102,7 +100,7 @@ function onReady($, _, Backbone) {
                     }
                 });
 
-                if(chk_count==3){
+                if(chk_count == chkrule_total){
                     $('#chkall').prop("checked", true);
                 }else{
                     $("#chkall").prop("checked", false);
@@ -121,7 +119,6 @@ function onReady($, _, Backbone) {
             // 전송
             DocAsyncTask.doSubmit('#theJoinForm', function(form_params){
                 var send_params = {
-                    doc_id : 'auth/join'
                 };
                 _.extend(send_params, form_params);
         
