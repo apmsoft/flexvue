@@ -76,17 +76,17 @@ function onReady($, _, Backbone) {
                 DocAsyncTask.doPostMessage(app.src+"/auth/login", send_params, 
                 {
                     success : function(resp){
-                        var set_data = {
-                            userid : resp.msg.userid,
-                            passwd : resp.msg.passwd,
-                            fcm_token : $('#fcm_token').val(),
-                            // usertoken : resp.msg.usertoken,
-                            name : resp.msg.name,
-                            level : resp.msg.level
-                        };
-                        var json_string_data = JSON.stringify(set_data);
-                        
                         if ( (typeof window.android !=='undefined') || (window.webkit && window.webkit.messageHandlers.setSharedPreferences) ) {
+                            var set_data = {
+                                userid : resp.msg.userid,
+                                passwd : resp.msg.passwd,
+                                fcm_token : $('#fcm_token').val(),
+                                // usertoken : resp.msg.usertoken,
+                                name : resp.msg.name,
+                                level : resp.msg.level
+                            };
+                            var json_string_data = JSON.stringify(set_data);
+
                             if (isMobile.Android()) {
                                 window.android.setSharedPreferences(json_string_data, 'callbackSetSharedPreferences');
                             }else {
@@ -96,6 +96,8 @@ function onReady($, _, Backbone) {
                                 _.extend(ios_set_data, set_data);
                                 webkit.messageHandlers.setSharedPreferences.postMessage(JSON.stringify(ios_set_data));
                             }
+                        }else{
+                            app.go_url('/'+http_referer);
                         }
                     },
                     fail : function(resp){
