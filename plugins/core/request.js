@@ -65,6 +65,10 @@ define(['jquery', 'underscore', 'backbone', 'backbone-fetch-cache'], function($,
                     }
 
                     this.model.fetch({
+                        // headers: {
+                        //     'Content-Type' : 'application/json',
+                        //     'Authorization' :'Bearer '+app.token
+                        // },
                         prefill: is_cache,
                         prefillExpires: app.cache_time,
                         prefillSuccess: function(){
@@ -151,8 +155,13 @@ define(['jquery', 'underscore', 'backbone', 'backbone-fetch-cache'], function($,
                 }
             },
             error: function(model, e) {
-                app.log(e.responseText);
-                app.log(JSON.stringify(e));
+                if(!_.isUndefined( e.responseText)){
+                    try {
+                        callback(null,JSON.parse(e.responseText));
+                    } catch(e) {
+                        app.log(e);
+                    }
+                }
             }
         });
 

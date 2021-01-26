@@ -28,8 +28,13 @@ define(['jquery','underscore','backbone'], function($,_,Backbone){
 				callback(data);
 			},
 			error:function(model, e){
-		    	app.log(e.responseText);
-		    	app.log(JSON.stringify(e));
+		    	if(!_.isUndefined( e.responseText)){
+                    try {
+                        callback(JSON.parse(e.responseText));
+                    } catch(e) {
+                        app.log(e);
+                    }
+                }
 		    }
 		});
 	};
