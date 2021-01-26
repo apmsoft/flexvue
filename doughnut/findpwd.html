@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="/v1/css/tailwind.css" rel="stylesheet">
+  <link href="/v1/css/fontawesome-all.min.css" rel="stylesheet">
+
+  <script data-main="/plugins/fancy-up.min" src="/plugins/libs/js/require.min.js"></script>
+
+</head>
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-gray-800 to-black ">
+        <div class="fvue--layout--container bg-no-repeat bg-contain" style="background-image: url(/v1/images/base/svg/hero_global.svg);">
+            
+            <div class="fvue--layout--header shadow-none">
+                <div class="fvue--layout--header--row">
+                    <div class="fvue--layout--icon w-7 text-white cursor-pointer" id="left_back_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                    </div>
+                    <div class="fvue--layout--title text-white text-xl pl-5">
+                      MGCMS
+                    </div>
+                    <div class="fvue--layout--spacer">
+
+                    </div>
+                    <div class="fvue--layout--navigation">
+
+                    </div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main ">
+                <div class="container mx-auto h-screen" id="left_docs_contents" >
+                    <div class="xl:container xl:mx-auto h-full">
+
+                        <div class="flex flex-wrap justify-center content-center h-full">
+                            
+                            <div class="card border-0 py-16 px-7 rounded shadow-2xl">
+                                <h2 class="mb-3">비밀번호 찾기</h2>
+                                <div class="mb-5 text-sm text-gray-500">
+                                    <p>비밀번호가 기억나지 않아 답답하셨나요?
+                                        <br /> 이름과 아이디를 입력하시면 등록된 이메일로 새비밀번호를 보냅니다.
+                                    </p>
+                                    <p class="mt-3">
+                                        <small class="mr-3">이메일 인증이 되지 않으면 비밀번호는 변경되지 않으니 안심하세요. 
+                                            <br />
+                                            <span class="text-green-700">이메일을 전송하는데 다소 시간이 걸릴 수 있습니다.</span>
+                                        </small>
+                                        <small class="text-yellow-700">이메일를 받은 후 계정정보에서 꼭 비밀번호를 변경하세요.</small>
+                                    </p>
+                                </div>
+                                <div class="card py-5">
+                                    <form id="theFindPWDForm" class="form-container">
+                                        <div class="form-row">
+                                            <div class="form-label">
+                                                아이디
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="email" id="userid" name="userid" class="form-input" placeholder="등록하신 이메일주소를 입력하세요">
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-row">
+                                            <div class="form-label">
+                                                이름
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="text" id="name" name="name" class="form-input" placeholder="등록하신 이름을 입력하세요">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-label">
+                                                휴대폰번호
+                                            </div>
+                                            <div class="flex-1">
+                                                <input type="tel" id="cellphone" name="cellphone" class="form-input" placeholder="등록하신 휴대폰 번호를 입력하세요">
+                                            </div>
+                                        </div>
+    
+                                        <div class="block">
+                                            <button type="submit" class="btn btn-primary w-full">비밀번호 찾기</button>
+                                        </div>
+                                    </form>
+                                </div>
+                     
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="fvue--layout--footer bg-red-100">
+                footer
+            </div> -->
+        </div>
+    </div>
+
+    
+</body>
+
+<!-- <script type="text/javascript" src="../cordova.js"></script> -->
+
+<script src="/v1/js/findpwd.js?v=1"></script>
+<!-- <script src="alarm/alarm_count.min.js"></script> -->
+</html>

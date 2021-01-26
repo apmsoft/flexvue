@@ -12,8 +12,8 @@
 </head>
 <body>
     <!--left-->
-    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-green-400 to-blue-500 ">
-        <div class="fvue--layout--container">
+    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-gray-800 to-black ">
+        <div class="fvue--layout--container bg-no-repeat bg-contain" style="background-image: url(/v1/images/base/svg/hero_global.svg);">
             
             <div class="fvue--layout--header shadow-none">
                 <div class="fvue--layout--header--row">
@@ -32,14 +32,13 @@
                   </div>
             </div>
             <div class="fvue--layout--main ">
-                <div class="container mx-auto h-full" id="left_docs_contents" >
+                <div class="container mx-auto h-screen" id="left_docs_contents" >
                     <div class="xl:container xl:mx-auto h-full">
 
                         <div class="flex flex-wrap justify-center content-center h-full">
                             
-                            <div class="card border-0 py-16 px-7 rounded-none shadow-2xl">
+                            <div class="card border-0 py-16 px-7 rounded shadow-2xl">
                                 <h2 class="mb-3">Login</h2>
-                                
                                 <div class="card py-5">
                                     <form id="theLoginForm" class="form-container">
                                         <div class="form-row">
@@ -61,25 +60,25 @@
                                         </div>
     
                                         <div class="block">
-                                            <button type="submit" class="btn btn-primary w-full">로그인</button>
+                                            <button type="submit" class="btn btn-primary w-full opacity-25">로그인</button>
                                         </div>
                                     </form>
                                 </div>
 
                                 <div class="flex pt-3 px-3">
-                                    <div class="flex-1 text-gray-500 leading-10">아직 아이디가 없으세요?</div>
+                                    <div class="flex-1 text-gray-500 leading-6">아직 아이디가 없으세요?</div>
                                     <div class="flex-initial">
-                                        <button type="button" class="btn btn-secondary py-2 px-10 border-0">
+                                        <a href="./?act=join" class="btn btn-secondary py-2 px-10 border-0">
                                             회원가입
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="flex pt-1 px-3">
                                     <div class="flex-1 text-gray-500">비밀번호를 잊으셨나요?</div>
                                     <div class="flex-initial">
-                                        <button type="button" class="btn py-1 border-0">
+                                        <a href="./?act=fpwd" class="btn py-1 border-0">
                                             비밀번호 찾기
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>                             
                             </div>

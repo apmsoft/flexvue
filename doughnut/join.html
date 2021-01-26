@@ -12,8 +12,8 @@
 </head>
 <body>
     <!--left-->
-    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-green-400 to-blue-500 ">
-        <div class="fvue--layout--container">
+    <div id="left" class="fvue--layout z-0 bg-gradient-to-b from-gray-800 to-black ">
+        <div class="fvue--layout--container bg-no-repeat bg-contain" style="background-image: url(/v1/images/base/svg/hero_global.svg);">
             
             <div class="fvue--layout--header shadow-none">
                 <div class="fvue--layout--header--row">
@@ -34,14 +34,14 @@
                   </div>
             </div>
             <div class="fvue--layout--main ">
-                <div class="container mx-auto h-full" id="left_docs_contents" >
+                <div class="container mx-auto h-screen" id="left_docs_contents" >
                     <div class="xl:container xl:mx-auto h-full">
 
                         <div class="flex flex-wrap justify-center content-center h-full">
                             
-                            <div class="card border-0 py-16 px-7 rounded-none shadow-2xl">
+                            <div class="card border-0 py-16 px-7 rounded shadow-2xl">
                                 <h2 class="mb-3">회원가입(Member)</h2>
-                                <form id="theLoginForm" class="form-container"></form>
+                                <form id="theJoinForm" class="form-container">
                                     <div class="card py-5">
                                         <div class="form-row mb-2">
                                             <div class="form-label">
@@ -108,7 +108,7 @@
                                         
                                         <div class="flex text-sm">
                                             <div class="flex-1 pl-3 pt-3 text-gray-600">
-                                                <input type="checkbox" id="rule1" name="rule1" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 서비스 이용약관 동의
+                                                <input type="checkbox" id="rule1" name="rule1" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> <span class="show-rules" data-id="rule1">서비스 이용약관 동의</span>
                                             </div>
                                             <div class="flex-initial ">
                                                 <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
@@ -117,21 +117,21 @@
             
                                         <div class="flex text-sm">
                                             <div class="flex-1 pl-3 pt-3 text-gray-600">
-                                                <input type="checkbox" id="rule2" name="rule2" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 개인정보 수집 및 이용 동의
+                                                <input type="checkbox" id="rule2" name="rule2" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> <span class="show-rules" data-id="rule2">개인정보 수집 및 이용 동의</span>
                                             </div>
                                             <div class="flex-initial">
                                                 <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
                                             </div>
                                         </div>
             
-                                        <div class="flex text-sm">
+                                        <!-- <div class="flex text-sm">
                                             <div class="flex-1 pl-3 pt-3 text-gray-600">
-                                                <input type="checkbox" id="rule3" name="rule3" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> 위치정보이용약관 동의
+                                                <input type="checkbox" id="rule3" name="rule3" class="form-checkbox chkrule checked:bg-blue-400 checked:border-transparent checked:ring-red-600 mr-2" value="n"> <span class="show-rules" data-id="rule3">위치정보이용약관 동의</span>
                                             </div>
                                             <div class="flex-initial">
                                                 <span class="float-right"><i class="fas fa-chevron-right fa-lg text-gray-300"></i></span>
                                             </div>
-                                        </div>
+                                        </div> -->
   
                                     </div>
 

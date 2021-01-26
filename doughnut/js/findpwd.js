@@ -1,5 +1,3 @@
-var http_referer = 'index.html';
-
 // 콜백함수
 function onReady($, _, Backbone) {
     // urlutil init
@@ -60,70 +58,14 @@ function onReady($, _, Backbone) {
                 history.go(-1);
             });
 
-            // 약관
-            // 전체 약관
-            $('#chkall').on('click', function()
-            {
-                var _chk_flag = false;
-                if($(this).is(":checked")){
-                    _chk_flag = true;
-                }
-                
-                $('.chkrule').each(function() {
-                    var cur = $(this);
-                    if( _chk_flag ){
-                        $(cur).prop("checked", true);
-                        $(cur).val('y');
-                    }else{
-                        $(cur).prop("checked", false);
-                        $(cur).val('n');
-                    }
-                });
-            });
-
-            // 개별체크
-            var chkrule_total = $('.chkrule').length;
-            $('.chkrule').on('click', function(e)
-            {
-                var cur = $(this);
-                if($(cur).is(":checked")){
-                    $(cur).val('y');
-                }else{
-                    $(cur).val('n');
-                }
-
-                // 전체동의 버튼 활성화 여부
-                var chk_count = 0;
-                $('.chkrule').each(function() {
-                    if( $(this).is(":checked") ){
-                        chk_count++;
-                    }
-                });
-
-                if(chk_count == chkrule_total){
-                    $('#chkall').prop("checked", true);
-                }else{
-                    $("#chkall").prop("checked", false);
-                }
-            });
-
-            // 약관보기
-            $('.show-rules').on('click', function(e){
-                var this_id = $(this).data('id');
-                require([app.assets+'/js/rule.js'], function(RuleActivity) {
-                    // var rkey = this_id.replace('cp-','');
-                    RuleActivity.doRule(this_id);
-                });
-            });
-
             // 전송
-            DocAsyncTask.doSubmit('#theJoinForm', function(form_params){
+            DocAsyncTask.doSubmit('#theFindPWDForm', function(form_params){
                 var send_params = {
                 };
                 _.extend(send_params, form_params);
         
                 ProgressBar.show_progress();
-                DocAsyncTask.doPostMessage(app.src+"/auth/join", send_params, 
+                DocAsyncTask.doPostMessage(app.src+"/auth/findpwd", send_params, 
                 {
                     success : function(resp){
                         ProgressBar.close_progress();
@@ -135,7 +77,7 @@ function onReady($, _, Backbone) {
                         }else{
                             alert(resp.msg);
                         }
-                        app.go_url('./?act=login');
+                        app.go_url('/?act=login');
                     },
                     fail : function(resp){
                         ProgressBar.close_progress();
@@ -149,7 +91,7 @@ function onReady($, _, Backbone) {
                             alert(resp.msg);
                         }
                         
-                        $('#theJoinForm #'+resp.fieldname).focus();
+                        $('#theFindPWDForm #'+resp.fieldname).focus();
                     }
                 });
             });
