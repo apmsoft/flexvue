@@ -1,4 +1,4 @@
-var app = {
+const app = {
     version: '애플파이 3.5',
     int_version : 8,
     license_key : 'change_cache_id',
@@ -8,7 +8,7 @@ var app = {
     lang : {},
     cache:false,
     cache_time:15000,
-    host_url: 'http://thebalance.fancyupsoft.com',
+    host_url: 'http://mgcms.hhskoreas.com',
     service_root_dir : '',
     server_language: '.php',
     templateSettings: null,
@@ -20,18 +20,18 @@ var app = {
     docs: {
     },
     template: [],
-    assets : '../doughnut',
-    src : 'http://thebalance.fancyupsoft.com/src',
-    res : '../res',
+    assets : '/v1',
+    src : '/src',
+    res : '/res',
     layout: {},
-    layout_panel: {
+    layout_panel: { 
         left : {
             id:'#left',
             target:null,
             toggle:null
         },
         right : {
-            id:'#right',
+            id:'#right', 
             target:'#right',
             toggle:'transitioned'
         },
@@ -65,11 +65,11 @@ var app = {
     // time
     location_delay_time: 0,
 
-    initialize: function(plugins) {
-        var self = this;
+    initialize (plugins) {
+        const self = this;
         self.docs = plugins;
     },
-    log: function(msg) {
+    log (msg) {
         if (app.debug) {
             if (_.isObject(msg)) {
                 console.log(JSON.stringify(msg));
@@ -78,28 +78,30 @@ var app = {
             }
         }
     },
-    go_url: function(url) {
-        window.setTimeout(function() {
+    go_url (url) {
+        window.setTimeout(()=> {
             window.location.href = url;
         }, this.location_delay_time);
     },
     // return json data
-    parserResource : function(filename, callback){
-        var self = this;
-        var _callback = (!_.isUndefined(callback) && _.isFunction(callback)) ? callback : null;
+    parserResource  (filename, callback){
+        const self = this;
+        let _callback = (!_.isUndefined(callback) && _.isFunction(callback)) ? callback : null;
 
         // lang
-        var _filename = app.res + filename;
+        let _filename = app.res + filename;
         if(self.language !=''){
             _filename = app.res + filename+'_'+self.language;
         }
-        $.getJSON(_filename+'.json')
-        .done(function(data, textStatus, jqXHR) {
-            _callback(data);
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            app.log(textStatus);
-        });
+        // $.getJSON(_filename+'.json')
+        // .done(function(data, textStatus, jqXHR) {
+        //     _callback(data);
+        // })
+        // .fail(function(jqXHR, textStatus, errorThrown) {
+        //     app.log(textStatus);
+        // });
+        let data = require(_filename+'.json');
+        _callback(data);
     }
 };
 
@@ -114,43 +116,43 @@ window.Runnable = (function (callback, delay) {
     };
 })();
 
-var Handler = {
-    post : function (callback, delay){
-        setTimeout(function(){
+const Handler = {
+    post (callback, delay){
+        setTimeout(()=>{
             Runnable(callback,0);
         }, delay);
     }
 };
 
 // 모바일체크
-var isMobile = {
-    Android: function() {
+const isMobile = {
+    Android() {
         return navigator.userAgent.match(/Android/i);
     },
-    BlackBerry: function() {
+    BlackBerry() {
         return navigator.userAgent.match(/BlackBerry/i);
     },
-    iOS: function() {
+    iOS() {
         return navigator.userAgent.match(/iPhone|iPad|iPod/i);
     },
-    Opera: function() {
+    Opera() {
         return navigator.userAgent.match(/Opera Mini/i);
     },
-    Windows: function() {
+    Windows() {
         return navigator.userAgent.match(/IEMobile/i);
     },
-    any: function() {
+    any() {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
 
 // TextUtil
-var TextUtil = {
+const TextUtil = {
     version : 1,
     // 01011112222 -> 010-1111-2222
-    phone_format: function(num) {
+    phone_format(num) {
         num = num.replace(/[^0-9]/g, '');
-        var result = '';
+        let result = '';
         if (num.length < 4) {
             return num;
         } else if (num.length < 7) {
@@ -177,19 +179,19 @@ var TextUtil = {
     },
 
     // 8000 -> 8 KB
-    file_format_bytes: function(bytes, decimals) {
+    file_format_bytes(bytes, decimals) {
         if (bytes == 0) return '0 Byte';
-        var k = 1000;
-        var dm = decimals + 1 || 3;
-        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        let k = 1000;
+        let dm = decimals + 1 || 3;
+        let sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        let i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     },
 
     // youtube url 주소에서 id 추출
-    get_youtube_id :function(url) {
-        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        var match = url.match(regExp);
+    get_youtube_id(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        let match = url.match(regExp);
 
         if (match && match[2].length == 11) {
             return match[2];
@@ -199,20 +201,20 @@ var TextUtil = {
     },
 
     // 랜덤
-    randomNumber : function(min,max){
+    randomNumber(min,max){
         return Math.floor(Math.random()*(max-min+1)+min);
     },
 
     // [{id:1},{id:2},{id:3}] 배열중에서 id: 1번 찾기
-    find_index : function(argv, search_key, search_value){
+    find_index(argv, search_key, search_value){
         var _index = -1;
-        var is_data = (_.isArray(argv) && argv.length>0) ? true : false;
+        let is_data = (_.isArray(argv) && argv.length>0) ? true : false;
         if( !is_data){
             return _index;
         }
     
-        for(var i=0; i<argv.length; i++){
-            var chkid=argv[i][search_key];
+        for(let i=0; i<argv.length; i++){
+            let chkid=argv[i][search_key];
             if(!_.isUndefined(chkid) && chkid == search_value){
                 _index = i;
                 break;
@@ -223,33 +225,33 @@ var TextUtil = {
 };
 
 // UrlUtil
-var UrlUtil = {
+const UrlUtil = {
     version : 3,
     current_id : null,
     _url_params : {},
     // init object {}
-    initialize : function(params){
+    initialize (params){
         this._url_params = params;
     },
-    doEmpty : function(){
+    doEmpty (){
         this._url_params = {};
     },
     // object {k:v}
-    pushUrlParams : function(params){
+    pushUrlParams (params){
         _.extend(this._url_params, params);
     },
     // array [a,b]
-    removeParams : function(argv){
-        var self = this;
+    removeParams (argv){
+        const self = this;
         self._url_params = _.omit(self._url_params, argv);
     },
-    getURLVariablesByName: function(name) {
-        var result = '';
-        var sPageURL = window.location.search.substring(1);
-        var sURLVariables = sPageURL.split('&');
-        var count = sURLVariables.length;
-        for (var i = 0; i < count; i++) {
-            var sParameterName = sURLVariables[i].split('=');
+    getURLVariablesByName(name) {
+        let result = '';
+        let sPageURL = window.location.search.substring(1);
+        let sURLVariables = sPageURL.split('&');
+        let count = sURLVariables.length;
+        for (let i = 0; i < count; i++) {
+            let sParameterName = sURLVariables[i].split('=');
             if (sParameterName[0] == name) {
                 result = sParameterName[1];
                 break;
@@ -258,35 +260,35 @@ var UrlUtil = {
         return result;
     },
     // a=1&b=2 -> {a:1, b:2}
-    getURL2JSON: function() {
-        var result = {};
-        var sPageURL = window.location.search.substring(1);
-        var sURLVariables = sPageURL.split('&');
-        var count = sURLVariables.length;
-        for (var i = 0; i < count; i++) {
-            var sParameterName = sURLVariables[i].split('=');
-            var k = sParameterName[0];
-            var v = sParameterName[1];
+    getURL2JSON() {
+        let result = {};
+        let sPageURL = window.location.search.substring(1);
+        let sURLVariables = sPageURL.split('&');
+        let count = sURLVariables.length;
+        for (let i = 0; i < count; i++) {
+            let sParameterName = sURLVariables[i].split('=');
+            let k = sParameterName[0];
+            let v = sParameterName[1];
             result[k] = v;
         }
         return result;
     },
     // history change url
-    pushState:function(id, title, url){
-        var self = this;
+    pushState(id, title, url){
+        const self = this;
         self.current_id = id;
         window.history.pushState(id, title, url);
     },
-    replaceStage : function(id, title, url){
+    replaceStage(id, title, url){
          window.history.replaceState(id, title, url);
     }
 };
 
 // panel
-var Panel = {
+const Panel = {
     version : 2,
     // return : {} || null
-    onStart : function(panel_setting){
+    onStart (panel_setting){
         // panel
         var panel = null;
         if (!_.isNull(panel_setting.panel)) {
@@ -300,7 +302,7 @@ var Panel = {
                         $(panel.id+'_title').text(panel_setting.title);
                     }
 
-                    Handler.post(function(){
+                    Handler.post(()=>{
                         // toggle
                         if(panel_setting.panel == 'modal'){
                             $(panel.id).modal('show');
@@ -313,7 +315,7 @@ var Panel = {
         }
     return panel;
     },
-    onStop : function(panel_id){
+    onStop (panel_id){
         panel_id = (panel_id) ? panel_id.replace('#','') : '';
 
         switch(panel_id){
@@ -362,17 +364,17 @@ var Panel = {
     }
 };
 
-var Toast = {
+const Toast = {
     version : 1,
-    show : function(title,msg,time,option){
-        var self = this;
+    show (title,msg,time,option){
+        const self = this;
 
-        var _option = {
+        let _option = {
             position : (!_.isUndefined(option) && !_.isUndefined(option.position)) ? option.position : 'right',
             style : (!_.isUndefined(option) && !_.isUndefined(option.style)) ? option.style : 'warning',
         };
 
-        var toast_id=(new Date()).getTime();
+        let toast_id=(new Date()).getTime();
         DocAsyncTask.doGetContents({
             "panel"     : null,
             "title"     : null,
@@ -387,7 +389,7 @@ var Toast = {
             }
         });
     },
-    close : function(toast_id,t){
+    close (toast_id,t){
         window.setTimeout(function(){
             $('#toast'+toast_id).animateCss('fadeOutUp',function(){
                 $('#toast'+toast_id).removeClass('show');
