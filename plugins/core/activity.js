@@ -1,15 +1,15 @@
-var Activity = {
+const Activity = {
     version : '1.0',
 
-    onCreate: function(docs) {
+    onCreate() {
     },
 
     // View 설정
-    onCreateView: function() {
+    onCreateView() {
     },
 
     // scroll changed
-    onScrollStateChanged : function(target, callback){
+    onScrollStateChanged (target, callback){
         var _callback = (!_.isUndefined(callback) && _.isFunction(callback)) ? callback : null;
         $(target).on('scroll', function() {
             var scrollTop = $(this).scrollTop();
@@ -26,7 +26,7 @@ var Activity = {
     //     });
     // });
     // <div class="spy" data-spyid="chart"></div>
-    runScanSpyCapture : function(panel_id, classname, position, callback){
+    runScanSpyCapture (panel_id, classname, position, callback){
         var self = this;
         Runnable(function(){
             $(classname).each(function(){
@@ -47,7 +47,7 @@ var Activity = {
 
     // <a class="hash-link" href="#hash">클릭</a>
     // <div id="hash"></div>
-    onEnableHash : function(classname, panel_id, callback){
+    onEnableHash (classname, panel_id, callback){
         $(classname).on('click',function(e){
             e.preventDefault();
 
@@ -80,7 +80,7 @@ var Activity = {
     },
 
     // SCREEN 왼쪽 오른쪽 SWIPE 제스쳐
-    setTouchSwipe: function(options, callback) {
+    setTouchSwipe(options, callback) {
         var _callback = (!_.isUndefined(callback) && _.isFunction(callback)) ? callback : null;
         var _options = _.extend({
             target: '',
@@ -152,7 +152,7 @@ var Activity = {
     // lazyload 이미지 불러오기\
     // @ target : 대상
     // @ remove_class : lazyload에서 제외시키기(한번읽어 들였으면 더 이상 읽을 필요없음)
-    onLazyLoad : function(target, options, remove_class){
+    onLazyLoad (target, options, remove_class){
         var _options = {
             load : function(){
                 if(!_.isNull(remove_class)){
@@ -172,7 +172,7 @@ var Activity = {
     },
 
     // 뒤로가기 제어 활성화
-    onBackPressed: function(callback) {
+    onBackPressed (callback) {
         // 뒤로가기
         window.onpopstate = function(event) {
             var pre_state = '';

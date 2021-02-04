@@ -55,8 +55,9 @@ const onReady = ($, _, Backbone) =>
     });
 
     // class
-    _.extend(Activity, {
-        onCreate: function() {
+    const MainActivity =  Object.assign(Activity, 
+    {
+        onCreate() {
             const self = this;
 
             // back key
@@ -76,7 +77,7 @@ const onReady = ($, _, Backbone) =>
             // 뷰 실행
             self.onCreateView();
         },
-        onCreateView: function() {
+        onCreateView() {
             const self = this;
 
             // event
@@ -148,7 +149,7 @@ const onReady = ($, _, Backbone) =>
                 });
             });
 
-            $('#btn-modal').on('click', function(){
+            document.querySelector('#btn-modal').addEventListener('click', function(){
                 self.doRun('bottomthird', null);
             });
 
@@ -184,7 +185,7 @@ const onReady = ($, _, Backbone) =>
         },
 
         // 프로그램 실행
-        doRun : function(doc_id, callback){
+        doRun (doc_id, callback){
             ProgressBar.show_progress();
             const self = this;
 
@@ -220,7 +221,7 @@ const onReady = ($, _, Backbone) =>
     });
 
     // class start
-    Activity.onCreate();
+    MainActivity.onCreate();
 
     // close progress
     Handler.post(()=>{
