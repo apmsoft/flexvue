@@ -1,6 +1,6 @@
 // 콜백함수
-function onReady($, _, Backbone) {
-    
+const onReady = ($, _, Backbone) => 
+{
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
     // UrlUtil.pushState('index','',app.service_root_dir);
@@ -57,7 +57,7 @@ function onReady($, _, Backbone) {
     // class
     _.extend(Activity, {
         onCreate: function() {
-            var self = this;
+            const self = this;
 
             // back key
             self.onBackPressed(function(k){
@@ -77,7 +77,7 @@ function onReady($, _, Backbone) {
             self.onCreateView();
         },
         onCreateView: function() {
-            var self = this;
+            const self = this;
 
             // event
             $('#drawer_menu_back_button, #drawer_menu_title, #drawer_menu').on('click', function() {
@@ -186,7 +186,7 @@ function onReady($, _, Backbone) {
         // 프로그램 실행
         doRun : function(doc_id, callback){
             ProgressBar.show_progress();
-            var self = this;
+            const self = this;
 
             // panel
             var panel_setting = app.docs[doc_id]; // SETTING VALUE
@@ -223,7 +223,7 @@ function onReady($, _, Backbone) {
     Activity.onCreate();
 
     // close progress
-    Handler.post(function(){
+    Handler.post(()=>{
         ProgressBar.close_progress();
     }, 200);
 }

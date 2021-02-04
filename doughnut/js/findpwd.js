@@ -1,5 +1,6 @@
 // 콜백함수
-function onReady($, _, Backbone) {
+const onReady = ($, _, Backbone) => 
+{
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
 
@@ -12,7 +13,7 @@ function onReady($, _, Backbone) {
 
     _.extend(Activity, {
         onCreate: function() {
-            var self = this;
+            const self = this;
 
             // back key
             self.onBackPressed();
@@ -30,7 +31,7 @@ function onReady($, _, Backbone) {
             self.onCreateView();
         },
         onCreateView: function() {
-            var self = this;
+            const self = this;
 
             // event
             $('#drawer_menu_back_button, #drawer_menu_title, #drawer_menu').on('click', function() {
@@ -60,7 +61,7 @@ function onReady($, _, Backbone) {
 
             // 전송
             DocAsyncTask.doSubmit('#theFindPWDForm', function(form_params){
-                var send_params = {
+                let send_params = {
                 };
                 _.extend(send_params, form_params);
         
@@ -102,7 +103,7 @@ function onReady($, _, Backbone) {
     Activity.onCreate();
 
     // close progress
-    Handler.post(function(){
+    Handler.post(()=>{
         ProgressBar.close_progress();
     }, 200);
 }

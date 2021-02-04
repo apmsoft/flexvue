@@ -1,7 +1,8 @@
-var http_referer = 'index.html';
+let http_referer = 'index.html';
 
 // 콜백함수
-function onReady($, _, Backbone) {
+const onReady = ($, _, Backbone) => 
+{
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
 
@@ -160,7 +161,7 @@ function onReady($, _, Backbone) {
     Activity.onCreate();
 
     // close progress
-    Handler.post(function(){
+    Handler.post(()=>{
         ProgressBar.close_progress();
     }, 200);
 }

@@ -35,17 +35,16 @@ define(['jquery','underscore','backbone'],
         });
 
         // contents
-        var RuleActivity = {
-
-            doRule : function(rule)
+        const RuleActivity = {
+            doRule(rule)
             {
-                var self = this;
+                const self = this;
 
                 ProgressBar.show_progress();
 
                 // panel
-                var panel_setting = app.docs.rule[rule]; // SETTING VALUE
-                var panel = Panel.onStart(panel_setting);
+                let panel_setting = app.docs.rule[rule]; // SETTING VALUE
+                let panel = Panel.onStart(panel_setting);
 
                 // history
                 // make url

@@ -1,7 +1,8 @@
-var http_referer = 'index.php';
+let http_referer = 'index.php';
 
 // 콜백함수
-function onReady($, _, Backbone) {
+const onReady = ($, _, Backbone) => 
+{
     // urlutil init
     UrlUtil.initialize(UrlUtil.getURL2JSON());
     // UrlUtil.pushState('login','',app.service_root_dir);
@@ -15,7 +16,7 @@ function onReady($, _, Backbone) {
 
     _.extend(Activity, {
         onCreate: function() {
-            var self = this;
+            const self = this;
 
             // back key
             self.onBackPressed(function(k){
@@ -35,7 +36,7 @@ function onReady($, _, Backbone) {
             self.onCreateView();
         },
         onCreateView: function() {
-            var self = this;
+            const self = this;
 
             // event
             $('#drawer_menu_back_button, #drawer_menu_title, #drawer_menu').on('click', function() {
@@ -68,7 +69,7 @@ function onReady($, _, Backbone) {
             $('#userid').focus();
 
             DocAsyncTask.doSubmit('#theLoginForm', function(form_params){
-                var send_params = {
+                let send_params = {
                 };
                 _.extend(send_params, form_params);
         
@@ -122,11 +123,11 @@ function onReady($, _, Backbone) {
             });
 
             // 로그인버튼 활성화 체크
-            var enable_submit_cnt = 0;
+            let enable_submit_cnt = 0;
             $('#userid, #passwd').on('change keyup',function(e)
             {
-                var userid_val = $('#userid').val();
-                var passwd_val = $('#passwd').val();
+                let userid_val = $('#userid').val();
+                let passwd_val = $('#passwd').val();
                 if(userid_val && userid_val !=''){
                     enable_submit_cnt = 1;
                 }
@@ -156,7 +157,7 @@ function onReady($, _, Backbone) {
     Activity.onCreate();
 
     // close progress
-    Handler.post(function(){
+    Handler.post(()=>{
         ProgressBar.close_progress();
     }, 200);
 }
