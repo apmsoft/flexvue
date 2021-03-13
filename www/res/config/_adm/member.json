@@ -1,0 +1,42 @@
+{
+    "columns" : {
+        "id"                   : "식별번호",
+        "signdate"             : "회원가입일",
+        "up_date"              : "정보변경일",
+        "recently_connect_date": "마지막접속일 ",
+        "logout_time"          : "마지막로그아웃시간",
+        "alarm_readdate"       : "새소식 최근 확인시간",
+        "name"                 : "성명",
+        "userid"               : "아이디",
+        "level"                : "회원등급",
+        "passwd"               : "비밀번호",
+        "re_passwd"            : "비밀번호 확인",
+        "cellphone"            : "전화번호",
+        "extract_id"           : "첨부파일토큰",
+        "introduce"            : "한줄자기소개",
+        "authemailkey"         : "이메일인증키",
+        "is_push"              : "푸신수신여부",
+        "company_id"           : "회사/소속 "
+    },
+    "auth_level"    : 100,
+    "title" : "회원관리",
+    "menus"         : [
+        {
+            "title" : "목록",
+            "action": "list",
+            "icon"  : "<i class=\"fas fa-chevron-right\"></i>",
+            "class" : "text-gray-400 mb-3",
+            "lv"    : 100
+        },
+        {
+            "title" : "회원 등록",
+            "action": "post",
+            "icon"  : "<button class=\"btn p-1 border-0 bg-blue-dark w-8 text-sm text-blue-100\"><i class=\"fas fa-plus\"></i></button>",
+            "class" : "mt-5 btn bg-blue-default text-white",
+            "lv"    : 100
+        }
+    ],
+    "acts"          : [
+        
+    ]
+}

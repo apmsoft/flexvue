@@ -1,0 +1,33 @@
+{
+    "title"     : "문의하기",
+    "columns" : {
+        "id"             : "식별번호",
+        "category"       : "분류",
+        "view_cnt"       : "조회수",
+        "title"          : "제목",
+        "extract_id"     : "첨부파일토큰",
+        "linkurl1"       : "경로",
+        "signdate"       : "등록일"
+    },
+    "category": {
+        "a": "사이트이용",
+        "b": "입점 및 제휴문의",
+        "c": "기타"
+    },
+    "auth_level": 100,
+    "fileupload" : {
+        "image_size": {
+            "thumbnail": {
+                "width": 110,
+                "height": 90
+            },
+            "middle": {
+                "width": 0,
+                "height": 0
+            }
+        },
+        "file_extension": "jpg,jpeg,pdf",
+        "file_maxsize": 8,
+        "number_files_allowed": 10
+    }
+}

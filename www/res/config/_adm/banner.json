@@ -1,0 +1,56 @@
+{
+    "title"     : "배너관리",
+    "columns" : {
+        "id"        : "식별번호",
+        "category"  : "위치",
+        "start_date": "시작일",
+        "end_date"  : "종료일",
+        "click_cnt" : "클릭수",
+        "view_cnt"  : "조회수",
+        "title"     : "제목",
+        "extract_id": "배너이미지",
+        "url"       : "클릭경로",
+        "signdate"  : "등록일"
+    },
+    "category": {
+        "m001": "메인(1506*252)",
+        "m002": "로그인(760*612)"
+    },
+    "auth_level": 100,
+    "menus"         : [
+        {
+            "title" : "목록",
+            "action": "list",
+            "doc_id" : "",
+            "icon"  : "<i class=\"fas fa-chevron-right\"></i>",
+            "class" : "text-gray-400 mb-3",
+            "lv"    : 100
+        },
+        {
+            "title" : "배너 등록",
+            "action": "post",
+            "doc_id" : "",
+            "icon"  : "<button class=\"btn p-1 border-0 bg-blue-dark w-8 text-sm text-blue-100\"><i class=\"fas fa-plus\"></i></button>",
+            "class" : "mt-5 btn bg-blue-default text-white",
+            "lv"    : 100
+        }
+    ],
+    "acts"          : [
+        
+    ],
+    "fileupload" : {
+        "image_size": {
+            "thumbnail": {
+                "width": 110,
+                "height": 90
+            },
+            "middle": {
+                "width": 0,
+                "height": 0
+            }
+        },
+        "file_extension": "jpg,jpeg",
+        "file_maxsize": 8,
+        "number_files_allowed": 1
+    }
+}

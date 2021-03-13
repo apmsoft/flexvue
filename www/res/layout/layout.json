@@ -1,0 +1,51 @@
+{
+    "index": {
+        "panel": null,
+        "title": "썬코기라",
+        "frame": "v1/index.html",
+        "template": null,
+        "value": null,
+        "description": "펜씨업개발 API 3.0버전, 펜씨업소프트",
+        "url": "http:\/\/coconut.fancyupsoft.com",
+        "image": "",
+        "image_width": "200",
+        "image_height": "200"
+    },
+    "login": {
+        "panel": null,
+        "title": "로그인",
+        "frame": "v1/login.html",
+        "template": null,
+        "value": null,
+        "description": "로그인",
+        "url": "http:\/\/coconut.fancyupsoft.com\/?act=login",
+        "image": "",
+        "image_width": "200",
+        "image_height": "200"
+    },
+    "join": {
+        "panel": null,
+        "title": "회원가입",
+        "frame": "v1/join.html",
+        "template": null,
+        "value": null,
+        "description": "",
+        "url":"",
+        "image": "",
+        "image_width": "200",
+        "image_height": "200"
+    },
+    "fpwd": {
+        "panel": null,
+        "title": "비밀번호찾기",
+        "frame": "v1/findpwd.html",
+        "template": null,
+        "value": null,
+        "filename": "v1\/findpwd.html",
+        "url": "",
+        "description": "",
+        "image": "",
+        "image_width": "200",
+        "image_height": "200"
+    }
+}

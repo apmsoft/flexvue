@@ -1,0 +1,47 @@
+{
+    "title"     : "팝업관리",
+    "columns" : {
+        "id"        : "식별번호",
+        "start_date": "시작일",
+        "end_date"  : "종료일",
+        "view_count": "뷰카운터",
+        "title"     : "제목",
+        "extract_id": "첨부파일토큰",
+        "link"      : "링크주소"
+    },
+    "auth_level": 100,
+    "menus"         : [
+        {
+            "title" : "목록",
+            "action": "list",
+            "icon"  : "<i class=\"fas fa-chevron-right\"></i>",
+            "class" : "text-gray-400 mb-3",
+            "lv"    : 100
+        },
+        {
+            "title" : "팝업 등록",
+            "action": "post",
+            "icon"  : "<button class=\"btn p-1 border-0 bg-blue-dark w-8 text-sm text-blue-100\"><i class=\"fas fa-plus\"></i></button>",
+            "class" : "mt-5 btn bg-blue-default text-white",
+            "lv"    : 100
+        }
+    ],
+    "acts"          : [
+        
+    ],
+    "fileupload" : {
+        "image_size": {
+            "thumbnail": {
+                "width": 110,
+                "height": 90
+            },
+            "middle": {
+                "width": 0,
+                "height": 0
+            }
+        },
+        "file_extension": "jpg,jpeg",
+        "file_maxsize": 8,
+        "number_files_allowed": 1
+    }
+}

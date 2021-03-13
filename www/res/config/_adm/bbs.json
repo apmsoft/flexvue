@@ -1,0 +1,34 @@
+{
+    "title"     : "고객센터",
+    "columns" : {
+    },
+    "category": {
+    },
+    "tables" : [
+        "notice","qna"
+    ],
+    "auth_level": 100,
+    "menus"         : [
+    ],
+    "acts"          : [
+        {
+            "title": "공지사항",
+            "act" : "bbs",
+            "doc_id" : "notice",
+            "icon": "<i class=\"fas fa-mobile-alt\"></i>",
+            "class" : "bg-blue-light mb-3",
+            "lv" : 100,
+            "comment" : "notice"
+        },
+        {
+            "title": "문의하기",
+            "act" : "bbs",
+            "doc_id" : "qna",
+            "icon": "<i class=\"fas fa-mobile-alt\"></i>",
+            "class" : "bg-blue-light mb-3",
+            "lv" : 100,
+            "comment" : "qna"
+        }
+    ],
+    "fileupload" : null
+}

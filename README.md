@@ -12,7 +12,7 @@ https://www.w3schools.com/js/js_es6.asp
 https://itstory.tk/entry/JavaScript-ES6-문법-정리
 
 # 빌드 
-npx tailwindcss  build ./tailwind.css -o ./assets/v1/css/tailwind.css
+npx tailwindcss-cli@latest build ./tailwind.css -o ./www/v1/css/tailwind.css
 
 
 

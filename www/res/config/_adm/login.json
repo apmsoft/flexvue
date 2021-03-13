@@ -1,0 +1,6 @@
+{
+    "columns" : {
+        "userid" : "아이디",
+        "passwd" : "비밀번호"
+    }
+}
