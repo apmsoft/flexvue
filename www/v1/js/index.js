@@ -16,18 +16,25 @@ const onReady = ($) =>
 
     Handler.post(() => Log.d('Handler post'));
 
-    // template
-    const template = new Template(`${config.asset}/tpl/test.html`, '#tpl_test');
-    template.print('#left_docs_contents', { name : '홍길동', age : 30 },function (){
-        Log.v('2');
-    });
+    // Log.clear();
 
-    Handler.post(()=>{
-        template.print('#afterid', { name : '유관순', age : 20 },function (){
-            Log.v('3');
+    // template 1
+    new Template(`${config.asset}/tpl/test.html`, '#tpl_test').print({ name : '홍길동', age : 30 },function (tpl)
+    {
+        Log.v(1);
+        Promise.resolve((document.querySelector('#left_docs_contents').innerHTML = tpl )).then(function() 
+        {
+            // template 2
+            new Template(`${config.asset}/tpl/test.html`, '#tpl_test').print({ name : '유관순', age : 20 },function (tpl)
+            {
+                Log.v(2);
+                Promise.resolve((document.querySelector('#left_docs_contents').insertAdjacentHTML('afterend',tpl ))).then(function() 
+                {
+                });
+                
+            });
         });
-    },300);
-    
+    }); 
 }
 
 // document ready
