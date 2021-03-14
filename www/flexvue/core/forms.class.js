@@ -24,9 +24,7 @@ class Forms {
                 let _value = (nodeName == 'TEXTAREA') ? encodeURIComponent(val) : val;
                 send_params[name] = (typeof send_params[name] !== 'undefined' && send_params[name]!='') ? `${send_params[name]},${_value}` : _value;
             });
-            Log.d('//--submit--->');
             Log.d (send_params);
-            Log.d('<---------//');
 
             if(typeof callback === 'function'){
                 callback(send_params);

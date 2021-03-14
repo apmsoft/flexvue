@@ -1,5 +1,7 @@
 import {Activity} from '../../flexvue/core/activity.class.js';
 import {Template} from '../../flexvue/core/template.class.js';
+import {Forms} from '../../flexvue/core/forms.class.js';
+import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
 
 const onReady = ($) => 
 {
