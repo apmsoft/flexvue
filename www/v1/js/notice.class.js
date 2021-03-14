@@ -1,4 +1,5 @@
 import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
+import {Template} from '../../flexvue/core/template.class.js';
 
 class Notice {
     constructor(){
@@ -13,6 +14,15 @@ class Notice {
         Log.d('>>>>>', 'Notice :: doList', urlManager.url_params);
         Log.d(urlManager.getUrlParams('page','doc_id'));
         Log.d(urlManager.removeUrlParams('doc_id'));
+
+        // template print
+        new Template(`${config.asset}/tpl/test2.html`, '#tpl_test2').print({ name : '유관순', age : 30 }, function (tpl)
+        {
+            Promise.resolve((document.querySelector('#notice_list').innerHTML = tpl )).then(function() 
+            {
+                
+            });
+        });
     }
 }
 

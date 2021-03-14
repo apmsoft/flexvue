@@ -1,6 +1,6 @@
 
 const config = {
-    baseUrl    : '../flexvue',
+    baseUrl    : `../..`,
     version    : '0.1.1',
     int_version: 1,
     debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
@@ -8,8 +8,7 @@ const config = {
     domain     : 'http://kfield.co.kr',
     asset      : '../v1',
     src        : 'http://kfield.co.kr/src',
-    res        : '../res',
-    template : {}
+    res        : '../res'
 };
 
 // application
