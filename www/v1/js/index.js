@@ -6,6 +6,9 @@ import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
 
 const onReady = ($) => 
 {
+    // close progress
+    ProgressBar.show();
+
     const urlManager = new UrlManager(document.location);
     // urlManager.pushState('index','인텍스', `./?${urlManager.makeJSON2URL(urlManager.url_params)}`);
 
@@ -44,12 +47,19 @@ const onReady = ($) =>
             document.querySelector('#btn-test2').addEventListener('click', (el)=>{
                 alert('2');
             },false);
+
+            // close progress
+            ProgressBar.close();
         });
     }); 
 }
 
 // document ready
 document.addEventListener("DOMContentLoaded",function(){
+    // progress
+    new ProgressBar();
+
+    // callback
     onReady();
 });
 

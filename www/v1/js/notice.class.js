@@ -7,7 +7,12 @@ class Notice {
     constructor(){
     }
 
-    doList(params){
+    doList(params)
+    {
+        // show progress
+        ProgressBar.show();
+
+        // self
         const self = this;
 
         // url
@@ -22,7 +27,8 @@ class Notice {
         {
             Promise.resolve((document.querySelector('#notice_list').innerHTML = tpl )).then(function() 
             {
-                
+                // close progress
+                ProgressBar.close();
             });
         });
     }
