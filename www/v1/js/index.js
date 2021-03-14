@@ -30,6 +30,7 @@ const onReady = ($) =>
         Log.v(1);
         Promise.resolve((document.querySelector('#left_docs_contents').innerHTML = tpl )).then(function() 
         {
+            // click evt 1
             document.querySelector('#btn-test').addEventListener('click', (el)=>{
                 (async () => {
                     await import('../../v1/js/notice.class.js') .then((Module) => {
@@ -37,8 +38,9 @@ const onReady = ($) =>
                         notice.doList({page:1});
                     });
                 })();
-
             },false);
+
+            // click evt 2
             document.querySelector('#btn-test2').addEventListener('click', (el)=>{
                 alert('2');
             },false);
