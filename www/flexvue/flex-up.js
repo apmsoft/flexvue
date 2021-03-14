@@ -1,3 +1,7 @@
+export class App {
+    static version = '0.1';
+    static int_version = 1;
+}
 const app = {
     version: 'flexvue',
     int_version : 8,
@@ -55,6 +59,7 @@ const app = {
             toggle:'bottomthird_transitioned'
         },
     },
+
 
     // time
     location_delay_time: 0,

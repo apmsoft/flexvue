@@ -40,7 +40,8 @@ const DocAsyncTask = {
     // frame html 출력
     doPrintFrameHtml(frame, callback){
         // html 
-        if (frame !== null){
+        if (frame !== null)
+        {
             if (frame.indexOf("#") > -1)
             {
                 let arr       = frame.split('#');
