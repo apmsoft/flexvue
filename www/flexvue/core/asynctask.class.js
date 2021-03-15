@@ -61,6 +61,14 @@ class AsyncTask
         if (response.ok) return await response.json();
         throw new Error(response.status);
     }
+
+    async doImport(url) {
+        Log.d('doImport : '+url);
+        return await import(url).then(Module => {
+            return Module;
+        });
+        throw new Error(response.status);
+    }
 }
 
 export {AsyncTask};

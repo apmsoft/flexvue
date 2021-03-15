@@ -4,7 +4,7 @@ import {Forms} from '../../flexvue/core/forms.class.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
 
-const onReady = ($) => 
+const onReady = () => 
 {   
     // progress init
     new ProgressBar();
@@ -21,11 +21,13 @@ const onReady = ($) =>
     // activity
     const activity = new Activity();
 
+    // 앱 정보
     const app = new App();
     Log.i(App.browser, App.version, App.os, App.lang);
     App.lang = 'en';
     Log.i(App.lang);
 
+    // 핸들러
     Handler.post(() => Log.d('Handler post'));
 
     // 데이터 가져오기
@@ -44,12 +46,11 @@ const onReady = ($) =>
         {
             // 게시판
             document.querySelector('#btn-test').addEventListener('click', (el)=>{
-                (async () => {
-                    await import('../../v1/js/notice.class.js') .then((Module) => {
-                        const notice = new Module.Notice();
-                        notice.doList({page:1});
-                    });
-                })();
+                // import module
+                new AsyncTask().doImport('../../v1/js/notice.class.js').then(Module => {
+                    const notice = new Module.Notice();
+                    notice.doList({page:1});
+                });
             },false);
 
             // close progress
@@ -57,7 +58,7 @@ const onReady = ($) =>
         });
     }); 
 
-    // multiout
+    // 멀티 비동기 콜백
     Promise.all([
         new AsyncTask().doGet('../res/values/strings.json', {}), 
         new Template().readFile(`${config.asset}/tpl/test3.html`, '#tpl_test3')

@@ -4,7 +4,8 @@
             "type": "pwa-chrome",
             "name": "flexvue",
             "request": "launch",
-            "url": "http://localhost:8080"
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }

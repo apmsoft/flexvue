@@ -20,7 +20,7 @@ class Notice {
         urlManager.mergeURLParams(params);
         Log.d('>>>>>', 'Notice :: doList', urlManager.url_params);
         Log.d(urlManager.getUrlParams('page','doc_id'));
-        Log.d(urlManager.removeUrlParams('doc_id'));
+        // Log.d(urlManager.removeUrlParams('doc_id'));
 
         // multiout
         Promise.all([
@@ -29,12 +29,16 @@ class Notice {
         ]).then((data) => {
             const tpl = data[1];
             const resp = data[0];
-            Promise.resolve(document.querySelector('#notice_list').innerHTML = new Template().render(tpl,resp)).then(function() 
-            {
-                // close progress
-                ProgressBar.close();
+
+            new Promise((resolve)=>{
+                document.querySelector('#notice_list').innerHTML = new Template().render(tpl,resp);
+                resolve(true);
+            }); 
+        }).then(()=>{
+            document.querySelector('p').addEventListener('click',(el)=>{
+                alert(el.innerText);
             });
-        });
+        }).finally(()=>{ ProgressBar.close(); } );
     }
 }
 
