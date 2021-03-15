@@ -240,3 +240,220 @@ const Handler = {
         }, delay);
     }
 };
+
+class Activity {
+
+	static bottomthird = null;
+	static bottomside = null;
+	static bottom = null;
+	static rightthird = null;
+	static rightside = null;
+	static right = null;
+
+	static bottomthird_back_button = null;
+	static bottomside_back_button = null;
+	static bottom_back_button = null;
+	static rightthird_back_button = null;
+	static rightside_back_button = null;
+	static right_back_button = null;
+
+	static bottomthird_title = null;
+	static bottomside_title = null;
+	static bottom_title = null;
+	static rightthird_title = null;
+	static rightside_title = null;
+	static right_title = null;
+	static left_title = null;
+	
+	static pre_state = '';
+
+    static layout_panel = { 
+        left : {
+            id:'#left',
+            target:null,
+            toggle:null
+        },
+        right : {
+            id:'#right', 
+            target:'#right',
+            toggle:'transitioned'
+        },
+        rightside: {
+            id:'#rightside',
+            target:'#rightside',
+            toggle:'rightside_transitioned'
+        },
+        rightthird: {
+            id:'#rightthird',
+            target:'#rightthird',
+            toggle:'rightthird_transitioned'
+        },
+        bottom: {
+            id:'#bottom',
+            target:'#bottom',
+            toggle:'bottom_transitioned'
+        },
+        bottomside: {
+            id:'#bottomside',
+            target:'#bottomside',
+            toggle:'bottomside_transitioned'
+        },
+        bottomthird: {
+            id:'#bottomthird',
+            target:'#bottomthird',
+            toggle:'bottomthird_transitioned'
+        }
+    }
+
+	constructor(){
+		this.constructor.bottomthird = document.querySelector("#bottomthird");
+		this.constructor.bottomside = document.querySelector("#bottomside");
+		this.constructor.bottom = document.querySelector("#bottom");
+		this.constructor.rightthird = document.querySelector("#rightthird");
+		this.constructor.rightside = document.querySelector("#rightside");
+		this.constructor.right = document.querySelector("#right");
+
+		this.constructor.bottomthird_back_button = document.querySelector("#bottomthird_back_button");
+		this.constructor.bottomside_back_button = document.querySelector("#bottomside_back_button");
+		this.constructor.bottom_back_button = document.querySelector("#bottom_back_button");
+		this.constructor.rightthird_back_button = document.querySelector("#rightthird_back_button");
+		this.constructor.rightside_back_button = document.querySelector("#rightside_back_button");
+		this.constructor.right_back_button = document.querySelector("#right_back_button");
+
+		this.constructor.bottomthird_title = document.querySelector("#bottomthird_title");
+		this.constructor.bottomside_title = document.querySelector("#bottomside_title");
+		this.constructor.bottom_title = document.querySelector("#bottom_title");
+		this.constructor.rightthird_title = document.querySelector("#rightthird_title");
+		this.constructor.rightside_title = document.querySelector("#rightside_title");
+		this.constructor.right_title = document.querySelector("#right_title");
+		this.constructor.left_title = document.querySelector("#left_title");
+	}
+
+	onCreateView(){
+		if(Activity.bottom_back_button){ Activity.bottom_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.bottomside_back_button){ Activity.bottomside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.bottomthird_back_button) { Activity.bottomthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.right_back_button) { Activity.right_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.rightside_back_button){ Activity.rightside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.rightthird_back_button) { Activity.rightthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
+
+		if(Activity.bottom_title){ Activity.bottom_title.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.bottomside_title){ Activity.bottomside_title.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.bottomthird_title) { Activity.bottomthird_title.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.right_title) { Activity.right_title.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.rightside_title){ Activity.rightside_title.addEventListener("click", () => { history.go(-1); }, false); }
+		if(Activity.rightthird_title) { Activity.rightthird_title.addEventListener("click", () => { history.go(-1); }, false); }
+	}
+
+    static onStart (panel_id)
+    {
+        if(panel_id !==null)
+        {
+            panel_id = (panel_id) ? panel_id.replace('#','') : '';
+            let panel = Activity.layout_panel[panel_id];
+            if (panel.target !== null)
+            {
+                let classname = panel.toggle;
+                if (!document.querySelector(panel.id).classList.contains(classname)) 
+                {
+                    Handler.post(()=>{
+                        // toggle
+                        document.querySelector(panel.target).classList.toggle(classname);
+                    },10);
+                }
+            }
+        }
+    }
+
+    static onStop (panel_id){
+        panel_id = (panel_id) ? panel_id.replace('#','') : '';
+
+        switch(panel_id){
+            case 'bottomthird':
+                if (Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+                    document.querySelector('#bottomthird_docs_contents').innerHTML ='';
+                    Activity.bottomthird.classList.toggle('bottomthird_transitioned');
+                }
+            break;
+            case 'bottomside':
+                if (Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                    document.querySelector('#bottomside_docs_contents').innerHTML ='';
+                    Activity.bottomside.classList.toggle('bottomside_transitioned');
+                }
+            case 'bottom':
+                let bottom = document.querySelector('#bottom');
+                if (bottom.classList.contains('bottom_transitioned')) {
+                    document.querySelector('#bottom_docs_contents').innerHTML ='';
+                    bottom.classList.toggle('bottom_transitioned');
+                }
+            break;
+            case 'rightthird' :
+                let rightthird = document.querySelector('#rightthird');
+                if (rightthird.classList.contains('rightthird_transitioned')) {
+                    document.querySelector('#rightthird_docs_contents').innerHTML ='';
+                    rightthird.classList.toggle('rightthird_transitioned');
+                }
+            break;
+            case 'rightside' :
+                let rightside = document.querySelector('#rightside');
+                if (rightside.classList.contains('rightside_transitioned')) {
+                    document.querySelector('#rightside_docs_contents').innerHTML ='';
+                    rightside.classList.toggle('rightside_transitioned');
+                }
+            break;
+            case 'right':
+                let right = document.querySelector('#right');
+                if (right.classList.contains('transitioned')) {
+                    document.querySelector('#right_docs_contents').innerHTML ='';
+                    right.classList.toggle('transitioned');
+                }
+            break;
+            case 'drawer_menu':
+                let drawer_menu = document.querySelector('#drawer_menu');
+                if (drawer_menu.classList.contains('drawer_transitioned')) {
+                    drawer_menu.classList.toggle('drawer_transitioned');
+                }
+            break;
+            
+        }
+    }
+
+    static onBackPressed (callback) 
+    {
+        window.onpopstate = function(event) 
+		{
+			let is_Trustred = false;
+			if (typeof event.isTrusted !=='undefined' && event.isTrusted) {
+				is_Trustred = true;
+			} else if (typeof event.state !=='undefined' && event.state != 'null') {
+				is_Trustred = true;
+			}
+
+			if (is_Trustred) 
+			{
+				// 이전경로 do 체크
+				if(window.history.state !== null && window.history.state){
+					Activity.pre_state = window.history.state;
+				}
+
+				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+					Activity.onStop('#bottomthird');
+				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+					Activity.onStop('#bottomside');
+				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+					Activity.onStop('#bottom');
+				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+					Activity.onStop('#rightthird');
+				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+					Activity.onStop('#rightside');
+				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
+					Activity.onStop('#right');
+				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
+					Activity.onStop('#drawer_menu');
+				}
+
+				callback(Activity.pre_state);
+			}
+		};
+    }
+}

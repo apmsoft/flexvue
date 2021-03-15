@@ -15,6 +15,9 @@ class Notice {
         // self
         const self = this;
 
+        // panel
+        Activity.onStart('#right');
+
         // url
         const urlManager = new UrlManager(document.location);
         urlManager.mergeURLParams({page:1});
@@ -29,13 +32,15 @@ class Notice {
             const resp = data[0];
 
             new Promise((resolve)=>{
-                document.querySelector('#notice_list').innerHTML = new Template().render(tpl,resp);
+                document.querySelector('#right_docs_contents').innerHTML = new Template().render(tpl,resp);
                 resolve(true);
             }); 
         }).then(()=>{
             document.querySelector('p').addEventListener('click',(el)=>{
                 alert(el.innerText);
             });
+
+            flatpickr("#end_date", {});
         }).finally(()=>{ ProgressBar.close(); } );
     }
 }

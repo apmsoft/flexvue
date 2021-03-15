@@ -77,7 +77,7 @@ class UrlManager extends URL {
 
     // history change url
     pushState(id, title, url){
-        this.current_id = id;
+        Activity.pre_state = id;
         window.history.pushState(id, title, url);
     }
 
