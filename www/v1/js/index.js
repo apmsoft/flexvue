@@ -39,6 +39,16 @@ const onReady = ($) =>
         Promise.resolve(document.querySelector('#left_docs_contents').innerHTML = _tpl)
         .then(function() 
         {
+            // 게시판
+            document.querySelector('#btn-test').addEventListener('click', (el)=>{
+                (async () => {
+                    await import('../../v1/js/notice.class.js') .then((Module) => {
+                        const notice = new Module.Notice();
+                        notice.doList({page:1});
+                    });
+                })();
+            },false);
+
             // close progress
             ProgressBar.close();
         });

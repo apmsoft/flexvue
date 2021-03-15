@@ -22,10 +22,14 @@ class Notice {
         Log.d(urlManager.getUrlParams('page','doc_id'));
         Log.d(urlManager.removeUrlParams('doc_id'));
 
-        // template print
-        new Template(`${config.asset}/tpl/test2.html`, '#tpl_test2').print({ name : '유관순', age : 30 }, function (tpl)
-        {
-            Promise.resolve((document.querySelector('#notice_list').innerHTML = tpl )).then(function() 
+        // multiout
+        Promise.all([
+            new AsyncTask().doGet('../res/values/sysmsg.json', {}), 
+            new Template().readFile(`${config.asset}/tpl/test2.html`, '#tpl_test2')
+        ]).then((data) => {
+            const tpl = data[1];
+            const resp = data[0];
+            Promise.resolve(document.querySelector('#notice_list').innerHTML = new Template().render(tpl,resp)).then(function() 
             {
                 // close progress
                 ProgressBar.close();
