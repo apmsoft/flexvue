@@ -48,21 +48,24 @@ class UrlManager extends URL {
         if(sPageURL.indexOf('?')>-1) {
             sPageURL = sPageURL.replace('?','');
         }
-        let sURLVariables = sPageURL.split('&');
-        sURLVariables.forEach(val => {
-            let sParameterName = val.split('=');
-            Log.i(sParameterName);
-            var k = sParameterName[0];
-            let v = sParameterName[1];
-            result[k] = v;
-        });
+        if(sPageURL.indexOf('&')>-1) {
+            let sURLVariables = sPageURL.split('&');
+            sURLVariables.forEach(val => {
+                let sParameterName = val.split('=');
+                Log.i(sParameterName);
+                var k = sParameterName[0];
+                let v = sParameterName[1];
+                result[k] = v;
+            });
+        }
     return result;
     }
 
     // location url 만들기
     // return string
     makeJSON2URL(params){
-        let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
+        this.mergeURLParams(params);
+        let url_param = Object.entries(this.url_params,params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
         return url_param;
     }
 

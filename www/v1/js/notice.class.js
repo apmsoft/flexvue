@@ -17,10 +17,8 @@ class Notice {
 
         // url
         const urlManager = new UrlManager(document.location);
-        urlManager.mergeURLParams(params);
-        Log.d('>>>>>', 'Notice :: doList', urlManager.url_params);
-        Log.d(urlManager.getUrlParams('page','doc_id'));
-        // Log.d(urlManager.removeUrlParams('doc_id'));
+        urlManager.mergeURLParams({page:1});
+        urlManager.pushState('notice_list','notice', `${urlManager.pathname}?${urlManager.makeJSON2URL({})}`)
 
         // multiout
         Promise.all([
