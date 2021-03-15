@@ -10,11 +10,20 @@
   <link href="../flexvue/flatpickr/flatpickr.min.css" rel="stylesheet">
   <link href="../flexvue/filepond/dist/filepond.min.css" rel="stylesheet">
 
+  <link href="../flexvue/filepond/dist/filepond.min.css" rel="stylesheet" />
+  <link href="../flexvue/filepond/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+
   <script src="../flexvue/flexvue.js"></script>
   <script src="../flexvue/flatpickr/l10n/ko.js"></script>
   <script src="../flexvue/flatpickr/flatpickr.min.js"></script>
-  
-  
+ 
+  <script src="../flexvue/filepond/dist/filepond-plugin-file-validate-size.min.js"></script>
+  <script src="../flexvue/filepond/dist/filepond-plugin-file-validate-type.min.js"></script>
+  <script src="../flexvue/filepond/dist/filepond-plugin-image-preview.js"></script>
+  <script src="../flexvue/filepond/dist/filepond.min.js"></script>
+
+  <script src="../flexvue/ckeditor5/ckeditor.js"></script>
+  <script src="../flexvue/ckeditor5/translations/ko.js"></script>
 
   <!-- <script data-main="../plugins/flex-up.min" src="../plugins/libs/js/require.min.js"></script> -->
 </head> 
@@ -50,6 +59,25 @@
                 </div>
                 <div id="notice_list">
                     <input id="start_date" class="form-input" />
+
+                    <div class="form-row">
+                        <div class="form-label">
+                            *이미지
+                        </div>
+                        <div class="flex-1">
+                            <input type="hidden" id="extract_id" name="extract_id" value="${msg.extract_id}" /> 
+                            <input type="file" name="filepond" accept="image/png, image/jpeg" data-max-file-size="7MB" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-label">
+                            내용
+                        </div>
+                        <div class="flex-1">
+                            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="multiout">

@@ -22,9 +22,8 @@ const onReady = () =>
     // 터치
     var myRegion = new ZingTouch.Region(document.body);
     var myElement = document.getElementById('left_docs_contents');
-
     myRegion.bind(myElement, 'tap', function(e) {
-        console.log(e);
+        Log.i('ZingTouch >> '+e.detail.interval);
     });
 
     const urlManager = new UrlManager(document.location);
@@ -40,6 +39,69 @@ const onReady = () =>
         dateFormat: "Y-m-d"
     });
     flatpickr.localize(flatpickr.l10ns.ko);
+
+    // filepond
+    FilePond.registerPlugin(
+        FilePondPluginFileValidateSize,
+        FilePondPluginFileValidateType,
+        FilePondPluginImagePreview
+    );
+    // get a reference to the input element
+    const inputElement = document.querySelector('input[type="file"]');
+
+    // create a FilePond instance at the input element location
+    const pond = FilePond.create( inputElement,{
+        name: inputElement,
+        maxFiles: 1,
+        allowBrowse: true,
+        server: {
+            url: config.src+'/popup/upload',
+            process: {
+                url: '/process.php',
+                method: 'POST',
+                withCredentials: false,
+                headers: {},
+                timeout: 7000,
+                onload: (response) => {
+                    console.log('onload');
+                    console.log(response);
+                    return response.key;
+                },
+                onerror: (response) => {
+                    console.log('onerror');
+                    console.log(response);
+                    return response.data;
+                },
+                ondata: (formData) => {
+                    formData.append('extract_id', resp.msg.extract_id);
+                    return formData;
+                }
+            },
+            revert : null,
+            load : null,
+            fetch : null,
+            restore : null
+        }
+    } );
+
+    // editor
+    ClassicEditor.create( document.querySelector( '#description' ),{
+        toolbar: {
+            items: [
+                'heading','|','bold','italic','link','|','blockQuote','insertTable','mediaEmbed','undo','redo'
+            ]
+        },
+        language: 'ko'
+    })
+    .then(editor => {
+        window.editor = editor;
+        window.editor.editing.view.focus();
+
+        // $('.ck-editor').addClass('noSwipe');
+    })
+    .catch( error => {
+        console.error( error );
+    });
 
     // 앱 정보
     const app = new App();
