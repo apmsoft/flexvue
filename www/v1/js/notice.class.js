@@ -41,6 +41,25 @@ class Notice {
             });
 
             flatpickr("#end_date", {});
+
+            // editor
+            ClassicEditor.create( document.querySelector( '#description2' ),{
+                toolbar: {
+                    items: [
+                        'heading','|','bold','italic','link','|','blockQuote','insertTable','mediaEmbed','undo','redo'
+                    ]
+                },
+                language: 'ko'
+            })
+            .then(editor => {
+                window.editor = editor;
+                window.editor.editing.view.focus();
+
+                // $('.ck-editor').addClass('noSwipe');
+            })
+            .catch( error => {
+                console.error( error );
+            });
         }).finally(()=>{ ProgressBar.close(); } );
     }
 }
