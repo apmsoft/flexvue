@@ -2,41 +2,29 @@
  * 템플릿
  */
 class Template {
-    
-    constructor(filename, template_id){
-        this.filename = filename;
-        this.template_id = template_id;
-    }
 
     // template 파일 찾기
-    async print (data, callback)
+    async readFile (filename, template_id)
     {
         const self = this;
-        let type = document.querySelector('script'+self.template_id);
-        try {
-            if(type && type !== 'null')
-            {
-                Log.d('is disk cache');
-                // out rendering html
-                const _tpl = document.querySelector('script'+self.template_id).innerText;
-                const _render = self.render(_tpl, data);
-                callback(_render);
-            }else{
-                Log.d('read file');
-                const resp = await fetch(self.filename, {mode: 'cors', cache: 'default'});
-                if(resp.ok){
-                    Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await resp.text() ))).then(function() 
-                    {
-                        // out rendering html
-                        const _tpl = document.querySelector('script'+self.template_id).innerText;
-                        const _render = self.render(_tpl, data);
-                        callback(_render);
-                    });
-                }
-
+        let type = document.querySelector('script'+template_id);
+        if(type && type !== 'null')
+        {
+            Log.d('is disk cache');
+            // out rendering html
+            return document.querySelector('script'+template_id).innerText;
+        }else{
+            Log.d('read file');
+            const response = await fetch(filename, {mode: 'cors', cache: 'default'});
+            if(response.ok){
+                return Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await response.text() ))).then(function() 
+                {
+                    // out rendering html
+                    return document.querySelector('script'+template_id).innerText;
+                });
             }
-        }catch (e){
-            Log.e(e);
+            throw new Error(response.status);
+
         }
     }
 

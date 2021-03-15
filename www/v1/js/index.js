@@ -25,33 +25,34 @@ const onReady = ($) =>
 
     Handler.post(() => Log.d('Handler post'));
 
+    // 데이터 가져오기
+    new AsyncTask().doGet('../res/values/strings.json', {}).then((resp)=>{
+        Log.i('----->',resp);
+    });
+
     // Log.clear();
 
-    // template 1
-    new Template(`${config.asset}/tpl/test.html`, '#tpl_test').print({ name : '홍길동', age : 30 },function (tpl)
+    // 템플릿 출력
+    new Template().readFile(`${config.asset}/tpl/test.html`, '#tpl_test').then((tpl)=>
     {
-        Log.v(1);
-        Promise.resolve((document.querySelector('#left_docs_contents').innerHTML = tpl )).then(function() 
+        const _tpl = new Template().render(tpl,{name:'ㅇ',age:10});
+        Promise.resolve(document.querySelector('#left_docs_contents').innerHTML = _tpl)
+        .then(function() 
         {
-            // click evt 1
-            document.querySelector('#btn-test').addEventListener('click', (el)=>{
-                (async () => {
-                    await import('../../v1/js/notice.class.js') .then((Module) => {
-                        const notice = new Module.Notice();
-                        notice.doList({page:1});
-                    });
-                })();
-            },false);
-
-            // click evt 2
-            document.querySelector('#btn-test2').addEventListener('click', (el)=>{
-                alert('2');
-            },false);
-
             // close progress
             ProgressBar.close();
         });
     }); 
+
+    // multiout
+    Promise.all([
+        new AsyncTask().doGet('../res/values/strings.json', {}), 
+        new Template().readFile(`${config.asset}/tpl/test3.html`, '#tpl_test3')
+    ]).then((data) => {
+        const tpl = data[1];
+        const resp = data[0];
+        document.querySelector('#multiout').innerHTML = new Template().render(tpl,resp);
+    });
 }
 
 // document ready
