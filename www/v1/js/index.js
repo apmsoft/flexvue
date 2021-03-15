@@ -5,8 +5,11 @@ import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
 
 const onReady = ($) => 
-{
-    // close progress
+{   
+    // progress init
+    new ProgressBar();
+
+    // show progress
     ProgressBar.show();
 
     const urlManager = new UrlManager(document.location);
@@ -67,8 +70,7 @@ const onReady = ($) =>
 
 // document ready
 document.addEventListener("DOMContentLoaded",function(){
-    // progress
-    new ProgressBar();
+    
 
     // callback
     onReady();
