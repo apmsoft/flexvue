@@ -115,17 +115,6 @@ class Activity {
             }
         };
     }
-
-    async include (filename) {
-        try {
-            const resp = await fetch(self.filename, {mode: 'cors', cache: 'default'});
-            if(resp.ok){
-                await resp.javascript()
-            }
-        }catch (e){
-            Log.e(e);
-        }
-    }
 }
 
 export  {Activity};

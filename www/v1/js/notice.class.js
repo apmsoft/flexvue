@@ -18,7 +18,7 @@ class Notice {
         // url
         const urlManager = new UrlManager(document.location);
         urlManager.mergeURLParams({page:1});
-        urlManager.pushState('notice_list','notice', `${urlManager.pathname}?${urlManager.makeJSON2URL({})}`)
+        urlManager.pushState('notice_list','notice', `${urlManager.pathname}?${urlManager.makeJSON2URL({})}`);
 
         // multiout
         Promise.all([
