@@ -25,7 +25,7 @@ const onReady = () =>
     new Activity().onCreateView();
     Activity.onBackPressed((state)=>{
         Log.i('onBackPressed : '+state);
-        history.go(-1);
+        // history.go(-1);
     });
 
     // progress init
