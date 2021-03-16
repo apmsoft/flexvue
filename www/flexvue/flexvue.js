@@ -2,10 +2,10 @@ const config = {
     version    : '0.1.1',
     int_version: 1,
     debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
-    cache      : 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    domain     : 'http://kfield.co.kr',
+    cache      : 'default', // *default, no-cache, reload, force-cache, only-if-cached
+    domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v1',
-    src        : 'http://kfield.co.kr/src',
+    src        : `http://flexup.fancyupsoft.com/src`,
     res        : '../res'
 };
 
@@ -15,7 +15,6 @@ class App {
     static os = 'unknown';
     static version ='unknown';
     static lang = ''; // ko,en,jp
-    static glueLang = ''; // _ko,_en,_jp [strings_en.josn | test_en.html]
 
     browsers = [
 		{
@@ -113,6 +112,10 @@ class App {
 			|| this.getPlatformVersion(navigator.appVersion)
 			|| "unknown";
         this.constructor.os = this.findPlatform(this.OS) || "unknown";
+    }
+
+    static getLocale(){
+        return (Activity.lang && Activity.lang !='') ? `_${App.lang}` : '';
     }
 
     findPlatform (data){

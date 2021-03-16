@@ -1,4 +1,4 @@
-import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
+import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 class DaumPostMap 
 {
     constructor(target_id, map_x ,map_y){

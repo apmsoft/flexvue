@@ -1,7 +1,7 @@
-import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
-import {Template} from '../../flexvue/core/template.class.js';
-import {Forms} from '../../flexvue/core/forms.class.js';
-import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
+import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
+import {Template} from '../../flexvue/core/template.class.min.js';
+import {Forms} from '../../flexvue/core/forms.class.min.js';
+import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 
 class Notice {
     constructor(){
@@ -25,7 +25,7 @@ class Notice {
 
         // multiout
         Promise.all([
-            new AsyncTask().doGet('../res/values/sysmsg.json', {}), 
+            new AsyncTask().doGet(`${config.res}/values/strings${App.getLocale()}.json`, {}), 
             new Template().readFile(`${config.asset}/tpl/test2.html`, '#tpl_test2')
         ]).then((data) => {
             const tpl = data[1];

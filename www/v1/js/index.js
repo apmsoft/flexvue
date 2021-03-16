@@ -1,7 +1,7 @@
-import {Template} from '../../flexvue/core/template.class.js';
-import {Forms} from '../../flexvue/core/forms.class.js';
-import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
-import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
+import {Template} from '../../flexvue/core/template.class.min.js';
+import {Forms} from '../../flexvue/core/forms.class.min.js';
+import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
+import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 
 /** ZingTouch */
 import ZingTouch from '../../flexvue/zingtouch/ZingTouch.js';
@@ -131,12 +131,12 @@ const onReady = () =>
     Handler.post(() => Log.d('Handler post'));
 
     // 데이터 가져오기
-    new AsyncTask().doGet(`../res/values/strings${App.glueLang}.json`, {}).then((resp)=>{
+    new AsyncTask().doGet(`${config.res}/values/strings${App.getLocale()}.json`, {}).then((resp)=>{
         Log.i('----->',resp);
     });
 
     // 템플릿 출력
-    new Template().readFile(`${config.asset}/tpl/test${App.glueLang}.html`, '#tpl_test').then((tpl)=>
+    new Template().readFile(`${config.asset}/tpl/test${App.getLocale()}.html`, '#tpl_test').then((tpl)=>
     {
         new Promise((resolve)=>{
             const _tpl = new Template().render(tpl,{name:'ㅇ',age:10});
