@@ -14,7 +14,8 @@ class App {
     static browser = 'unknown';
     static os = 'unknown';
     static version ='unknown';
-    static lang = 'ko';
+    static lang = ''; // ko,en,jp
+    static glueLang = ''; // _ko,_en,_jp [strings_en.josn | test_en.html]
 
     browsers = [
 		{
