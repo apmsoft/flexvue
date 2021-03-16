@@ -5,6 +5,9 @@ import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
 import ZingTouch from '../../flexvue/zingtouch/ZingTouch.js';
 import {} from '../../flexvue/ckeditor5/ckeditor.js';
 
+import {} from '../../flexvue/flatpickr/l10n/ko.js';
+import {} from '../../flexvue/flatpickr/flatpickr.min.js';
+
 const onReady = () => 
 {
     // activity
@@ -37,7 +40,8 @@ const onReady = () =>
     flatpickr("#start_date", {
         altInput: true,
         altFormat: "Y-m-d",
-        dateFormat: "Y-m-d"
+        dateFormat: "Y-m-d",
+        'local' : ko
     });
     flatpickr.localize(flatpickr.l10ns.ko);
 
