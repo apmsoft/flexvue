@@ -3,7 +3,7 @@ class UrlManager extends URL {
         super(url);
         this.version = 1;
         this.current_id = '';
-        this.url_params = (url !== null && url !='') ? this.convertURL2JSON() : {};
+        this.url_params = this.convertURL2JSON() || {};
     }
 
     doEmpty (){
@@ -65,7 +65,7 @@ class UrlManager extends URL {
     // return string
     makeJSON2URL(params){
         this.mergeURLParams(params);
-        let url_param = Object.entries(this.url_params,params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
+        let url_param = Object.entries(this.url_params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
         return url_param;
     }
 
