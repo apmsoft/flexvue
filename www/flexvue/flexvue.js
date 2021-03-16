@@ -374,51 +374,45 @@ class Activity {
 
         switch(panel_id){
             case 'bottomthird':
-                if (Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+                if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
                     document.querySelector('#bottomthird_docs_contents').innerHTML ='';
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
                 }
             break;
             case 'bottomside':
-                if (Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
                     document.querySelector('#bottomside_docs_contents').innerHTML ='';
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
                 }
             case 'bottom':
-                let bottom = document.querySelector('#bottom');
-                if (bottom.classList.contains('bottom_transitioned')) {
+                if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
                     document.querySelector('#bottom_docs_contents').innerHTML ='';
-                    bottom.classList.toggle('bottom_transitioned');
+                    Activity.bottom.classList.toggle('bottom_transitioned');
                 }
             break;
             case 'rightthird' :
-                let rightthird = document.querySelector('#rightthird');
-                if (rightthird.classList.contains('rightthird_transitioned')) {
+                if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
                     document.querySelector('#rightthird_docs_contents').innerHTML ='';
-                    rightthird.classList.toggle('rightthird_transitioned');
+                    Activity.rightthird.classList.toggle('rightthird_transitioned');
                 }
             break;
             case 'rightside' :
-                let rightside = document.querySelector('#rightside');
-                if (rightside.classList.contains('rightside_transitioned')) {
+                if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
                     document.querySelector('#rightside_docs_contents').innerHTML ='';
-                    rightside.classList.toggle('rightside_transitioned');
+                    Activity.rightside.classList.toggle('rightside_transitioned');
                 }
             break;
             case 'right':
-                let right = document.querySelector('#right');
-                if (right.classList.contains('transitioned')) {
+                if (Activity.right && Activity.right.classList.contains('transitioned')) {
                     document.querySelector('#right_docs_contents').innerHTML ='';
-                    right.classList.toggle('transitioned');
+                    Activity.right.classList.toggle('transitioned');
                 }
             break;
             case 'drawer_menu':
-                let drawer_menu = document.querySelector('#drawer_menu');
-                if (drawer_menu.classList.contains('drawer_transitioned')) {
-                    drawer_menu.classList.toggle('drawer_transitioned');
+                if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
+                    Activity.drawer_menu.classList.toggle('drawer_transitioned');
                 }
             break;
-            
         }
     }
 
