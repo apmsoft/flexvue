@@ -3,7 +3,7 @@ class UrlManager extends URL {
         super(url);
         this.version = 1;
         this.current_id = '';
-        this.url_params = this.convertURL2JSON() || {};
+        this.url_params = (url !== null && url !='') ? this.convertURL2JSON() : {};
     }
 
     doEmpty (){
