@@ -2,11 +2,22 @@ import {Template} from '../../flexvue/core/template.class.js';
 import {Forms} from '../../flexvue/core/forms.class.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
+
+/** ZingTouch */
 import ZingTouch from '../../flexvue/zingtouch/ZingTouch.js';
+
+/** ckeditor5 */
 import {} from '../../flexvue/ckeditor5/ckeditor.js';
 
+/** flatpickr */
 import {} from '../../flexvue/flatpickr/l10n/ko.js';
 import {} from '../../flexvue/flatpickr/flatpickr.min.js';
+
+/** filepond */
+import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-size.js';
+import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-type.js';
+import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.js';
+import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.js';
 
 const onReady = () => 
 {
@@ -31,7 +42,7 @@ const onReady = () =>
     });
 
     const urlManager = new UrlManager(document.location);
-    urlManager.pushState('index','인텍스', `./?${urlManager.makeJSON2URL(urlManager.url_params)}`);
+    // urlManager.pushState('index','인텍스', `${urlManager.pathname}/index.html?${urlManager.makeJSON2URL(urlManager.url_params)}`);
 
     console.log('onReady');
     Log.i('config ',config.version);
@@ -51,7 +62,8 @@ const onReady = () =>
         FilePondPluginFileValidateType,
         FilePondPluginImagePreview
     );
-    // get a reference to the input element
+
+    // target
     const inputElement = document.querySelector('input[type="file"]');
 
     // create a FilePond instance at the input element location
@@ -59,35 +71,36 @@ const onReady = () =>
         name: inputElement,
         maxFiles: 1,
         allowBrowse: true,
-        server: {
-            url: config.src+'/popup/upload',
-            process: {
-                url: '/process.php',
-                method: 'POST',
-                withCredentials: false,
-                headers: {},
-                timeout: 7000,
-                onload: (response) => {
-                    console.log('onload');
-                    console.log(response);
-                    return response.key;
-                },
-                onerror: (response) => {
-                    console.log('onerror');
-                    console.log(response);
-                    return response.data;
-                },
-                ondata: (formData) => {
-                    formData.append('extract_id', resp.msg.extract_id);
-                    return formData;
-                }
-            },
-            revert : null,
-            load : null,
-            fetch : null,
-            restore : null
-        }
-    } );
+        allowImagePreview: true,
+        // server: {
+        //     url: config.src+'/popup/upload',
+        //     process: {
+        //         url: '/process.php',
+        //         method: 'POST',
+        //         withCredentials: false,
+        //         headers: {},
+        //         timeout: 7000,
+        //         onload: (response) => {
+        //             console.log('onload');
+        //             console.log(response);
+        //             return response.key;
+        //         },
+        //         onerror: (response) => {
+        //             console.log('onerror');
+        //             console.log(response);
+        //             return response.data;
+        //         },
+        //         ondata: (formData) => {
+        //             formData.append('extract_id', resp.msg.extract_id);
+        //             return formData;
+        //         }
+        //     },
+        //     revert : null,
+        //     load : null,
+        //     fetch : null,
+        //     restore : null
+        // }
+    });
 
     // editor
     ClassicEditor.create( document.querySelector( '#description' ),{
