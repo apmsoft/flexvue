@@ -3,7 +3,7 @@ import {Forms} from '../../flexvue/core/forms.class.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.js';
 import ZingTouch from '../../flexvue/zingtouch/ZingTouch.js';
-// import ClassicEditor from '../../flexvue/ckeditor5/ckeditor.js';
+import {} from '../../flexvue/ckeditor5/ckeditor.js';
 
 const onReady = () => 
 {
