@@ -80,12 +80,13 @@ class UrlManager extends URL {
 
     // history change url
     pushState(id, title, url){
-        Activity.pre_state = id;
-        window.history.pushState(id, title, url);
-    }
+        // 윈도우 화면 위치 공유
+        if(Activity.push_state !='' && Activity.push_state !==null){
+            let cur_state = Activity.push_state;
+            Activity.history_state[cur_state] = id;
+        }
 
-    replaceStage(id, title, url){
-         window.history.replaceState(id, title, url);
+        window.history.pushState(id, title, url);
     }
 }
 

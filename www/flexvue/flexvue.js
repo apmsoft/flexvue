@@ -1,4 +1,5 @@
-const config = {
+const config   = {
+    app_name   : 'flexup',
     version    : '0.1.1',
     int_version: 1,
     debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
@@ -89,6 +90,11 @@ class App {
 			subagent : "Win",
 			identity: "Windows"
 		},
+        {
+			agent : navigator.platform,
+			subagent : "Android",
+			identity: "Android"
+		},
 		{
 			agent : navigator.platform,
 			subagent : "Mac",
@@ -112,6 +118,7 @@ class App {
 			|| this.getPlatformVersion(navigator.appVersion)
 			|| "unknown";
         this.constructor.os = this.findPlatform(this.OS) || "unknown";
+        this.constructor.lang = this.getLanguage() || '';
     }
 
     static getLocale(){
@@ -137,6 +144,16 @@ class App {
         var index = data.indexOf(this.versionSearchString);
 		if (index == -1) return;
 		return parseFloat(data.substring(index+this.versionSearchString.length+1));
+    }
+
+    getLanguage() {
+        let language = navigator.language || navigator.userLanguage;
+        language = language.toLowerCase();
+        language = language.substring(0, 2); //앞 2글자
+        if(language=='cn' || language=='tw' || language=='zh'){
+            language = cn;
+        }
+        return language;
     }
 }
 
@@ -322,7 +339,17 @@ class Activity {
 	static right_title = null;
 	static left_title = null;
 	
-	static pre_state = '';
+    static push_state = '';
+	static history_state = {
+        'left' : '',
+        'right' : '',
+        'rightside' : '',
+        'rightthird' : '',
+        'bottom' : '',
+        'bottomside' : '',
+        'bottomthird':'',
+        'drawer_menu':''
+    };
 
     static layout_panel = { 
         left : {
@@ -402,12 +429,18 @@ class Activity {
 		if(Activity.rightthird_title) { Activity.rightthird_title.addEventListener("click", () => { history.go(-1); }, false); }
 	}
 
+    static inentView(url,delaytime = 0){
+        Handler.post(()=>{
+            window.location.href = url;
+        },delaytime);
+    }
+
     static onStart (panel_id)
     {
         if(panel_id !==null)
         {
-            panel_id = (panel_id) ? panel_id.replace('#','') : '';
-            let panel = Activity.layout_panel[panel_id];
+            Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
+            let panel = Activity.layout_panel[Activity.push_state];
             if (panel.target !== null)
             {
                 let classname = panel.toggle;
@@ -483,27 +516,36 @@ class Activity {
 			if (is_Trustred) 
 			{
 				// 이전경로 do 체크
-				if(window.history.state !== null && window.history.state){
-					Activity.pre_state = window.history.state;
-				}
+                let _history_state = '';
 
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+                    _history_state = Activity.history_state.bottomthird;
 					Activity.onStop('#bottomthird');
 				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                    _history_state = Activity.history_state.bottomside;
 					Activity.onStop('#bottomside');
 				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+                    _history_state = Activity.history_state.bottom;
 					Activity.onStop('#bottom');
 				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+                    _history_state = Activity.history_state.rightthird;
 					Activity.onStop('#rightthird');
 				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+                    _history_state = Activity.history_state.rightside;
 					Activity.onStop('#rightside');
 				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
+                    _history_state = Activity.history_state.right;
 					Activity.onStop('#right');
 				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
+                    _history_state = Activity.history_state.drawer_menu;
 					Activity.onStop('#drawer_menu');
-				}
+				}else{
+                    if(window.history.state !== null && window.history.state){
+                        _history_state = window.history.state;
+                    }
+                }
 
-				callback(Activity.pre_state);
+				callback(_history_state);
 			}
 		};
     }
