@@ -2,7 +2,7 @@ const config = {
     version    : '0.1.1',
     int_version: 1,
     debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
-    cache      : 'default', // *default, no-cache, reload, force-cache, only-if-cached
+    cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v1',
     src        : `http://flexup.fancyupsoft.com/src`,
@@ -169,6 +169,59 @@ class Log {
 
     static clear(){
         console.clear();
+    }
+}
+
+class R {
+    static res = {};
+    constructor(resoure_filename){
+        this.constructor.resoure_filename = resoure_filename;
+    }
+
+    async parserResource (res_id)
+    {
+        // 옵션
+        let options = {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, cors, *same-origin
+            cache: 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        if(!R.res.hasOwnProperty(res_id)){
+            const response = await fetch(this.constructor.resoure_filename, options);
+            if (response.ok){
+                return R.res[res_id] = await response.json();
+            }
+            throw new Error(response.status);
+        }
+    }
+
+    static strings(column){
+        if(R.res.hasOwnProperty('strings')){
+            if(R.res.strings.hasOwnProperty(column)){
+                return R.res.strings[column];
+            }
+        }
+    }
+
+    static array(column){
+        if(R.res.hasOwnProperty('array')){
+            if(R.res.array.hasOwnProperty(column)){
+                return R.res.array[column];
+            }
+        }
+    }
+
+    static integers(column){
+        Log.i(R.res)
+        if(R.res.hasOwnProperty('integers')){
+            if(R.res.integers.hasOwnProperty(column)){
+                return R.res.integers[column];
+            }
+        }
     }
 }
 

@@ -4,7 +4,7 @@ import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 
 /** ZingTouch */
-import ZingTouch from '../../flexvue/zingtouch/ZingTouch.js';
+import ZingTouch from '../../flexvue/zingtouch/ZingTouch.min.js';
 
 /** ckeditor5 */
 import {} from '../../flexvue/ckeditor5/ckeditor.js';
@@ -14,18 +14,20 @@ import {} from '../../flexvue/flatpickr/l10n/ko.js';
 import {} from '../../flexvue/flatpickr/flatpickr.min.js';
 
 /** filepond */
-import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-size.js';
-import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-type.js';
-import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.js';
-import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.js';
+import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-size.min.js';
+import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-type.min.js';
+import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.min.js';
+import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.min.js';
 
 const onReady = () => 
 {
+    // R 리소스 가져오기
+    new R(`${config.res}/values/strings${App.getLocale()}.json`).parserResource('strings');
+
     // activity
     new Activity().onCreateView();
     Activity.onBackPressed((state)=>{
         Log.i('onBackPressed : '+state);
-        // history.go(-1);
     });
 
     // progress init
@@ -43,9 +45,6 @@ const onReady = () =>
 
     const urlManager = new UrlManager(document.location);
     // urlManager.pushState('index','인텍스', `${urlManager.pathname}/index.html?${urlManager.makeJSON2URL(urlManager.url_params)}`);
-
-    console.log('onReady');
-    Log.i('config ',config.version);
 
     //
     flatpickr("#start_date", {
@@ -129,11 +128,6 @@ const onReady = () =>
 
     // 핸들러
     Handler.post(() => Log.d('Handler post'));
-
-    // 데이터 가져오기
-    new AsyncTask().doGet(`${config.res}/values/strings${App.getLocale()}.json`, {}).then((resp)=>{
-        Log.i('----->',resp);
-    });
 
     // 템플릿 출력
     new Template().readFile(`${config.asset}/tpl/test${App.getLocale()}.html`, '#tpl_test').then((tpl)=>

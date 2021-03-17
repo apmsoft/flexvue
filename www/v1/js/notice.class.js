@@ -23,6 +23,7 @@ class Notice {
         urlManager.mergeURLParams({page:1});
         urlManager.pushState('notice_list','notice', `${urlManager.pathname}?${urlManager.makeJSON2URL({})}`);
 
+        document.querySelector('#right_title').innerText = R.strings('app_name');
         // multiout
         Promise.all([
             new AsyncTask().doGet(`${config.res}/values/strings${App.getLocale()}.json`, {}), 
