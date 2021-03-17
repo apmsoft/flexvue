@@ -1,15 +1,18 @@
 "use strict";
 class Forms {
+    constructor (targetId){
+        this.targetId = targetId;
+    }
     // submit
     /**
      * 
      * @param {Form id="theForm"} targetId 
      * @param {function()} callback 
      */
-    doSubmit(targetId, callback) 
+    doSubmit(callback) 
     {
         let send_params = null;
-        const formElem = document.querySelector(targetId);
+        const formElem = document.querySelector(this.targetId);
         formElem.addEventListener('submit', function(e) 
         {
             e.preventDefault();
