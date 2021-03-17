@@ -156,10 +156,7 @@ const onReady = () =>
 }
 
 // document ready
-document.addEventListener("DOMContentLoaded",function(){
-    // callback
-    onReady();
-});
+document.addEventListener("DOMContentLoaded",onReady);
 
 // document.addEventListener("deviceready", onDeviceReady, false);
 // function onDeviceReady() {

@@ -12,11 +12,11 @@ class AsyncTask
 
         // 접속경로
         let redirect_url = url;
-        if(params.length > 0){
+        if(Object.keys(params).length > 0){
             let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
             redirect_url = `${redirect_url}?${url_param}`;
         }
-        Log.i('doGet --> '+redirect_url);
+        Log.d('doGet --> '+redirect_url);
 
         // 옵션
         let options = {
@@ -39,7 +39,7 @@ class AsyncTask
      * @param {서버 접속 경로} url 
      * @param {전송한 json 데이터} params 
      */
-    async doPostMessage(url, params) 
+    async doPost(url, params) 
     {
         // 자동 프로그램 확장자 설정
         let redirect_url = url;
@@ -55,7 +55,7 @@ class AsyncTask
             body: JSON.stringify(params)
         };
 
-        Log.i(redirect_url);
+        Log.d(redirect_url);
 
         const response = await fetch(redirect_url, options);
         if (response.ok) return await response.json();

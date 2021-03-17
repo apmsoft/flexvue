@@ -43,6 +43,8 @@ class UrlManager extends URL {
     // url -> json
     // void
     convertURL2JSON() {
+        this.doEmpty ();
+        
         let result = {};
         let sPageURL = super.search;
         if(sPageURL.indexOf('?')>-1) {
@@ -66,6 +68,7 @@ class UrlManager extends URL {
     makeJSON2URL(params){
         this.mergeURLParams(params);
         let url_param = Object.entries(this.url_params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
+        Log.d(url_param)
         return url_param;
     }
 
