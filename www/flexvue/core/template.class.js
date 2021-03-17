@@ -1,6 +1,4 @@
-/**
- * 템플릿
- */
+"use strict";
 class Template {
 
     // template 파일 찾기

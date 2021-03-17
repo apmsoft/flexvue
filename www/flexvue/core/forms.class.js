@@ -1,6 +1,4 @@
-/**
- * forms
- */
+"use strict";
 class Forms {
     // submit
     /**

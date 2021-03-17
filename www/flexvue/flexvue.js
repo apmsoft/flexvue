@@ -1,3 +1,4 @@
+"use strict";
 const config   = {
     app_name   : 'flexup',
     version    : '0.1.1',

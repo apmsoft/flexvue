@@ -1,3 +1,4 @@
+"use strict";
 class UrlManager extends URL {
     constructor(url) {
         super(url);

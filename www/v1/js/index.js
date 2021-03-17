@@ -1,3 +1,4 @@
+"use strict";
 import {Template} from '../../flexvue/core/template.class.min.js';
 import {Forms} from '../../flexvue/core/forms.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
@@ -20,7 +21,7 @@ import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.min.js
 import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.min.js';
 
 /** chartjs */
-import {} from '../../../flexvue/chartjs/dist/Chart.min.js';
+import {} from '../../flexvue/chartjs/dist/Chart.min.js';
 
 const onReady = () => 
 {

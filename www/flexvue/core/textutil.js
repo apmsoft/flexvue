@@ -1,3 +1,4 @@
+"use strict";
 class TextUtil {
     // 01011112222 -> 010-1111-2222
     static phone_format(num) {
