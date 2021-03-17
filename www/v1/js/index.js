@@ -19,6 +19,9 @@ import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-type.m
 import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.min.js';
 import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.min.js';
 
+/** chartjs */
+import {} from '../../../flexvue/chartjs/dist/Chart.min.js';
+
 const onReady = () => 
 {
     // R 리소스 가져오기
