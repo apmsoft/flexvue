@@ -11,114 +11,111 @@ const config   = {
     res        : '../res'
 };
 
+const OS = [
+    {
+        agent : navigator.platform,
+        subagent : "Win",
+        identity: "Windows"
+    },
+    {
+        agent : navigator.platform,
+        subagent : "Android",
+        identity: "Android"
+    },~
+    {
+        agent : navigator.platform,
+        subagent : "Mac",
+        identity: "Mac"
+    },
+    {
+           agent : navigator.userAgent,
+           subagent : "iPhone",
+           identity: "iPhone/iPod"
+    },
+    {
+        agent : navigator.platform,
+        subagent : "Linux",
+        identity: "Linux"
+    }
+];
+const browsers = [
+    {
+        agent : navigator.userAgent,
+        subagent : "Chrome",
+        identity: "Chrome"
+    },
+    { 	agent : navigator.userAgent,
+        subagent : "OmniWeb",
+        versionSearch: "OmniWeb/",
+        identity: "OmniWeb"
+    },
+    {
+        agent : navigator.vendor,
+        subagent : "Apple",
+        identity: "Safari",
+        versionSearch: "Version"
+    },
+    {
+        prop: window.opera,
+        identity: "Opera",
+        versionSearch: "Version"
+    },
+    {
+        agent : navigator.vendor,
+        subagent : "iCab",
+        identity: "iCab"
+    },
+    {
+        agent : navigator.vendor,
+        subagent : "KDE",
+        identity: "Konqueror"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : "Firefox",
+        identity: "Firefox"
+    },
+    {
+        agent : navigator.vendor,
+        subagent : "Camino",
+        identity: "Camino"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : "Netscape",
+        identity: "Netscape"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : "MSIE",
+        identity: "Explorer",
+        versionSearch: "MSIE"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : "Gecko",
+        identity: "Mozilla",
+        versionSearch: "rv"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : "Mozilla",
+        identity: "Netscape",
+        versionSearch: "Mozilla"
+    }
+];
+
 // application
 class App {
-    static browser = 'unknown';
-    static os = 'unknown';
-    static version ='unknown';
-    static lang = ''; // ko,en,jp
-
-    browsers = [
-		{
-			agent : navigator.userAgent,
-			subagent : "Chrome",
-			identity: "Chrome"
-		},
-		{ 	agent : navigator.userAgent,
-			subagent : "OmniWeb",
-			versionSearch: "OmniWeb/",
-			identity: "OmniWeb"
-		},
-		{
-			agent : navigator.vendor,
-			subagent : "Apple",
-			identity: "Safari",
-			versionSearch: "Version"
-		},
-		{
-			prop: window.opera,
-			identity: "Opera",
-			versionSearch: "Version"
-		},
-		{
-			agent : navigator.vendor,
-			subagent : "iCab",
-			identity: "iCab"
-		},
-		{
-			agent : navigator.vendor,
-			subagent : "KDE",
-			identity: "Konqueror"
-		},
-		{
-			agent : navigator.userAgent,
-			subagent : "Firefox",
-			identity: "Firefox"
-		},
-		{
-			agent : navigator.vendor,
-			subagent : "Camino",
-			identity: "Camino"
-		},
-		{
-			agent : navigator.userAgent,
-			subagent : "Netscape",
-			identity: "Netscape"
-		},
-		{
-			agent : navigator.userAgent,
-			subagent : "MSIE",
-			identity: "Explorer",
-			versionSearch: "MSIE"
-		},
-		{
-			agent : navigator.userAgent,
-			subagent : "Gecko",
-			identity: "Mozilla",
-			versionSearch: "rv"
-		},
-		{
-			agent : navigator.userAgent,
-			subagent : "Mozilla",
-			identity: "Netscape",
-			versionSearch: "Mozilla"
-		}
-	];
-
-	OS = [
-		{
-			agent : navigator.platform,
-			subagent : "Win",
-			identity: "Windows"
-		},
-        {
-			agent : navigator.platform,
-			subagent : "Android",
-			identity: "Android"
-		},
-		{
-			agent : navigator.platform,
-			subagent : "Mac",
-			identity: "Mac"
-		},
-		{
-			   agent : navigator.userAgent,
-			   subagent : "iPhone",
-			   identity: "iPhone/iPod"
-	    },
-		{
-			agent : navigator.platform,
-			subagent : "Linux",
-			identity: "Linux"
-		}
-	];
-
     constructor(){
-        this.constructor.browser = this.findPlatform(this.browsers) || "unknown";
+        this.constructor.browser = this.findPlatform(browsers) || "unknown";
+
 		this.constructor.version = this.getPlatformVersion(navigator.userAgent)
 			|| this.getPlatformVersion(navigator.appVersion)
 			|| "unknown";
-        this.constructor.os = this.findPlatform(this.OS) || "unknown";
+
+        this.constructor.os = this.findPlatform(OS) || "unknown";
+
         this.constructor.lang = this.getLanguage() || '';
     }
 
@@ -191,8 +188,8 @@ class Log {
 }
 
 class R {
-    static res = {};
     constructor(resoure_filename){
+        this.constructor.res = {};
         this.constructor.resoure_filename = resoure_filename;
     }
 
@@ -244,8 +241,8 @@ class R {
 }
 
 class ProgressBar {
-    static progressObj = null;
     constructor(){
+        this.constructor.progressObj = null;
         const loading ='<svg width="40px"  height="40px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling" style="background: none;"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#55ad15" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(347.727 50.0001 50.0001)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>';
 
         Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',`<div id="loading" class="loading">${loading}</div>`)))
@@ -317,79 +314,6 @@ const Handler = {
 };
 
 class Activity {
-
-	static bottomthird = null;
-	static bottomside = null;
-	static bottom = null;
-	static rightthird = null;
-	static rightside = null;
-	static right = null;
-
-	static bottomthird_back_button = null;
-	static bottomside_back_button = null;
-	static bottom_back_button = null;
-	static rightthird_back_button = null;
-	static rightside_back_button = null;
-	static right_back_button = null;
-
-	static bottomthird_title = null;
-	static bottomside_title = null;
-	static bottom_title = null;
-	static rightthird_title = null;
-	static rightside_title = null;
-	static right_title = null;
-	static left_title = null;
-	
-    static push_state = '';
-	static history_state = {
-        'left' : '',
-        'right' : '',
-        'rightside' : '',
-        'rightthird' : '',
-        'bottom' : '',
-        'bottomside' : '',
-        'bottomthird':'',
-        'drawer_menu':''
-    };
-
-    static layout_panel = { 
-        left : {
-            id:'#left',
-            target:null,
-            toggle:null
-        },
-        right : {
-            id:'#right', 
-            target:'#right',
-            toggle:'transitioned'
-        },
-        rightside: {
-            id:'#rightside',
-            target:'#rightside',
-            toggle:'rightside_transitioned'
-        },
-        rightthird: {
-            id:'#rightthird',
-            target:'#rightthird',
-            toggle:'rightthird_transitioned'
-        },
-        bottom: {
-            id:'#bottom',
-            target:'#bottom',
-            toggle:'bottom_transitioned'
-        },
-        bottomside: {
-            id:'#bottomside',
-            target:'#bottomside',
-            toggle:'bottomside_transitioned'
-        },
-        bottomthird: {
-            id:'#bottomthird',
-            target:'#bottomthird',
-            toggle:'bottomthird_transitioned'
-        }
-    }
-
 	constructor(){
 		this.constructor.bottomthird = document.querySelector("#bottomthird");
 		this.constructor.bottomside = document.querySelector("#bottomside");
@@ -412,6 +336,56 @@ class Activity {
 		this.constructor.rightside_title = document.querySelector("#rightside_title");
 		this.constructor.right_title = document.querySelector("#right_title");
 		this.constructor.left_title = document.querySelector("#left_title");
+
+        this.constructor.layout_panel = { 
+            left : {
+                id:'#left',
+                target:null,
+                toggle:null
+            },
+            right : {
+                id:'#right', 
+                target:'#right',
+                toggle:'transitioned'
+            },
+            rightside: {
+                id:'#rightside',
+                target:'#rightside',
+                toggle:'rightside_transitioned'
+            },
+            rightthird: {
+                id:'#rightthird',
+                target:'#rightthird',
+                toggle:'rightthird_transitioned'
+            },
+            bottom: {
+                id:'#bottom',
+                target:'#bottom',
+                toggle:'bottom_transitioned'
+            },
+            bottomside: {
+                id:'#bottomside',
+                target:'#bottomside',
+                toggle:'bottomside_transitioned'
+            },
+            bottomthird: {
+                id:'#bottomthird',
+                target:'#bottomthird',
+                toggle:'bottomthird_transitioned'
+            }
+        }
+
+        this.constructor.push_state = '';
+        this.constructor.history_state = {
+            'left' : '',
+            'right' : '',
+            'rightside' : '',
+            'rightthird' : '',
+            'bottom' : '',
+            'bottomside' : '',
+            'bottomthird':'',
+            'drawer_menu':''
+        };
 	}
 
 	onCreateView(){
