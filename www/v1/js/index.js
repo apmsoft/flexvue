@@ -23,6 +23,9 @@ import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.min.js';
 /** chartjs */
 import {} from '../../flexvue/chartjs/dist/Chart.min.js';
 
+/** swiperjs */
+import Swiper from '../../flexvue/swiper/swiper-bundle.esm.browser.min.js';
+
 const onReady = () => 
 {
     // R 리소스 가져오기
@@ -104,6 +107,28 @@ const onReady = () =>
         //     restore : null
         // }
     });
+
+    const swiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        direction: 'vertical',
+        loop: true,
+      
+        // If we need pagination
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      
+        // Navigation arrows
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      
+        // And if we need scrollbar
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      });
 
     // editor
     ClassicEditor.create( document.querySelector( '#description' ),{
