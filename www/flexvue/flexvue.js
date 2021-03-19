@@ -3,7 +3,7 @@ const config   = {
     app_name   : 'flexup',
     version    : '0.1.1',
     int_version: 1,
-    debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
+    debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v1',
@@ -159,27 +159,22 @@ class App {
 class Log {
     static d (...args) {
         if(config.debug.some(el => el == 'd'))
-            args.forEach( d => console.log(echoNowDate()+' >> D : ', d));
+            args.forEach( d => console.debug(echoNowDate()+' >> D : ', d));
     }
 
     static i (...args) {
         if(config.debug.some(el => el == 'i'))
-            args.forEach( d => console.log(echoNowDate()+' >> I : ', d));
-    }
-
-    static v (...args) {
-        if(config.debug.some(el => el == 'v'))
-            args.forEach( d => console.log(echoNowDate()+' >> V : ', d));
+            args.forEach( d => console.info(echoNowDate()+' >> I : ', d));
     }
 
     static w (...args) {
         if(config.debug.some(el => el == 'w'))
-            args.forEach( d => console.log(echoNowDate()+' >> W : ', d));
+            args.forEach( d => console.warn(echoNowDate()+' >> W : ', d));
     }
 
     static e (...args) {
         if(config.debug.some(el => el == 'e'))
-            args.forEach( d => console.log(echoNowDate()+' >> E : ', d));
+            args.forEach( d => console.error(echoNowDate()+' >> E : ', d));
     }
 
     static clear(){

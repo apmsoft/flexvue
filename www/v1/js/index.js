@@ -146,7 +146,7 @@ const onReady = () =>
         // $('.ck-editor').addClass('noSwipe');
     })
     .catch( error => {
-        console.error( error );
+        Log.e( error );
     });
 
     // 앱 정보
