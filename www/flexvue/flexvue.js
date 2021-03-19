@@ -159,22 +159,22 @@ class App {
 class Log {
     static d (...args) {
         if(config.debug.some(el => el == 'd'))
-            args.forEach( d => console.debug(echoNowDate()+' >> D : ', d));
+            args.forEach( d => console.log(echoNowDate()+' >> D : ', d));
     }
 
     static i (...args) {
         if(config.debug.some(el => el == 'i'))
-            args.forEach( d => console.info(echoNowDate()+' >> I : ', d));
+            args.forEach( d => console.log(echoNowDate()+' >> I : ', d));
     }
 
     static w (...args) {
         if(config.debug.some(el => el == 'w'))
-            args.forEach( d => console.warn(echoNowDate()+' >> W : ', d));
+            args.forEach( d => console.log(echoNowDate()+' >> W : ', d));
     }
 
     static e (...args) {
         if(config.debug.some(el => el == 'e'))
-            args.forEach( d => console.error(echoNowDate()+' >> E : ', d));
+            args.forEach( d => console.log(echoNowDate()+' >> E : ', d));
     }
 
     static clear(){
