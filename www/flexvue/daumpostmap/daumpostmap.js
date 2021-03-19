@@ -1,3 +1,4 @@
+"use strict";
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 class DaumPostMap 
 {
