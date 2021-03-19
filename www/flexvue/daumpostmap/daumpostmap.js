@@ -5,7 +5,8 @@ class DaumPostMap
         this.target_id = target_id;
         this.map_x = map_x || 127.489093909065;
         this.map_y = map_y || 36.6423200323081;
-        this.map = null
+        this.map = null;
+        this.doPrintMap({});
     }
 
     doPrintMap (params){
@@ -37,12 +38,12 @@ class DaumPostMap
         marker.setMap(self.map);
     }
 
-    doPostCodeAddress (btn ,target_postcode, target_address,jubun_address)
+    doPostCodeAddress (target_postcode, target_address,jubun_address)
     {
         let self = this;
 
         // 우편번호찾기
-        document.querySelector(btn).addEventListener('click',function()
+        document.querySelector(this.target_id).addEventListener('click',function()
         {
             // panel
             Activity.onStart('#bottomthird');
@@ -85,7 +86,7 @@ class DaumPostMap
 
                         // set postcode value
                         let area = '';
-                        if(document.querySelector('#area'))
+                        if(document.querySelector('#post_area'))
                         {
                             area = data.sido;
                             if(area == '서울'){
@@ -107,7 +108,7 @@ class DaumPostMap
                                 area = data.sido
                             }
 
-                            document.querySelector('#area').value = area;
+                            document.querySelector('#post_area').value = area;
                         }
                         
                         document.querySelector(target_postcode).value = data.zonecode;

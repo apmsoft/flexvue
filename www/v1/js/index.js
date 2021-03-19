@@ -26,6 +26,8 @@ import {} from '../../flexvue/chartjs/dist/Chart.min.js';
 /** swiperjs */
 import Swiper from '../../flexvue/swiper/swiper-bundle.esm.browser.min.js';
 
+import {DaumPostMap} from '../../flexvue/daumpostmap/daumpostmap.js';
+
 const onReady = () => 
 {
     // R 리소스 가져오기
@@ -148,6 +150,10 @@ const onReady = () =>
     .catch( error => {
         Log.e( error );
     });
+
+    // 우편번호 검색 및 맵
+    // const daumPostMap = new DaumPostMap('#btn-find-postcode' , null, null);
+    // daumPostMap.doPostCodeAddress('#postcode', '#load_address1','#dong_address1');
 
     // 앱 정보
     const app = new App();
