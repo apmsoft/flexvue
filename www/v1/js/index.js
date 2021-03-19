@@ -1,6 +1,5 @@
 "use strict";
 import {Template} from '../../flexvue/core/template.class.min.js';
-import {Forms} from '../../flexvue/core/forms.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 
@@ -26,6 +25,7 @@ import {} from '../../flexvue/chartjs/dist/Chart.min.js';
 /** swiperjs */
 import Swiper from '../../flexvue/swiper/swiper-bundle.esm.browser.min.js';
 
+/** daum postcode & map */
 import {DaumPostMap} from '../../flexvue/daumpostmap/daumpostmap.js';
 
 const onReady = () => 
