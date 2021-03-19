@@ -8,101 +8,218 @@
   <link rel="stylesheet" href="css/tailwind.min.css">
   <link rel="stylesheet" href="css/fontawesome-all.min.css">
 
-  <!--flatpickr-->
-  <link rel="stylesheet" href="../flexvue/flatpickr/flatpickr.min.css">
-  <link rel="stylesheet" href="../flexvue/flatpickr/themes/material_blue.min.css">
-
-  <!--filepond-->
-  <link rel="stylesheet" href="../flexvue/filepond/dist/filepond.min.css">
-  <link rel="stylesheet" href="../flexvue/filepond/dist/filepond-plugin-image-preview.min.css"/>
-
-  <!--swiper-->
-  <link rel="stylesheet" href="../flexvue/swiper/swiper-bundle.min.css" />
-  <style>
-    .swiper-container {
-        width: 600px;
-        height: 300px;
-    }
-  </style>
-
   <script defer src="../flexvue/flexvue.min.js"></script>
-
+  <script defer type="module" src="js/index.js?v=1"></script>
 </head> 
 <body>
     <!--left-->
     <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
         <div class="fvue--layout--container">
             
-            <div class="fvue--layout--header py-3">
+            <div class="fvue--layout--header py-3 xl:container xl:mx-auto">
                 <div class="fvue--layout--header--row px-3">
                     <div class="fvue--layout--icon">
                         
                     </div>
-                    <div class="fvue--layout--title text-gray-800">
-                      <a href="#">FlexVue (플렉스뷰)</a>
+                    <div class="fvue--layout--title text-gray-800 font-bold text-2xl">
+                      <a href="#">FlexVue</a>
                     </div>
         
                     <div class="fvue--layout--spacer"> </div>
         
-                    <div class="fvue--layout--navigation">
-                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
-                            <i class="far fa-bell"></i>
-                        </button>
-                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
-                            <i class="fas fa-sign-out-alt"></i>
+                    <div class="fvue--layout--navigation flex item-center">
+                        <select class="form-select py-1 border-0" id="sel-version">
+                            <option value="v1">v0.9</option>
+                        </select>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-github">
+                            <i class="fab fa-github"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="fvue--layout--main h-full">
-                <div id="left_docs_contents">
-                    dfsdafsdafs
-                </div>
-                <div id="notice_list">
-                    <input id="start_date" class="form-input" />
-
-                    <div class="form-row">
-                        <div class="form-label">
-                            *이미지
-                        </div>
-                        <div class="flex-1">
-                            <input type="hidden" id="extract_id" name="extract_id" value="${msg.extract_id}" /> 
-                            <input type="file" name="filepond" accept="image/png, image/jpeg" data-max-file-size="7MB" required>
+            <div class="fvue--layout--main overflow-y-hidden">
+                <div class="xl:container xl:mx-auto">
+                    <div class="flex flex-row">
+                        <nav class="flex-none px-1 overflow-y-auto font-medium text-base w-52 h-screen pb-28">
+                            <ul>
+                                <li class="mt-8">
+                                    <a href="/v1/introduce" class="border rounded-lg px-3 py-2">FlexVue 란?</a>
+                                </li>
+                                <li class="mt-8">
+                                    <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900">
+                                        start
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/installation">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">Installation</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="mt-14">
+                                    <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900">
+                                        core static
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/config">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">config</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/app">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">app</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/log">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">log</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/r">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">r</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/progressbar">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">progressbar</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/runnable">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">runnable</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/handler">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">handler</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/activity">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">activity</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                                <li class="mt-14">
+                                    <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900">
+                                        core
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/asynctask">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">async task</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/forms">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">forms</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/template">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">template</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/textutil">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">text util</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/urlmanager">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">url manager</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="mt-14">
+                                    <h5 class="px-3 mb-3 lg:mb-3 uppercase tracking-wide font-semibold text-sm lg:text-xs text-gray-900">
+                                        plugins
+                                    </h5>
+                                    <ul>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/daumpostmap">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">daum postcode & map</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/filepond">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">filepond</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/chartjs">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">chartjs</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/flatpickr">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">flatpickr</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/swiperjs">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">swiperjs</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="px-3 py-2 transition-colors duration-200 relative block hover:text-gray-900 text-gray-500" href="/v1/zingtouch">
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                                <span class="relative">zingtouch</span>
+                                                <span class="rounded-md absolute inset-0 bg-cyan-50 opacity-0"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="flex-1 border-1 px-1 pt-8 pb-28 overflow-y-auto font-medium text-base h-screen" id="left_docs_contents">
+                            여긴 내용
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-label">
-                            내용
-                        </div>
-                        <div class="flex-1">
-                            <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-container">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                      <!-- Slides -->
-                      <div class="swiper-slide">Slide 1</div>
-                      <div class="swiper-slide">Slide 2</div>
-                      <div class="swiper-slide">Slide 3</div>
-                      ...
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                  
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                  
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
-                  </div>
-
-                <div id="multiout">
-                    m....
                 </div>
             </div>
         </div>
@@ -240,7 +357,4 @@
         </div>
     </div>
 </body>
-
-<!-- <script type="text/javascript" src="../cordova.js"></script> -->
-<script defer type="module" src="js/index.js?v=1"></script>
 </html>
