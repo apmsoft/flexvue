@@ -21,7 +21,7 @@ const OS = [
         agent : navigator.platform,
         subagent : "Android",
         identity: "Android"
-    },~
+    },
     {
         agent : navigator.platform,
         subagent : "Mac",
@@ -109,13 +109,10 @@ const browsers = [
 class App {
     constructor(){
         this.constructor.browser = this.findPlatform(browsers) || "unknown";
-
 		this.constructor.version = this.getPlatformVersion(navigator.userAgent)
 			|| this.getPlatformVersion(navigator.appVersion)
 			|| "unknown";
-
         this.constructor.os = this.findPlatform(OS) || "unknown";
-
         this.constructor.lang = this.getLanguage() || '';
     }
 
