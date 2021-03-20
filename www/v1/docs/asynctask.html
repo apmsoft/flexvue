@@ -1,0 +1,233 @@
+<script type="text/template" id="tpl_docs_asynctask">
+    <h3 class="mb-10">AsyncTask</h3>
+
+    <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+        비동기로 서버데이터 및 json 파일, 다이나믹 import 를 실행합니다.
+    </div>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">import</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            import {AsyncTask} from '../../../flexvue/core/asynctask.class.min.js';
+        </code>
+        </pre>
+    </section>
+    
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">new 선언</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            const asyncTask = new AsyncTask();
+        </code>
+        </pre>
+    </section>
+    
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">선언과 함께 데이터 가져오기</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // 데이터 가져오기
+            const connect_url = \`../res/values/strings.json\`;
+            const send_params = {};
+
+            // run AsyncTask
+            new AsyncTask().doGet(connect_url, send_params).then((resp)=>{
+                Log.d('----->',resp);
+            });
+        </code>
+        </pre>
+    </section>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">GET / POST / PUT</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            >> GET
+            const connect_url = \`./src/list.php\`;
+            const send_params = { page : 1 };
+
+            // run AsyncTask
+            new AsyncTask().doGet(connect_url, send_params).then( (resp) =>{
+                Log.d('----->',resp);
+            });
+
+
+
+            >> POST
+            const post_url = \`./src/insert.php\`;
+            const post_params = { 
+                name : '홍길동', 
+                age : 17 
+            };
+
+            // run AsyncTask
+            new AsyncTask().doPost(post_url, post_params).then( (resp) =>{
+                Log.d('----->',resp);
+            });
+
+
+
+            >> INPUT ( id 키값이 있을 경우 자동으로 INPUT 으로 전송 됩니다.)
+            const input_url = \`./src/update.php\`;
+            const input_params = { 
+                id : 1 
+                name : '홍길동', 
+                age : 17 
+            };
+
+            // run AsyncTask
+            new AsyncTask().doPost(input_url, input_params).then( (resp) =>{
+                Log.d('----->',resp);
+            });
+        </code>
+        </pre>
+    </section>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">catch / finally</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // show progress
+            ProgressBar.show();
+
+            // 데이터 가져오기
+            const connect_url = \`./src/list.php\`;
+            const send_params = { page : 1 };
+
+            // run AsyncTask
+            new AsyncTask().doGet(connect_url, send_params).then((resp)=>{
+                Log.d('----->',resp);
+            })
+            .catch((message)=>{
+                Log.e(message);
+            })
+            .finally(()=>{
+                // close progress
+                ProgressBar.close();
+            });
+        </code>
+        </pre>
+    </section>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">then / catch / finally</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // show progress
+            ProgressBar.show();
+
+            // 데이터 가져오기
+            const connect_url = \`./src/list.php\`;
+            const send_params = { page : 1 };
+
+            // run AsyncTask
+            new AsyncTask().doGet(connect_url, send_params).then( (resp) =>
+            {
+                // return
+                return new Promise( (resolve)=>{
+                    Log.d('callback then ->');
+                    resolve(resp);
+                });
+            })
+            .then((resp)=>{
+                Log.d('----->',resp);
+            })
+            .catch((message)=>{
+                Log.e(message);
+            })
+            .finally(()=>{
+                // close progress
+                ProgressBar.close();
+            });
+        </code>
+        </pre>
+    </section>
+
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">다중 (멀티) 데이터 가져오기</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // show progress
+            ProgressBar.show();
+
+            // 데이터 가져오기 1
+            const connect_url_1 = \`./src/list.php\`;
+            const connect_1_params = { page : 1 };
+
+            // 데이터 가져오기 2
+            const connect_url_2 = \`../res/values/strings.json\`;
+            const connect_2_params = { };
+
+            // promise.all 사용
+            Promise.all(
+                new AsyncTask().doGet(connect_url_1, connect_1_params),
+                new AsyncTask().doGet(connect_url_2, connect_2_params),
+            )
+            .then((data)=>{
+                const resp1 = data[0];
+                const resp2 = data[1];
+
+                Log.d('>>---데이터 가져오기 1-->',resp1);
+                Log.d('>>---데이터 가져오기 2-->',resp2);
+            })
+            .catch((message)=>{
+                Log.e(message);
+            })
+            .finally(()=>{
+                // close progress
+                ProgressBar.close();
+            });
+        </code>
+        </pre>
+    </section>
+
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">다중 (멀티) 데이터 가져오기 then / catch / finally</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // show progress
+            ProgressBar.show();
+
+            // 데이터 가져오기 1
+            const connect_url_1 = \`./src/list.php\`;
+            const connect_1_params = { page : 1 };
+
+            // 데이터 가져오기 2
+            const connect_url_2 = \`../res/values/strings.json\`;
+            const connect_2_params = { };
+
+            // promise.all 사용
+            Promise.all(
+                new AsyncTask().doGet(connect_url_1, connect_1_params),
+                new AsyncTask().doGet(connect_url_2, connect_2_params),
+            )
+            .then((data)=>
+            {
+                const resp1 = data[0];
+                const resp2 = data[1];
+
+                // return
+                return new Promise( (resolve)=>{
+                    Log.d('callback then ->');
+                    resolve(resp1, resp2);
+                });
+            })
+            .then((resp1, resp2)=>{
+                Log.d('>>---데이터 가져오기 1-->',resp1);
+                Log.d('>>---데이터 가져오기 2-->',resp2);
+            })
+            .catch((message)=>{
+                Log.e(message);
+            })
+            .finally(()=>{
+                // close progress
+                ProgressBar.close();
+            });
+        </code>
+        </pre>
+    </section>
+
+</script>

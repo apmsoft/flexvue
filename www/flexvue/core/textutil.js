@@ -16,10 +16,10 @@ class TextUtil {
     }
 
     // 8000 -> 8 KB
-    static filesize_format(bytes, decimals) {
+    static filesize_format(bytes) {
         if (bytes == 0) return '0 Byte';
         let k = 1000;
-        let dm = decimals + 1 || 3;
+        let dm = 3;
         let sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         let i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
@@ -38,7 +38,7 @@ class TextUtil {
     }
 
     // 랜덤 숫자
-    randomNumber(min,max){
+    static randomNumber(min,max){
         return Math.floor(Math.random()*(max-min+1)+min);
     }
 }

@@ -1,6 +1,7 @@
 import {Template} from '../../flexvue/core/template.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
+import {TextUtil} from '../../flexvue/core/textutil.min.js';
 
 // import {} from '../../flexvue/prism/prism.min.js';
 
@@ -21,6 +22,7 @@ const onReady = () =>
     // show progress
     ProgressBar.show();
 
+    // urlmanager
     const urlManager = new UrlManager(window.location);
 
     class MyActivity {
@@ -40,7 +42,7 @@ const onReady = () =>
                         const whereis = el.getAttribute("href");
                         const doc_id = whereis.split('/')[1];
                         const doc_id_val = whereis.split('/')[1];
-                        const filename = `./v1/${whereis}.html`;
+                        const filename = `./${whereis}.html`;
                         const tpl_id = `#tpl_${whereis.replace('/','_')}`;
             
                         // 출력

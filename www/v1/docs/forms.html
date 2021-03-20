@@ -1,0 +1,92 @@
+<script type="text/template" id="tpl_docs_forms">
+    <h3 class="mb-10">Forms</h3>
+
+    <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+        폼의 데이터를 전송하는 목적입니다.
+    </div>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">import</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            import {Forms} from '../../../flexvue/core/forms.class.min.js';
+        </code>
+        </pre>
+    </section>
+    
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">new 선언</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            const forms = new Forms('#thePostForm');
+        </code>
+        </pre>
+    </section>
+    
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">선언과 폼값 가져오기</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            new Forms('#thePostForm').doSubmit((form_params)=>
+            {
+                Log.d( form_params );
+            });
+        </code>
+        </pre>
+    </section>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">폼값을 POST 로 전송하기</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            // form data
+            new Forms('#thePostForm').doSubmit((form_params)=>
+            {
+                Log.d( form_params );
+
+                >> POST
+                const post_url = \`./src/insert.php\`;
+
+                // run AsyncTask
+                new AsyncTask().doPost(post_url, form_params).then( (resp) =>{
+                    Log.d('----->',resp);
+                });
+            });
+        </code>
+        </pre>
+    </section>
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">폼값 묶음 기준</h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+            &lt;form id="thePostForm"&gt;
+                &lt;input type="text" name="name" value="홍길동" /&gt;
+                &lt;input type="text" name="age" value="20" /&gt;
+                
+                &lt;input type="checkbox" name="favorite" value="야구" checked /&gt;
+                &lt;input type="checkbox" name="favorite" value="축구" checked /&gt;
+                &lt;input type="checkbox" name="favorite" value="농구" /&gt;
+
+                &lt;textarea type="textarea" name="memo" value="농구"&gt; &lt;/textarea&gt;
+
+                &lt;button type="submit"&gt;
+            &lt;/form&gt;
+
+            // submit 버튼을 클릭하면 실행 됨
+            // name 같은 것들은 쉼포를 기준으로 자동 묶음 처리
+            new Forms('#thePostForm').doSubmit((form_params)=>
+            {
+                // >> 결과
+                {
+                    name : '홍길동',
+                    age : 20,
+                    favorite : "야구,축구",
+                    memo : encodeURIComponent(memo)
+                }
+            });
+        </code>
+        </pre>
+    </section>
+
+</script>
