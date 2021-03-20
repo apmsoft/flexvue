@@ -230,4 +230,42 @@
         </pre>
     </section>
 
+
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">다이나믹 import </h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+
+            // 
+            /class
+            ㄴ polygon.js
+
+            
+
+            // module
+            class Polygon {
+                constructor(height, width) {
+                  this.area = height * width;
+                }
+            }
+
+            export {Polygon};
+
+
+
+            // class module
+            const include_file = `../class/polygon.js`;
+
+            // dynamic import
+            new AsyncTask().doImport(include_file).then(Module => {
+                const polygon = new Module.Polygon(4, 3);
+                let _area = polygon.area;
+
+                Log.i( _area);
+                // expected output: 12
+            });
+        </code>
+        </pre>
+    </section>
+
 </script>
