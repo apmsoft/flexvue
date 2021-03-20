@@ -240,30 +240,30 @@
             /class
             ㄴ polygon.js
 
-            
+
 
             // module
-            class Polygon {
-                constructor(height, width) {
+            class Polygon &#123;
+                constructor(height, width)&#123;
                   this.area = height * width;
-                }
-            }
+                &#125;
+            &#125;
 
-            export {Polygon};
+            export &#123;Polygon&#125;;
 
 
 
             // class module
-            const include_file = `../class/polygon.js`;
+            const include_file = &#96;../class/polygon.js&#96;;
 
             // dynamic import
-            new AsyncTask().doImport(include_file).then(Module => {
+            new AsyncTask().doImport( include_file ).then(Module => &#123;
                 const polygon = new Module.Polygon(4, 3);
                 let _area = polygon.area;
 
                 Log.i( _area);
                 // expected output: 12
-            });
+            &#125;);
         </code>
         </pre>
     </section>
