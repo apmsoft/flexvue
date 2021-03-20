@@ -50,7 +50,7 @@
             <div class="fvue--layout--main overflow-y-hidden">
                 <div class="xl:container xl:mx-auto">
                     <div class="flex flex-row">
-                        <nav class="flex-none px-1 overflow-y-auto font-medium text-base w-52 h-screen pb-28">
+                        <nav id="nav" class="flex-none px-1 overflow-y-auto font-medium text-base w-52 h-screen pb-28">
                             <ul>
                                 <li class="mt-8">
                                     <a href="docs/introduce" class="border rounded-lg px-3 py-2">FlexVue 란?</a>
@@ -228,6 +228,57 @@
                         </nav>
                         <div class="flex-1 border-1 px-1 pt-8 pb-28 overflow-y-auto font-medium text-base h-screen" id="left_docs_contents">
 
+                            <h3 class="mb-10">FlexVue (플랙스뷰)</h3>
+    
+                            <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                FlexVue 는 프론트앤드 개발용 API 입니다.<br/>
+                                css 는 <a href="https://www.tailwind.css" target="_blank" class="text-blue-600">TailWind Css</a>를 사용하며<br />
+                                javascript 는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank" class="text-blue-600">바닐라 스크립트(es6 +)</a> 만을 이용해 만들어 졌습니다.
+                            </div>
+
+                            <section class="mb-10">
+                                <h4 class="text-gray-700 mb-1">웹 (Web) / 하이브리드 앱(Application)을 위해 만들어 졌습니다.</h4>
+                                <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                    반응형 홈페이지와 하이브리드앱 제작을 위한<br/> 최대 60fps 의 에니메이션과 함께 어플리케이션 만들기에 최적화 되어 있습니다.
+                                </div>
+                            </section>
+
+                            <section class="mb-10">
+                                <h4 class="text-gray-700 mb-1">비동기 AsyncTask</h4>
+                                <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                    서버 데이터와 템플릿을 사용하기 위해 비동기(async & wait)를 사용 합니다.
+                                    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm px-4 py-5"><code class="language-javascript">
+                                        new AsyncTask().doGet( '접속경로', '전송데이터' ).then(resp => &#123;
+    
+                &#125;);
+                                        </code></pre>
+                                </div>
+                            </section>
+
+                            <section class="mb-10">
+                                <h4 class="text-gray-700 mb-1">다이나믹 import</h4>
+                                <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                    하이브리드앱을 위한 다이나믹 import 를 사용할 수 있도록 지원합니다.
+
+                                    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm px-4 py-5"><code class="language-javascript">
+                                    new AsyncTask().doImport( include_file ).then(Module => &#123;
+
+            &#125;);
+                                    </code></pre>
+                                </div>
+                            </section>
+
+                            <section class="mb-10">
+                                <h4 class="text-gray-700 mb-1">리터럴 템플릿 (Template)</h4>
+                                <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                    리터럴 자바스크립트 HTML 템플릿을 지원합니다.
+                                    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm px-4 py-5"><code class="language-javascript">
+            &lt;script type="text/template" id="tpl_example"&gt;
+            &lt;/script&gt;
+                                    </code></pre>
+                                </div>
+                            </section>
+                            
                         </div>
                     </div>
                 </div>

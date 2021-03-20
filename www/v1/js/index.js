@@ -27,7 +27,7 @@ const onReady = () =>
 
     class MyActivity {
         constructor(){
-            document.querySelectorAll('a').forEach((el)=>{
+            document.querySelector('#nav').querySelectorAll('a').forEach((el)=>{
                 el.addEventListener('click', (e)=>{
                     e.preventDefault();
             
