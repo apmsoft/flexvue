@@ -25,7 +25,8 @@ class AsyncTask
             mode: 'cors', // no-cors, cors, *same-origin
             cache: config.cache, // *default, no-cache, reload, force-cache, only-if-cached
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         };
 
@@ -51,7 +52,8 @@ class AsyncTask
             mode: 'cors', // no-cors, cors, *same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(params)
         };
