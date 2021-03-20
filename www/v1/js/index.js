@@ -94,6 +94,15 @@ const onReady = () =>
                 Handler.post(()=>{
                     ProgressBar.close();
                 },100);
+            })
+            .catch((message)=>{
+                Log.e(message);
+            })
+            .finally(()=>{
+                // close pregress
+                Handler.post(()=>{
+                    ProgressBar.close();
+                },100);
             });
         }
     }
