@@ -1,0 +1,73 @@
+<script type="text/template" id="tpl_docs_app">
+<h3 class="mb-10">App</h3>
+
+<section class="mb-10">
+    <h5 class="text-gray-500 mb-1">new 선언</h5>
+    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+    <code class="language-javascript">
+        const app = new App();
+    </code>
+    </pre>
+</section>
+
+<section class="mb-10">
+    <h5 class="text-gray-500 mb-1">기본 정보</h5>
+    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+    <code class="language-javascript">
+        Log.i(App.browser, App.version, App.os, App.lang);
+
+        >> 출력
+
+        2021-03-20 PM 1:28:15 >> I :  Chrome
+        2021-03-20 PM 1:28:15 >> I :  89
+        2021-03-20 PM 1:28:15 >> I :  unknown
+        2021-03-20 PM 1:28:15 >> I :  ko
+    </code>
+    </pre>
+</section>
+
+<section class="mb-10">
+    <h5 class="text-gray-500 mb-1">다국어 작업을 하고자 할때 이렇게 사용하세요</h5>
+    <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+    <code class="language-javascript">
+        Log.i(App.lang, App.getLocale());
+
+        // 파일 구조
+        /v1
+        ㄴ app.html (기본)
+        ㄴ app_ko.html (한국어)
+        ㄴ app_en.html (영어)
+
+
+        >> (기본)
+        2021-03-20 PM 1:28:15 >> I :  ''
+        2021-03-20 PM 1:28:15 >> I :  ''
+        
+        \`./v1/app\$\{App.getLocale()\}.html\`
+
+        >> ./v1/app/app.html
+
+
+
+        >> (한국어)
+        2021-03-20 PM 1:28:15 >> I :  ko
+        2021-03-20 PM 1:28:15 >> I :  _ko
+        
+        \`./v1/app\$\{App.getLocale()\}.html\`
+
+        >> ./v1/app/app_ko.html
+
+
+
+        >> (영어)
+        2021-03-20 PM 1:28:15 >> I :  en
+        2021-03-20 PM 1:28:15 >> I :  _en
+        
+        \`./v1/app\$\{App.getLocale()\}.html\`
+
+        >> ./v1/app/app_en.html
+    
+    </code>
+    </pre>
+</section>
+</script>
