@@ -30,17 +30,25 @@ const onReady = () =>
                     e.preventDefault();
             
                     Log.d(el.getAttribute("href"));
-                    const whereis = el.getAttribute("href");
-                    const doc_id = whereis.split('/')[1];
-                    const doc_id_val = whereis.split('/')[1];
-                    const filename = `${whereis}.html`;
-                    const tpl_id = `#tpl_${whereis.replace('/','_')}`;
-        
-                    // 출력
-                    this.doEcho(filename, tpl_id);
+                    const target = typeof el.getAttribute("target");
+                    if(typeof target ==='strings'){
 
-                    // 경로 만들기
-                    urlManager.pushState(doc_id,doc_id,`./?doc_id=${doc_id_val}`);
+                    }else{
+                        // show progress
+                        ProgressBar.show();
+
+                        const whereis = el.getAttribute("href");
+                        const doc_id = whereis.split('/')[1];
+                        const doc_id_val = whereis.split('/')[1];
+                        const filename = `./v1/${whereis}.html`;
+                        const tpl_id = `#tpl_${whereis.replace('/','_')}`;
+            
+                        // 출력
+                        this.doEcho(filename, tpl_id);
+
+                        // 경로 만들기
+                        urlManager.pushState(doc_id,doc_id,`./?doc_id=${doc_id_val}`);
+                    }
                 },false);
             });
 
@@ -81,6 +89,11 @@ const onReady = () =>
 
                 // scroll top
                 document.querySelector('#left_docs_contents').scrollTo({top: 0, behavior: 'smooth'});
+
+                // close pregress
+                Handler.post(()=>{
+                    ProgressBar.close();
+                },100);
             });
         }
     }
