@@ -5,7 +5,7 @@ class AsyncTask
     /**
      * 
      * @param {서버 접속 경로} url 
-     * @param {전송한 json 데이터} params 
+     * @param {전송할 json 데이터} params 
      */
     async doGet(url, params) 
     {
@@ -39,7 +39,7 @@ class AsyncTask
     /**
      * 
      * @param {서버 접속 경로} url 
-     * @param {전송한 json 데이터} params 
+     * @param {전송할 json 데이터} params 
      */
     async doPost(url, params) 
     {
@@ -70,7 +70,14 @@ class AsyncTask
         return await import(url).then(Module => {
             return Module;
         });
-        throw new Error(response.status);
+    }
+
+    async doImportCss(url){
+        Log.d('doImportCss : '+url);
+        if(document.querySelector(`[href="${url}"]`) ===null){
+            Log.d("run link import css");
+            return await document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend",`<link rel="stylesheet" href="${url}" />`);
+        }
     }
 }
 

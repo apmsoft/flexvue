@@ -16,6 +16,7 @@ const onReady = () =>
         Log.i('onBackPressed : '+state);
     });
 
+
     // progress init
     new ProgressBar();
 
@@ -60,7 +61,7 @@ const onReady = () =>
         doRouter (){
             // router
             const url_docid =((urlManager).searchParams).get('doc_id');
-            Log.d(url_docid, typeof url_docid);
+            Log.d('--> doc_id : check --->',url_docid, typeof url_docid);
             if(typeof url_docid ==='string'){
                 const filename = `docs/${url_docid}.html`;
                 const tpl_id = `#tpl_docs_${url_docid}`;
@@ -110,6 +111,13 @@ const onReady = () =>
     }
 
     const myActivity = new MyActivity();
+
+    // css import test
+    Handler.post(()=>{
+        new AsyncTask().doImportCss('css/fontawesome-all.min.css').then(()=>{
+            Log.d('completed');
+        });
+    },3000);
 
     // close pregress
     ProgressBar.close();

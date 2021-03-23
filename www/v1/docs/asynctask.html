@@ -268,4 +268,31 @@
         </pre>
     </section>
 
+    <section class="mb-10">
+        <h5 class="text-gray-500 mb-1">다이나믹 import CSS (style) </h5>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg px-0 text-sm">
+        <code class="language-javascript">
+
+            // 
+            /css
+            ㄴ test.css
+
+
+
+            // css
+            #test.title &#123;
+                color : red;
+            &#125;
+
+
+
+            // dynamic import css
+            const include_css = \`../css/test.css\`;
+            new AsyncTask().doImportCss(include_css).then(()=>{
+                Log.d('completed');
+            });
+        </code>
+        </pre>
+    </section>
+
 </script>
