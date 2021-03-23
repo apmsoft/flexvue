@@ -292,6 +292,20 @@
                                     </code></pre>
                                 </div>
                             </section>
+
+                            <section class="mb-10">
+                                <h4 class="text-gray-700 mb-1">다이나믹 import CSS</h4>
+                                <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
+                                    CSS 파일을 다이나믹 import 할 수 있습니다.
+
+                                    <pre class="bg-gray-900 text-gray-100 rounded-lg text-sm px-4 py-5"><code class="language-javascript">
+                                    new AsyncTask().doImportCss( include_css ).then(()=>&#123;
+                                        Log.d('completed');
+                                    &#125;);
+
+                                    </code></pre>
+                                </div>
+                            </section>
                             
                         </div>
                     </div>
