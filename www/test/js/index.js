@@ -4,32 +4,32 @@ import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 
 /** ZingTouch */
-import ZingTouch from '../../flexvue/zingtouch/ZingTouch.min.js';
+import ZingTouch from '../../flexvue/plugins/zingtouch/ZingTouch.min.js';
 
 /** ckeditor5 */
-import {} from '../../flexvue/ckeditor5/ckeditor.js';
+import {} from '../../flexvue/plugins/ckeditor5/ckeditor.js';
 
 /** flatpickr */
-import {} from '../../flexvue/flatpickr/l10n/ko.js';
-import {} from '../../flexvue/flatpickr/flatpickr.min.js';
+import {} from '../../flexvue/plugins/flatpickr/l10n/ko.js';
+import {} from '../../flexvue/plugins/flatpickr/flatpickr.min.js';
 
 /** filepond */
-import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-size.min.js';
-import {} from '../../flexvue/filepond/dist/filepond-plugin-file-validate-type.min.js';
-import {} from '../../flexvue/filepond/dist/filepond-plugin-image-preview.min.js';
-import * as FilePond from '../../flexvue/filepond/dist/filepond.esm.min.js';
+import {} from '../../flexvue/plugins/filepond/dist/filepond-plugin-file-validate-size.min.js';
+import {} from '../../flexvue/plugins/filepond/dist/filepond-plugin-file-validate-type.min.js';
+import {} from '../../flexvue/plugins/filepond/dist/filepond-plugin-image-preview.min.js';
+import * as FilePond from '../../flexvue/plugins/filepond/dist/filepond.esm.min.js';
 
 /** chartjs */
-import {} from '../../flexvue/chartjs/dist/Chart.min.js';
+import {} from '../../flexvue/plugins/chartjs/dist/Chart.min.js';
 
 /** swiperjs */
-import Swiper from '../../flexvue/swiper/swiper-bundle.esm.browser.min.js';
+import Swiper from '../../flexvue/plugins/swiper/swiper-bundle.esm.browser.min.js';
 
 /** daum postcode & map */
-import {DaumPostMap} from '../../flexvue/daumpostmap/daumpostmap.js';
+import {DaumPostMap} from '../../flexvue/plugins/daumpostmap/daumpostmap.js';
 
 /** nouislider */
-import {} from '../../flexvue/nouislider/nouislider.min.js';
+import {} from '../../flexvue/plugins/nouislider/nouislider.min.js';
 
 const onReady = () => 
 {
@@ -188,7 +188,7 @@ const onReady = () =>
 
     // nouislider css
     Handler.post(()=>{
-        new AsyncTask().doImportCss('../flexvue/nouislider/nouislider.min.css').then(()=>
+        new AsyncTask().doImportCss('../flexvue/plugins/nouislider/nouislider.min.css').then(()=>
         {
             Log.d('completed');
             
