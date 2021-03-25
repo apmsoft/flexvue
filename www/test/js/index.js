@@ -28,6 +28,9 @@ import Swiper from '../../flexvue/swiper/swiper-bundle.esm.browser.min.js';
 /** daum postcode & map */
 import {DaumPostMap} from '../../flexvue/daumpostmap/daumpostmap.js';
 
+/** nouislider */
+import {} from '../../flexvue/nouislider/nouislider.min.js';
+
 const onReady = () => 
 {
     // R 리소스 가져오기
@@ -165,7 +168,7 @@ const onReady = () =>
     Handler.post(() => Log.d('Handler post'));
 
     // 템플릿 출력
-    new Template().readFile(`${config.asset}/tpl/test${App.getLocale()}.html`, '#tpl_test').then((tpl)=>
+    new Template().readFile(`../test/tpl/test${App.getLocale()}.html`, '#tpl_test').then((tpl)=>
     {
         new Promise((resolve)=>{
             const _tpl = new Template().render(tpl,{name:'ㅇ',age:10});
@@ -182,6 +185,26 @@ const onReady = () =>
             });
         },false);
     }).finally(()=>{ProgressBar.close();}); 
+
+    // nouislider css
+    Handler.post(()=>{
+        new AsyncTask().doImportCss('../flexvue/nouislider/nouislider.min.css').then(()=>
+        {
+            Log.d('completed');
+            
+        });
+    },0);
+
+    // nouislider run
+    let handlesSlider4 = document.getElementById('slider-handles4');
+    noUiSlider.create(handlesSlider4, {
+        start: [4000, 8000, 12000, 16000],
+        connect: [false, true, true, false, true],
+        range: {
+            'min': [2000],
+            'max': [20000]
+        }
+    });
 }
 
 // document ready

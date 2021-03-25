@@ -117,7 +117,7 @@ const onReady = () =>
         new AsyncTask().doImportCss('css/fontawesome-all.min.css').then(()=>{
             Log.d('completed');
         });
-    },3000);
+    },10);
 
     // close pregress
     ProgressBar.close();
