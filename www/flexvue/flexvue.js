@@ -28,9 +28,9 @@ const OS = [
         identity: "Mac"
     },
     {
-           agent : navigator.userAgent,
-           subagent : "iPhone",
-           identity: "iPhone/iPod"
+        agent : navigator.userAgent,
+        subagent : "iPhone",
+        identity: "iPhone"
     },
     {
         agent : navigator.platform,
