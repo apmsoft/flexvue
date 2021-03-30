@@ -73,10 +73,8 @@ const onReady = () =>
         doEcho(filename, tpl_id){
             // template
             new Template().readFile(filename, tpl_id).then((tpl)=>{
-                new Promise((resolve)=>{
-                    document.querySelector('#left_docs_contents').innerHTML = new Template().render(tpl,{});
-                    resolve(true);
-                });
+                document.querySelector('#left_docs_contents').innerHTML = new Template().render(tpl,{});
+                return true;
             })
             .then(()=>{
                 document.querySelectorAll('code').forEach((el)=>{
