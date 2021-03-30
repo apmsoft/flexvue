@@ -7,7 +7,7 @@ const config   = {
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v1',
-    src        : `http://flexup.fancyupsoft.com/src`,
+    src        : '../src',
     res        : '../res'
 };
 
@@ -487,25 +487,31 @@ class Activity {
 
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
                     _history_state = Activity.history_state.bottomthird;
-					Activity.onStop('#bottomthird');
+					document.querySelector('#bottomthird_docs_contents').innerHTML ='';
+                    Activity.bottomthird.classList.toggle('bottomthird_transitioned');
 				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
                     _history_state = Activity.history_state.bottomside;
-					Activity.onStop('#bottomside');
+					document.querySelector('#bottomside_docs_contents').innerHTML ='';
+                    Activity.bottomside.classList.toggle('bottomside_transitioned');
 				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
                     _history_state = Activity.history_state.bottom;
-					Activity.onStop('#bottom');
+					document.querySelector('#bottom_docs_contents').innerHTML ='';
+                    Activity.bottom.classList.toggle('bottom_transitioned');
 				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
                     _history_state = Activity.history_state.rightthird;
-					Activity.onStop('#rightthird');
+					document.querySelector('#rightthird_docs_contents').innerHTML ='';
+                    Activity.rightthird.classList.toggle('rightthird_transitioned');
 				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
                     _history_state = Activity.history_state.rightside;
-					Activity.onStop('#rightside');
+					document.querySelector('#rightside_docs_contents').innerHTML ='';
+                    Activity.rightside.classList.toggle('rightside_transitioned');
 				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
                     _history_state = Activity.history_state.right;
-					Activity.onStop('#right');
+					document.querySelector('#right_docs_contents').innerHTML ='';
+                    Activity.right.classList.toggle('transitioned');
 				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
                     _history_state = Activity.history_state.drawer_menu;
-					Activity.onStop('#drawer_menu');
+					Activity.drawer_menu.classList.toggle('drawer_transitioned');
 				}else{
                     if(window.history.state !== null && window.history.state){
                         _history_state = window.history.state;
