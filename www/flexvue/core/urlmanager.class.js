@@ -89,6 +89,10 @@ class UrlManager extends URL {
 
         window.history.pushState(id, title, url);
     }
+
+    hashLocation (hash){
+        location.hash = hash;
+    }
 }
 
 export {UrlManager};

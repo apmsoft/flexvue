@@ -1,7 +1,7 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '0.9.5',
+    version    : '0.9.6',
     int_version: 3,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -380,6 +380,9 @@ class Activity {
         if(panel_id !==null)
         {
             Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
+            if(typeof window.location.hash !=='undefined'){
+                Activity.history_state[Activity.push_state] = window.location.hash.replace('#','');
+            }
             let panel = Activity.layout_panel[Activity.push_state];
             if (panel.target !== null)
             {
@@ -482,5 +485,46 @@ class Activity {
 				callback(_history_state);
 			}
 		};
+    }
+}
+
+class Router {
+    constructor(hash,callback){
+        this.mBPCallbak = null;
+        window.addEventListener('hashchange', () => 
+        {
+            let _history_state = Activity.history_state[Activity.push_state];
+            if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+                Activity.bottomthird.classList.toggle('bottomthird_transitioned');
+                this.mBPCallbak(_history_state);
+            } else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                Activity.bottomside.classList.toggle('bottomside_transitioned');
+                this.mBPCallbak(_history_state);
+            } else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+                Activity.bottom.classList.toggle('bottom_transitioned');
+                this.mBPCallbak(_history_state);
+            } else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+                Activity.rightthird.classList.toggle('rightthird_transitioned');
+                this.mBPCallbak(_history_state);
+            } else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+                Activity.rightside.classList.toggle('rightside_transitioned');
+                this.mBPCallbak(_history_state);
+            } else if (Activity.right && Activity.right.classList.contains('transitioned')) {
+                Activity.right.classList.toggle('transitioned');
+                this.mBPCallbak(_history_state);
+            }else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
+                Activity.drawer_menu.classList.toggle('drawer_transitioned');
+                this.mBPCallbak(_history_state);
+            }else{
+                callback(window.location.hash.replace('#',''));
+            }
+        });
+
+        let _hash = (typeof hash !=='undefined' && typeof hash !== null) ? hash.replace('#','') : '';
+        callback(_hash);
+    }
+
+    onBackPressed(callback){ 
+        this.mBPCallbak = callback;
     }
 }
