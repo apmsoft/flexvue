@@ -1,9 +1,6 @@
 import {Template} from '../../flexvue/core/template.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
-import {TextUtil} from '../../flexvue/core/textutil.min.js';
-
-// import {} from '../../flexvue/prism/prism.min.js';
 
 const onReady = () => 
 {
