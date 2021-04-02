@@ -1,13 +1,13 @@
 "use strict";
 const config   = {
-    app_name   : 'flexup',
-    version    : '0.1.1',
-    int_version: 1,
+    app_name   : 'flexvue',
+    version    : '0.9.2',
+    int_version: 3,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v1',
-    src        : '../src',
+    src        : `../src`,
     res        : '../res'
 };
 
@@ -21,7 +21,7 @@ const OS = [
         agent : navigator.platform,
         subagent : "Android",
         identity: "Android"
-    },
+    },~
     {
         agent : navigator.platform,
         subagent : "Mac",
@@ -314,21 +314,6 @@ class Activity {
 		this.constructor.rightside = document.querySelector("#rightside");
 		this.constructor.right = document.querySelector("#right");
 
-		this.constructor.bottomthird_back_button = document.querySelector("#bottomthird_back_button");
-		this.constructor.bottomside_back_button = document.querySelector("#bottomside_back_button");
-		this.constructor.bottom_back_button = document.querySelector("#bottom_back_button");
-		this.constructor.rightthird_back_button = document.querySelector("#rightthird_back_button");
-		this.constructor.rightside_back_button = document.querySelector("#rightside_back_button");
-		this.constructor.right_back_button = document.querySelector("#right_back_button");
-
-		this.constructor.bottomthird_title = document.querySelector("#bottomthird_title");
-		this.constructor.bottomside_title = document.querySelector("#bottomside_title");
-		this.constructor.bottom_title = document.querySelector("#bottom_title");
-		this.constructor.rightthird_title = document.querySelector("#rightthird_title");
-		this.constructor.rightside_title = document.querySelector("#rightside_title");
-		this.constructor.right_title = document.querySelector("#right_title");
-		this.constructor.left_title = document.querySelector("#left_title");
-
         this.constructor.layout_panel = { 
             left : {
                 id:'#left',
@@ -381,19 +366,7 @@ class Activity {
 	}
 
 	onCreateView(){
-		if(Activity.bottom_back_button){ Activity.bottom_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomside_back_button){ Activity.bottomside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomthird_back_button) { Activity.bottomthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.right_back_button) { Activity.right_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightside_back_button){ Activity.rightside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightthird_back_button) { Activity.rightthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-
-		if(Activity.bottom_title){ Activity.bottom_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomside_title){ Activity.bottomside_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomthird_title) { Activity.bottomthird_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.right_title) { Activity.right_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightside_title){ Activity.rightside_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightthird_title) { Activity.rightthird_title.addEventListener("click", () => { history.go(-1); }, false); }
+		
 	}
 
     static inentView(url,delaytime = 0){
@@ -428,36 +401,30 @@ class Activity {
         switch(panel_id){
             case 'bottomthird':
                 if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-                    document.querySelector('#bottomthird_docs_contents').innerHTML ='';
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
                 }
             break;
             case 'bottomside':
                 if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-                    document.querySelector('#bottomside_docs_contents').innerHTML ='';
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
                 }
             case 'bottom':
                 if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-                    document.querySelector('#bottom_docs_contents').innerHTML ='';
                     Activity.bottom.classList.toggle('bottom_transitioned');
                 }
             break;
             case 'rightthird' :
                 if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-                    document.querySelector('#rightthird_docs_contents').innerHTML ='';
                     Activity.rightthird.classList.toggle('rightthird_transitioned');
                 }
             break;
             case 'rightside' :
                 if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-                    document.querySelector('#rightside_docs_contents').innerHTML ='';
                     Activity.rightside.classList.toggle('rightside_transitioned');
                 }
             break;
             case 'right':
                 if (Activity.right && Activity.right.classList.contains('transitioned')) {
-                    document.querySelector('#right_docs_contents').innerHTML ='';
                     Activity.right.classList.toggle('transitioned');
                 }
             break;
@@ -487,27 +454,21 @@ class Activity {
 
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
                     _history_state = Activity.history_state.bottomthird;
-					document.querySelector('#bottomthird_docs_contents').innerHTML ='';
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
 				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
                     _history_state = Activity.history_state.bottomside;
-					document.querySelector('#bottomside_docs_contents').innerHTML ='';
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
 				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
                     _history_state = Activity.history_state.bottom;
-					document.querySelector('#bottom_docs_contents').innerHTML ='';
                     Activity.bottom.classList.toggle('bottom_transitioned');
 				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
                     _history_state = Activity.history_state.rightthird;
-					document.querySelector('#rightthird_docs_contents').innerHTML ='';
                     Activity.rightthird.classList.toggle('rightthird_transitioned');
 				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
                     _history_state = Activity.history_state.rightside;
-					document.querySelector('#rightside_docs_contents').innerHTML ='';
                     Activity.rightside.classList.toggle('rightside_transitioned');
 				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
                     _history_state = Activity.history_state.right;
-					document.querySelector('#right_docs_contents').innerHTML ='';
                     Activity.right.classList.toggle('transitioned');
 				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
                     _history_state = Activity.history_state.drawer_menu;
