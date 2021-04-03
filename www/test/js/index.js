@@ -38,6 +38,9 @@ import {DaumPostMap} from '../../flexvue/plugins/daumpostmap/daumpostmap.js';
 /** nouislider */
 import {} from '../../flexvue/plugins/nouislider/nouislider.min.js';
 
+/** lazyload */
+import LazyLoad from '../../flexvue/plugins/lazyload/lazyload.esm.min.js';
+
 const onReady = () => 
 {
     // R 리소스 가져오기
@@ -80,6 +83,11 @@ const onReady = () =>
         FilePondPluginFileValidateType,
         FilePondPluginImagePreview
     );
+
+    // lazyload
+    var myLazyLoad = new LazyLoad({
+        container: document.querySelector("#left_docs_contents")
+    });
 
     // target
     const inputElement = document.querySelector('input[type="file"]');
