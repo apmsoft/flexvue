@@ -44,7 +44,7 @@ class UrlManager extends URL {
     // url (page=1&category=a) -> json {page :1, category:a}
     convertURL2JSON() {
         this.doEmpty ();
-        this.url_params = Object.fromEntries( new URLSearchParams(params[0]) );
+        this.url_params = Object.fromEntries( new URLSearchParams(super.search) );
     }
 
     // location url 만들기
