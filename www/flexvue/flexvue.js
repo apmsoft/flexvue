@@ -6,100 +6,105 @@ const config   = {
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
-    asset      : '../v1',
-    src        : `../src`,
-    res        : '../res'
+    asset      : '',
+    src        : `http://flexup.fancyupsoft.com/src`,
+    res        : 'res'
 };
 
 const OS = [
     {
         agent : navigator.platform,
-        subagent : "Win",
+        subagent : /Win/i,
         identity: "Windows"
     },
     {
-        agent : navigator.platform,
-        subagent : "Android",
+        agent : navigator.userAgent,
+        subagent : /IEMobile/i,
+        identity: "IEMobile"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : /Android/i,
         identity: "Android"
-    },~
+    },
     {
         agent : navigator.platform,
-        subagent : "Mac",
+        subagent : /Mac/i,
         identity: "Mac"
     },
     {
         agent : navigator.userAgent,
-        subagent : "iPhone",
+        subagent : /iPhone/i,
         identity: "iPhone"
     },
     {
         agent : navigator.platform,
-        subagent : "Linux",
+        subagent : /Linux/i,
         identity: "Linux"
     }
 ];
 const browsers = [
     {
         agent : navigator.userAgent,
-        subagent : "Chrome",
+        subagent : /Chrome/i,
         identity: "Chrome"
     },
     { 	agent : navigator.userAgent,
-        subagent : "OmniWeb",
+        subagent : /OmniWeb/i,
         versionSearch: "OmniWeb/",
         identity: "OmniWeb"
     },
     {
         agent : navigator.vendor,
-        subagent : "Apple",
+        subagent : /Apple/i,
         identity: "Safari",
         versionSearch: "Version"
     },
     {
         prop: window.opera,
-        identity: "Opera",
+        identity: /Opera/i,
         versionSearch: "Version"
     },
     {
         agent : navigator.vendor,
-        subagent : "iCab",
+        subagent : /iCab/i,
         identity: "iCab"
     },
     {
         agent : navigator.vendor,
-        subagent : "KDE",
+        subagent : /KDE/i,
         identity: "Konqueror"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Firefox",
+        subagent : /Firefox/i,
         identity: "Firefox"
     },
     {
         agent : navigator.vendor,
-        subagent : "Camino",
+        subagent : /Camino/i,
         identity: "Camino"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Netscape",
+        subagent : /Netscape/i,
         identity: "Netscape"
     },
     {
         agent : navigator.userAgent,
-        subagent : "MSIE",
+        subagent : /MSIE/i,
         identity: "Explorer",
         versionSearch: "MSIE"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Gecko",
+        subagent : /Gecko/i,
         identity: "Mozilla",
         versionSearch: "rv"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Mozilla",
+        subagent : /Mozilla/i,
         identity: "Netscape",
         versionSearch: "Mozilla"
     }
@@ -121,18 +126,22 @@ class App {
     }
 
     findPlatform (data){
+        let result = '';
         for (var i=0;i<data.length;i++)
         {
 			var dataString = data[i].agent;
 			var dataProp = data[i].prop;
 			this.versionSearchString = data[i].versionSearch || data[i].identity;
 			if (dataString) {
-				if (dataString.indexOf(data[i].subagent) != -1)
-					return data[i].identity;
+				if (data[i].subagent.test(dataString)){
+					result = data[i].identity;
+                    break;
+                }
 			}
 			else if (dataProp)
-				return data[i].identity;
+				result = data[i].identity;
 		}
+    return result;
     }
 
     getPlatformVersion (data){
