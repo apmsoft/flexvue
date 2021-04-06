@@ -1,9 +1,9 @@
 import {Template} from '../../flexvue/core/template.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
-import {TextUtil} from '../../flexvue/core/textutil.min.js';
 
-// import {} from '../../flexvue/prism/prism.min.js';
+/** lazyload */
+import LazyLoad from '../../flexvue/plugins/lazyload/lazyload.esm.min.js';
 
 const onReady = () => 
 {
@@ -56,6 +56,88 @@ const onReady = () =>
             });
 
             this.doRouter ();
+            this.doLazyload();
+        }
+
+        doLazyload () {
+            // lazyload
+            let myLazyLoad = new LazyLoad({
+                container: document.querySelector("#left_docs_contents")
+            });
+
+            window.lazyFunctions = {
+                section1: function (el) {
+                    Log.d("section1");
+                    Runnable(function(){
+                        el.classList.toggle( "element-animation" );
+                    });
+                },
+                section2: function (el) {
+                    Log.d("section2");
+                    Runnable(function(){
+                        el.classList.toggle( "element-animation" );
+                    });
+                },
+                section3: function (el) {
+                    Log.d("section3");
+                    Runnable(function(){
+                        el.classList.toggle( "element-animation" );
+                    });
+                },
+                section4: function (el) {
+                    Log.d("section4");
+                    Runnable(function(){
+                        el.classList.toggle( "element-animation" );
+                    });
+                },
+                section5: function (el) {
+                    Log.d("section5");
+                    Runnable(function(){
+                        el.classList.toggle( "element-animation" );
+                    });
+                }
+            };
+
+            let callback_exit = function (el) {
+                Log.d("EXITED");
+                Runnable(function(){
+                    el.classList.toggle( "element-animation" );
+                });
+            };
+            let callback_loading = function (el) {
+                Log.d("LOADING");
+            };
+            let callback_loaded = function (el) {
+                Log.d("LOADED");
+            };
+            let callback_error = function (el) {
+                Log.e("ERROR");
+            };
+            let callback_finish = function () {
+                Log.d("FINISHED");
+            };
+            let callback_cancel = function (el) {
+                Log.d("CANCEL");
+            };
+        
+            function executeLazyScript(el) {
+                Log.d("🔑 ENTERED", el);
+                let lazyFunctionName = el.getAttribute("data-lazy-function");
+                let lazyFunction = lazyFunctions[lazyFunctionName];
+                if (!lazyFunction) return;
+                lazyFunction(el);
+            }
+        
+            let ll = new LazyLoad({
+                unobserve_entered: false, // <- To avoid executing the script multiple times
+                callback_enter: executeLazyScript, // Assigning the function defined above
+                callback_exit: callback_exit,
+                callback_cancel: callback_cancel,
+                callback_loading: callback_loading,
+                callback_loaded: callback_loaded,
+                callback_error: callback_error,
+                callback_finish: callback_finish
+            });
         }
 
         doRouter (){

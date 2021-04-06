@@ -13,9 +13,87 @@
     code[class*=language-], pre[class*=language-] {
         white-space: pre-wrap !important;
     }
+
+    .element-animation{
+        animation: animationFrames ease 1s;
+        animation-iteration-count: 1;
+        transform-origin: 50% 50%;
+        animation-fill-mode:forwards; /*when the spec is finished*/
+        -webkit-animation: animationFrames ease 1s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-transform-origin: 50% 50%;
+        -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+        -moz-animation: animationFrames ease 1s;
+        -moz-animation-iteration-count: 1;
+        -moz-transform-origin: 50% 50%;
+        -moz-animation-fill-mode:forwards; /*FF 5+*/
+        -o-animation: animationFrames ease 1s;
+        -o-animation-iteration-count: 1;
+        -o-transform-origin: 50% 50%;
+        -o-animation-fill-mode:forwards; /*Not implemented yet*/
+        -ms-animation: animationFrames ease 1s;
+        -ms-animation-iteration-count: 1;
+        -ms-transform-origin: 50% 50%;
+        -ms-animation-fill-mode:forwards; /*IE 10+*/
+    }
+
+    @keyframes animationFrames{
+        0% {
+            opacity:0;
+            transform:  translate(0px,25px)  ;
+        }
+        100% {
+            opacity:1;
+            transform:  translate(0px,0px)  ;
+        }
+    }
+
+    @-moz-keyframes animationFrames{
+        0% {
+            opacity:0;
+            -moz-transform:  translate(0px,25px)  ;
+        }
+        100% {
+            opacity:1;
+            -moz-transform:  translate(0px,0px)  ;
+        }
+    }
+
+    @-webkit-keyframes animationFrames {
+        0% {
+            opacity:0;
+            -webkit-transform:  translate(0px,25px)  ;
+        }
+        100% {
+            opacity:1;
+            -webkit-transform:  translate(0px,0px)  ;
+        }
+    }
+
+    @-o-keyframes animationFrames {
+        0% {
+            opacity:0;
+            -o-transform:  translate(0px,25px)  ;
+        }
+        100% {
+            opacity:1;
+            -o-transform:  translate(0px,0px)  ;
+        }
+    }
+
+    @-ms-keyframes animationFrames {
+        0% {
+            opacity:0;
+            -ms-transform:  translate(0px,25px)  ;
+        }
+        100% {
+            opacity:1;
+            -ms-transform:  translate(0px,0px)  ;
+        }
+    }
     </style>
 
-    <script defer src="../flexvue/flexvue.min.js"></script>
+    <script defer src="../flexvue/flexvue.min.js?v=6"></script>
     <script defer type="module" src="js/index.js?v=1"></script>
 
     <script defer src="../flexvue/plugins/prism/prism.min.js" data-manual></script>
@@ -250,14 +328,14 @@
                                 javascript 는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank" class="text-blue-600"><i class="fas fa-link"></i> 바닐라 스크립트(es6 +)</a> 만을 이용해 만들어 졌습니다.
                             </div>
 
-                            <section class="mb-10">
+                            <section class="mb-10 lazy" data-lazy-function="section1">
                                 <h4 class="text-gray-700 mb-1">웹 (Web) / 하이브리드 앱(Application)을 위해 만들어 졌습니다.</h4>
                                 <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
                                     반응형 홈페이지와 하이브리드앱 제작을 위한<br/> 최대 60fps 의 에니메이션과 함께 어플리케이션 만들기에 최적화 되어 있습니다.
                                 </div>
                             </section>
 
-                            <section class="mb-10">
+                            <section class="mb-10" data-lazy-function="section2">
                                 <h4 class="text-gray-700 mb-1">비동기 AsyncTask</h4>
                                 <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
                                     서버 데이터와 템플릿을 사용하기 위해 비동기(async & wait)를 사용 합니다.
@@ -269,7 +347,7 @@
                                 </div>
                             </section>
 
-                            <section class="mb-10">
+                            <section class="mb-10 lazy" data-lazy-function="section3">
                                 <h4 class="text-gray-700 mb-1">다이나믹 import</h4>
                                 <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
                                     하이브리드앱을 위한 다이나믹 import 를 사용할 수 있도록 지원합니다.
@@ -282,7 +360,7 @@
                                 </div>
                             </section>
 
-                            <section class="mb-10">
+                            <section class="mb-10 lazy" data-lazy-function="section4">
                                 <h4 class="text-gray-700 mb-1">리터럴 템플릿 (Template)</h4>
                                 <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
                                     리터럴 자바스크립트 HTML 템플릿을 지원합니다.
@@ -293,7 +371,7 @@
                                 </div>
                             </section>
 
-                            <section class="mb-10">
+                            <section class="mb-10 lazy" data-lazy-function="section5">
                                 <h4 class="text-gray-700 mb-1">다이나믹 import CSS</h4>
                                 <div class="bg-gray-100 mb-10 p-5 border rounded-lg">
                                     CSS 파일을 다이나믹 import 할 수 있습니다.
@@ -315,135 +393,21 @@
     </div>
     
     <!--right-->
-    <div id="right" class="fvue--layout z-3 bg-balck">
-        <div class="fvue--layout--container">
-            <div class="fvue--layout--header">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="right_back_button" class="fvue--layout--icon text-gray-200">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="right_title" class="fvue--layout--title">
-                      
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main bg-red-400">
-                <div class="xl:container xl:mx-auto border" id="right_docs_contents">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="right" class="fvue--layout z-3 bg-balck"></div>
 
     <!--rightside-->
-    <div id="rightside" class="fvue--layout z-4 bg-white">
-        <div class="fvue--layout--container">
-            <div class="fvue--layout--header">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="rightside_back_button" class="fvue--layout--icon text-gray-200">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="rightside_title" class="fvue--layout--title">
-                        
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main bg-red-400">
-                <div class="xl:container xl:mx-auto border" id="rightside_docs_contents">
-        
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="rightside" class="fvue--layout z-4 bg-white"></div>
 
     <!--rightthird-->
-    <div id="rightthird" class="fvue--layout z-5 bg-white">
-        <div class="fvue--layout--container">
-            <div class="fvue--layout--header">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="rightthird_back_button" class="fvue--layout--icon text-gray-200">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="rightthird_title" class="fvue--layout--title">
-                        
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main bg-red-400">
-                <div class="xl:container xl:mx-auto border" id="rightthird_docs_contents">
-                        
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="rightthird" class="fvue--layout z-5 bg-white"></div>
 
     <!--bottom-->
-    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
-        <div class="fvue--layout--container">
-            <div class="fvue--layout--header container mx-auto">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="bottom_back_button" class="fvue--layout--icon text-gray-200">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="bottom_title" class="fvue--layout--title">
-                        
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main" id="bottom_docs_contents">
-            </div>
-        </div>
-    </div>
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70"></div>
 
     <!--bottomside-->
-    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
-        <div class="fvue--layout--container">
-            <div class="fvue--layout--header container mx-auto">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="bottomside_back_button" class="fvue--layout--icon text-gray-200">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="bottomside_title" class="fvue--layout--title">
-                        
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main" id="bottomside_docs_contents">
-            </div>
-        </div>
-    </div>
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70"></div>
 
     <!--bottomthird-->
-    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
-        <div class="fvue--layout--container rounded-lg bg-white w-full max-w-screen-sm mx-auto h-3/6 max-h-screen-lg min-h-2/3vh" >
-            <div class="fvue--layout--header">
-                <div class="fvue--layout--header--row py-3 px-3">
-                    <div id="bottomthird_back_button" class="fvue--layout--icon text-gray-600">
-                        <i class="fas fa-arrow-left fa-2x"></i>
-                    </div>
-                    <div id="bottomthird_title" class="fvue--layout--title pl-3 text-2xl">
-                        
-                    </div>
-                    <div class="fvue--layout--spacer"></div>
-                    <div class="fvue--layout--navigation"></div>
-                  </div>
-            </div>
-            <div class="fvue--layout--main">
-                <div class="xl:container xl:mx-auto" id="bottomthird_docs_contents">
-        
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap"></div>
 </body>
 </html>

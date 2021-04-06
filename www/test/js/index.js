@@ -3,6 +3,13 @@ import {Template} from '../../flexvue/core/template.class.min.js';
 import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
 import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
 
+/** textutil */
+import {number_format, phone_format} from '../../flexvue/core/textutil.js';
+// use in template
+if(typeof window.number_format ==='undefined'){
+    window.number_format = number_format;
+}
+
 /** ZingTouch */
 import ZingTouch from '../../flexvue/plugins/zingtouch/ZingTouch.min.js';
 
@@ -30,6 +37,9 @@ import {DaumPostMap} from '../../flexvue/plugins/daumpostmap/daumpostmap.js';
 
 /** nouislider */
 import {} from '../../flexvue/plugins/nouislider/nouislider.min.js';
+
+/** lazyload */
+import LazyLoad from '../../flexvue/plugins/lazyload/lazyload.esm.min.js';
 
 const onReady = () => 
 {
@@ -73,6 +83,11 @@ const onReady = () =>
         FilePondPluginFileValidateType,
         FilePondPluginImagePreview
     );
+
+    // lazyload
+    var myLazyLoad = new LazyLoad({
+        container: document.querySelector("#left_docs_contents")
+    });
 
     // target
     const inputElement = document.querySelector('input[type="file"]');
