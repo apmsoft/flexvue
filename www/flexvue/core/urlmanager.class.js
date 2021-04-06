@@ -41,42 +41,23 @@ class UrlManager extends URL {
     return result;
     }
 
-    // url -> json
-    // void
+    // url (page=1&category=a) -> json {page :1, category:a}
     convertURL2JSON() {
         this.doEmpty ();
-        
-        let result = {};
-        let sPageURL = super.search;
-        if(sPageURL.indexOf('?')>-1) {
-            sPageURL = sPageURL.replace('?','');
-        }
-        if(sPageURL.indexOf('&')>-1) {
-            let sURLVariables = sPageURL.split('&');
-            sURLVariables.forEach(val => {
-                let sParameterName = val.split('=');
-                Log.i(sParameterName);
-                var k = sParameterName[0];
-                let v = sParameterName[1];
-                result[k] = v;
-            });
-        }
-    return result;
+        this.url_params = Object.fromEntries( new URLSearchParams(super.search) );
     }
 
     // location url 만들기
-    // return string
+    // json {page :1, category:a} -> page=1&category=a
     makeJSON2URL(params){
         this.mergeURLParams(params);
         let url_param = Object.entries(this.url_params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
-        Log.d(url_param)
         return url_param;
     }
 
     // params merge
-    // void
     mergeURLParams(params){
-        this.url_params = Object.assign({},this.url_params,params);
+        this.url_params = Object.assign(this.url_params, params);
     }
 
     // history change url

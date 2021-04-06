@@ -1,105 +1,110 @@
 "use strict";
 const config   = {
-    app_name   : 'flexup',
-    version    : '0.1.1',
-    int_version: 1,
+    app_name   : 'flexvue',
+    version    : '0.9.6',
+    int_version: 3,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    domain     : 'http://flexup.fancyupsoft.com',
-    asset      : '../v1',
-    src        : `http://flexup.fancyupsoft.com/src`,
+    domain     : 'http://mgcms.hhskorea.com',
+    asset      : '../v2',
+    src        : `../src`,
     res        : '../res'
 };
 
 const OS = [
     {
         agent : navigator.platform,
-        subagent : "Win",
+        subagent : /Win/i,
         identity: "Windows"
     },
     {
-        agent : navigator.platform,
-        subagent : "Android",
+        agent : navigator.userAgent,
+        subagent : /IEMobile/i,
+        identity: "IEMobile"
+    },
+    {
+        agent : navigator.userAgent,
+        subagent : /Android/i,
         identity: "Android"
     },
     {
         agent : navigator.platform,
-        subagent : "Mac",
+        subagent : /Mac/i,
         identity: "Mac"
     },
     {
         agent : navigator.userAgent,
-        subagent : "iPhone",
+        subagent : /iPhone/i,
         identity: "iPhone"
     },
     {
         agent : navigator.platform,
-        subagent : "Linux",
+        subagent : /Linux/i,
         identity: "Linux"
     }
 ];
 const browsers = [
     {
         agent : navigator.userAgent,
-        subagent : "Chrome",
+        subagent : /Chrome/i,
         identity: "Chrome"
     },
     { 	agent : navigator.userAgent,
-        subagent : "OmniWeb",
+        subagent : /OmniWeb/i,
         versionSearch: "OmniWeb/",
         identity: "OmniWeb"
     },
     {
         agent : navigator.vendor,
-        subagent : "Apple",
+        subagent : /Apple/i,
         identity: "Safari",
         versionSearch: "Version"
     },
     {
         prop: window.opera,
-        identity: "Opera",
+        identity: /Opera/i,
         versionSearch: "Version"
     },
     {
         agent : navigator.vendor,
-        subagent : "iCab",
+        subagent : /iCab/i,
         identity: "iCab"
     },
     {
         agent : navigator.vendor,
-        subagent : "KDE",
+        subagent : /KDE/i,
         identity: "Konqueror"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Firefox",
+        subagent : /Firefox/i,
         identity: "Firefox"
     },
     {
         agent : navigator.vendor,
-        subagent : "Camino",
+        subagent : /Camino/i,
         identity: "Camino"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Netscape",
+        subagent : /Netscape/i,
         identity: "Netscape"
     },
     {
         agent : navigator.userAgent,
-        subagent : "MSIE",
+        subagent : /MSIE/i,
         identity: "Explorer",
         versionSearch: "MSIE"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Gecko",
+        subagent : /Gecko/i,
         identity: "Mozilla",
         versionSearch: "rv"
     },
     {
         agent : navigator.userAgent,
-        subagent : "Mozilla",
+        subagent : /Mozilla/i,
         identity: "Netscape",
         versionSearch: "Mozilla"
     }
@@ -121,18 +126,22 @@ class App {
     }
 
     findPlatform (data){
+        let result = '';
         for (var i=0;i<data.length;i++)
         {
 			var dataString = data[i].agent;
 			var dataProp = data[i].prop;
 			this.versionSearchString = data[i].versionSearch || data[i].identity;
 			if (dataString) {
-				if (dataString.indexOf(data[i].subagent) != -1)
-					return data[i].identity;
+				if (data[i].subagent.test(dataString)){
+					result = data[i].identity;
+                    break;
+                }
 			}
 			else if (dataProp)
-				return data[i].identity;
+				result = data[i].identity;
 		}
+    return result;
     }
 
     getPlatformVersion (data){
@@ -314,21 +323,6 @@ class Activity {
 		this.constructor.rightside = document.querySelector("#rightside");
 		this.constructor.right = document.querySelector("#right");
 
-		this.constructor.bottomthird_back_button = document.querySelector("#bottomthird_back_button");
-		this.constructor.bottomside_back_button = document.querySelector("#bottomside_back_button");
-		this.constructor.bottom_back_button = document.querySelector("#bottom_back_button");
-		this.constructor.rightthird_back_button = document.querySelector("#rightthird_back_button");
-		this.constructor.rightside_back_button = document.querySelector("#rightside_back_button");
-		this.constructor.right_back_button = document.querySelector("#right_back_button");
-
-		this.constructor.bottomthird_title = document.querySelector("#bottomthird_title");
-		this.constructor.bottomside_title = document.querySelector("#bottomside_title");
-		this.constructor.bottom_title = document.querySelector("#bottom_title");
-		this.constructor.rightthird_title = document.querySelector("#rightthird_title");
-		this.constructor.rightside_title = document.querySelector("#rightside_title");
-		this.constructor.right_title = document.querySelector("#right_title");
-		this.constructor.left_title = document.querySelector("#left_title");
-
         this.constructor.layout_panel = { 
             left : {
                 id:'#left',
@@ -381,19 +375,7 @@ class Activity {
 	}
 
 	onCreateView(){
-		if(Activity.bottom_back_button){ Activity.bottom_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomside_back_button){ Activity.bottomside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomthird_back_button) { Activity.bottomthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.right_back_button) { Activity.right_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightside_back_button){ Activity.rightside_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightthird_back_button) { Activity.rightthird_back_button.addEventListener("click", () => { history.go(-1); }, false); }
-
-		if(Activity.bottom_title){ Activity.bottom_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomside_title){ Activity.bottomside_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.bottomthird_title) { Activity.bottomthird_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.right_title) { Activity.right_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightside_title){ Activity.rightside_title.addEventListener("click", () => { history.go(-1); }, false); }
-		if(Activity.rightthird_title) { Activity.rightthird_title.addEventListener("click", () => { history.go(-1); }, false); }
+		
 	}
 
     static inentView(url,delaytime = 0){
@@ -407,6 +389,9 @@ class Activity {
         if(panel_id !==null)
         {
             Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
+            if(typeof window.location.hash !=='undefined'){
+                Activity.history_state[Activity.push_state] = window.location.hash.replace('#','');
+            }
             let panel = Activity.layout_panel[Activity.push_state];
             if (panel.target !== null)
             {
@@ -428,36 +413,30 @@ class Activity {
         switch(panel_id){
             case 'bottomthird':
                 if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-                    document.querySelector('#bottomthird_docs_contents').innerHTML ='';
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
                 }
             break;
             case 'bottomside':
                 if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-                    document.querySelector('#bottomside_docs_contents').innerHTML ='';
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
                 }
             case 'bottom':
                 if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-                    document.querySelector('#bottom_docs_contents').innerHTML ='';
                     Activity.bottom.classList.toggle('bottom_transitioned');
                 }
             break;
             case 'rightthird' :
                 if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-                    document.querySelector('#rightthird_docs_contents').innerHTML ='';
                     Activity.rightthird.classList.toggle('rightthird_transitioned');
                 }
             break;
             case 'rightside' :
                 if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-                    document.querySelector('#rightside_docs_contents').innerHTML ='';
                     Activity.rightside.classList.toggle('rightside_transitioned');
                 }
             break;
             case 'right':
                 if (Activity.right && Activity.right.classList.contains('transitioned')) {
-                    document.querySelector('#right_docs_contents').innerHTML ='';
                     Activity.right.classList.toggle('transitioned');
                 }
             break;
@@ -469,7 +448,7 @@ class Activity {
         }
     }
 
-    static onBackPressed (callback) 
+    onBackPressed (callback) 
     {
         window.onpopstate = function(event) 
 		{
@@ -486,26 +465,26 @@ class Activity {
                 let _history_state = '';
 
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-                    _history_state = Activity.history_state.bottomthird;
-					Activity.onStop('#bottomthird');
+                    _history_state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
+                    Activity.bottomthird.classList.toggle('bottomthird_transitioned');
 				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-                    _history_state = Activity.history_state.bottomside;
-					Activity.onStop('#bottomside');
+                    _history_state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
+                    Activity.bottomside.classList.toggle('bottomside_transitioned');
 				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-                    _history_state = Activity.history_state.bottom;
-					Activity.onStop('#bottom');
+                    _history_state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
+                    Activity.bottom.classList.toggle('bottom_transitioned');
 				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-                    _history_state = Activity.history_state.rightthird;
-					Activity.onStop('#rightthird');
+                    _history_state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
+                    Activity.rightthird.classList.toggle('rightthird_transitioned');
 				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-                    _history_state = Activity.history_state.rightside;
-					Activity.onStop('#rightside');
+                    _history_state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
+                    Activity.rightside.classList.toggle('rightside_transitioned');
 				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
-                    _history_state = Activity.history_state.right;
-					Activity.onStop('#right');
+                    _history_state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
+                    Activity.right.classList.toggle('transitioned');
 				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
-                    _history_state = Activity.history_state.drawer_menu;
-					Activity.onStop('#drawer_menu');
+                    _history_state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
+					Activity.drawer_menu.classList.toggle('drawer_transitioned');
 				}else{
                     if(window.history.state !== null && window.history.state){
                         _history_state = window.history.state;
@@ -515,5 +494,21 @@ class Activity {
 				callback(_history_state);
 			}
 		};
+    }
+}
+
+class Router {
+    constructor(hash,callback){
+        this.init =false;
+        window.addEventListener('hashchange', () => 
+        {
+            callback(window.location.hash.replace('#',''));
+        });
+
+        if(!this.init){
+            let _hash = (typeof hash !=='undefined' && typeof hash !== null) ? hash.replace('#','') : '';
+            this.init = true;
+            callback(_hash);
+        }
     }
 }
