@@ -1,7 +1,7 @@
 "use strict";
-import {Template} from '../../flexvue/core/template.class.min.js';
-import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
-import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
+import Template from '../../flexvue/core/template.class.min.js';
+import AsyncTask from '../../flexvue/core/asynctask.class.min.js';
+import UrlManager from '../../flexvue/core/urlmanager.class.min.js';
 
 /** textutil */
 import {number_format, phone_format} from '../../flexvue/core/textutil.js';

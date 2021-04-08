@@ -1,5 +1,5 @@
 "use strict";
-class Template {
+export default class Template {
 
     // template 파일 찾기
     async readFile (filename, template_id)
@@ -36,5 +36,3 @@ class Template {
         return func(...Object.values(data));
     }
 }
-
-export {Template};

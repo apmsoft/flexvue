@@ -1,5 +1,5 @@
 "use strict";
-class Forms {
+export default class Forms {
     constructor (targetId){
         this.targetId = targetId;
     }
@@ -33,5 +33,3 @@ class Forms {
         });
     }
 }
-
-export {Forms};

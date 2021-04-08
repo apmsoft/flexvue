@@ -1,8 +1,8 @@
 "use strict";
-import {UrlManager} from '../../flexvue/core/urlmanager.class.min.js';
-import {Template} from '../../flexvue/core/template.class.min.js';
-import {Forms} from '../../flexvue/core/forms.class.min.js';
-import {AsyncTask} from '../../flexvue/core/asynctask.class.min.js';
+import UrlManager from '../../flexvue/core/urlmanager.class.min.js';
+import Template from '../../flexvue/core/template.class.min.js';
+import Forms from '../../flexvue/core/forms.class.min.js';
+import AsyncTask from '../../flexvue/core/asynctask.class.min.js';
 
 class Notice {
     constructor(){

@@ -5,7 +5,7 @@ const config   = {
     int_version: 3,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    domain     : 'http://mgcms.hhskorea.com',
+    domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v2',
     src        : `../src`,
     res        : '../res'

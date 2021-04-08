@@ -1,5 +1,5 @@
 "use strict";
-class AsyncTask 
+export default class AsyncTask 
 {
     // get
     /**
@@ -80,5 +80,3 @@ class AsyncTask
         }
     }
 }
-
-export {AsyncTask};

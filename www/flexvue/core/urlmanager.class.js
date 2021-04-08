@@ -1,5 +1,5 @@
 "use strict";
-class UrlManager extends URL {
+export default class UrlManager extends URL {
     constructor(url) {
         super(url);
         this.version = 1;
@@ -71,5 +71,3 @@ class UrlManager extends URL {
         window.history.pushState(id, title, url);
     }
 }
-
-export {UrlManager};
