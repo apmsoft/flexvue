@@ -8,7 +8,11 @@ const config   = {
     domain     : 'http://flexup.fancyupsoft.com',
     asset      : '../v2',
     src        : `../src`,
-    res        : '../res'
+    res        : '../res',
+    _history_state : {
+        id : '#left',
+        state : ''
+    }
 };
 
 const OS = [
@@ -390,8 +394,9 @@ class Activity {
         {
             Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
             if(typeof window.location.hash !=='undefined'){
-                Activity.history_state[Activity.push_state] = window.location.hash.replace('#','');
+                Activity.history_state[Activity.push_state] = window.location.hash;
             }
+            
             let panel = Activity.layout_panel[Activity.push_state];
             if (panel.target !== null)
             {
@@ -462,36 +467,48 @@ class Activity {
 			if (is_Trustred) 
 			{
 				// 이전경로 do 체크
-                let _history_state = '';
+                config._history_state = {
+                    id : '#left',
+                    state : ''
+                };
 
+				// 이전경로 do 체크
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-                    _history_state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#bottomthird';
+                    config._history_state.state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
 				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-                    _history_state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#bottomside';
+                    config._history_state.state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
 				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-                    _history_state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#bottom';
+                    config._history_state.state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
                     Activity.bottom.classList.toggle('bottom_transitioned');
 				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-                    _history_state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#rightthird';
+                    config._history_state.state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
                     Activity.rightthird.classList.toggle('rightthird_transitioned');
 				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-                    _history_state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#rightside';
+                    config._history_state.state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
                     Activity.rightside.classList.toggle('rightside_transitioned');
 				} else if (Activity.right && Activity.right.classList.contains('transitioned')) {
-                    _history_state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#right';
+                    config._history_state.state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
                     Activity.right.classList.toggle('transitioned');
 				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
-                    _history_state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
+                    config._history_state.id = '#drawer_menu';
+                    config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
 					Activity.drawer_menu.classList.toggle('drawer_transitioned');
 				}else{
                     if(window.history.state !== null && window.history.state){
-                        _history_state = window.history.state;
+                        config._history_state.id = '#left';
+                        config._history_state.state = window.history.state;
                     }
                 }
 
-				callback(_history_state);
+				callback(config._history_state);
 			}
 		};
     }
@@ -500,7 +517,7 @@ class Activity {
 class Router {
     constructor(hash,callback){
         this.init =false;
-        window.addEventListener('hashchange', () => 
+        window.addEventListener('hashchange', (evt) => 
         {
             callback(window.location.hash.replace('#',''));
         });

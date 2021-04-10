@@ -1,0 +1,266 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+    <script defer src="../flexvue/flexvue.min.js"></script>
+
+</head> 
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header py-3">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon">
+                        
+                    </div>
+                    <div class="fvue--layout--title text-gray-800">
+                      <a href="#">FlexVue (플렉스뷰)</a>
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation">
+                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="fvue--layout--main h-full">
+                <div class="flex flex-col mt-10 space-y-4 px-20 w-full justify-center">
+
+                    <button type="button" class="btn bg-gray-100" id="go_right">go right</button>
+                    <button type="button" class="btn bg-gray-800 text-white" id="go_bottom">go bottom</button>
+
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-gray-100">
+
+        <!--- container -->
+        <div class="fvue--layout--container w-full">
+                    
+            <!--header-->
+            <div class="fvue--layout--header py-3 xl:container xl:mx-auto">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon text-gray-400 cursor-pointer" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div class="fvue--layout--title text-gray-400 font-bold text-2xl pl-3">
+                        RIGHT
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation flex item-center">
+                        <button type="button" class="ml-3 text-gray-500" title="github" id="btn-github">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--body-->
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto text-center pt-10">
+                    Body
+                    <button type="button" class="btn bg-white" id="go_rightside">go right side</button>
+                </div>
+            </div>
+
+            <!--footer-->
+            <div class="fvue--layout--footer bg-red-100">
+                <div class="xl:container xl:mx-auto">
+                    footer
+                </div>
+            </div>
+
+        </div>
+        <!--// container -->
+        
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-gray-200">
+
+        <!--container-->
+        <div class="fvue--layout--container w-full">
+                
+            <!--header-->
+            <div class="fvue--layout--header py-3 xl:container xl:mx-auto">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon text-gray-400 cursor-pointer" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div class="fvue--layout--title text-gray-400 font-bold text-2xl pl-3">
+                        RIGHT SIDE
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation flex item-center">
+                        <button type="button" class="ml-3 text-gray-500" title="github" id="btn-github">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <!--body-->
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto text-center pt-10">
+                    Body
+                    <button type="button" class="btn bg-white" id="go_rightthird">go right third</button>
+                </div>
+            </div>
+    
+            <!--footer-->
+            <div class="fvue--layout--footer bg-red-100">
+                <div class="xl:container xl:mx-auto">
+                    footer
+                </div>
+            </div>
+    
+        </div>
+        <!--// container -->
+
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-gray-300">
+        
+        <div class="fvue--layout--container w-full">
+                
+            <!--header-->
+            <div class="fvue--layout--header py-3 xl:container xl:mx-auto">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon text-gray-400 cursor-pointer" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div class="fvue--layout--title text-gray-400 font-bold text-2xl pl-3">
+                        RIGHT THRID
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation flex item-center">
+                        <button type="button" class="ml-3 text-gray-500" title="github" id="btn-github">
+                            <i class="fab fa-github"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <!--body-->
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto">
+                    Body
+                </div>
+            </div>
+    
+            <!--footer-->
+            <div class="fvue--layout--footer bg-red-100">
+                <div class="xl:container xl:mx-auto">
+                    footer
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70 pt-32">
+        
+        <div class="fvue--layout--container rounded-lg bg-white w-full max-w-screen-sm mx-auto h-3/6 max-h-screen-lg min-h-2/3vh" >
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row py-3 px-3">
+                    <div class="fvue--layout--icon cursor-pointer text-gray-400" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div id="bottomthird_title" class="fvue--layout--title pl-3 text-2xl">
+                        Bottom
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto text-center pt-10">
+                    <button type="button" class="btn bg-white" id="go_bottomside">go bottom side</button>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70 pt-40">
+        
+        <div class="fvue--layout--container rounded-lg bg-white w-full max-w-screen-sm mx-auto h-3/6 max-h-screen-lg min-h-2/3vh" >
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row py-3 px-3">
+                    <div class="fvue--layout--icon cursor-pointer text-gray-400" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div id="bottomthird_title" class="fvue--layout--title pl-3 text-2xl">
+                        Bottom Side
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto text-center pt-10">
+                    <button type="button" class="btn bg-white" id="go_bottomthird">go bottom third</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 pt-52">
+        
+        <div class="fvue--layout--container rounded-lg bg-white w-full max-w-screen-sm mx-auto h-3/6 max-h-screen-lg min-h-2/3vh" >
+            <div class="fvue--layout--header">
+                <div class="fvue--layout--header--row py-3 px-3">
+                    <div class="fvue--layout--icon cursor-pointer text-gray-400" onclick="history.go(-1);return false;">
+                        <i class="fas fa-arrow-left fa-2x"></i>
+                    </div>
+                    <div id="bottomthird_title" class="fvue--layout--title pl-3 text-2xl">
+                        Bottom Third
+                    </div>
+                    <div class="fvue--layout--spacer"></div>
+                    <div class="fvue--layout--navigation"></div>
+                  </div>
+            </div>
+            <div class="fvue--layout--main">
+                <div class="xl:container xl:mx-auto">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script defer type="module" src="js/activity.js?v=1"></script>
+</body>
+</html>
