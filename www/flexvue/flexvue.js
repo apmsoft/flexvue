@@ -6,7 +6,7 @@ const config   = {
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexup.fancyupsoft.com',
-    asset      : '../v2',
+    asset      : '../v1',
     src        : `../src`,
     res        : '../res',
     _history_state : {
@@ -326,6 +326,7 @@ class Activity {
 		this.constructor.rightthird = document.querySelector("#rightthird");
 		this.constructor.rightside = document.querySelector("#rightside");
 		this.constructor.right = document.querySelector("#right");
+        this.constructor.drawer_menu = document.querySelector("#drawer_menu");
 
         this.constructor.layout_panel = { 
             left : {
@@ -362,6 +363,11 @@ class Activity {
                 id:'#bottomthird',
                 target:'#bottomthird',
                 toggle:'bottomthird_transitioned'
+            },
+            drawer_menu: {
+                id:'#drawer_menu',
+                target:'#drawer_menu',
+                toggle:'drawer_transitioned'
             }
         }
 
