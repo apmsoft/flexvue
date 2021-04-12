@@ -503,7 +503,7 @@ class Activity {
                     config._history_state.id = '#right';
                     config._history_state.state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
                     Activity.right.classList.toggle('transitioned');
-				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_menu_transitioned')) {
+				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
                     config._history_state.id = '#drawer_menu';
                     config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
 					Activity.drawer_menu.classList.toggle('drawer_transitioned');
