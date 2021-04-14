@@ -3,12 +3,14 @@
 // 01011112222 -> 010-1111-2222, 15881234 -> 1588-1234
 const phone_format = (str) => {
     let result = ('' + str).replace(/\D/g, '');
-    let match1 = result.match(/^(\d{3})(\d{4})(\d{4})$/);
-    let match2 = result.match(/^(\d{4})(\d{4})$/);
-    if (match1) {
-        result = [match1[0],match1[1],match1[2]].join('-');
-    }else if (match2) {
-        result = [match2[0],match2[1]].join('-');
+    let match1 = /^(\d{3})(\d{4})(\d{4})$/;
+    let match2 = /^(\d{4})(\d{4})$/;
+    if ((match1).test(result)) {
+        let m1 = result.match(match1);
+        result = [m1[1],m1[2],m1[3]].join('-');
+    }else if ((match2).test(result)) {
+        let m2 = result.match(match2);
+        result = [m2[1],m1[2]].join('-');
     }
 return result;
 }
