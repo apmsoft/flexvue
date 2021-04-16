@@ -9,10 +9,39 @@ const onReady = () =>
     ClassicEditor.create( document.querySelector( '#description' ),{
         toolbar: {
             items: [
-                'heading','|','bold','italic','link','|','blockQuote','insertTable','mediaEmbed','undo','redo'
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'outdent',
+                'indent',
+                '|',
+                'blockQuote',
+                'insertTable',
+                'mediaEmbed',
+                'undo',
+                'redo'
             ]
         },
-        language: 'ko'
+        language: 'ko',
+        image: {
+            toolbar: [
+                'imageTextAlternative',
+                'imageStyle:full',
+                'imageStyle:side'
+            ]
+        },
+        table: {
+            contentToolbar: [
+                'tableColumn',
+                'tableRow',
+                'mergeTableCells'
+            ]
+        },
     })
     .then(editor => {
         window.editor = editor;
