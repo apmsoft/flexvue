@@ -18,6 +18,7 @@ const onReady = () =>
         name: inputElement,
         maxFiles: 1,
         allowBrowse: true,
+        allowMultiple : false,
         allowImagePreview: true,
         // server: {
         //     url: config.src+'/popup/upload',
