@@ -508,10 +508,8 @@ class Activity {
                     config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
 					Activity.drawer_menu.classList.toggle('drawer_transitioned');
 				}else{
-                    if(window.history.state !== null && window.history.state){
-                        config._history_state.id = '#left';
-                        config._history_state.state = window.history.state;
-                    }
+                    config._history_state.id = '#left';
+                    config._history_state.state = (Activity.history_state.left) ? Activity.history_state.left : Activity.history_state[Activity.push_state];
                 }
 
 				callback(config._history_state);

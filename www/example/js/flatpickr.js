@@ -8,6 +8,7 @@ const onReady = () =>
         altInput: true,
         altFormat: "Y-m-d",
         dateFormat: "Y-m-d",
+        enableTime: true,
         'local' : ko
     });
     flatpickr.localize(flatpickr.l10ns.ko);
