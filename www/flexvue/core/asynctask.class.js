@@ -11,31 +11,52 @@ export default class AsyncTask
     async doGet(url, params, _headers={}) 
     {
         let self = this;
+        
+        let _len = url.length;
+        let _lastIdx = url.lastIndexOf('.');
+        let _fileExtention = filename.substring(_lastIdx, _len).toLowerCase();
+        if((_fileExtention == '.json' && typeof App.os !=='undefined') && (App.os == 'Android' || App.os == 'iPhone'))
+        {
+            if(typeof jQuery == "undefined"){
+                throw new Error('You need load jQuery Plugins');
+            }
 
-        // 접속경로
-        let redirect_url = url;
-        if(Object.keys(params).length > 0){
-            let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
-            redirect_url = `${redirect_url}?${url_param}`;
+            return new Promise((resolve, reject) => {
+                $.getJSON( url, {format: "json"})
+                .done(function( data ) {
+                    resolve (data);
+                })
+                .fail(function( jqxhr, textStatus, error ) {
+                    var err = textStatus + ", " + error;
+                    throw new Error(err);
+                });
+            });
+        }else{
+            // 접속경로
+            let redirect_url = url;
+            if(Object.keys(params).length > 0){
+                let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
+                redirect_url = `${redirect_url}?${url_param}`;
+            }
+            Log.d('doGet --> '+redirect_url);
+
+            let headers = _headers || {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            };
+
+            // 옵션
+            let options = {
+                method: 'GET', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, cors, *same-origin
+                cache: config.cache, // *default, no-cache, reload, force-cache, only-if-cached
+                headers: headers
+            };
+
+            const response = await fetch(redirect_url, options);
+            if (response.ok) return await response.json();
+            throw new Error(response.status);
         }
-        Log.d('doGet --> '+redirect_url);
-
-        let headers = _headers || {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        };
-
-        // 옵션
-        let options = {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            cache: config.cache, // *default, no-cache, reload, force-cache, only-if-cached
-            headers: headers
-        };
-
-        const response = await fetch(redirect_url, options);
-        if (response.ok) return await response.json();
-        throw new Error(response.status);
     }
 
     // post | input
