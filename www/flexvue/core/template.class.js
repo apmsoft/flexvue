@@ -14,26 +14,42 @@ export default class Template {
         }else{
             Log.d('read file');
 
-            let headers = _headers || {
-                'Content-Type': 'text/html'
-            };
+            if((typeof App.os !=='undefined') && (App.os == 'Android' || App.os == 'iPhone'))
+            {
+                if(typeof jQuery == "undefined"){
+                    throw new Error('You need load jQuery Plugins');
+                }
 
-            let options = {
-                mode: 'cors', 
-                cache: 'default',
-                headers: headers
-            };
-
-            const response = await fetch(filename, options);
-            if(response.ok){
-                return Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await response.text() ))).then(function() 
-                {
-                    // out rendering html
-                    return document.querySelector('script'+template_id).innerText;
+                return new Promise((resolve, reject) => {
+                    $.get(filename,function(html) {
+                        Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',html ))).then(function() 
+                        {
+                            // out rendering html
+                            resolve (document.querySelector('script'+template_id).innerText);
+                        });
+                    });
                 });
-            }
-            throw new Error(response.status);
+            }else{
+                let headers = _headers || {
+                    'Content-Type': 'text/html'
+                };
 
+                let options = {
+                    mode: 'cors', 
+                    cache: 'default',
+                    headers: headers
+                };
+
+                const response = await fetch(filename, options);
+                if(response.ok){
+                    return Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await response.text() ))).then(function() 
+                    {
+                        // out rendering html
+                        return document.querySelector('script'+template_id).innerText;
+                    });
+                }
+                throw new Error(response.status);
+            }
         }
     }
 
