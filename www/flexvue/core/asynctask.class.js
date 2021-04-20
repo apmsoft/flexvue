@@ -14,7 +14,7 @@ export default class AsyncTask
         
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
-        let _fileExtention = filename.substring(_lastIdx, _len).toLowerCase();
+        let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
         if((_fileExtention == '.json' && typeof App.os !=='undefined') && (App.os == 'Android' || App.os == 'iPhone'))
         {
             if(typeof jQuery == "undefined"){
