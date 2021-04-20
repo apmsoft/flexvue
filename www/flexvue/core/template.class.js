@@ -2,7 +2,7 @@
 export default class Template {
 
     // template 파일 찾기
-    async readFile (filename, template_id)
+    async readFile (filename, template_id, _headers={})
     {
         const self = this;
         let type = document.querySelector('script'+template_id);
@@ -13,7 +13,18 @@ export default class Template {
             return document.querySelector('script'+template_id).innerText;
         }else{
             Log.d('read file');
-            const response = await fetch(filename, {mode: 'cors', cache: 'default'});
+
+            let headers = _headers || {
+                'Content-Type': 'text/html'
+            };
+
+            let options = {
+                mode: 'cors', 
+                cache: 'default',
+                headers: headers
+            };
+
+            const response = await fetch(filename, options);
             if(response.ok){
                 return Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await response.text() ))).then(function() 
                 {
