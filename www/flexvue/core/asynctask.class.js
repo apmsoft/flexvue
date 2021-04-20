@@ -6,6 +6,7 @@ export default class AsyncTask
      * 
      * @param {서버 접속 경로} url 
      * @param {전송할 json 데이터} params 
+     * @param {전송할 헤더값} _headers 
      */
     async doGet(url, params, _headers={}) 
     {
@@ -41,7 +42,8 @@ export default class AsyncTask
     /**
      * 
      * @param {서버 접속 경로} url 
-     * @param {전송할 json 데이터} params 
+     * @param {전송할 json 데이터} params
+     * @param {전송할 헤더값} _headers  
      */
     async doPost(url, params, _headers={}) 
     {
