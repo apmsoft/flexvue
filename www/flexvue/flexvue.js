@@ -191,60 +191,6 @@ class Log {
         console.clear();
     }
 }
-
-class R {
-    constructor(resoure_filename){
-        this.constructor.res = {};
-        this.constructor.resoure_filename = resoure_filename;
-    }
-
-    async parserResource (res_id)
-    {
-        // 옵션
-        let options = {
-            method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            cache: 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-
-        if(!R.res.hasOwnProperty(res_id)){
-            const response = await fetch(this.constructor.resoure_filename, options);
-            if (response.ok){
-                return R.res[res_id] = await response.json();
-            }
-            throw new Error(response.status);
-        }
-    }
-
-    static strings(column){
-        if(R.res.hasOwnProperty('strings')){
-            if(R.res.strings.hasOwnProperty(column)){
-                return R.res.strings[column];
-            }
-        }
-    }
-
-    static array(column){
-        if(R.res.hasOwnProperty('array')){
-            if(R.res.array.hasOwnProperty(column)){
-                return R.res.array[column];
-            }
-        }
-    }
-
-    static integers(column){
-        Log.i(R.res)
-        if(R.res.hasOwnProperty('integers')){
-            if(R.res.integers.hasOwnProperty(column)){
-                return R.res.integers[column];
-            }
-        }
-    }
-}
-
 class ProgressBar {
     constructor(){
         this.constructor.progressObj = null;
