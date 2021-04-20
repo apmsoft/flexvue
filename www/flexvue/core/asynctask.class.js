@@ -7,7 +7,7 @@ export default class AsyncTask
      * @param {서버 접속 경로} url 
      * @param {전송할 json 데이터} params 
      */
-    async doGet(url, params) 
+    async doGet(url, params, _headers={}) 
     {
         let self = this;
 
@@ -19,15 +19,17 @@ export default class AsyncTask
         }
         Log.d('doGet --> '+redirect_url);
 
+        let headers = _headers || {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+
         // 옵션
         let options = {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, cors, *same-origin
             cache: config.cache, // *default, no-cache, reload, force-cache, only-if-cached
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
+            headers: headers
         };
 
         const response = await fetch(redirect_url, options);
@@ -41,20 +43,22 @@ export default class AsyncTask
      * @param {서버 접속 경로} url 
      * @param {전송할 json 데이터} params 
      */
-    async doPost(url, params) 
+    async doPost(url, params, _headers={}) 
     {
         // 자동 프로그램 확장자 설정
         let redirect_url = url;
+
+        let headers = _headers || {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
 
         // option
         let options = {
             method: ((typeof params.id !== 'undefined') && (params.id !== null)) ? 'PUT':'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, cors, *same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
+            headers: headers,
             body: JSON.stringify(params)
         };
 
