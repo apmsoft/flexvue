@@ -1,8 +1,8 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '0.9.10',
-    int_version: 10,
+    version    : '0.9.11',
+    int_version: 11,
     is_hybrideapp : false, // Android/iOS ㅎㅏㅇㅣㅂㅡㄹㅣㄷㅡㅇㅐㅂ ㅇㅕㅂㅜ
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached

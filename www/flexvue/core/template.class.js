@@ -16,18 +16,25 @@ export default class Template {
 
             if(config.is_hybrideapp && (App.os == 'Android' || App.os == 'iPhone'))
             {
-                if(typeof jQuery == "undefined"){
-                    throw new Error('You need load jQuery Plugins, add plugin : import {} from ../flexvue/plugins/jquery/jquery.js');
-                }
-
                 return new Promise((resolve, reject) => {
-                    $.get(filename,function(html) {
-                        Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',html ))).then(function() 
-                        {
-                            // out rendering html
-                            resolve (document.querySelector('script'+template_id).innerText);
-                        });
-                    });
+                    let _len = filename.length;
+                    let _lastIdx = filename.lastIndexOf('.');
+                    let _fileExtention = filename.substring(_lastIdx, _len).toLowerCase();
+
+                    let mimetype = (_fileExtention == '.html') ? "text/html" : "text/plain";
+                    var xobj = new XMLHttpRequest();
+                    xobj.overrideMimeType(mimetype);
+                    xobj.open('GET', filename, true); // Replace 'my_data' with the path to your file
+                    xobj.onreadystatechange = function () {
+                        if (xobj.readyState == 4 && xobj.status == "200") {
+                            Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',xobj.responseText ))).then(function() 
+                            {
+                                // out rendering html
+                                resolve (document.querySelector('script'+template_id).innerText);
+                            });
+                        }
+                    };
+                    xobj.send(null);
                 });
             }else{
                 let headers = _headers || {
@@ -35,6 +42,7 @@ export default class Template {
                 };
 
                 let options = {
+                    method: 'GET',
                     mode: 'cors', 
                     cache: 'default',
                     headers: headers

@@ -15,21 +15,19 @@ export default class AsyncTask
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
-        if((config.is_hybrideapp && _fileExtention == '.json') && (App.os == 'Android' || App.os == 'iPhone'))
+        if((config.is_hybrideapp && (_fileExtention == '.json' || _fileExtention == '.xml')) && (App.os == 'Android' || App.os == 'iPhone'))
         {
-            if(typeof jQuery == "undefined"){
-                throw new Error('You need load jQuery Plugins, add plugin : import {} from ../flexvue/plugins/jquery/jquery.js');
-            }
-
             return new Promise((resolve, reject) => {
-                $.getJSON( url, {format: "json"})
-                .done(function( data ) {
-                    resolve (data);
-                })
-                .fail(function( jqxhr, textStatus, error ) {
-                    var err = textStatus + ", " + error;
-                    throw new Error(err);
-                });
+                let mimetype = (_fileExtention == '.json') ? "application/json" : "application/xml";
+                var xobj = new XMLHttpRequest();
+                xobj.overrideMimeType(mimetype);
+                xobj.open('GET', filename, true); // Replace 'my_data' with the path to your file
+                xobj.onreadystatechange = function () {
+                    if (xobj.readyState == 4 && xobj.status == "200") {
+                        resolve (JSON.parse(xobj.responseText));
+                    }
+                };
+                xobj.send(null);
             });
         }else{
             // 접속경로
@@ -41,8 +39,7 @@ export default class AsyncTask
             Log.d('doGet --> '+redirect_url);
 
             let headers = _headers || {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'
             };
 
             // 옵션
@@ -72,8 +69,7 @@ export default class AsyncTask
         let redirect_url = url;
 
         let headers = _headers || {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
         };
 
         // option
