@@ -14,7 +14,7 @@ export default class Template {
         }else{
             Log.d('read file');
 
-            if((typeof App.os !=='undefined') && (App.os == 'Android' || App.os == 'iPhone'))
+            if(config.is_hybirdapp && (App.os == 'Android' || App.os == 'iPhone'))
             {
                 if(typeof jQuery == "undefined"){
                     throw new Error('You need load jQuery Plugins');
