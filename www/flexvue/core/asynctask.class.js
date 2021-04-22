@@ -15,7 +15,7 @@ export default class AsyncTask
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
-        if((config.is_hybridapp && _fileExtention == '.json') && (App.os == 'Android' || App.os == 'iPhone'))
+        if((config.is_hybrideapp && _fileExtention == '.json') && (App.os == 'Android' || App.os == 'iPhone'))
         {
             if(typeof jQuery == "undefined"){
                 throw new Error('You need load jQuery Plugins, add plugin : import {} from ../flexvue/plugins/jquery/jquery.js');

@@ -14,7 +14,7 @@ export default class Template {
         }else{
             Log.d('read file');
 
-            if(config.is_hybridapp && (App.os == 'Android' || App.os == 'iPhone'))
+            if(config.is_hybrideapp && (App.os == 'Android' || App.os == 'iPhone'))
             {
                 if(typeof jQuery == "undefined"){
                     throw new Error('You need load jQuery Plugins, add plugin : import {} from ../flexvue/plugins/jquery/jquery.js');
