@@ -127,7 +127,7 @@ class App {
     }
 
     static getLocale(){
-        return (Activity.lang && Activity.lang !='') ? `_${App.lang}` : '';
+        return (App.lang && App.lang !='') ? `_${App.lang}` : '';
     }
 
     findPlatform (data){
