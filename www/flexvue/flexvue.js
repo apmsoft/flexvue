@@ -6,7 +6,7 @@ const config   = {
     is_hybrideapp : false, // Android/iOS ㅎㅏㅇㅣㅂㅡㄹㅣㄷㅡㅇㅐㅂ ㅇㅕㅂㅜ
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    domain     : 'http://flexup.fancyupsoft.com',
+    domain     : 'http://flexvue.fancyupsoft.com',
     asset      : '../v1',
     src        : `../src`,
     res        : '../res',
