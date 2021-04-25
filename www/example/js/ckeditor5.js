@@ -9,8 +9,11 @@ const onReady = () =>
     ClassicEditor.create( document.querySelector( '#description' ),{
         toolbar: {
             items: [
-                'heading','|','bold','italic','link','bulletedList','numberedList','|','outdent','indent',
-                '|','blockQuote','insertTable','mediaEmbed','undo','redo','fontColor','fontSize'
+                'heading','|',
+				'bold','italic','alignment','bulletedList','numberedList','fontColor','fontSize','fontBackgroundColor','fontFamily','|',
+				'outdent','indent','|',
+				'link','blockQuote','insertTable','imageUpload','mediaEmbed','undo','redo','|',
+				'codeBlock','code','htmlEmbed'
             ]
         },
         language: 'ko',
