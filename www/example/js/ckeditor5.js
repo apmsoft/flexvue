@@ -12,7 +12,7 @@ const onReady = () =>
                 'heading','|',
 				'bold','italic','alignment','bulletedList','numberedList','fontColor','fontSize','fontBackgroundColor','fontFamily','|',
 				'outdent','indent','|',
-				'link','blockQuote','insertTable','imageUpload','mediaEmbed','undo','redo','|',
+				'link','blockQuote','insertTable','mediaEmbed','undo','redo','|',
 				'codeBlock','code','htmlEmbed'
             ]
         },
