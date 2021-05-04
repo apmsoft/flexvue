@@ -9,9 +9,7 @@ export default class AsyncTask
      * @param {전송할 헤더값} _headers 
      */
     async doGet(url, params, _headers={}) 
-    {
-        let self = this;
-        
+    {       
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
