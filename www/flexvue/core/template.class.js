@@ -4,7 +4,6 @@ export default class Template {
     // template 파일 찾기
     async readFile (filename, template_id, _headers={})
     {
-        const self = this;
         let type = document.querySelector('script'+template_id);
         if(type && type !== 'null')
         {
