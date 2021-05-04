@@ -15,19 +15,18 @@ export default class AsyncTask
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
-        if((config.is_hybrideapp && (_fileExtention == '.json' || _fileExtention == '.xml')) && (App.os == 'Android' || App.os == 'iPhone'))
-        {
+        if (/^file:\/\/\//.test(location.href)) {
             return new Promise((resolve, reject) => {
-                let mimetype = (_fileExtention == '.json') ? "application/json" : "application/xml";
-                var xobj = new XMLHttpRequest();
-                xobj.overrideMimeType(mimetype);
-                xobj.open('GET', filename, true); // Replace 'my_data' with the path to your file
-                xobj.onreadystatechange = function () {
-                    if (xobj.readyState == 4 && xobj.status == "200") {
-                        resolve (JSON.parse(xobj.responseText));
-                    }
-                };
-                xobj.send(null);
+                this.importPluginjQeury(function(){
+                    $.getJSON( url, {format: "json"})
+                    .done(function( data ) {
+                        resolve (data);
+                    })
+                    .fail(function( jqxhr, textStatus, error ) {
+                        var err = textStatus + ", " + error;
+                        throw new Error(err);
+                    });
+                });
             });
         }else{
             // 접속경로
@@ -86,6 +85,20 @@ export default class AsyncTask
         const response = await fetch(redirect_url, options);
         if (response.ok) return await response.json();
         throw new Error(response.status);
+    }
+
+    importPluginjQeury (callback) {
+        if(document.querySelector(`[src="flexvue/plugins/jquery/jquery.js"]`) ===null){
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.src = 'flexvue/plugins/jquery/jquery.js';
+            head.appendChild(script);
+            script.onload = function () {
+                callback();
+            };
+        }else{
+            callback();
+        }
     }
 
     async doImport(url) {

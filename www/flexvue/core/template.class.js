@@ -12,29 +12,17 @@ export default class Template {
             // out rendering html
             return document.querySelector('script'+template_id).innerText;
         }else{
-            Log.d('read file');
-
-            if(config.is_hybrideapp && (App.os == 'Android' || App.os == 'iPhone'))
-            {
+            if (/^file:\/\/\//.test(location.href)) {
                 return new Promise((resolve, reject) => {
-                    let _len = filename.length;
-                    let _lastIdx = filename.lastIndexOf('.');
-                    let _fileExtention = filename.substring(_lastIdx, _len).toLowerCase();
-
-                    let mimetype = (_fileExtention == '.html') ? "text/html" : "text/plain";
-                    var xobj = new XMLHttpRequest();
-                    xobj.overrideMimeType(mimetype);
-                    xobj.open('GET', filename, true); // Replace 'my_data' with the path to your file
-                    xobj.onreadystatechange = function () {
-                        if (xobj.readyState == 4 && xobj.status == "200") {
-                            Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',xobj.responseText ))).then(function() 
+                    this.importPluginjQeury(function(){
+                        $.get(filename,function(html) {
+                            Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',html ))).then(function() 
                             {
                                 // out rendering html
                                 resolve (document.querySelector('script'+template_id).innerText);
                             });
-                        }
-                    };
-                    xobj.send(null);
+                        });
+                    });
                 });
             }else{
                 let headers = _headers || {
@@ -42,8 +30,8 @@ export default class Template {
                 };
 
                 let options = {
-                    method: 'GET',
-                    mode: 'cors', 
+                    // method: 'GET',
+                    // mode: '*', 
                     cache: 'default',
                     headers: headers
                 };
@@ -58,6 +46,20 @@ export default class Template {
                 }
                 throw new Error(response.status);
             }
+        }
+    }
+
+    importPluginjQeury (callback) {
+        if(document.querySelector(`[src="flexvue/plugins/jquery/jquery.js"]`) ===null){
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.src = 'flexvue/plugins/jquery/jquery.js';
+            head.appendChild(script);
+            script.onload = function () {
+                callback();
+            };
+        }else{
+            callback();
         }
     }
 
