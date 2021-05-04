@@ -15,7 +15,7 @@ export default class AsyncTask
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
-        if (/^file:\/\/\//.test(location.href)) {
+        if (_fileExtention == '.json' && /^file:\/\/\//.test(location.href)) {
             return new Promise((resolve, reject) => {
                 this.importPluginjQeury(function(){
                     $.getJSON( url, {format: "json"})
