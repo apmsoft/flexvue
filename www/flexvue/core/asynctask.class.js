@@ -86,10 +86,10 @@ export default class AsyncTask
     }
 
     importPluginjQeury (callback) {
-        if(document.querySelector(`[src="flexvue/plugins/jquery/jquery.js"]`) ===null){
+        if(document.querySelector(`[src="flexvue/plugins/jquery/ajax.min.js"]`) ===null){
             var head = document.getElementsByTagName('head')[0];
             var script = document.createElement('script');
-            script.src = 'flexvue/plugins/jquery/jquery.js';
+            script.src = 'flexvue/plugins/jquery/ajax.min.js';
             head.appendChild(script);
             script.onload = function () {
                 callback();
