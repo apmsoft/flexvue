@@ -3,20 +3,31 @@ export default class AsyncTask
 {
     // get
     /**
-     * 
      * @param {서버 접속 경로} url 
      * @param {전송할 json 데이터} params 
+     * @param {옵션} _options 
      * @param {전송할 헤더값} _headers 
      */
-    async doGet(url, params, _headers={}) 
+    async doGet(url, params, _options={},_headers={}) 
     {       
         let _len = url.length;
         let _lastIdx = url.lastIndexOf('.');
         let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
         if (_fileExtention == '.json' && /^file:\/\/\//.test(location.href)) {
             return new Promise((resolve, reject) => {
-                this.importPluginjQeury(function(){
-                    $.getJSON( url, {format: "json"})
+                this.importPluginjQeury(function(){    
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                        data: params,
+                        cache:false,
+                        crossOrigin: true,
+                        dataType : "json",
+                        beforeSend: function(xhr) {
+                            // xhr.setRequestHeader('x-my-custom-header', 'some value');
+                            // xhr.setRequestHeader('AccessToken', '3000');
+                        }
+                    })
                     .done(function( data ) {
                         resolve (data);
                     })
@@ -42,10 +53,11 @@ export default class AsyncTask
             // 옵션
             let options = {
                 method: 'GET', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, cors, *same-origin
+                mode: 'no-cors', // no-cors, cors, *same-origin
                 cache: config.cache, // *default, no-cache, reload, force-cache, only-if-cached
                 headers: headers
             };
+            options = Object.assign(options, _options);
 
             const response = await fetch(redirect_url, options);
             if (response.ok) return await response.json();
@@ -55,34 +67,64 @@ export default class AsyncTask
 
     // post | input
     /**
-     * 
      * @param {서버 접속 경로} url 
      * @param {전송할 json 데이터} params
+     * @param {옵션} _options 
      * @param {전송할 헤더값} _headers  
      */
-    async doPost(url, params, _headers={}) 
+    async doPost(url, params, _options={}, _headers={}) 
     {
-        // 자동 프로그램 확장자 설정
-        let redirect_url = url;
+        let _len = url.length;
+        let _lastIdx = url.lastIndexOf('.');
+        let _fileExtention = url.substring(_lastIdx, _len).toLowerCase();
+        if (_fileExtention == '.json' && /^file:\/\/\//.test(location.href)) {
+            return new Promise((resolve, reject) => {
+                this.importPluginjQeury(function(){
+                    $.ajax({
+                        method: "POST",
+                        url: url,
+                        data: params,
+                        cache:false,
+                        crossOrigin: true,
+                        dataType : "json",
+                        beforeSend: function(xhr) {
+                            // xhr.setRequestHeader('x-my-custom-header', 'some value');
+                            // xhr.setRequestHeader('AccessToken', '3000');
+                        }
+                    })
+                    .done(function( data ) {
+                        resolve (data);
+                    })
+                    .fail(function( jqxhr, textStatus, error ) {
+                        var err = textStatus + ", " + error;
+                        throw new Error(err);
+                    });
+                });
+            });
+        }else{
+            // 자동 프로그램 확장자 설정
+            let redirect_url = url;
 
-        let headers = _headers || {
-            'Content-Type': 'application/json'
-        };
+            let headers = _headers || {
+                'Content-Type': 'application/json'
+            };
 
-        // option
-        let options = {
-            method: ((typeof params.id !== 'undefined') && (params.id !== null)) ? 'PUT':'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            headers: headers,
-            body: JSON.stringify(params)
-        };
+            // option
+            let options = {
+                method: ((typeof params.id !== 'undefined') && (params.id !== null)) ? 'PUT':'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'no-cors', // no-cors, cors, *same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                headers: headers,
+                body: JSON.stringify(params)
+            };
+            options = Object.assign(options, _options);
 
-        Log.d(redirect_url);
+            Log.d(redirect_url);
 
-        const response = await fetch(redirect_url, options);
-        if (response.ok) return await response.json();
-        throw new Error(response.status);
+            const response = await fetch(redirect_url, options);
+            if (response.ok) return await response.json();
+            throw new Error(response.status);
+        }
     }
 
     importPluginjQeury (callback) {
