@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html>
 <head>
@@ -41,23 +42,15 @@
                     </div>
                 </div>
             </div>
-            <div class="fvue--layout--main h-full flex">
+            <div class="fvue--layout--main h-full bg-blue-900">
                 
-                <div>
-                    <ul class="pictures">
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-1.jpg" src="images/viewerjs/thumbnails/tibet-1.jpg" alt="Cuo Na Lake"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-2.jpg" src="images/viewerjs/thumbnails/tibet-2.jpg" alt="Tibetan Plateau"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-3.jpg" src="images/viewerjs/thumbnails/tibet-3.jpg" alt="Jokhang Temple"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-4.jpg" src="images/viewerjs/thumbnails/tibet-4.jpg" alt="Potala Palace 1"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-5.jpg" src="images/viewerjs/thumbnails/tibet-5.jpg" alt="Potala Palace 2"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-6.jpg" src="images/viewerjs/thumbnails/tibet-6.jpg" alt="Potala Palace 3"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-7.jpg" src="images/viewerjs/thumbnails/tibet-7.jpg" alt="Lhasa River"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-8.jpg" src="images/viewerjs/thumbnails/tibet-8.jpg" alt="Namtso 1"></li>
-                      <li><img class="viewerzoom" data-original="images/viewerjs/tibet-9.jpg" src="images/viewerjs/thumbnails/tibet-9.jpg" alt="Namtso 2"></li>
-                    </ul>
-                </div>
-
-                <!-- <img data-original="${image.imagedata}" src="${image.imagedata}" class="img-fluid viewerzoom hover:cursor-move" /> -->
+                <div class="fixed text-white px-5 w-full py-5" style="height:25vh;">
+                    <div class="flex flex-col space-y-4">
+                        <div class="text-blue-300 text-sm">홍길동님의 총 포인트</div>
+                        <div class="self-center text-5xl pt-5" id="mypoint">10,000</div>
+                        <div class="text-blue-300 text-center text-sm">2021년 6월 19일</div>
+                    </div>
+                </div>                
 
             </div>
             
@@ -94,6 +87,6 @@
         
     </div>
 
-    <script defer type="module" src="js/viewerjs.js?v=1"></script>
+    <script defer type="module" src="js/countup.js?v=1"></script>
 </body>
 </html>
