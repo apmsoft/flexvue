@@ -20,7 +20,8 @@ const number_format  = (num, locale = 'ko-KR') => {
     let result = '';
     let nb = num.replace(/[^0-9]/g, '');
     if(nb > 0){
-        result = new Intl.NumberFormat(locale, { maximumSignificantDigits: 3 }).format(num);
+        // result = new Intl.NumberFormat(locale, { maximumSignificantDigits: 4 }).format(num);
+        result = new Intl.NumberFormat(locale).format(num);
     }
 return result;
 }
@@ -52,4 +53,29 @@ const random_number = (min,max) =>{
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-export {phone_format, number_format, filesize_format, find_youtube_id, random_number};
+// 이모티콘 변경용 let nm = "dfds (우리립) (/rock) <small>dsafadsfads</small> (/paper)" -> (/rock) -> img icon 
+const change_icons = (contents) =>{
+    console.log('change_icons ----------->',contents);
+    if(!contents || contents.length < 1){
+        return contents;
+    }
+
+    let s = contents.match(/\(\/\w+\)/gi);
+    console.log (s);
+    if (s === null){
+        return contents;
+    }
+
+    if(s){
+        s.forEach(em =>{
+            let em_key = em.replace(/[\W]/gi,"");
+            console.log ( em_key );
+            let icon = `<img src="images/icons/${em_key}.png" class="inline-block" />`;
+            console.log ( icon );
+            contents = contents.replace(em, icon);
+        });
+    }
+return contents;  
+}
+
+export {phone_format, number_format, filesize_format, find_youtube_id, random_number, change_icons};
