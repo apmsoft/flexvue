@@ -24,7 +24,7 @@ const onReady = () =>
     Handler.post(function(){
         let tl = gsap.timeline(); //create the timeline
         tl.to("#box1", {x: 100}) //start sequencing
-        .to("#box2", {y: 100, ease: "elastic"})
+        .to("#box2", {y: 100, ease: "bounce"})
         .to("#box3", {rotation: 180});
     },2000);
 
@@ -33,8 +33,8 @@ const onReady = () =>
         gsap.set(".astronaut", {scale: 0.5, autoAlpha: 1});
 
         gsap.to(".astronaut", {
-            duration: 5, 
-            ease: "power1.inOut",
+            duration: 2.5, 
+            ease: "power2.inOut",
             immediateRender: true,
             motionPath: {
                 path: "#path",
