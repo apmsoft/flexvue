@@ -9,8 +9,8 @@
 */
 
 /* eslint-disable */
-import { getRawPath, cacheRawPathMeasurements, getPositionOnPath, pointsToSegment, flatPointsToSegment, sliceRawPath, stringToRawPath, rawPathToString, transformRawPath, convertToPath as _convertToPath } from "./utils/paths.js";
-import { getGlobalMatrix } from "./utils/matrix.js";
+import { getRawPath, cacheRawPathMeasurements, getPositionOnPath, pointsToSegment, flatPointsToSegment, sliceRawPath, stringToRawPath, rawPathToString, transformRawPath, convertToPath as _convertToPath } from "./utils/paths.min.js";
+import { getGlobalMatrix } from "./utils/matrix.min.js";
 
 var _xProps = "x,translateX,left,marginLeft,xPercent".split(","),
     _yProps = "y,translateY,top,marginTop,yPercent".split(","),

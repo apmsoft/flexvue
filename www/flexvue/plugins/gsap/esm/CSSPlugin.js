@@ -10,7 +10,7 @@
 
 /* eslint-disable */
 import { gsap, _getProperty, _numExp, _numWithUnitExp, getUnit, _isString, _isUndefined, _renderComplexString, _relExp, _forEachName, _sortPropTweensByPriority, _colorStringFilter, _checkPlugin, _replaceRandom, _plugins, GSCache, PropTween, _config, _ticker, _round, _missingPlugin, _getSetter, _getCache, _colorExp, _setDefaults, _removeLinkedListItem //for the commented-out className feature.
-} from "./gsap-core.js";
+} from "./gsap-core.min.js";
 
 var _win,
     _doc,

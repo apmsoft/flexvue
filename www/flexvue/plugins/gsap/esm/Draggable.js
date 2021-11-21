@@ -13,7 +13,7 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
  */
 
 /* eslint-disable */
-import { getGlobalMatrix, Matrix2D } from "./utils/matrix.js";
+import { getGlobalMatrix, Matrix2D } from "./utils/matrix.min.js";
 
 var gsap,
     _win,

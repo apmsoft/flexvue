@@ -9,7 +9,7 @@
 */
 
 /* eslint-disable */
-import { emojiSafeSplit, getText, splitInnerHTML } from "./utils/strings.js";
+import { emojiSafeSplit, getText, splitInnerHTML } from "./utils/strings.min.js";
 
 var gsap,
     _tempDiv,
