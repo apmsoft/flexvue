@@ -11,12 +11,19 @@ https://www.w3schools.com/js/js_es6.asp
 https://itstory.tk/entry/JavaScript-ES6-문법-정리
 
 # 빌드 
-npx tailwindcss-cli@latest build ./tailwind.css -o ./www/v1/css/tailwind.css
+npm run dev 
+npm run release 
+
+직접빌드 : npx tailwindcss-cli@latest build ./tailwind.css -o ./www/v1/css/tailwind.css
 
 # tailwind 버전
-tailwindcss 2.1.2 - 2021-11-21
+tailwindcss 3.0     - 2021-12-10
+tailwindcss 2.1.2   - 2021-11-21
 
 # update
-gsap 에니메이션 플러그인 추가   - 2021-11-21
+tailwindcss v3.0 upgrade    - 2021-12-10
+gsap 에니메이션 플러그인 추가     - 2021-11-21
 
+# 라이센스
+MIT 
 
