@@ -100,8 +100,10 @@
             url(./fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
     }
 }
-
 @layer components {
+}
+
+@layer utilities {
     .img-fluid {
         @apply max-w-full mx-auto;
     }
@@ -315,51 +317,48 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-}
 
-
-@responsive {
     .overflow-unset {
-      overflow: unset !important;
-    }
-  
-    @media (min-width: 640px) {
-      .sm\:overflow-unset {
         overflow: unset !important;
       }
-  
-      .sm\:hidden {
-        display : none !important;
-      }
-    }
     
-    @media  (min-width: 768px) {
-      .md\:overflow-unset {
-        overflow: unset !important;
-      }
-  
-      .md\:hidden {
-        display : none !important;
-      }
-    }
+      @media (min-width: 640px) {
+        .sm\:overflow-unset {
+          overflow: unset !important;
+        }
     
-    @media (min-width: 1024px) {
-      .lg\:overflow-unset {
-        overflow: unset !important;
+        .sm\:hidden {
+          display : none !important;
+        }
       }
-  
-      .lg\:hidden {
-        display : none !important;
-      }
-    }
+      
+      @media  (min-width: 768px) {
+        .md\:overflow-unset {
+          overflow: unset !important;
+        }
     
-    @media (min-width: 1280px) {
-      .xl\:overflow-unset {
-        overflow: unset !important;
+        .md\:hidden {
+          display : none !important;
+        }
       }
-  
-      .xl\:hidden {
-        display : none !important;
+      
+      @media (min-width: 1024px) {
+        .lg\:overflow-unset {
+          overflow: unset !important;
+        }
+    
+        .lg\:hidden {
+          display : none !important;
+        }
       }
-    }
-  }
+      
+      @media (min-width: 1280px) {
+        .xl\:overflow-unset {
+          overflow: unset !important;
+        }
+    
+        .xl\:hidden {
+          display : none !important;
+        }
+      }
+}

@@ -1,6 +1,5 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./www/**/*.{html,js}"],
   theme: {
     extend: {
       zIndex: {
@@ -34,7 +33,8 @@ module.exports = {
     }
   },
   plugins: [
-    require('@tailwindcss/custom-forms'),
-    require('@tailwindcss/line-clamp')
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
   ]
 }
