@@ -20,6 +20,7 @@ export default class AsyncTask
         // params
         const _method = method.toUpperCase();
         if(_method == 'GET'){
+
             if(Object.keys(params).length > 0){
                 let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
                 redirect_url = `${redirect_url}?${url_param}`;
@@ -30,17 +31,17 @@ export default class AsyncTask
                 'Content-Type': 'application/json'
             };
         }else{
+            let url_param = Object.entries(params).map(([key, val]) => `${key}=${val}`).join("&");
             Object.assign(_options, {
-                body: JSON.stringify(params)
+                body: new URLSearchParams(url_param)
             });
+            Log.d(_options);
 
             // headers
             headers = _headers || {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
             };
         }
-
-        // Log.d('execute --> '+redirect_url);
         
         // 옵션
         let options = {
@@ -50,10 +51,10 @@ export default class AsyncTask
             // redirect: 'follow', // manual, *follow, error
             // referrerPolicy: 'no-referrer',
             // credentials: 'omit',
-            headers: headers
+            headers: new Headers(headers)
         };
-        options = Object.assign(options, _options);
-        Log.d(options);
+        options = await Object.assign(options, _options);
+        // Log.d(options);
 
         const response = await fetch(redirect_url, options);
         const contentType = response.headers.get('content-type');
