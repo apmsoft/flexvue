@@ -19,8 +19,8 @@ export default class AsyncTask
 
         // params
         const _method = method.toUpperCase();
-        if(_method == 'GET'){
-
+        if(_method == 'GET')
+        {
             if(Object.keys(params).length > 0){
                 let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
                 redirect_url = `${redirect_url}?${url_param}`;
@@ -35,7 +35,6 @@ export default class AsyncTask
             Object.assign(_options, {
                 body: new URLSearchParams(url_param)
             });
-            Log.d(_options);
 
             // headers
             headers = _headers || {
