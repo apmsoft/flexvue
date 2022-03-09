@@ -12,6 +12,9 @@ tailwindcss 3.0     - 2021-12-10
 tailwindcss 2.1.2   - 2021-11-21
 
 # update
+template v2                 - 2022-03-09
+asynctask v2                - 2022-03-09
+
 tailwindcss v3.0 upgrade    - 2021-12-10
 gsap 에니메이션 플러그인 추가     - 2021-11-21
 
