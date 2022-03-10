@@ -5,7 +5,7 @@ export default class AsyncTask
     /**
      * @param {전송방식} method 
      * @param {서버 접속 경로} url 
-     * @param {전송할 json 데이터} params 
+     * @param {전송할 데이터} params 
      * @param {옵션} _options 
      * @param {전송할 헤더값} _headers 
      */
@@ -15,33 +15,13 @@ export default class AsyncTask
         let redirect_url = url;
 
         // headers
-        let headers = {};
+        let headers = _headers || {
+            'Content-Type': 'application/json'
+        };
 
         // params
         const _method = method.toUpperCase();
-        if(_method == 'GET')
-        {
-            if(Object.keys(params).length > 0){
-                let url_param = Object.entries(params).map(([key, val]) => `${key}=${encodeURIComponent(val)}`).join("&");
-                redirect_url = `${redirect_url}?${url_param}`;
-            }
 
-            // headers
-            headers = _headers || {
-                'Content-Type': 'application/json'
-            };
-        }else{
-            let url_param = Object.entries(params).map(([key, val]) => `${key}=${val}`).join("&");
-            Object.assign(_options, {
-                body: new URLSearchParams(url_param)
-            });
-
-            // headers
-            headers = _headers || {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            };
-        }
-        
         // 옵션
         let options = {
             method: _method, // *GET, POST, PUT, DELETE, etc.
@@ -52,7 +32,19 @@ export default class AsyncTask
             // credentials: 'omit',
             headers: new Headers(headers)
         };
-        options = await Object.assign(options, _options);
+
+        if(_method != 'GET')
+        {
+            // let url_param = Object.entries(params).map(([key, val]) => `${key}=${val}`).join("&");
+            Object.assign(options, {
+                body: params
+            });
+        }
+
+        Log.d(options);
+        
+        
+        Object.assign(options, _options);
         // Log.d(options);
 
         const response = await fetch(redirect_url, options);
