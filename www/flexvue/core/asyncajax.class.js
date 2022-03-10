@@ -9,7 +9,7 @@ export default class AsyncTask
      * @param {옵션} _options 
      * @param {전송할 헤더값} _headers 
      */
-    async execute(method, url, params, _options={},_headers=null) 
+    async execute(method, url, params={}, _options={},_headers=null) 
     {
         return new Promise((resolve, reject) => {
             // method
@@ -17,7 +17,9 @@ export default class AsyncTask
 
             // headers
             let headers = _headers || {
-                'Content-Type': 'application/json'
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                }
             };
 
             // options
