@@ -33,19 +33,16 @@ export default class AsyncTask
             headers: new Headers(headers)
         };
 
-        if(_method != 'GET')
-        {
-            // let url_param = Object.entries(params).map(([key, val]) => `${key}=${val}`).join("&");
-            Object.assign(options, {
-                body: params
-            });
+        if(_method != 'GET'){
+            options['body'] = params;
         }
 
-        Log.d(options);
-        
-        
-        Object.assign(options, _options);
+        Object.entries(_options).forEach(([key, value]) => {
+            options[key] = value;
+        });
+
         // Log.d(options);
+        alert(JSON.stringify(options));
 
         const response = await fetch(redirect_url, options);
         const contentType = response.headers.get('content-type');
