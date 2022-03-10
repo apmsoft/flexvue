@@ -39,9 +39,6 @@ export default class AsyncTask
             options[key] = value;
         });
 
-        // Log.d(options);
-        alert(JSON.stringify(options));
-
         const response = await fetch(redirect_url, options);
         const contentType = response.headers.get('content-type');
         if (!response.ok){
