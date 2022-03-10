@@ -11,16 +11,14 @@ export default class AsyncTask
      */
     async execute(method, url, params={}, _options={},_headers=null) 
     {
+        // params
+        const _method = method.toUpperCase();
+
         // 접속경로
         let redirect_url = url;
 
         // headers
-        let headers = _headers || {
-            'Content-Type': 'application/json'
-        };
-
-        // params
-        const _method = method.toUpperCase();
+        let headers = _headers || ((_method =='GET') ? {'Content-Type': 'text/plain'}: {'Content-Type': 'application/json'});
 
         // 옵션
         let options = {
