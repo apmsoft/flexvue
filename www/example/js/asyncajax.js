@@ -18,7 +18,7 @@ const onReady = () =>
         ,{
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.setRequestHeader('Authorization-Access-Token', 'Y29tZmFuY3l1cHNvZnQ6Y01HR0o3c202NlhaQVFEUmhNb3AxUQ%3D%3D');
+                xhr.setRequestHeader('Authorization-Access-Token', 'Y29tZmFu');
             }
         }
     )
