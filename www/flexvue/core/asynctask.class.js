@@ -9,7 +9,7 @@ export default class AsyncTask
      * @param {옵션} _options 
      * @param {전송할 헤더값} _headers 
      */
-    async execute(method, url, params, _options={},_headers=null) 
+    async execute(method, url, params={}, _options={},_headers=null) 
     {
         // 접속경로
         let redirect_url = url;
