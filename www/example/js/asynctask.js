@@ -14,8 +14,7 @@ const onReady = () =>
     const post_params = new URLSearchParams(formData);
     
     // 
-    new AsyncTask().execute('POST','http://115.68.73.85:15000/md1/sms/createtoken'
-    // new AsyncTask().execute('POST','http://speeditem.kr/test/asynctast.php?page=1', 
+    new AsyncTask().execute('POST','접속주소'
         ,json_params
         ,{
             // mode : 'no-cors', // no-cors, cors, *same-origin
@@ -24,7 +23,7 @@ const onReady = () =>
         ,{
             'Content-Type' : 'application/json',
             // 'Content-Type': 'application/x-www-form-urlencoded'
-            'Authorization-Access-Token':'Y29tZmFuY3l1cHNvZnQ6Y01HR0o3c202NlhaQVFEUmhNb3AxUQ%3D%3D'
+            'Authorization-Access-Token':'Y29tZmFuY3l1cHNvZnQ6Y01HR0o3c'
         }
     )
         .then( resp =>{
