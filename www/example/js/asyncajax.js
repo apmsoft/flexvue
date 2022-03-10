@@ -1,4 +1,4 @@
-import AsyncTask from '../../flexvue/core/asyncajax.class.js';
+import AsyncAjax from '../../flexvue/core/asyncajax.class.js';
 
 const onReady = () => 
 {
@@ -8,7 +8,7 @@ const onReady = () =>
         q:encodeURIComponent('테스트')
     };
 
-    new AsyncTask().execute('POST','접속경로'
+    new AsyncAjax().execute('POST','접속경로'
         ,json_params
         ,{
             dataType : "json",

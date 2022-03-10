@@ -1,5 +1,5 @@
 "use strict";
-export default class AsyncTask 
+export default class AsyncAjax
 {
     // get
     /**
