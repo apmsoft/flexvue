@@ -8,6 +8,9 @@ const onReady = () =>
         q:encodeURIComponent('테스트')
     });
 
+    // get 
+    // test.php?new URLSearchParams({page:1,q:encodeURIComponent('테스트')}).toString();
+
     // application/x-www-form-urlencoded
     const formData = new FormData();
     formData.append("name", "홍길동");
