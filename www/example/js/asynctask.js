@@ -28,10 +28,10 @@ const onReady = () =>
             'Authorization-Access-Token':'Y29tZmFuY3l1cHN'
         }
     )
-        .then( resp =>{
-            Log.d('resp >>> ',resp);
-            alert(JSON.stringify(resp));
-        });
+    .then( resp =>{
+        Log.d('resp >>> ',resp);
+        alert(JSON.stringify(resp));
+    });
 }
 
 // document ready
