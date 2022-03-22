@@ -1,6 +1,7 @@
 "use strict";
 export default class Template
 {
+    // 파일 절대 경로 찾기
     chroot (filename, importmurl){
         return new URL(filename, importmurl).href;
     }
