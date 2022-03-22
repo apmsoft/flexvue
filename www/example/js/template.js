@@ -28,7 +28,7 @@ const onReady = () =>
 
     
     // include template
-    new Template().importNodeTemplate('#tpl_include_test').
+    new Template().include('#tpl_include_test').
     then(tpl => {
         const outhtml_el = document.querySelector('#echo_include_template');
         outhtml_el.innerHTML = new Template().render( tpl, {

@@ -37,7 +37,7 @@ export default class Template{
      * @param <template id="#tpl_test"> : template_id 
      * @returns 
      */
-    async importNodeTemplate (template_id){
+    async include (template_id){
         if(document.querySelector(template_id).content !==null){
             const fragment = document.querySelector(template_id).content;
             const tpl = document.importNode(fragment,true);
