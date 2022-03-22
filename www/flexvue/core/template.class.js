@@ -1,11 +1,16 @@
 "use strict";
-export default class Template{
+export default class Template
+{
+    chroot (filename, importmurl){
+        return new URL(filename, importmurl).href;
+    }
 
     // template 파일 찾기
     async readFile (filename, template_id, _headers=null)
     {
         if ('content' in document.createElement('template')) 
         {
+
             let headers = _headers || {
                 'Content-Type': 'text/plain'
             };
