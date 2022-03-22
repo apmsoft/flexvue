@@ -43,6 +43,12 @@
                 <div id="echo_contents">
                     loading ....
                 </div>
+                <div id="echo_contents2">
+                    loading2 ....
+                </div>
+                <div id="echo_include_template">
+                    loading ....
+                </div>
             </div>
             
         </div>
@@ -78,6 +84,24 @@
         
     </div>
 
-    <script defer type="module" src="js/test_js_tpl.js?v=1"></script>
+    <script defer type="module" src="js/template.js?v=1"></script>
 </body>
 </html>
+
+<template id="tpl_include_test">
+    <p>템플릿 tpl_test</p>
+    <ul>
+        <li>${name}</li>
+        <li>${age}</li>
+    </ul>
+
+    <div class="flex flex-row">
+        <div>
+            <button type="button" class="btn" id="btn-test">테스트</button>
+        </div>
+        <div>
+            <button type="button" class="btn" id="btn-test2">테스트2</button>
+        </div>
+    </div>
+
+</template>

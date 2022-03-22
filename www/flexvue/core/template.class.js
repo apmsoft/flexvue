@@ -1,18 +1,13 @@
 "use strict";
-export default class Template {
+export default class Template{
 
     // template 파일 찾기
     async readFile (filename, template_id, _headers=null)
     {
-        let type = document.querySelector('script'+template_id);
-        if(type && type !== 'null')
+        if ('content' in document.createElement('template')) 
         {
-            Log.d('is disk cache');
-            // out rendering html
-            return document.querySelector('script'+template_id).innerText;
-        }else{
             let headers = _headers || {
-                'Content-Type': 'text/html'
+                'Content-Type': 'text/plain'
             };
 
             Log.d(headers);
@@ -20,19 +15,33 @@ export default class Template {
             let options = {
                 // method: 'GET',
                 // mode: '*', 
-                cache: 'default',
+                cache: 'force-cache',
                 headers: headers
             };
 
             const response = await fetch(filename, options);
             if(response.ok){
-                return Promise.resolve((document.querySelector('body').insertAdjacentHTML('afterend',await response.text() ))).then(function() 
-                {
-                    // out rendering html
-                    return document.querySelector('script'+template_id).innerText;
-                });
+                const _tpl = await response.text();
+                const _outTpl = new DOMParser().parseFromString(_tpl, 'text/html').querySelector('#tpl_test').innerHTML;
+
+                // append template
+                // document.querySelector('body').insertAdjacentHTML('afterend', _tpl );
+                return _outTpl;
             }
             throw new Error(response.status);
+        }
+    }
+
+    /**
+     * 
+     * @param <template id="#tpl_test"> : template_id 
+     * @returns 
+     */
+    async importNodeTemplate (template_id){
+        if(document.querySelector(template_id).content !==null){
+            const fragment = document.querySelector(template_id).content;
+            const tpl = document.importNode(fragment,true);
+            return await new XMLSerializer().serializeToString(tpl);
         }
     }
 
