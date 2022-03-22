@@ -1,14 +1,18 @@
 import Forms from '../../flexvue/core/forms.class.min.js';
 import {} from '../../flexvue/plugins/@toast-ui/editor/dist/toastui-editor.js';
+import {ColorPicker} from '../../flexvue/plugins/@toast-ui/editor/plugin/tui-color-picker.min.js';
 
 // const Editor = toastui.Editor;
 const onReady = () => 
 {
+    // const {Editor} = toastui;
+    // const {colorPicker} = Editor.plugin;
     const editor = new toastui.Editor({
         el: document.querySelector('#description'),
         height: '500px',
         previewStyle: 'vertical',
-        initialEditType: 'markdown'
+        initialEditType: 'markdown',
+        plugins:[colorPicker]
     });
     
     // submit
