@@ -28,7 +28,7 @@ export default class Template
             const response = await fetch(filename, options);
             if(response.ok){
                 const _tpl = await response.text();
-                const _outTpl = new DOMParser().parseFromString(_tpl, 'text/html').querySelector('#tpl_test').innerHTML;
+                const _outTpl = new DOMParser().parseFromString(_tpl, 'text/html').querySelector(template_id).innerHTML;
 
                 // append template
                 // document.querySelector('body').insertAdjacentHTML('afterend', _tpl );
