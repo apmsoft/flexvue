@@ -21,18 +21,18 @@ export default class Template
             let options = {
                 // method: 'GET',
                 // mode: '*', 
-                cache: 'force-cache',
+                cache: 'no-cache',
                 headers: headers
             };
 
             const response = await fetch(filename, options);
             if(response.ok){
                 const _tpl = await response.text();
-                const _outTpl = new DOMParser().parseFromString(_tpl, 'text/html').querySelector(template_id).innerHTML;
+                // const _outTpl = new DOMParser().parseFromString(_tpl, 'text/html').querySelector(template_id).innerHTML;
 
                 // append template
                 // document.querySelector('body').insertAdjacentHTML('afterend', _tpl );
-                return _outTpl;
+                return _tpl;
             }
             throw new Error(response.status);
         }
@@ -46,8 +46,9 @@ export default class Template
     async include (template_id){
         if(document.querySelector(template_id).content !==null){
             const fragment = document.querySelector(template_id).content;
-            const tpl = document.importNode(fragment,true);
-            return await new XMLSerializer().serializeToString(tpl);
+            const tpl = await new XMLSerializer().serializeToString(document.importNode(fragment,true));
+            Log.d(tpl);
+            return tpl;
         }
     }
 

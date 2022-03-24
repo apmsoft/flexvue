@@ -40,7 +40,11 @@ const onReady = () =>
         const outhtml_el = document.querySelector('#echo_include_template');
         outhtml_el.innerHTML = new Template().render( tpl, {
             name : "인클루드 템플릿",
-            age : 27
+            age : 27,
+            msg : [
+                {name : '홍길동'},
+                {name : '유관순'}
+            ]
         } );
     })
     .catch((e)=>{
