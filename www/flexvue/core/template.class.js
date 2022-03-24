@@ -19,7 +19,7 @@ export default class Template
             let options = {
                 // method: 'GET',
                 // mode: '*', 
-                cache: 'no-cache',
+                cache: 'default',
                 headers: new Headers(headers)
             };
 
