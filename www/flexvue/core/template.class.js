@@ -7,7 +7,7 @@ export default class Template
     }
 
     // template 파일 찾기
-    async readFile (filename, template_id, _headers=null)
+    async readFile (filename, template_id=null, _headers=null)
     {
         if ('content' in document.createElement('template')) 
         {
