@@ -7,7 +7,7 @@ export default class Template
     }
 
     // template 파일 찾기
-    async readFile (filename, template_id=null, _headers=null)
+    async readFile (filename, _options={}, _headers=null)
     {
         if ('content' in document.createElement('template')) 
         {
@@ -16,14 +16,16 @@ export default class Template
                 'Content-Type': 'text/plain'
             };
 
-            Log.d(headers);
-
             let options = {
                 // method: 'GET',
                 // mode: '*', 
                 cache: 'no-cache',
-                headers: headers
+                headers: new Headers(headers)
             };
+
+            Object.entries(_options).forEach(([key, value]) => {
+                options[key] = value;
+            });
 
             const response = await fetch(filename, options);
             if(response.ok){
@@ -46,9 +48,8 @@ export default class Template
     async include (template_id){
         if(document.querySelector(template_id).content !==null){
             const fragment = document.querySelector(template_id).content;
-            const tpl = await new XMLSerializer().serializeToString(document.importNode(fragment,true));
-            Log.d(tpl);
-            return tpl;
+            const tpl = document.importNode(fragment,true);
+            return await new XMLSerializer().serializeToString(tpl);
         }
     }
 
