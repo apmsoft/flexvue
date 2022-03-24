@@ -9,8 +9,8 @@ export default class Template
     // template 파일 찾기
     async readFile (filename, _options={}, _headers=null)
     {
-        if ('content' in document.createElement('template')) 
-        {
+        // if ('content' in document.createElement('template')) 
+        // {
 
             let headers = _headers || {
                 'Content-Type': 'text/plain'
@@ -37,7 +37,7 @@ export default class Template
                 return _tpl;
             }
             throw new Error(response.status);
-        }
+        // }
     }
 
     /**
