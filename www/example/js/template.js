@@ -1,9 +1,10 @@
 import Template from '../../flexvue/core/template.class.js';
-
+import {_template} from '../tpl/template.js';
 
 
 const onReady = () => 
 {
+    // Log.d(_template);
     // const htmlUrl = new URL('../tpl/test.html', import.meta.url).href;
     // fetch(htmlUrl).then(response => alert(response.text()));
 
@@ -12,7 +13,7 @@ const onReady = () =>
     const template_id = '#tpl_test';
 
     // 템플릿 파일 가지고 오기
-    new Template().readFile( template_filename, template_id)
+    new Template().readFile( template_filename)
     .then( tpl =>{
         // render 
         const outhtml_el = document.querySelector('#echo_contents');
@@ -35,21 +36,29 @@ const onReady = () =>
 
     
     // include template
-    new Template().include('#tpl_include_test').
-    then(tpl => {
+    // new Template().include('#tpl_include_test').
+    // then(tpl => {
         const outhtml_el = document.querySelector('#echo_include_template');
-        outhtml_el.innerHTML = new Template().render( tpl, {
+        outhtml_el.innerHTML = _template({
             name : "인클루드 템플릿",
             age : 27,
             msg : [
                 {name : '홍길동'},
                 {name : '유관순'}
             ]
-        } );
-    })
-    .catch((e)=>{
-        Log.e(e);
-    });
+        });
+        // outhtml_el.innerHTML = new Template().render( _template, {
+        //     name : "인클루드 템플릿",
+        //     age : 27,
+        //     msg : [
+        //         {name : '홍길동'},
+        //         {name : '유관순'}
+        //     ]
+        // } );
+    // })
+    // .catch((e)=>{
+    //     Log.e(e);
+    // });
     
 }
 
