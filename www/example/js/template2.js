@@ -1,4 +1,3 @@
-
 import Template from '../tpl/template.js';
 
 const onReady = () => 
@@ -18,7 +17,6 @@ const onReady = () =>
         const outhtml_el = document.querySelector('#echo_contents1');
         outhtml_el.innerHTML = tpl;
     });
-    Log.d(new Template().render( data ));
 
     // 일반형
     const outhtml_el = document.querySelector('#echo_contents2');
