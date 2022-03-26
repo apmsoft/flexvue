@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "npx tailwindcss -i ./tailwind.css -o ./www/v1/css/tailwind.css --watch",
-    "release": "npx tailwindcss -i ./tailwind.css -o ./www/v1/css/tailwind.min.css --minify"
+    "dev": "npx tailwindcss -i ./tailwind.css -o ./www/example/css/tailwind.css --watch",
+    "release": "npx tailwindcss -i ./tailwind.css -o ./www/example/css/tailwind.min.css --minify"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

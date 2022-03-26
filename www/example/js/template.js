@@ -11,6 +11,7 @@ const onReady = () =>
 
     // 1. 템플릿 파일 가지고 오기
     const template_filename = new Template().chroot(`../tpl/test.html`,import.meta.url);
+    document.body.append(template_filename);
     new Template().readFile( template_filename)
     .then( tpl =>{
         // render 
@@ -23,22 +24,8 @@ const onReady = () =>
         Log.e(e);
     });
 
-    
-    // 2. import js 스트림 템플릿 사용
-    const outhtml_el2 = document.querySelector('#echo_contents2');
-    outhtml_el2.innerHTML = new Template().render( _testtpl, {
-        name : "홍길동",
-        age : 27, 
-        msg : [
-            {name : '홍길동'},
-            {name : '유관순'}
-        ]
-    } );
-    
-
-    
-    // 3. import js 함수 템플릿 사용
-    const outhtml_el = document.querySelector('#echo_include_template');
+    // 2. import js 함수 템플릿 사용
+    const outhtml_el = document.querySelector('#echo_contents2');
     outhtml_el.innerHTML = _template({
         name : "인클루드 템플릿",
         age : 27,
@@ -49,6 +36,16 @@ const onReady = () =>
     });
 
     
+    // 3. import js 스트림 템플릿 사용
+    const outhtml_el2 = document.querySelector('#echo_include_template');
+    outhtml_el2.innerHTML = new Template().render( _testtpl, {
+        name : "홍길동",
+        age : 27, 
+        msg : [
+            {name : '홍길동'},
+            {name : '유관순'}
+        ]
+    } );
 }
 
 // document ready

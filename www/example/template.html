@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
 
-    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="css/tailwind.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
 
     <script defer src="../flexvue/flexvue.min.js"></script>
@@ -87,27 +87,3 @@
     <script defer type="module" src="js/template.js?v=1"></script>
 </body>
 </html>
-
-<template id="tpl_include_test">
-    <p>템플릿 tpl_test</p>
-    <ul>
-        <li>${name}</li>
-        <li>${age}</li>
-    </ul>
-
-    <div class="flex flex-row">
-        <div>
-            <button type="button" class="btn" id="btn-test">테스트</button>
-        </div>
-        <div>
-            <button type="button" class="btn" id="btn-test2">테스트2</button>
-        </div>
-    </div>
-
-    ${
-        msg.map(item => `
-            ${item.name}
-        `).join('')
-    }
-
-</template>
