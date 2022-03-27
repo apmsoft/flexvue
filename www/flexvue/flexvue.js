@@ -467,19 +467,24 @@ class Activity {
 class Router {
     constructor(hash,callback){
         this.init =false;
+        this.hash = '';
+    }
+
+    filter (hash) {
         window.addEventListener('hashchange', (evt) => 
         {
-            callback(window.location.hash.replace('#',''));
+            this.hash = window.location.hash.replace('#','');
         });
 
         if(!this.init){
             let _hash = (typeof hash !=='undefined' && typeof hash !== null) ? hash.replace('#','') : '';
             this.init = true;
-            callback(_hash);
+            this.hash = _hash;
         }
+        return this;
     }
 
-    static pathinfo (hash,callback) 
+    pathinfo (callback) 
     {
         const pathinfo = {
             'url' : '',
@@ -489,14 +494,14 @@ class Router {
             'parse_query' : {}
         };
 
-        pathinfo.url = hash;
+        pathinfo.url = this.hash;
 
         // 패턴
         const path_pattern = /(\w+)[\/]/gi;
-        if( (path_pattern).test(hash) )
+        if( (path_pattern).test(this.hash) )
         {
             // path
-            let path = hash.match(path_pattern);
+            let path = this.hash.match(path_pattern);
             const parse_path = path.map(function(h){
                 const pathname = h.replace(/\/$/, '');
                 pathinfo.parse_path.push(pathname);
@@ -506,8 +511,8 @@ class Router {
             // params
             let send_params = {};
             const params_pattern = /(\w+)=(.*)/g;
-            if( (params_pattern).test(hash) ){
-                pathinfo.query_string = hash.match(params_pattern)[0];
+            if( (params_pattern).test(this.hash) ){
+                pathinfo.query_string = this.hash.match(params_pattern)[0];
                 // Log.d( pathinfo.query_string );
 
                 send_params = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
