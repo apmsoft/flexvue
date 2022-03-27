@@ -478,4 +478,42 @@ class Router {
             callback(_hash);
         }
     }
+
+    static pathinfo (hash,callback) 
+    {
+        const pathinfo = {
+            'url' : '',
+            'basename' :'/',
+            'query_string' : '',
+            'queries' : {}
+        };
+
+        pathinfo.url = hash;
+
+        // 패턴
+        const path_pattern = /(\w+)[\/]/gi;
+        if( (path_pattern).test(hash) )
+        {
+            // path
+            let path = hash.match(path_pattern);
+            const pathies = path.map(function(h){ return h.replace(/\/$/, ''); });
+
+            // params
+            let send_params = {};
+            const params_pattern = /(\w+)=(.*)/g;
+            if( (params_pattern).test(hash) ){
+                pathinfo.query_string = hash.match(params_pattern)[0];
+                // Log.d( pathinfo.query_string );
+
+                send_params = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
+                // Log.d( send_params );
+                pathinfo.queries = send_params;
+            }
+
+            // run module
+            pathinfo.basename = '/'+pathies.join('/');
+        }
+
+        callback(pathinfo);
+    }
 }
