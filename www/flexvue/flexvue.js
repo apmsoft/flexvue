@@ -483,9 +483,10 @@ class Router {
     {
         const pathinfo = {
             'url' : '',
-            'basename' :'/',
+            'path' :'/',
+            'parse_path' : [],
             'query_string' : '',
-            'queries' : {}
+            'parse_query' : {}
         };
 
         pathinfo.url = hash;
@@ -496,7 +497,11 @@ class Router {
         {
             // path
             let path = hash.match(path_pattern);
-            const pathies = path.map(function(h){ return h.replace(/\/$/, ''); });
+            const parse_path = path.map(function(h){
+                const pathname = h.replace(/\/$/, '');
+                pathinfo.parse_path.push(pathname);
+                return pathname;
+            });
 
             // params
             let send_params = {};
@@ -507,11 +512,11 @@ class Router {
 
                 send_params = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
                 // Log.d( send_params );
-                pathinfo.queries = send_params;
+                pathinfo.parse_query = send_params;
             }
 
             // run module
-            pathinfo.basename = '/'+pathies.join('/');
+            pathinfo.path = '/'+parse_path.join('/');
         }
 
         callback(pathinfo);

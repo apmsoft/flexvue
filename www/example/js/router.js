@@ -21,9 +21,9 @@ const onReady = () =>
     {
         Router.pathinfo(hash,function(pathinfo){
             Log.d(pathinfo);
-            Log.d(routes[pathinfo.basename]);
+            Log.d(routes[pathinfo.path]);
 
-            
+
         });
     });
 }
