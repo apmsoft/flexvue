@@ -17,7 +17,7 @@ const onReady = () =>
     };
 
     //#bbs/notice/list/page=1&q=노래방&category=a
-    new Router().filter(urlManager.hash).pathinfo(function(pathinfo){
+    new Router(urlManager.hash).filter(function(pathinfo){
         Log.d(pathinfo);
         Log.d(routes[pathinfo.path]);
     });

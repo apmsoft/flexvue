@@ -465,26 +465,28 @@ class Activity {
 }
 
 class Router {
-    constructor(hash,callback){
+    constructor(hash){
         this.init =false;
-        this.hash = '';
+        this.hash = hash;
     }
 
-    filter (hash) {
+    filter (callback) {
+        const self = this;
         window.addEventListener('hashchange', (evt) => 
         {
-            this.hash = window.location.hash.replace('#','');
+            const pathinfo = self.pathinfo(window.location.hash.replace('#',''));
+            callback(pathinfo);
         });
 
         if(!this.init){
-            let _hash = (typeof hash !=='undefined' && typeof hash !== null) ? hash.replace('#','') : '';
+            let _hash = (typeof this.hash !=='undefined' && typeof this.hash !== null) ? this.hash.replace('#','') : '';
             this.init = true;
-            this.hash = _hash;
+            const pathinfo = self.pathinfo(_hash);
+            callback(pathinfo);
         }
-        return this;
     }
 
-    pathinfo (callback) 
+    pathinfo (hash) 
     {
         const pathinfo = {
             'url' : '',
@@ -494,14 +496,14 @@ class Router {
             'parse_query' : {}
         };
 
-        pathinfo.url = this.hash;
+        pathinfo.url = hash;
 
         // 패턴
         const path_pattern = /(\w+)[\/]/gi;
-        if( (path_pattern).test(this.hash) )
+        if( (path_pattern).test(hash) )
         {
             // path
-            let path = this.hash.match(path_pattern);
+            let path = hash.match(path_pattern);
             const parse_path = path.map(function(h){
                 const pathname = h.replace(/\/$/, '');
                 pathinfo.parse_path.push(pathname);
@@ -511,8 +513,8 @@ class Router {
             // params
             let send_params = {};
             const params_pattern = /(\w+)=(.*)/g;
-            if( (params_pattern).test(this.hash) ){
-                pathinfo.query_string = this.hash.match(params_pattern)[0];
+            if( (params_pattern).test(hash) ){
+                pathinfo.query_string = hash.match(params_pattern)[0];
                 // Log.d( pathinfo.query_string );
 
                 send_params = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
@@ -524,6 +526,6 @@ class Router {
             pathinfo.path = '/'+parse_path.join('/');
         }
 
-        callback(pathinfo);
+        return pathinfo;
     }
 }
