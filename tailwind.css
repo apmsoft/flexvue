@@ -321,44 +321,58 @@
     .overflow-unset {
         overflow: unset !important;
       }
+
+    /** 토글버튼**/
+    .toggle__dot {
+        top: -.25rem;
+        left: -.25rem;
+        transition: all 0.3s ease-in-out;
+    }
+    input:checked ~ .toggle__dot {
+        transform: translateX(100%);
+        background-color: #3b82f6;
+    }
+
+    /** ck-editor */
+    .ck-editor__editable{min-height:400px}
     
-      @media (min-width: 640px) {
+    @media (min-width: 640px) {
         .sm\:overflow-unset {
-          overflow: unset !important;
+            overflow: unset !important;
         }
-    
+
         .sm\:hidden {
-          display : none !important;
+            display : none !important;
         }
-      }
-      
-      @media  (min-width: 768px) {
+    }
+    
+    @media  (min-width: 768px) {
         .md\:overflow-unset {
-          overflow: unset !important;
+            overflow: unset !important;
         }
-    
+
         .md\:hidden {
-          display : none !important;
+            display : none !important;
         }
-      }
-      
-      @media (min-width: 1024px) {
+    }
+    
+    @media (min-width: 1024px) {
         .lg\:overflow-unset {
-          overflow: unset !important;
+            overflow: unset !important;
         }
-    
+
         .lg\:hidden {
-          display : none !important;
-        }
-      }
-      
-      @media (min-width: 1280px) {
-        .xl\:overflow-unset {
-          overflow: unset !important;
-        }
+            display : none !important;
+            }
+    }
     
-        .xl\:hidden {
-          display : none !important;
+    @media (min-width: 1280px) {
+        .xl\:overflow-unset {
+            overflow: unset !important;
         }
-      }
+
+        .xl\:hidden {
+            display : none !important;
+        }
+    }
 }

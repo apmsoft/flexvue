@@ -24,6 +24,17 @@ module.exports = {
         'max-h-screen-sm' : '640px',
         'max-h-screen-md' : '768px',
         'max-h-screen-lg' : '1024px'
+      },
+      colors :{
+        'blue-light' : '#EFF7FD',
+        'blue-lightd6' : '#D6E1EA',
+        'blue-default' : '#37A0EA',
+        'blue-dark' : '#2786C8',
+        'gray-light' : '#F3F6F9',
+        'gray-default' : '#5B7688',
+        'gray-dark' : '#19496A',
+        'cblue-default' : '#ECEBFB',
+        'clube-dark' : '#3D3DD9'
       }
     },
   },
