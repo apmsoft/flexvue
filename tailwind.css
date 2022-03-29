@@ -58,19 +58,19 @@
         font-weight: normal;
         src: url(./fonts/NanumBarunGothicSubset.eot);
         src: url(./fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
-             url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
-             url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
-             url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
-       }
+            url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+            url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
+            url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
+    }
     @font-face {
         font-family: 'NanumBarunGothic';
         font-weight: 400;
         src: url(./fonts/NanumBarunGothicSubset.eot);
         src: url(./fonts/NanumBarunGothicSubset.eot?#iefix) format('embedded-opentype'),
-             url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
-             url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
-             url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
-       }
+            url(./fonts/NanumBarunGothicSubset.woff2) format('woff2'),
+            url(./fonts/NanumBarunGothicSubset.woff) format('woff'),
+            url(./fonts/NanumBarunGothicSubset.ttf) format('truetype');
+    }
     @font-face {
     font-family: './fonts/NanumBarunGothic';
     font-style: normal;
@@ -99,8 +99,11 @@
             url(./fonts/NanumBarunGothicUltraLightSubset.woff) format('woff'),
             url(./fonts/NanumBarunGothicUltraLightSubset.ttf) format('truetype');
     }
+
+
 }
 @layer components {
+
 }
 
 @layer utilities {
@@ -257,7 +260,7 @@
     }
 
     .btn {
-        @apply px-4 py-3 text-center border align-middle rounded-lg font-semibold
+        @apply px-4 py-2 text-center border dark:border-0 align-middle rounded-lg font-semibold
     }
 
     .btn-primary {
@@ -285,7 +288,7 @@
     }
 
     .card {
-        @apply border rounded-lg w-full max-w-2xl py-4 px-5 bg-white
+        @apply border rounded-lg w-full py-4 px-5 bg-white dark:bg-gray-700 dark:border-gray-700
     }
 
     .form-container {
@@ -293,15 +296,19 @@
     }
 
     .form-row {
-        @apply flex flex-col md:flex-row
+        @apply flex flex-col lg:flex-row
     }
 
     .form-label{
-        @apply w-auto md:w-24 text-gray-500
+        @apply w-auto md:w-24 text-gray-500 dark:text-gray-300
     }
 
     .form-input {
-        @apply w-full border px-3 py-2 bg-gray-50 rounded-lg hover:border-gray-500 focus:bg-white focus:border-blue-500 focus:outline-none
+        @apply w-full border px-3 py-2 bg-gray-50 dark:bg-gray-600 rounded-lg dark:text-gray-300 hover:border-gray-500 focus:bg-white focus:border-blue-500 dark:focus:border-gray-500 focus:outline-none
+    }
+
+    .form-textarea {
+        @apply w-full border px-3 py-2 bg-gray-50 dark:bg-gray-600 rounded-lg dark:text-gray-300 hover:border-gray-500 focus:bg-white focus:border-blue-500 dark:focus:border-gray-500 focus:outline-none
     }
 
     .form-radio { /* checked:bg-red-600 checked:border-transparent checked:ring-red-600*/
@@ -312,6 +319,10 @@
         @apply appearance-none h-5 w-5 rounded-md focus:outline-none ring-offset-2 ring-2 ring-gray-300 
     }
 
+    .form-select {
+        @apply appearance-none py-2 pl-3 w-full border rounded-lg text-gray-500 dark:bg-gray-600 dark:text-gray-300 pr-8
+    }
+
     .text-ellipsis {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -320,7 +331,7 @@
 
     .overflow-unset {
         overflow: unset !important;
-      }
+    }
 
     /** 토글버튼**/
     .toggle__dot {
@@ -334,7 +345,9 @@
     }
 
     /** ck-editor */
-    .ck-editor__editable{min-height:400px}
+    .ck-editor__editable{
+        min-height:400px;
+    }
     
     @media (min-width: 640px) {
         .sm\:overflow-unset {
@@ -363,7 +376,7 @@
 
         .lg\:hidden {
             display : none !important;
-            }
+        }
     }
     
     @media (min-width: 1280px) {
