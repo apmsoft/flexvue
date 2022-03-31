@@ -16,14 +16,14 @@ const onReady = () =>
     formData.append("name", "홍길동");
     const post_params = new URLSearchParams(formData);
     // 
-    new AsyncTask().execute('POST','http://testhomeage.com/member/info'
-        ,json_params
+    new AsyncTask().execute('POST','http://3.36.239.123:3030/path/tiummmmm'
+        ,post_params
         ,{
-//             mode : 'cors', // no-cors, cors, *same-origin
-//             redirect : 'follow'
+            mode : 'no-cors', // no-cors, cors, *same-origin
+            redirect : 'follow'
         }
         ,{
-            'Content-Type' : 'application/json',
+            // 'Content-Type' : 'application/json',
 //             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization-Access-Token':'Y29tZmFuY3l1cHN'
         }
