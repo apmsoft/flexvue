@@ -1,12 +1,18 @@
 import {} from '../../flexvue/plugins/draggable/lib/draggable.js';
 import {} from '../../flexvue/plugins/draggable/lib/droppable.js';
 import {} from '../../flexvue/plugins/draggable/lib/sortable.js';
+import {} from '../../flexvue/plugins/draggable/lib/plugins/collidable.js';
+import {} from '../../flexvue/plugins/draggable/lib/plugins.js';
 
 const onReady = () => 
 {
-
+    // sortable
     const sortable = new Sortable.default(document.querySelector('#lay_cource'), {
-        draggable: '.dragable-sort-item'
+        draggable: '.dragable-sort-item',
+        sortAnimation: {
+            duration: 200,
+            easingFunction: 'ease-in-out',
+        }
     });
     sortable.on('sortable:start', () => {
         // lay_cource.classList.remove('dropzone');
@@ -15,14 +21,15 @@ const onReady = () =>
         // lay_cource.classList.add('dropzone');
     });
 
-    // 운동 드랍존으로 움직추가하기
+    // 드랍존
     const droppable = new Droppable.default(document.querySelectorAll('.drop-container'), {
         draggable: '.draggable-item',
-        dropzone: '.dropzone'
+        dropzone: '.dropzone',
+        plugins: [Collidable.default,Plugins.ResizeMirror]
     });
     droppable.on('droppable:stop', () => 
     {
-        // 테마운동 add -> dragable-sort-item
+        // 박스1 -> dragable-sort-item
         Handler.post(function(){
             lay_cource.querySelectorAll('.draggable-item').forEach(el =>{
                 if(!el.classList.contains('dragable-sort-item')){
@@ -31,7 +38,7 @@ const onReady = () =>
             });
         },50);
 
-        // 운동목록의 remove -> dragable-sort-item
+        // 박스2 remove -> dragable-sort-item
         Handler.post(function(){
             if(lay_train){
                 lay_train.querySelectorAll('.dragable-sort-item').forEach(el =>{
@@ -42,6 +49,7 @@ const onReady = () =>
             }
         },50);
 
+        // 계속 박스1 로 드랍할 수 있도록 활성화
         Handler.post(function(){
             lay_cource.classList.remove('draggable-dropzone--occupied');
         },10);
