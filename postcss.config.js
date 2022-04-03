@@ -2,6 +2,7 @@ module.exports = {
     // darkMode: 'media',
     content: [
     "./_topadm/t1/**/*.{html,js}",
+    "./www/example/**/*.{html,js}",
     "./v1/**/*.{html,js}"
     ],
     theme: {

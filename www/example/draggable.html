@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+    <script defer src="../flexvue/flexvue.min.js"></script>
+
+</head> 
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header py-3">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon">
+                        
+                    </div>
+                    <div class="fvue--layout--title text-gray-800">
+                      <a href="#">FlexVue (플렉스뷰)</a>
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation">
+                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="fvue--layout--main h-full" id="left_docs_contents">
+                <div class="card w-full rounded-lg px-5 py-5 shadow-lg">
+                    <div class="flex flex-row space-x-3">
+        
+                        <div class="flex-1">
+                            <div class="drop-container">
+                                <div class="mb-2">
+                                    <h3>
+                                        <span class="float-right text-sm py-1 mr-3">
+                                            <input type="checkbox" class="mr-2" id="enable-cource-sort" />순서바꾸기
+                                        </span>
+                                        박스1
+                                    </h3>
+                                </div>
+                                <div class="dropzone flex flex-col min-h-[500px] h-full pt-2 px-2 border border-dashed border-gray-400 dark:border-gray-400 rounded-lg dark:divide-gray-500" id="lay_cource">
+                                    <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg dragable-sort-item">
+                                        <div class="p-2 bg-blue-default text-white rounded-lg">1</div>
+                                    </div>
+
+                                    <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg dragable-sort-item">
+                                        <div class="p-2 bg-blue-default text-white rounded-lg">2</div>
+                                    </div>
+
+                                    <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg dragable-sort-item">
+                                        <div class="p-2 bg-blue-default text-white rounded-lg">3</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="flex-1">
+                            <div class="drop-container flex flex-col divide-y space-y-2">
+                                <div class="flex flex-row justify-between">
+                                    <h3>박스2</h3>
+                                </div>
+
+                                <div class="flex flex-col space-y-2 dark:divide-gray-500 overflow-y-auto" id="lay_train">
+                                    <div class="dropzone min-h-[56px] border border-dashed border-gray-400 dark:border-gray-600 rounded-lg pt-2 px-2">
+                                        <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg">
+                                            <div class="p-2 bg-blue-default text-white rounded-lg">4</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropzone min-h-[56px] border border-dashed border-gray-400 dark:border-gray-600 rounded-lg pt-2 px-2">
+                                        <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg">
+                                            <div class="p-2 bg-blue-default text-white rounded-lg">5</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropzone min-h-[56px] border border-dashed border-gray-400 dark:border-gray-600 rounded-lg pt-2 px-2">
+                                        <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg">
+                                            <div class="p-2 bg-blue-default text-white rounded-lg">6</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropzone min-h-[56px] border border-dashed border-gray-400 dark:border-gray-600 rounded-lg pt-2 px-2">
+                                        <div class="draggable-item cursor-move border mb-2 border-gray-300 rounded-lg">
+                                            <div class="p-2 bg-blue-default text-white rounded-lg">7</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-balck">
+
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-white">
+
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-white">
+
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
+        
+    </div>
+
+    <script defer type="module" src="js/draggable.js?v=1"></script>
+</body>
+</html>
