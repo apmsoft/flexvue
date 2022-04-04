@@ -22,7 +22,7 @@ const onReady = () =>
     }
   }
 
-  const observable = new Observable(['public','sub']);
+  window.observable = new Observable(['public','sub']);
   observable.subscribe('public', new A('#public_a'));
   observable.subscribe('public', new B('#public_b'));
   observable.subscribe('sub', new B('#sub_a'));
