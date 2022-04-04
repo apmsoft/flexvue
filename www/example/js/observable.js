@@ -28,8 +28,8 @@ const onReady = () =>
   observable.subscribe('sub', new B('#sub_a'));
   observable.subscribe('sub', new B('#sub_b')); // 같은 채널의 중복 클래스 제거
 
-  observable.notify('public', 'public message 테스트');
-  observable.notify('sub', 'public message 테스트');
+  observable.notify('public', 'public 채널 message 테스트');
+  observable.notify('sub', 'sub 채널 message 테스트');
 }
 
 // document ready
