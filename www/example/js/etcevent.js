@@ -39,19 +39,19 @@ const onReady = () =>
     // input,change
     options.addEventListener('change', function() {
         this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
-            text: () => options.value ,
+            text: () => this.value ,
             name: () => 'options'
         } }))
     });
     price.addEventListener('change', function() {
         this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
-            text: () => price.value ,
+            text: () => this.value ,
             name: () => 'price' 
         } }))
     });
     ea.addEventListener('change', function() {
         this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
-            text: () => ea.value ,
+            text: () => this.value ,
             name: () => 'ea' 
         } }))
     });
