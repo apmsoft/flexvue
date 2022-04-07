@@ -1,13 +1,11 @@
-
-
 const onReady = () => 
 {
     // default values
     const form_values = {
-        price : 1000,
-        ea : 1,
-        total : 0,
-        options : ''
+        price  : 1000,
+        ea     : 1,
+        total  : 0,
+        options: ''
     };
 
     // 이벤트 발생
