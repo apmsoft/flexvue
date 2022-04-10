@@ -260,7 +260,7 @@
     }
 
     .btn {
-        @apply px-4 py-2 text-center border dark:border-0 align-middle rounded-lg font-semibold
+        @apply text-center border dark:border-0 align-middle rounded-lg font-semibold
     }
 
     .btn-primary {
