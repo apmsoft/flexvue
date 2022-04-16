@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <script defer src="../flexvue/flexvue.min.js"></script>
+    <style>
+        [data-scroll] {
+            transition: opacity 1s;
+        }
+        [data-scroll="in"] {
+            opacity: 1;
+        }
+        [data-scroll="out"] {
+            opacity: 0;
+        }
+    </style>
+
+</head> 
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header py-3">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon">
+                        
+                    </div>
+                    <div class="fvue--layout--title text-gray-800">
+                      <a href="#">FlexVue (플렉스뷰)</a>
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation">
+                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="fvue--layout--main overflow-y-scroll !h-[6000px] bg-cover bg-bottom" style="background-image: url(images/rellax/fantasy-g4fab825ac_1920.jpg)" id="left_docs_contents">
+                <section data-scroll class="rellax h-screen bg-gray-300 bg-cover bg-center" style="background-image: url(images/rellax/forest-g7a51efef5_1920.jpg);">
+                    <div class="bg-pink-300 shadow-lg fixed bottom-1/4 left-1/2 w-24 h-24 rounded-2xl rellax" data-rellax-speed="10" data-rellax-percentage="0.5" style="transform: rotate(45deg);">
+
+                    </div>
+                    <div class="shadow-lg fixed bottom-1/4 left-1/2 w-[200px] h-20 rounded-2xl text-3xl text-white rellax" data-rellax-speed="8" data-rellax-percentage="0.5" style="transform: rotate(45deg);">
+                        Rellax
+                    </div>
+
+                    <div class="bg-blue-400 shadow-lg fixed top-1/4 left-1/4 w-24 h-24 rounded-2xl rellax" data-rellax-speed="-4" data-rellax-percentage="0.5" style="transform: rotate(65deg);">
+
+                    </div>
+                    <div class="shadow-lg fixed top-1/4 left-1/4 w-24 h-20 rw-[200px] rounded-2xl text-md text-white rellax" data-rellax-speed="-3" data-rellax-percentage="0.5" style="transform: rotate(65deg);">
+                        Scroll-out
+                    </div>
+
+                    <div  data-scroll class="bg-black shadow-lg fixed pt-5 icon-one animate__animated bottom-0 left-0 w-full text-center text-gray-400 opacity-40 h-24 rounded-t-2xl">
+                        scoll-out + rellax + animate-css
+                    </div>
+                </section>
+
+                <div data-scroll class="bg-gradient-to-b from-indigo-300 pl-10 pt-40 text-white h-screen relative rellax" data-rellax-percentage="0.5">
+                    <h2 data-scroll class="text-2 text-white" id="text-2">I’m that default chill speed of "-2" and "centered"</h2>
+                </div>
+                
+                <div data-scroll class="bg-gradient-to-b from-indigo-500 to-gray-900 flex bg-blue-700  text-white h-screen pl-10 pt-40 relative rellax" data-rellax-speed="10" data-rellax-percentage="0.5">
+                    <h3 data-scroll class="type-text-3 animate__animated" id="type-text-3">I’m super fast!! And super centered!!</h3>
+                
+                    <div data-scroll class="bg-white flex justify-center absolute top-1/2 left-1/2 w-40 h-40 text-gray-400 icon-second animate__animated rounded-2xl" style="transform: rotate(65deg);">
+                        <div class="self-center">animate</div>
+                    </div>
+                </div>
+                
+                <div class="bg-black opacity-40 text-white h-screen relative rellax pl-10 pt-20" data-rellax-speed="-4" data-rellax-percentage="0.5">
+                    <h3 data-scroll class="text-4" id="text-4">rellax + scroll-out + animate css + typeit</h3>
+                    
+                    <div data-scroll class="absolute top-1/2 left-1/2 w-36 h-36 text-center rounded-2xl icon-gad animate__animated animate__delay-1s rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+                        <img src="images/rellax/icon-gad99f9d26_1920.png" class="h-full" />
+                    </div>
+
+                    <div data-scroll class="absolute top-1/2 left-16 w-28 h-28 text-center rounded-2xl icon-gad animate__animated animate__delay-1s rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+                        <img src="images/rellax/icon-gad99f9d26_1920.png" class="h-full" />
+                    </div>
+
+                    <div data-scroll class="absolute top-1/2 right-10 w-40 h-40 text-center rounded-2xl icon-gad animate__animated animate__delay-1s rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+                        <img src="images/rellax/icon-gad99f9d26_1920.png" class="h-full" />
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-balck">
+
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-white">
+
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-white">
+
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
+        
+    </div>
+
+    <script defer type="module" src="js/scrolloutrellax.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <script defer src="../flexvue/flexvue.min.js"></script>
+    <style>
+        [data-scroll] {
+            transition: opacity 1s;
+        }
+        [data-scroll="in"] {
+            opacity: 1;
+        }
+        [data-scroll="out"] {
+            opacity: 0;
+        }
+    </style>
+
+</head> 
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header py-3">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon">
+                        
+                    </div>
+                    <div class="fvue--layout--title text-gray-800">
+                      <a href="#">FlexVue (플렉스뷰)</a>
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation">
+                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="fvue--layout--main flex justify-center !h-screen bg-cover bg-bottom" style="background-image: url(images/rellax/fantasy-g4fab825ac_1920.jpg)" id="left_docs_contents">
+                <h1 id="text-4" class="text-white self-center">I’m extra slow and smooth, and hella centered.</h1>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-balck">
+
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-white">
+
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-white">
+
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
+        
+    </div>
+
+    <script defer type="module" src="js/typeit.js?v=1"></script>
+</body>
+</html>
