@@ -1,5 +1,9 @@
 module.exports = {
-  content: ["./www/**/*.{html,js}"],
+  content: [
+    "./_topadm/t1/**/*.{html,js}",
+    "./www/example/**/*.{html,js}",
+    "./v1/**/*.{html,js}"
+    ],
   theme: {
     extend: {
       zIndex: {

@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+    <script defer src="../flexvue/flexvue.min.js"></script>
+
+</head> 
+<body>
+    <!--left-->
+    <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
+        <div class="fvue--layout--container">
+            
+            <div class="fvue--layout--header py-3">
+                <div class="fvue--layout--header--row px-3">
+                    <div class="fvue--layout--icon">
+                        
+                    </div>
+                    <div class="fvue--layout--title text-gray-800">
+                      <a href="#">FlexVue (플렉스뷰)</a>
+                    </div>
+        
+                    <div class="fvue--layout--spacer"> </div>
+        
+                    <div class="fvue--layout--navigation">
+                        <button type="button" class="text-gray-500" title="새소식" id="btn-alarm">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button type="button" class="ml-3 text-gray-500" title="logout" id="btn-logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="fvue--layout--main overflow-y-scroll !h-[6000px] bg-cover bg-bottom" style="background-image: url(images/rellax/fantasy-g4fab825ac_1920.jpg)" id="left_docs_contents">
+                <section class="rellax h-screen bg-gray-300 bg-cover bg-center" style="background-image: url(images/rellax/forest-g7a51efef5_1920.jpg);">
+                    <div class="bg-pink-300 shadow-lg fixed bottom-1/4 left-1/2 w-24 h-24 rounded-2xl rellax" data-rellax-speed="10" data-rellax-percentage="0.5" style="transform: rotate(45deg);">
+
+                    </div>
+
+                    <div class="bg-blue-400 shadow-lg fixed top-1/4 left-1/4 w-24 h-24 rounded-2xl rellax" data-rellax-speed="-4" data-rellax-percentage="0.5" style="transform: rotate(65deg);">
+
+                    </div>
+                </section>
+
+                <div class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[1000px] rellax" data-rellax-percentage="0.5">
+                    I’m that default chill speed of "-2" and "centered"
+                </div>
+                
+                <div class="bg-blue-700 text-white h-[1000px] rellax" data-rellax-speed="10" data-rellax-percentage="0.5">
+                I’m super fast!! And super centered!!
+                </div>
+                
+                <div class="bg-black opacity-40 text-white h-screen relative rellax" data-rellax-speed="-4" data-rellax-percentage="0.5">
+                    I’m extra slow and smooth, and hella centered.
+
+                    <a href="https://dixonandmoe.com/rellax/#GettingStarted" target="_blank">바로가기</a>
+                    
+                    <div class="absolute top-1/2 left-1/2 w-40 h-40 text-center rounded-2xl rellax" data-rellax-speed="1" data-rellax-percentage="0.5">
+                        <img src="images/rellax/icon-gad99f9d26_1920.png" class="w-40 h-40" />
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--right-->
+    <div id="right" class="fvue--layout z-3 bg-balck">
+
+    </div>
+
+    <!--rightside-->
+    <div id="rightside" class="fvue--layout z-4 bg-white">
+
+    </div>
+
+    <!--rightthird-->
+    <div id="rightthird" class="fvue--layout z-5 bg-white">
+
+    </div>
+
+    <!--bottom-->
+    <div id="bottom" class="fvue--layout z-6 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomside-->
+    <div id="bottomside" class="fvue--layout z-7 bg-gray-900 bg-opacity-70">
+
+    </div>
+
+    <!--bottomthird-->
+    <div id="bottomthird" class="fvue--layout z-8 bg-gray-900 bg-opacity-70 flex content-center flex-wrap">
+        
+    </div>
+
+    <script defer type="module" src="js/rellax.js?v=1"></script>
+</body>
+</html>
