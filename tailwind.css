@@ -103,10 +103,6 @@
 
 }
 @layer components {
-
-}
-
-@layer utilities {
     .img-fluid {
         @apply max-w-full mx-auto;
     }
@@ -388,4 +384,8 @@
             display : none !important;
         }
     }
+}
+
+@layer utilities {
+    
 }
