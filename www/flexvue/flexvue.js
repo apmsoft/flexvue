@@ -1,7 +1,7 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '1.0.1',
+    version    : '2.3',
     int_version: 13,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -58,6 +58,38 @@ class Observable {
     notify(channel, message){
         const _channel = this._findChannel(channel);
         this.observers[_channel].forEach(observer => observer.update(message));
+    }
+}
+
+class ScrollObserver {
+    constructor (channel){
+        this.constructor.channels = this._makeChannel(channel);
+        Log.d(this.channels);
+    }
+
+    _makeChannel (channel){
+        let ch = (channel && channel !=='undefined') ? channel : ['public'];
+        ch.forEach(element => ch[element] = 0);
+        return ch;
+    }
+
+    _findChannel (channel){
+        const keys = Object.keys(this.constructor.channels);
+        let found = keys.find(element => element == channel);
+        if(found ===undefined){
+            found = '';
+        }
+    return found;
+    }
+
+    static _setPos (channel, pos){
+        ScrollObserver.channels[channel] = pos;
+    }
+
+    static _getPos (channel){
+        let pos = 0;
+        pos = ScrollObserver.channels[channel];
+    return pos;
     }
 }
 
