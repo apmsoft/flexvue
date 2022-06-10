@@ -134,7 +134,7 @@ export default class ScrollAgent {
         ScrollObserver._setPos(this.channel,0);
     }
 
-    // 스크롤 맨아래로 이동시키기
+    // 스크롤 이동시키기
     scrollTo(params,delaytime =null){
         Log.d(`${this.TAG} :: scrollTo`);
         const self = this;
@@ -152,6 +152,19 @@ export default class ScrollAgent {
         Log.d(`${this.TAG} :: scrollLeft`);
         if(this.scrollerHorizontal){
             this.scrollerHorizontal.scrollTo(params);
+        }
+    }
+
+    // 스크롤 맨아래로 이동시키기 bottom
+    scrollToBottom (delaytime =null){
+        const self = this;
+        const dtime = delaytime || 0;
+
+        if(self.scrollerVertical){
+            Handler.post(function(){
+                const pos = self.scrollerVertical.scrollHeight;
+                self.scrollerVertical.scrollTo({top: pos});
+            },dtime);
         }
     }
 
