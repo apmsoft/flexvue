@@ -154,8 +154,8 @@ export default class ScrollAgent {
         const self = this;
         const dtime = delaytime || 0;
         Handler.post(function(){
-            if(this.scrollerHorizontal){
-                this.scrollerHorizontal.scrollTo(params);
+            if(self.scrollerHorizontal){
+                self.scrollerHorizontal.scrollTo(params);
             }
         },dtime);
     }
