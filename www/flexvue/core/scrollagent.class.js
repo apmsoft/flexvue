@@ -148,11 +148,16 @@ export default class ScrollAgent {
     }
 
     // 스크롤 left 이동
-    scrollToLeft (params){
+    scrollToLeft (params,delaytime =null){
         Log.d(`${this.TAG} :: scrollLeft`);
-        if(this.scrollerHorizontal){
-            this.scrollerHorizontal.scrollTo(params);
-        }
+
+        const self = this;
+        const dtime = delaytime || 0;
+        Handler.post(function(){
+            if(this.scrollerHorizontal){
+                this.scrollerHorizontal.scrollTo(params);
+            }
+        },dtime);
     }
 
     // 스크롤 맨아래로 이동시키기 bottom
