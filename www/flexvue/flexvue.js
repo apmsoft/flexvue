@@ -507,19 +507,19 @@ class Activity {
                     config._history_state.id = '#bottomthird';
                     config._history_state.state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
                     Activity.bottomthird.classList.toggle('bottomthird_transitioned');
-				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                } else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
                     config._history_state.id = '#bottomside';
                     config._history_state.state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
                     Activity.bottomside.classList.toggle('bottomside_transitioned');
-				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+                } else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
                     config._history_state.id = '#bottom';
                     config._history_state.state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
                     Activity.bottom.classList.toggle('bottom_transitioned');
-				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+                } else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
                     config._history_state.id = '#rightthird';
                     config._history_state.state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
                     Activity.rightthird.classList.toggle('rightthird_transitioned');
-				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+                } else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
                     config._history_state.id = '#rightside';
                     config._history_state.state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
                     Activity.rightside.classList.toggle('rightside_transitioned');
@@ -527,11 +527,11 @@ class Activity {
                     config._history_state.id = '#right';
                     config._history_state.state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
                     Activity.right.classList.toggle('transitioned');
-				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
+                }else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
                     config._history_state.id = '#drawer_menu';
                     config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
-					Activity.drawer_menu.classList.toggle('drawer_transitioned');
-				}else{
+                    Activity.drawer_menu.classList.toggle('drawer_transitioned');
+                }else{
                     config._history_state.id = '#left';
                     config._history_state.state = (Activity.history_state.left) ? Activity.history_state.left : Activity.history_state[Activity.push_state];
                 }
@@ -542,7 +542,7 @@ class Activity {
     }
 
     // 뒤로가기 버튼 활성화
-    static onEventPressBack(id,callback){
+    static onBackButtonEvent(id,callback){
         const btn_backey = document.querySelector(id);
         if(btn_backey){
             btn_backey.addEventListener('click',function(e){
