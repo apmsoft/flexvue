@@ -73,8 +73,8 @@ class ScrollObserver {
         return ch;
     }
 
-    _findChannel (channel){
-        const keys = Object.keys(this.constructor.channels);
+    static _findChannel (channel){
+        const keys = Object.keys(ScrollObserver.channels);
         let found = keys.find(element => element == channel);
         if(found ===undefined){
             found = '';
@@ -83,12 +83,16 @@ class ScrollObserver {
     }
 
     static _setPos (channel, pos){
-        ScrollObserver.channels[channel] = pos;
+        if(ScrollObserver._findChannel(channel)){
+            ScrollObserver.channels[channel] = pos;
+        }
     }
 
     static _getPos (channel){
         let pos = 0;
-        pos = ScrollObserver.channels[channel];
+        if(ScrollObserver._findChannel(channel)){
+            pos = ScrollObserver.channels[channel];
+        }
     return pos;
     }
 }
