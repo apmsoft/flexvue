@@ -7,6 +7,7 @@ export default class ScrollAgent {
     
     constructor (channel){
         this.TAG = 'ScrollAgent';
+        this.version = '1.1';
         this.channel = channel;
         this.scrollerVertical = null;
         this.scrollerHorizontal = null;
@@ -52,9 +53,13 @@ export default class ScrollAgent {
     addScrollListener(mode, scrollTarget){
         Log.d(`${this.TAG} :: addScrollListener ----->`,'mode : '+mode, 'channel : '+this.channel, 'scrollTarget : '+ scrollTarget, '<---------//');
         if(mode == 'vertical'){
-            this.startVertical(scrollTarget);
+            this.scrollerVertical = document.querySelector(scrollTarget);
+            this.scrollerVertical.dataset.scrollch = this.channel;
+            this.startVertical();
         }else if(mode == 'horizontal'){
-            this.startHorizontal(scrollTarget);
+            this.scrollerHorizontal = document.querySelector(scrollTarget);
+            this.scrollerHorizontal.dataset.scrollch = this.channel;
+            this.startHorizontal();
         }
     }
 
@@ -63,19 +68,22 @@ export default class ScrollAgent {
      * @param {'notice || setting'} channel 
      * @param {'#left--layout-main'} scrollElId 
      */
-    startVertical (scrollElId)
+    startVertical ()
     {
-        Log.d(`${this.TAG} :: startVertical ----->`);
+        // Log.d(`${this.TAG} :: startVertical ----->`);
         const self = this;
 
         // 스크롤 캡쳐
-        this.scrollerVertical = document.querySelector(scrollElId);
         if(this.scrollerVertical)
         {
             this.scrollerVertical.addEventListener("scroll", function(event)
             {
+                const _ch = event.target.dataset.scrollch;
                 let tpos = this.scrollTop;
-                ScrollObserver._setPos(self.channel,tpos);
+                if(_ch == self.channel){
+                    // Log.d("+++++ >"+_ch+' '+tpos);
+                    ScrollObserver._setPos(self.channel,tpos);
+                }
 
                 // float Layout
                 if(self.floatEl)
@@ -104,14 +112,17 @@ export default class ScrollAgent {
         }
     }
 
-    startHorizontal(scrollElId){
+    startHorizontal(){
         Log.d(`${this.TAG} :: startHorizontal ----->`);
         const self = this;
 
-        self.scrollerHorizontal = document.querySelector(`${scrollElId}`);
         if(self.scrollerHorizontal){
             self.scrollerHorizontal.addEventListener("scroll", function(event){
-                ScrollObserver._setPos(self.channel,this.scrollLeft);
+                const _ch = event.target.dataset.scrollch;
+                if(_ch == self.channel){
+                    // Log.d("+++++ >"+_ch+' '+tpos);
+                    ScrollObserver._setPos(self.channel,this.scrollLeft);
+                }
             });
         }
     }
