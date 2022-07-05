@@ -4,15 +4,41 @@ import {} from '../../flexvue/plugins/typeit/typeit.min.js';
 
 const onReady = () => 
 {
+    const tx_left = document.querySelector('#tx-left');
+    let tx_in = false;
+    let scroll_top = 0;
+    let tx_in_y = 0;
+    const tx_position = {
+        'tx_left' : 0
+    };
+
     var rellax = new Rellax('.rellax', {
         wrapper:'#left_docs_contents',
         center: false,
         vertical: true,
         // center: true
-        // callback: function(position) {
-        //     // callback every position change
-        //     console.log(position);
-        // }
+        callback: function(position) {
+            // callback every position change
+
+            // console.log(position);
+            // if(tx_in){
+                
+            //     tx_position.tx_left = tx_position.tx_left + 1;
+            //     Log.d('**** ---- ****'+`${tx_position.tx_left}px`);
+            //     document.getElementById("tx-left").style.transform = `translateX(${tx_position.tx_left}px)`;
+            // }
+        }
+    });
+
+    document.querySelector('#left_docs_contents').addEventListener('scroll', function(e) {
+        Log.d(this.scrollTop);
+        scroll_top = this.scrollTop;
+        if(tx_in){
+            
+            tx_position.tx_left = (scroll_top - tx_in_y -500);
+            Log.d(`**** scroll_top : ${scroll_top} ---- tx_in_y: ${tx_in_y}  **** ${tx_position.tx_left}px`);
+            document.getElementById("tx-left").style.transform = `translateX(${tx_position.tx_left}px)`;
+        }
     });
 
     const instance2 = new TypeIt("#text-2", {
@@ -30,7 +56,7 @@ const onReady = () =>
 
     ScrollOut({
         scrollingElement: "#left_docs_contents",
-        onShown: function(el) {
+        onShown: function(el, ctx) {
             if(el.classList.contains('icon-gad')){
                 // Log.d('icon-gad');
                 el.classList.add('animate__zoomIn');
@@ -63,6 +89,18 @@ const onReady = () =>
                 // Log.d('text-4');
                 instance4.go();
             }
+
+            if(el.classList.contains('tx-left')){
+                Log.d('>> in >> tx-left');
+                Log.d(ctx);
+                Log.d('ctx.offsetX >> '+ctx.offsetX);
+                if(ctx.offsetX){
+                    tx_in_y = scroll_top;
+                    Log.d('>>>>>>> '+tx_in_y);
+                    tx_in = true;
+                    Log.d(tx_in+ '>>>> ');
+                }
+            }
         },
         onHidden: function(el) {
             if(el.classList.contains('icon-gad')){
@@ -94,6 +132,14 @@ const onReady = () =>
                 if(instance4.is('started')){
                     instance4.reset();
                 }
+            }
+
+            if(el.classList.contains('tx-left')){
+                Log.d('>> in >> tx-left');
+                // Log.d(ctx.offsetX);
+                // Log.d('ctx.offsetX >> '+ctx.offsetX);
+                tx_in = false;
+                tx_position.tx_left = 0;
             }
         }
     });
