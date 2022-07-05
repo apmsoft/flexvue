@@ -18,23 +18,15 @@ const onReady = () =>
         vertical: true,
         // center: true
         callback: function(position) {
-            // callback every position change
-
-            // console.log(position);
-            // if(tx_in){
-                
-            //     tx_position.tx_left = tx_position.tx_left + 1;
-            //     Log.d('**** ---- ****'+`${tx_position.tx_left}px`);
-            //     document.getElementById("tx-left").style.transform = `translateX(${tx_position.tx_left}px)`;
-            // }
         }
     });
 
+    // 스크롤 좌표 구하기
     document.querySelector('#left_docs_contents').addEventListener('scroll', function(e) {
         Log.d(this.scrollTop);
         scroll_top = this.scrollTop;
+        
         if(tx_in){
-            
             tx_position.tx_left = (scroll_top - tx_in_y -500);
             Log.d(`**** scroll_top : ${scroll_top} ---- tx_in_y: ${tx_in_y}  **** ${tx_position.tx_left}px`);
             document.getElementById("tx-left").style.transform = `translateX(${tx_position.tx_left}px)`;
