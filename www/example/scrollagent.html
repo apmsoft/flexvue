@@ -10,23 +10,12 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css">
 
     <script defer src="../flexvue/flexvue.min.js"></script>
-    <style>
-        [data-scroll] {
-            transition: opacity 1s;
-        }
-        [data-scroll="in"] {
-            opacity: 1;
-        }
-        [data-scroll="out"] {
-            opacity: 0;
-        }
-    </style>
 
 </head> 
 <body>
     <!--left-->
     <div id="left" class="fvue--layout z-0 bg-blue-lightd6">
-        <div class="fvue--layout--container">
+        <div class="fvue--layout--container" data-scrollch="">
             
             <div class="fvue--layout--header py-3">
                 <div class="fvue--layout--header--row px-3">
@@ -49,32 +38,8 @@
                     </div>
                 </div>
             </div>
-            <div class="fvue--layout--main overflow-y-scroll !h-[6000px] bg-cover bg-bottom" style="background-image: url(images/rellax/fantasy-g4fab825ac_1920.jpg)" id="left_docs_contents">
-                <section class="h-screen bg-gray-300 bg-cover bg-center" data-scroll style="background-image: url(images/rellax/forest-g7a51efef5_1920.jpg);">
-                    <div class="bg-pink-300 shadow-lg fixed bottom-1/4 left-1/2 w-24 h-24 rounded-2xl"  style="transform: rotate(45deg);">
-
-                    </div>
-
-                    <div class="bg-blue-400 shadow-lg fixed top-1/4 left-1/4 w-24 h-24 rounded-2xl" style="transform: rotate(65deg);">
-
-                    </div>
-                </section>
-
-                <section class="bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-screen" data-scroll>
-                   1
-                </section>
-                
-                <section class="bg-blue-700 text-white h-screen" data-scroll>
-                2
-                </section>
-                
-                <section class="bg-black opacity-40 text-white h-screen relative">
-                    3
-                    
-                    <div class="absolute top-1/2 left-1/2 w-40 h-40 text-center rounded-2xl" data-rellax-speed="1">
-                        <img src="images/rellax/icon-gad99f9d26_1920.png" class="w-40 h-40" />
-                    </div>
-                </section>
+            <div class="fvue--layout--main h-full" id="left_docs_contents">
+                Welcome !!!
             </div>
             
         </div>
@@ -110,6 +75,6 @@
         
     </div>
 
-    <script defer type="module" src="js/scroll_out.js?v=1"></script>
+    <script defer type="module" src="js/scrollagent.js?v=1"></script>
 </body>
 </html>

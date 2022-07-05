@@ -1,7 +1,7 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '1.0.1',
+    version    : '2.3',
     int_version: 13,
     debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -16,49 +16,85 @@ const config   = {
 };
 
 class Observable {
-  constructor(channel){
-    this.observers = this._makeChannel(channel);
-  }
+    constructor(channel){
+        this.observers = this._makeChannel(channel);
+    }
 
-  _makeChannel (channel){
-    Log.d('>>'+channel);
-    let ch = (channel && channel !=='undefined') ? channel : ['public'];
-    ch.forEach(element => ch[element] = []);
+    _makeChannel (channel){
+        Log.d('>>'+channel);
+        let ch = (channel && channel !=='undefined') ? channel : ['public'];
+        ch.forEach(element => ch[element] = []);
     return ch;
-  }
-
-  subscribe(channel, o) {
-    const _channel = this._findChannel(channel);
-
-    // console.log('////'+_channel);
-    if(_channel !==undefined){
-      const even = (_o) => _o.constructor.name === o.constructor.name;
-      let is_o_found = this.observers[_channel].some(even);
-      if(!is_o_found){
-        this.observers[_channel].push(o);
-      }
-      Log.d(this.observers);
     }
-  }
 
-  _findChannel (channel){
-    const keys = Object.keys(this.observers);
-    let found = keys.find(element => element == channel);
-    if(found ===undefined){
-      found = 'public';
+    subscribe(channel, o) {
+        const _channel = this._findChannel(channel);
+
+        // console.log('////'+_channel);
+        if(_channel !==undefined){
+            const even = (_o) => _o.constructor.name === o.constructor.name;
+            let is_o_found = this.observers[_channel].some(even);
+            if(!is_o_found){
+                this.observers[_channel].push(o);
+            }
+            Log.d(this.observers);
+        }
     }
+
+    _findChannel (channel){
+        const keys = Object.keys(this.observers);
+        let found = keys.find(element => element == channel);
+        if(found ===undefined){
+        found = 'public';
+        }
     return found;
-  }
+    }
 
-  unsubscribe(channel, o){
-    const _channel = this._findChannel(channel);
-    this.observers[_channel] = this.observers[_channel].filter(subscriber => subscriber !== o);
-  }
+    unsubscribe(channel, o){
+        const _channel = this._findChannel(channel);
+        this.observers[_channel] = this.observers[_channel].filter(subscriber => subscriber !== o);
+    }
 
-  notify(channel, message){
-    const _channel = this._findChannel(channel);
-    this.observers[_channel].forEach(observer => observer.update(message));
-  }
+    notify(channel, message){
+        const _channel = this._findChannel(channel);
+        this.observers[_channel].forEach(observer => observer.update(message));
+    }
+}
+
+class ScrollObserver {
+    constructor (channel){
+        this.constructor.channels = this._makeChannel(channel);
+        Log.d(this.channels);
+    }
+
+    _makeChannel (channel){
+        let ch = (channel && channel !=='undefined') ? channel : ['public'];
+        ch.forEach(element => ch[element] = 0);
+        return ch;
+    }
+
+    static _findChannel (channel){
+        const keys = Object.keys(ScrollObserver.channels);
+        let found = keys.find(element => element == channel);
+        if(found ===undefined){
+            found = '';
+        }
+    return found;
+    }
+
+    static _setPos (channel, pos){
+        if(ScrollObserver._findChannel(channel)){
+            ScrollObserver.channels[channel] = pos;
+        }
+    }
+
+    static _getPos (channel){
+        let pos = 0;
+        if(ScrollObserver._findChannel(channel)){
+            pos = ScrollObserver.channels[channel];
+        }
+    return pos;
+    }
 }
 
 const OS = [
@@ -176,38 +212,38 @@ class App {
     }
 
     findPlatform (data){
-      let result = '';
-      for (var i=0;i<data.length;i++)
-      {
+        let result = '';
+        for (var i=0;i<data.length;i++)
+        {
         var dataString = data[i].agent;
         var dataProp = data[i].prop;
         this.versionSearchString = data[i].versionSearch || data[i].identity;
         if (dataString) {
-          if (data[i].subagent.test(dataString)){
+            if (data[i].subagent.test(dataString)){
             result = data[i].identity;
             break;
-          }
+            }
         }
         else if (dataProp)
-          result = data[i].identity;
-      }
-      return result;
+            result = data[i].identity;
+        }
+        return result;
     }
 
     getPlatformVersion (data){
-      var index = data.indexOf(this.versionSearchString);
-      if (index == -1) return;
-      return parseFloat(data.substring(index+this.versionSearchString.length+1));
+        var index = data.indexOf(this.versionSearchString);
+        if (index == -1) return;
+        return parseFloat(data.substring(index+this.versionSearchString.length+1));
     }
 
     getLanguage() {
-      let language = navigator.language || navigator.userLanguage;
-      language = language.toLowerCase();
-      language = language.substring(0, 2); //앞 2글자
-      if(language=='cn' || language=='tw' || language=='zh'){
-          language = cn;
-      }
-      return language;
+        let language = navigator.language || navigator.userLanguage;
+        language = language.toLowerCase();
+        language = language.substring(0, 2); //앞 2글자
+        if(language=='cn' || language=='tw' || language=='zh'){
+            language = cn;
+        }
+        return language;
     }
 }
 
@@ -296,9 +332,9 @@ window.Runnable = (function (callback) {
     window.oRequestAnimationFrame ||
     window.msRequestAnimaitonFrame ||
     function (callback) {
-      if(typeof callback === 'function'){
-        window.setTimeout(callback);
-      }
+        if(typeof callback === 'function'){
+            window.setTimeout(callback);
+        }
     };
 })();
 
@@ -380,75 +416,75 @@ class Activity {
 		
 	}
 
-  static inentView(url,delaytime = 0){
-      Handler.post(()=>{
-          window.location.href = url;
-      },delaytime);
-  }
+    static inentView(url,delaytime = 0){
+        Handler.post(()=>{
+            window.location.href = url;
+        },delaytime);
+    }
 
-  static onStart (panel_id)
-  {
-      if(panel_id !==null)
-      {
-          Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
-          if(typeof window.location.hash !=='undefined'){
-              Activity.history_state[Activity.push_state] = window.location.hash;
-          }
-          
-          let panel = Activity.layout_panel[Activity.push_state];
-          if (panel.target !== null)
-          {
-              let classname = panel.toggle;
-              if (!document.querySelector(panel.id).classList.contains(classname)) 
-              {
-                  Handler.post(()=>{
-                      // toggle
-                      document.querySelector(panel.target).classList.toggle(classname);
-                  },10);
-              }
-          }
-      }
-  }
+    static onStart (panel_id)
+    {
+        if(panel_id !==null)
+        {
+            Activity.push_state = (panel_id) ? panel_id.replace('#','') : '';
+            if(typeof window.location.hash !=='undefined'){
+                Activity.history_state[Activity.push_state] = window.location.hash;
+            }
+            
+            let panel = Activity.layout_panel[Activity.push_state];
+            if (panel.target !== null)
+            {
+                let classname = panel.toggle;
+                if (!document.querySelector(panel.id).classList.contains(classname)) 
+                {
+                    Handler.post(()=>{
+                        // toggle
+                        document.querySelector(panel.target).classList.toggle(classname);
+                    },10);
+                }
+            }
+        }
+    }
 
-  static onStop (panel_id){
-      panel_id = (panel_id) ? panel_id.replace('#','') : '';
+    static onStop (panel_id){
+        panel_id = (panel_id) ? panel_id.replace('#','') : '';
 
-      switch(panel_id){
-          case 'bottomthird':
-              if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-                  Activity.bottomthird.classList.toggle('bottomthird_transitioned');
-              }
-          break;
-          case 'bottomside':
-              if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-                  Activity.bottomside.classList.toggle('bottomside_transitioned');
-              }
-          case 'bottom':
-              if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-                  Activity.bottom.classList.toggle('bottom_transitioned');
-              }
-          break;
-          case 'rightthird' :
-              if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-                  Activity.rightthird.classList.toggle('rightthird_transitioned');
-              }
-          break;
-          case 'rightside' :
-              if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-                  Activity.rightside.classList.toggle('rightside_transitioned');
-              }
-          break;
-          case 'right':
-              if (Activity.right && Activity.right.classList.contains('transitioned')) {
-                  Activity.right.classList.toggle('transitioned');
-              }
-          break;
-          case 'drawer_menu':
-              if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
-                  Activity.drawer_menu.classList.toggle('drawer_transitioned');
-              }
-          break;
-      }
+        switch(panel_id){
+            case 'bottomthird':
+                if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
+                    Activity.bottomthird.classList.toggle('bottomthird_transitioned');
+                }
+            break;
+            case 'bottomside':
+                if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                    Activity.bottomside.classList.toggle('bottomside_transitioned');
+                }
+            case 'bottom':
+                if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+                    Activity.bottom.classList.toggle('bottom_transitioned');
+                }
+            break;
+            case 'rightthird' :
+                if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+                    Activity.rightthird.classList.toggle('rightthird_transitioned');
+                }
+            break;
+            case 'rightside' :
+                if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+                    Activity.rightside.classList.toggle('rightside_transitioned');
+                }
+            break;
+            case 'right':
+                if (Activity.right && Activity.right.classList.contains('transitioned')) {
+                    Activity.right.classList.toggle('transitioned');
+                }
+            break;
+            case 'drawer_menu':
+                if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
+                    Activity.drawer_menu.classList.toggle('drawer_transitioned');
+                }
+            break;
+        }
     }
 
     onBackPressed (callback) 
@@ -472,41 +508,58 @@ class Activity {
 
 				// 이전경로 do 체크
 				if (Activity.bottomthird && Activity.bottomthird.classList.contains('bottomthird_transitioned')) {
-          config._history_state.id = '#bottomthird';
-          config._history_state.state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
-          Activity.bottomthird.classList.toggle('bottomthird_transitioned');
-				} else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
-          config._history_state.id = '#bottomside';
-          config._history_state.state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
-          Activity.bottomside.classList.toggle('bottomside_transitioned');
-				} else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
-          config._history_state.id = '#bottom';
-          config._history_state.state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
-          Activity.bottom.classList.toggle('bottom_transitioned');
-				} else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
-          config._history_state.id = '#rightthird';
-          config._history_state.state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
-          Activity.rightthird.classList.toggle('rightthird_transitioned');
-				} else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
-          config._history_state.id = '#rightside';
-          config._history_state.state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
-          Activity.rightside.classList.toggle('rightside_transitioned');
-        } else if (Activity.right && Activity.right.classList.contains('transitioned')) {
-          config._history_state.id = '#right';
-          config._history_state.state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
-          Activity.right.classList.toggle('transitioned');
-				}else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
-          config._history_state.id = '#drawer_menu';
-          config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
-					Activity.drawer_menu.classList.toggle('drawer_transitioned');
-				}else{
-          config._history_state.id = '#left';
-          config._history_state.state = (Activity.history_state.left) ? Activity.history_state.left : Activity.history_state[Activity.push_state];
-        }
+                    config._history_state.id = '#bottomthird';
+                    config._history_state.state = (Activity.history_state.bottomthird) ? Activity.history_state.bottomthird : Activity.history_state[Activity.push_state];
+                    Activity.bottomthird.classList.toggle('bottomthird_transitioned');
+                } else if (Activity.bottomside && Activity.bottomside.classList.contains('bottomside_transitioned')) {
+                    config._history_state.id = '#bottomside';
+                    config._history_state.state = (Activity.history_state.bottomside) ? Activity.history_state.bottomside : Activity.history_state[Activity.push_state];
+                    Activity.bottomside.classList.toggle('bottomside_transitioned');
+                } else if (Activity.bottom && Activity.bottom.classList.contains('bottom_transitioned')) {
+                    config._history_state.id = '#bottom';
+                    config._history_state.state = (Activity.history_state.bottom) ? Activity.history_state.bottom : Activity.history_state[Activity.push_state];
+                    Activity.bottom.classList.toggle('bottom_transitioned');
+                } else if (Activity.rightthird && Activity.rightthird.classList.contains('rightthird_transitioned')) {
+                    config._history_state.id = '#rightthird';
+                    config._history_state.state = (Activity.history_state.rightthird) ? Activity.history_state.rightthird : Activity.history_state[Activity.push_state];
+                    Activity.rightthird.classList.toggle('rightthird_transitioned');
+                } else if (Activity.rightside && Activity.rightside.classList.contains('rightside_transitioned')) {
+                    config._history_state.id = '#rightside';
+                    config._history_state.state = (Activity.history_state.rightside) ? Activity.history_state.rightside : Activity.history_state[Activity.push_state];
+                    Activity.rightside.classList.toggle('rightside_transitioned');
+                } else if (Activity.right && Activity.right.classList.contains('transitioned')) {
+                    config._history_state.id = '#right';
+                    config._history_state.state = (Activity.history_state.right) ? Activity.history_state.right : Activity.history_state[Activity.push_state];
+                    Activity.right.classList.toggle('transitioned');
+                }else if (Activity.drawer_menu && Activity.drawer_menu.classList.contains('drawer_transitioned')) {
+                    config._history_state.id = '#drawer_menu';
+                    config._history_state.state = (Activity.history_state.drawer_menu) ? Activity.history_state.drawer_menu : Activity.history_state[Activity.push_state];
+                    Activity.drawer_menu.classList.toggle('drawer_transitioned');
+                }else{
+                    config._history_state.id = '#left';
+                    config._history_state.state = (Activity.history_state.left) ? Activity.history_state.left : Activity.history_state[Activity.push_state];
+                }
 
 				callback(config._history_state);
 			}
 		};
+    }
+
+    // 뒤로가기 버튼 활성화
+    static onBackButtonEvent(id,callback){
+        const btn_backey = document.querySelector(id);
+        if(btn_backey){
+            btn_backey.addEventListener('click',function(e){
+                e.preventDefault();
+                
+                if(typeof callback == 'function'){
+                    callback(new URL(window.location.href));
+                }
+                else{
+                    history.go(-1);
+                }
+            });
+        }
     }
 }
 

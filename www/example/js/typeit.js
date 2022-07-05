@@ -4,7 +4,7 @@ const onReady = () =>
 {
     new TypeIt("#text-4", {
         strings: "",
-        speed: 75,
+        speed:105,
         loop: true,
     }).go();
 }
