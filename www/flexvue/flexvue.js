@@ -1,9 +1,9 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '2.3',
+    version    : '2.3.1',
     int_version: 13,
-    debug      : ['d','i','w','e'], // 출력하고자 하는 디버그 모드 선택
+    debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
     domain     : 'http://flexvue.fancyupsoft.com',
     asset      : '../v1',
@@ -257,6 +257,11 @@ class Log {
     static i (...args) {
         if(config.debug.some(el => el == 'i'))
             args.forEach( d => console.log(echoNowDate()+' >> I : ', d));
+    }
+
+    static v (...args) {
+        if(config.debug.some(el => el == 'v'))
+            args.forEach( d => console.log(echoNowDate()+' >> V : ', d));
     }
 
     static w (...args) {
