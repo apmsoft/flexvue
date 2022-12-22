@@ -16,11 +16,11 @@ const onReady = () =>
     formData.append("name", "홍길동");
     const post_params = new URLSearchParams(formData);
     // 
-    new AsyncTask().execute('POST','http://3.36.239.123:3030/path/tiummmmm'
+    new AsyncTask().execute('POST','http://localhost:8001/flexphp/test/file_size.php'
         ,post_params
         ,{
-            mode : 'no-cors', // no-cors, cors, *same-origin
-            redirect : 'follow'
+            // mode : 'no-cors', // no-cors, cors, *same-origin
+            //redirect : 'follow'
         }
         ,{
             // 'Content-Type' : 'application/json',
