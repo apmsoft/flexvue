@@ -17,7 +17,7 @@ return result;
 
 // 10000 -> 10,000
 const number_format  = (num, locale = 'ko-KR') => {
-    let result = '';
+    let result = '0';
     let nb = num.replace(/[^0-9]/g, '');
     if(nb > 0){
         // result = new Intl.NumberFormat(locale, { maximumSignificantDigits: 4 }).format(num);
