@@ -1,15 +1,30 @@
 "use strict";
 const config   = {
-    app_name   : 'flexvue',
-    version    : '2.3.1',
-    int_version: 13,
-    debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
-    cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    domain     : 'http://flexvue.fancyupsoft.com',
-    asset      : '../v1',
-    src        : `../src`,
-    res        : '../res',
-    _history_state : {
+    app_name     : 'flexvue',
+    version      : '2.3.2',
+    int_version  : 13,
+    surport_langs: [],
+    debug        : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
+    cache        : 'default', // *default, no-cache, reload, force-cache, only-if-cached
+    domain       : 'http://flexvue.fancyupsoft.com',
+    access_token : '',
+    _headers_    : {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+    },
+    _fileupload_headers_ : {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*',
+        'Authorization-Access-Token'  : ''
+    },
+    _options_     : {cache: 'no-cache'},
+    asset         : 'v1',
+    src           : `src`,
+    res           : 'res',
+    _history_state: {
         id : '#left',
         state : ''
     }
@@ -208,24 +223,31 @@ class App {
     }
 
     static getLocale(){
-        return (App.lang && App.lang !='') ? `_${App.lang}` : '';
+        let language = '';
+        config.surport_langs.forEach(function(lng){
+            if(App.lang == lng){
+                language = '_'+lng;
+            }
+        });
+        return (language) ? language : '';
     }
 
     findPlatform (data){
         let result = '';
         for (var i=0;i<data.length;i++)
         {
-        var dataString = data[i].agent;
-        var dataProp = data[i].prop;
-        this.versionSearchString = data[i].versionSearch || data[i].identity;
-        if (dataString) {
-            if (data[i].subagent.test(dataString)){
-            result = data[i].identity;
-            break;
+            var dataString = data[i].agent;
+            var dataProp   = data[i].prop;
+            this.versionSearchString = data[i].versionSearch || data[i].identity;
+            if (dataString) {
+                if (data[i].subagent.test(dataString)){
+                    result = data[i].identity;
+                break;
+                }
             }
-        }
-        else if (dataProp)
-            result = data[i].identity;
+            else if (dataProp){
+                result = data[i].identity;
+            }
         }
         return result;
     }
@@ -600,10 +622,10 @@ class Router {
             'parse_query' : {}
         };
 
-        pathinfo.url = hash;
+        pathinfo.url = '#'+hash;
 
         // 패턴
-        const path_pattern = /(\w+)[\/]/gi;
+        const path_pattern = /[\/](\w+)/gi;
         if( (path_pattern).test(hash) )
         {
             // path
@@ -619,15 +641,11 @@ class Router {
             const params_pattern = /(\w+)=(.*)/g;
             if( (params_pattern).test(hash) ){
                 pathinfo.query_string = hash.match(params_pattern)[0];
-                // Log.d( pathinfo.query_string );
-
-                send_params = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
-                // Log.d( send_params );
-                pathinfo.parse_query = send_params;
+                pathinfo.parse_query = Object.assign( send_params , Object.fromEntries( new URLSearchParams(pathinfo.query_string) ));
             }
 
             // run module
-            pathinfo.path = '/'+parse_path.join('/');
+            pathinfo.path = parse_path.join('');
         }
 
         return pathinfo;
