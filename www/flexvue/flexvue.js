@@ -1,7 +1,7 @@
 "use strict";
 const config   = {
     app_name   : 'flexvue',
-    version    : '2.3.1',
+    version    : '2.4',
     int_version: 13,
     debug      : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
     cache      : 'force-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -348,6 +348,32 @@ const Handler = {
         setTimeout(()=>{
             Runnable(callback,0);
         }, delay);
+    }
+};
+
+const On = (evt) => function(target, callback){
+    {
+        if(target.indexOf('#')){
+            const element = document.querySelector(target);
+            if(element){
+                element.addEventListener(evt, function(e){
+                    if(typeof callback === 'function'){
+                        callback(e, this);
+                    }
+                });
+            }
+        }else{
+            const element = document.querySelectorAll(target);
+            if(element){
+                element.forEach(el=> {
+                    el.addEventListener(evt,function(e){
+                        if(typeof callback === 'function'){
+                            callback(e, el);
+                        }
+                    });
+                })
+            }
+        }
     }
 };
 
