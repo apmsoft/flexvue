@@ -139,6 +139,16 @@ export default class ScrollAgent {
     return pos;
     }
 
+    // 좌표값 구하려는 대상 #id
+    getPosById (target){
+        let pos = 0;
+        const obj = document.querySelector(`#${target}`);
+        if(obj){
+            pos = obj.offsetTop;
+        }
+    return pos;
+    }
+
     // 해달 채널 포지션 초기화
     resetPos (){
         Log.d(`${this.TAG} :: resetChannelTopPos ----->`,'channel : '+this.channel+', position : 0', '<---------//');

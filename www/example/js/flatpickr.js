@@ -1,6 +1,6 @@
 /** flatpickr */
-import {} from '../../flexvue/plugins/flatpickr/l10n/ko.js';
 import {} from '../../flexvue/plugins/flatpickr/flatpickr.min.js';
+import {} from '../../flexvue/plugins/flatpickr/l10n/ko.js';
 
 const onReady = () => 
 {
@@ -9,9 +9,8 @@ const onReady = () =>
         altFormat: "Y-m-d",
         dateFormat: "Y-m-d",
         enableTime: true,
-        'local' : ko
+        locale : 'ko'
     });
-    flatpickr.localize(flatpickr.l10ns.ko);
 }
 
 // document ready
