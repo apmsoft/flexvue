@@ -15,11 +15,59 @@ const onReady = () =>
         }
     });
     sortable.on('sortable:start', () => {
-        // lay_cource.classList.remove('dropzone');
+        // clone
+        lay_cource.classList.remove('dropzone');
     });
     sortable.on('sortable:stop', () => {
-        // lay_cource.classList.add('dropzone');
+        // clone
+        lay_cource.classList.add('dropzone');
     });
+
+    // clone ---->
+    let initialDropzone = null;
+    let clonedNode = null;
+
+    function dragStart(e) {
+        // Record the initial dropzone because we want to use it in droppable:dropped.
+        initialDropzone = e.data.dropzone;
+
+        // Clone the source node and insert after the original node. Adding a class for
+        // some styling.
+        const originalNode = e.data.dragEvent.data.source;
+        clonedNode = originalNode.cloneNode(true);
+        clonedNode.classList.add("draggable-clone");  
+        originalNode.parentNode.insertBefore(clonedNode, originalNode.nextSibling);
+    }
+
+    function dragDropped(e) {
+        if (!clonedNode) return;
+
+        // If the current dropzone is our initial one, then hide the cloned Node
+        // because otherwise you have the cloned node plus the dropped node.
+        const dropzone = e.data.dropzone;
+        if (initialDropzone === dropzone) clonedNode.style.display = "none";
+        else clonedNode.style.display = "inherit";
+
+        Handler.post(function(){
+            lay_cource.querySelectorAll('.draggable-item').forEach(el =>{
+                if(!el.classList.contains('dragable-sort-item')){
+                    el.classList.add('dragable-sort-item');
+                }
+            });
+        },50);
+
+        // 박스2 remove -> dragable-sort-item
+        Handler.post(function(){
+            if(lay_train){
+                lay_train.querySelectorAll('.dragable-sort-item').forEach(el =>{
+                    if(el.classList.contains('dragable-sort-item')){
+                        el.classList.remove('dragable-sort-item');
+                    }
+                });
+            }
+        },50);
+    }
+    //<----- end clone */
 
     // 드랍존
     const droppable = new Droppable.default(document.querySelectorAll('.drop-container'), {
@@ -28,6 +76,11 @@ const onReady = () =>
         plugins: [Collidable.default,Plugins.ResizeMirror]
     });
 
+    // clone --->
+    droppable.on("droppable:start", dragStart);
+    droppable.on("droppable:dropped", dragDropped);
+    // <-- clone
+    
     droppable.on('droppable:stop', () => 
     {
         // 박스1 -> dragable-sort-item
