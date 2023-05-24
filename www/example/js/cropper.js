@@ -51,6 +51,8 @@ const onReady = () =>
         restore: true,
         cropBoxMovable: true,
         cropBoxResizable: true,
+        zoomable: false,
+        zoomOnWheel: false,
         ready: function () {
             var cropper = this.cropper;
             var containerData = cropper.getContainerData();
@@ -63,7 +65,7 @@ const onReady = () =>
 
             cropper.setCropBoxData({
                 left: (containerData.width - newCropBoxWidth) / 2,
-                top: ((700-500)/2),
+                top: 40,
                 width: newCropBoxWidth
             });
             // }
