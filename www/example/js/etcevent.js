@@ -1,4 +1,4 @@
-const onReady = () => 
+const onReady = () =>
 {
     // default values
     const form_values = {
@@ -18,7 +18,7 @@ const onReady = () =>
     // 폼전체에 사용할 이벤트
     form.addEventListener('update',function ( e ) {
         console.log(`${e.detail.name()} : ${e.detail.text()}`);
-        
+
         // 키체크
         if(Object.keys(form_values).find(key => key === e.detail.name()))
         {
@@ -31,26 +31,28 @@ const onReady = () =>
 
             // ouput total price
             total.value = form_values.total;
+
+            console.log(form_values);
         }
     });
 
     // input,change
     options.addEventListener('change', function() {
-        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
+        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: {
             text: () => this.value ,
             name: () => 'options'
         } }))
     });
     price.addEventListener('change', function() {
-        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
+        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: {
             text: () => this.value ,
-            name: () => 'price' 
+            name: () => 'price'
         } }))
     });
     ea.addEventListener('change', function() {
-        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: { 
+        this.dispatchEvent(new CustomEvent('update', { bubbles: true, detail: {
             text: () => this.value ,
-            name: () => 'ea' 
+            name: () => 'ea'
         } }))
     });
 }
