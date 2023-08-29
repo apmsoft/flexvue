@@ -1,7 +1,7 @@
 "use strict";
 const config   = {
     app_name     : 'flexvue',
-    version      : '2.4.1',
+    version      : '2.4.2',
     int_version  : 14,
     surport_langs: [],
     debug        : ['d','i','v','w','e'], // 출력하고자 하는 디버그 모드 선택
@@ -15,7 +15,7 @@ const config   = {
         'Access-Control-Allow-Headers': '*',
         'Access-Control-Allow-Methods': '*'
     },
-    
+
     _fileupload_headers_ : {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Headers': '*',
@@ -274,28 +274,57 @@ class App {
 // console.log
 class Log {
     static d (...args) {
-        if(config.debug.some(el => el == 'd'))
-            args.forEach( d => console.log(echoNowDate()+' >> D : ', d));
+        if(config.debug.some(el => el == 'd')){
+            const logs = args.map(arg => {
+                if (typeof arg === 'object') { return JSON.stringify(arg); }
+                return arg;
+            });
+            console.log(echoNowDate()+' >> D : ', logs.join(' | '));
+        }
     }
 
     static i (...args) {
         if(config.debug.some(el => el == 'i'))
-            args.forEach( d => console.log(echoNowDate()+' >> I : ', d));
+        {
+            const logs = args.map(arg => {
+                if (typeof arg === 'object') { return JSON.stringify(arg); }
+                return arg;
+            });
+            console.log(echoNowDate()+' >> I : ', logs.join(' | '));
+        }
     }
 
     static v (...args) {
         if(config.debug.some(el => el == 'v'))
-            args.forEach( d => console.log(echoNowDate()+' >> V : ', d));
+        {
+            const logs = args.map(arg => {
+                if (typeof arg === 'object') { return JSON.stringify(arg); }
+                return arg;
+            });
+            console.log(echoNowDate()+' >> V : ', logs.join(' | '));
+        }
     }
 
     static w (...args) {
         if(config.debug.some(el => el == 'w'))
-            args.forEach( d => console.log(echoNowDate()+' >> W : ', d));
+        {
+            const logs = args.map(arg => {
+                if (typeof arg === 'object') { return JSON.stringify(arg); }
+                return arg;
+            });
+            console.log(echoNowDate()+' >> W : ', logs.join(' | '));
+        }
     }
 
     static e (...args) {
         if(config.debug.some(el => el == 'e'))
-            args.forEach( d => console.log(echoNowDate()+' >> E : ', d));
+        {
+            const logs = args.map(arg => {
+                if (typeof arg === 'object') { return JSON.stringify(arg); }
+                return arg;
+            });
+            console.log(echoNowDate()+' >> E : ', logs.join(' | '));
+        }
     }
 
     static clear(){
@@ -411,14 +440,14 @@ class Activity {
 		this.constructor.right = document.querySelector("#right");
     this.constructor.drawer_menu = document.querySelector("#drawer_menu");
 
-    this.constructor.layout_panel = { 
+    this.constructor.layout_panel = {
         left : {
             id:'#left',
             target:null,
             toggle:null
         },
         right : {
-            id:'#right', 
+            id:'#right',
             target:'#right',
             toggle:'transitioned'
         },
@@ -468,7 +497,7 @@ class Activity {
 	}
 
 	onCreateView(){
-		
+
 	}
 
     static inentView(url,delaytime = 0){
@@ -485,12 +514,12 @@ class Activity {
             if(typeof window.location.hash !=='undefined'){
                 Activity.history_state[Activity.push_state] = window.location.hash;
             }
-            
+
             let panel = Activity.layout_panel[Activity.push_state];
             if (panel.target !== null)
             {
                 let classname = panel.toggle;
-                if (!document.querySelector(panel.id).classList.contains(classname)) 
+                if (!document.querySelector(panel.id).classList.contains(classname))
                 {
                     Handler.post(()=>{
                         // toggle
@@ -542,9 +571,9 @@ class Activity {
         }
     }
 
-    onBackPressed (callback) 
+    onBackPressed (callback)
     {
-        window.onpopstate = function(event) 
+        window.onpopstate = function(event)
 		{
 			let is_Trustred = false;
 			if (typeof event.isTrusted !=='undefined' && event.isTrusted) {
@@ -553,7 +582,7 @@ class Activity {
 				is_Trustred = true;
 			}
 
-			if (is_Trustred) 
+			if (is_Trustred)
 			{
 				// 이전경로 do 체크
                 config._history_state = {
@@ -606,7 +635,7 @@ class Activity {
         if(btn_backey){
             btn_backey.addEventListener('click',function(e){
                 e.preventDefault();
-                
+
                 if(typeof callback == 'function'){
                     callback(new URL(window.location.href));
                 }
@@ -626,7 +655,7 @@ class Router {
 
     filter (callback) {
         const self = this;
-        window.addEventListener('hashchange', (evt) => 
+        window.addEventListener('hashchange', (evt) =>
         {
             const pathinfo = self.pathinfo(window.location.hash.replace('#',''));
             callback(pathinfo);
@@ -640,7 +669,7 @@ class Router {
         }
     }
 
-    pathinfo (hash) 
+    pathinfo (hash)
     {
         const pathinfo = {
             'url' : '',
