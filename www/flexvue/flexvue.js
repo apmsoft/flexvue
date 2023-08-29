@@ -279,7 +279,7 @@ class Log {
                 if (typeof arg === 'object') { return JSON.stringify(arg); }
                 return arg;
             });
-            console.log(echoNowDate()+' >> D : ', logs.join(' | '));
+            console.log('%c'+echoNowDate()+' >> D : '+logs.join(' | '), 'color:#333333');
         }
     }
 
@@ -290,7 +290,7 @@ class Log {
                 if (typeof arg === 'object') { return JSON.stringify(arg); }
                 return arg;
             });
-            console.log(echoNowDate()+' >> I : ', logs.join(' | '));
+            console.log('%c'+echoNowDate()+' >> I : '+logs.join(' | '), 'color:#5A8BE3');
         }
     }
 
@@ -301,7 +301,7 @@ class Log {
                 if (typeof arg === 'object') { return JSON.stringify(arg); }
                 return arg;
             });
-            console.log(echoNowDate()+' >> V : ', logs.join(' | '));
+            console.log('%c'+echoNowDate()+' >> V : '+logs.join(' | '), 'color:#1B963A');
         }
     }
 
@@ -312,7 +312,7 @@ class Log {
                 if (typeof arg === 'object') { return JSON.stringify(arg); }
                 return arg;
             });
-            console.log(echoNowDate()+' >> W : ', logs.join(' | '));
+            console.log('%c'+echoNowDate()+' >> W : '+logs.join(' | '), 'color:#BD7825');
         }
     }
 
@@ -323,7 +323,7 @@ class Log {
                 if (typeof arg === 'object') { return JSON.stringify(arg); }
                 return arg;
             });
-            console.log(echoNowDate()+' >> E : ', logs.join(' | '));
+            console.log('%c'+echoNowDate()+' >> E : '+logs.join(' | '), 'color:#E82C35');
         }
     }
 
