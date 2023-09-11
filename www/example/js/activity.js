@@ -1,10 +1,18 @@
 import UrlManager from '../../flexvue/core/urlmanager.class.js';
-
-const onReady = () => 
+// import { Loader } from '../@googlemaps/js-api-loader';
+const onReady = () =>
 {
-    new Activity().onBackPressed( state =>{ 
+    new Activity().onBackPressed( state =>{
         Log.d('onBackPressed : ------>',state);
     });
+
+    // const apiOptions = {
+    //     apiKey: "YOUR API KEY"
+    // };
+    // const loader = new Loader(apiOptions);
+    // loader.load().then(() => {
+    //     console.log('Maps JS API loaded');
+    // });
 
     // #docs/start : hash 경로가 바뀔때 마다 호출 됩니다
     const urlManager = new UrlManager(document.location);

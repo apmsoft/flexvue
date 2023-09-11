@@ -13,7 +13,7 @@ const onReady = () =>
 
     // 일반형
     const outhtml_el = document.querySelector('#echo_contents2');
-    outhtml_el.innerHTML = new Template().render( data );
+    outhtml_el.innerHTML = Template(data );
 }
 
 // document ready

@@ -47,6 +47,7 @@
                     <button type="button" class="btn bg-gray-800 text-white" id="go_bottom">go bottom</button>
 
                 </div>
+                <div id="map"></div>
 
             </div>
 
@@ -243,7 +244,31 @@
             </div>
         </div>
     </div>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Fl9GlrMXdZZWWwZ7S8lWERlLfiy8aFg"></script>
+    <script>
+        window.onload = function() {
+            initMap();
+        }
 
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644}
+            });
+        }
+    </script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Fl9GlrMXdZZWWwZ7S8lWERlLfiy8aFg&callback=initMap&region=kr"></script>
+    <script>
+      function initMap() {
+        var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
+        var map = new google.maps.Map(
+          document.getElementById('map'), {
+            zoom: 12,
+            center: seoul
+          });
+
+      }
+    </script>
     <script defer type="module" src="js/activity.js?v=1"></script>
 <div class="hidden transitioned rightside_transitioned rightthird_transitioned bottom_transitioned bottomside_transitioned bottomthird_transitioned"></div>
 </body>
