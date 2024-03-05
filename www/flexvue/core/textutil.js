@@ -78,4 +78,32 @@ const change_icons = (contents) =>{
 return contents;  
 }
 
-export {phone_format, number_format, filesize_format, find_youtube_id, random_number, change_icons};
+// parseDate(new Date())
+const parseDate = ( curdate ) =>{
+    const year = curdate.getFullYear();
+    let month  = curdate.getMonth() + 1;
+    let day = curdate.getDate();
+    let hour   = curdate.getHours();
+    let minute = curdate.getMinutes();
+    let second = curdate.getSeconds();
+
+    // 10미만인 분과 초를 2자리로 변경
+    month = month < 10 ? '0' + month : month;
+    hour = hour < 10 ? '0' + hour : hour;
+    day = day < 10 ? '0' + day : day;
+    minute = minute < 10 ? '0' + minute : minute;
+    second = second < 10 ? '0' + second : second;
+
+    const result = {
+        "Y" : year,
+        "m" : month,
+        "d" : day,
+        "H" : hour,
+        "i" : minute,
+        "s" : second
+    };
+
+    return result;
+}
+
+export {phone_format, number_format, filesize_format, find_youtube_id, random_number, change_icons, parseDate};
