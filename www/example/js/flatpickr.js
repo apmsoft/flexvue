@@ -11,6 +11,8 @@ const onReady = () =>
         enableTime: true,
         locale : 'ko'
     });
+
+    flatpickr.localize(flatpickr.l10ns.ko);
 }
 
 // document ready
