@@ -1,9 +1,10 @@
+
 import Forms from '../../flexvue/core/forms.class.min.js';
 
 /** ckeditor5 */
 import {} from '../../flexvue/plugins/ckeditor5/ckeditor.js';
 
-const onReady = () => 
+const onReady = () =>
 {
     // editor
     ClassicEditor.create( document.querySelector( '#description' ),{

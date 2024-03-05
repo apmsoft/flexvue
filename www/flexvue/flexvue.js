@@ -222,6 +222,7 @@ class App {
 			|| "unknown";
         this.constructor.os = this.findPlatform(OS) || "unknown";
         this.constructor.lang = this.getLanguage() || '';
+        this.timeZoneOffsetHour = new Date().getTimezoneOffset() / 60;
     }
 
     static getLocale(){
@@ -268,6 +269,10 @@ class App {
             language = cn;
         }
         return language;
+    }
+
+    getTimeZoneOffsetHour () {
+        return this.timeZoneOffsetHour;
     }
 }
 
